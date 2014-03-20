@@ -1,0 +1,12 @@
+{% trans_default_domain 'templatesTranslations' %}
+{% block subject %}
+{% autoescape false %}
+{{ 'reset_password.email_content.subject'|trans({'%firstname%': user.firstname, '%confirmationUrl%': confirmationUrl}) }}
+{% endautoescape %}
+{% endblock %}
+{% block body_text %}
+{% autoescape false %}
+{{ 'reset_password.email_content.message'|trans({'%firstname%': user.firstname, '%confirmationUrl%': confirmationUrl}) }}
+{% endautoescape %}
+{% endblock %}
+{% block body_html %}{% endblock %}

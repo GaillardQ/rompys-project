@@ -1,0 +1,55 @@
+{% trans_default_domain 'templatesTranslations' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>{% block title %} {{ 'common.head_title'|trans }} {% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+        
+        {% stylesheets 'bundles/frontendfrontoffice/css/*' filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        
+        {% block js %}
+            {% javascripts '@FrontendFrontOfficeBundle/Resources/public/js/globals/*' %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+        
+    </head>
+    <body>
+        {% block banniere %}
+            <nav class="navbar navbar-default" role="navigation">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="{{ path('frontend_frontoffice_homepage') }}">{{ 'common.project_name'|trans }}</a>                
+              </div>
+
+              {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+              <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ path('fos_user_security_logout') }}"> <span class="badge">{{ 'common.header.logout'|trans }} </span></a></li>
+                </ul>
+              </div>
+              {% endif %}
+            </nav>
+        {% endblock %}
+
+        {% block menu %}{% endblock %}
+
+        <div class="container container-main">
+
+            <div class="row">
+                {% block body %}{% endblock %}
+            </div>
+
+        </div>
+        <div class="center">
+            <span class="revision_number">SVN release : {{ current_revision }}</span>
+        </div>
+    </body>
+</html>

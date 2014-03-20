@@ -1,0 +1,138 @@
+common:
+    head_title: "[SITE]"
+    header:
+        logout: Se deconnecter
+    project_name: "[SITE]"
+    go_back : Retour
+
+home:
+    account:
+        title: Mon compte
+    bests_sells:
+        title: "Meilleures ventes"
+    catalog:
+        title: "Catalogue"
+    help:
+        title: "Aide"
+    lasts_adds:
+        title: Derniers ajouts
+    login:
+        title: "Se connecter"
+        label:
+            login: "Pseudo :"
+            password: "Mdp :"
+        placeholder: 
+            login: "Pseudonyme"
+            password: "Mot de passe"
+        button:
+            forgot_password: "J'ai oublié mon mot de passe"
+            submit: "Se connecter"
+            register: "S'inscrire"
+    profile:
+         button:
+             show: Mon profil
+             
+profile:
+    infos:
+        title: Mes infos
+        username: 
+            label: "Pseudo :"
+        firstname: 
+            label: "Prénom :"
+        lastname: 
+            label: "Nom :"
+        email: 
+            label: "E-mail :"
+        phone: 
+            label: "Tel. :"
+        update:
+            btn: "Modifier"
+    catalog:
+        title: Mon catalogue
+        index:
+            search: 
+                btn: Plus de critères
+            add_game:
+                btn: Ajouter un jeu
+        add_game:
+            game:
+                title:
+                    Informations générales
+                game_name:
+                    label: "Nom :"
+                plateform:
+                    label: "Plateforme :"
+                editor:
+                    label: "Editeur :"
+                series:
+                    label: "Série :"
+                released_year:
+                    label: "Date de sortie :"
+                game_type: 
+                    label: "Type :"
+            game_catalog:
+                title:
+                    Votre version
+                language:
+                    label: "Langue :"
+                game_package:
+                    label: "Boite :"
+                blister:
+                    label: "Blister :"
+                notice:
+                    label: "Notice :"
+                price:
+                    label: "Prix :"
+                comment:
+                    label: "Commentaire :"
+                state:
+                    label: "Etat :"
+                zone:
+                    label: "Zone :"
+                alternative_name:
+                    label: "Nom alternatif :"
+            btn: Ajouter au catalogue
+mail:
+    registered:
+        subject: "[SITE]Inscription réussie"
+        content: |
+            Bonjour %username%,
+            vous avez bien été inscrit sur notre site. 
+            Vous pouvez dès à présent compléter votre catalogue ou remplir votre panier.
+
+            Cordialement,
+            L'équipe.
+        
+register:
+    title: "S'inscrire"
+    label:
+        username: "Pseudo :"
+        firstname: "Prénom :"
+        lastname: "Nom :"
+        phone: "Téléphone :"
+        email: "Email :"
+        password: "Mot de passe :"
+        password_confirm: "Confirmation :"
+    button:
+        submit: "S'enregistrer"
+        
+register_confirmed:
+    title: "Inscription réussie"
+    message: "Vous avez bien été inscrit sur notre site, vous pouvez dès à présent compléter votre catalogue ou remplir votre panier."
+    button: "Retour"
+    
+reset_password:
+    title: Mot de passe oublié
+    email: "Email :"
+    submit: Changer
+    invalid_email: E-mail invalide
+    check_email: Un e-mail a été envoyé à  l'adresse %email%. Il contient un lien qui vous permettra de regénérer votre mot de passe.
+    password_already_requested: Le mot de passe pour cet utilisateur a déjà  été envoyé durant les 24 dernières heures.
+    email_content:
+          subject: Carpaccio - Réinitialisation de votre mot de passe
+          message: |
+              Bonjour %firstname%,
+              pour réinitialiser votre mot de passe, merci de vous rendre sur %confirmationUrl%
+
+              Cordialement,
+              L'équipe.

@@ -1,0 +1,3 @@
+backend_ws_get_infos_add_game:
+    pattern:  /ws/infos/infos_create_game
+    defaults: { _controller: BackendWsBundle:Infos:createGame }

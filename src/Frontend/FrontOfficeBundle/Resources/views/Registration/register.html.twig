@@ -1,0 +1,12 @@
+{% extends 'FrontendFrontOfficeBundle::baseFrontend.html.twig' %}
+
+{% trans_default_domain 'templatesTranslations' %}
+
+{% block body %}
+<div class="col-xs-12 col-sm-12 col-md-12">
+        {% block fos_user_content %}
+            {% include "FrontendFrontOfficeBundle:Registration:register_content.html.twig" %}
+        {% endblock fos_user_content %}
+</div>
+
+{% endblock %}

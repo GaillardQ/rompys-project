@@ -1,0 +1,30 @@
+# This file is auto-generated during the composer install
+parameters:
+    dev_mailer_transport: smtp
+    dev_mailer_host: smtp.gmail.com
+    dev_mailer_user: q.gaillard@gmail.com
+    dev_mailer_password: quentin
+    dev_locale: fr
+    dev_driver: pdo_mysql
+    dev_host: 127.0.0.1
+    dev_port: 3306
+    dev_dbname: rompys-project
+    dev_user: root
+    dev_password: root
+    dev_charset: UTF8
+    dev_super_admin_email: quentin.gaillard.69@gmail.com
+    prod_mailer_transport: smtp
+    prod_mailer_host: smtp.gmail.com
+    prod_mailer_user: q.gaillard@gmail.com
+    prod_mailer_password: quentin
+    prod_locale: en
+    prod_driver: pdo_mysql
+    prod_host: localhost
+    prod_port: 3306
+    prod_dbname: rompys-project
+    prod_user: root
+    prod_password: root
+    prod_charset: UTF8
+    prod_super_admin_email: quentin.gaillard.69@gmail.com
+    secret: SecretTokenForAutoLogin
+    current_revision: 0

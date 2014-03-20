@@ -1,0 +1,19 @@
+parameters:
+#    frontend_scientist.example.class: Frontend\FrontOfficeBundle\Example
+
+services:
+  frontend.registration.form.type:
+    class: Frontend\FrontOfficeBundle\Form\Type\RegistrationFormType
+    arguments: [%fos_user.model.user.class%]
+    tags:
+      - { name: form.type, alias: frontend_user_registration }
+  frontend.resetting.form.type:
+    class: Frontend\FrontOfficeBundle\Form\Type\ResettingFormType
+    arguments: [%fos_user.model.user.class%]
+    tags:
+      - { name: form.type, alias: carpaccio_user_reset }
+  frontend.change_password.form.type:
+    class: Frontend\FrontOfficeBundle\Form\Type\ChangePasswordFormType
+    arguments: [%fos_user.model.user.class%]
+    tags:
+      - { name: form.type, alias: carpaccio_user_change_password }

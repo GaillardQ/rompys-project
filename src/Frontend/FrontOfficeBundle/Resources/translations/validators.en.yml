@@ -1,0 +1,30 @@
+register:
+  email:
+    already_used: This e-mail is already used
+    blank: E-mail required
+    short: This e-mail is too short
+    long: This e-mail is too long
+    invalid: This e-mail is invalid
+  firstname:
+    blank: Firstname required
+    short: Firstname field is too short
+    long: Firstname field is too long
+  lastname:
+    blank: Lastname required
+    short: Lastname field is too short
+    long: Lastname field is too long
+  customer:
+    blank: Customer name required
+    short: Customer field is too short
+    long: Customer field is too long
+  phone:
+    blank: Phone required
+    short: Phone field is too short
+    long: Phone field is too long
+  password:
+    blank: Password required
+    short: Your password is too short
+    not_the_same: Your password and his confirmation are different
+  password_confirm:
+    blank: Password confirmation required
+    short: Your password is too short

@@ -1,0 +1,139 @@
+<?xml version="1.0" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+        http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="Frontend\FrontOfficeBundle\Entity\User">
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">emailCanonical</option>
+            <option name="errorPath">email</option>
+            <option name="message">register.email.already_used</option>
+            <option name="groups">
+                <value>Register</value>
+            </option>
+        </constraint>
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">usernameCanonical</option>
+            <option name="errorPath">username</option>
+            <option name="message">register.username.already_used</option>
+            <option name="groups">
+                <value>Register</value>
+            </option>
+        </constraint>
+
+        <property name="email">
+            <constraint name="NotBlank">
+                <option name="message">register.email.blank</option>
+                <option name="groups">
+                    <value>Register</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="minMessage">register.email.short</option>
+                <option name="max">254</option>
+                <option name="maxMessage">register.email.long</option>
+                <option name="groups">
+                    <value>Register</value>
+                </option>
+            </constraint>
+            <constraint name="Email">
+                <option name="message">register.email.invalid</option>
+                <option name="groups">
+                    <value>Register</value>
+                </option>
+            </constraint>
+        </property>
+        
+        <property name="username">
+            <constraint name="NotBlank">
+                <option name="message">register.username.blank</option>
+                <option name="groups">
+                    <value>Register</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="minMessage">register.username.short</option>
+                <option name="max">254</option>
+                <option name="maxMessage">register.username.long</option>
+                <option name="groups">
+                    <value>Register</value>
+                </option>
+            </constraint>
+        </property>
+
+        <property name="firstname">
+            <constraint name="NotBlank">
+                <option name="message">register.firstname.blank</option>
+                <option name="groups">
+                    <value>Register</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="minMessage">register.firstname.short</option>
+                <option name="max">254</option>
+                <option name="maxMessage">register.firstname.long</option>
+                <option name="groups">
+                    <value>Register</value>
+                </option>
+            </constraint>
+        </property>
+
+        <property name="lastname">
+            <constraint name="NotBlank">
+                <option name="message">register.lastname.blank</option>
+                <option name="groups">
+                    <value>Register</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="minMessage">register.lastname.short</option>
+                <option name="max">254</option>
+                <option name="maxMessage">register.lastname.long</option>
+                <option name="groups">
+                    <value>Register</value>
+                </option>
+            </constraint>
+        </property>
+        
+        <property name="phone">
+            <constraint name="NotBlank">
+                <option name="message">register.phone.blank</option>
+                <option name="groups">
+                    <value>Register</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="minMessage">register.phone.short</option>
+                <option name="max">254</option>
+                <option name="maxMessage">register.phone.long</option>
+                <option name="groups">
+                    <value>Register</value>
+                </option>
+            </constraint>
+        </property>
+
+        <property name="plainPassword">
+            <constraint name="NotBlank">
+                <option name="message">register.password.blank</option>
+                <option name="groups">
+                    <value>Register</value>
+                    <value>Reset</value>
+                </option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="minMessage">register.password.short</option>
+                <option name="groups">
+                    <value>Register</value>
+                    <value>Reset</value>
+                </option>
+            </constraint>
+        </property>
+    </class>
+</constraint-mapping>

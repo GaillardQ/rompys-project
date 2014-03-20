@@ -1,0 +1,345 @@
+<?php
+
+namespace Frontend\FrontOfficeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Game
+ *
+ * @ORM\Table(name="game")
+ * @ORM\Entity(repositoryClass="Frontend\FrontOfficeBundle\Entity\GameRepository")
+ */
+class Game
+{
+    const LANGUAGE_FR = "Français";
+    const LANGUAGE_US = "Anglais US";
+    const LANGUAGE_UK = "Anglais UK";
+    const LANGUAGE_JP = "Japonais";
+    const LANGUAGE_ZZ = "Autre langage";
+    
+    const GENDER_F = "Féminin";
+    const GENDER_M = "Homme";
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var Frontend\FrontOfficeBundle\Entity\Plateform
+     *
+     * @ORM\ManyToOne(targetEntity="Frontend\FrontOfficeBundle\Entity\Plateform")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $plateform;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="released_year", type="integer", nullable=true)
+     */
+    private $released_year;
+
+    /**
+     * @var Frontend\FrontOfficeBundle\Entity\Editor
+     *
+     * @ORM\ManyToOne(targetEntity="Frontend\FrontOfficeBundle\Entity\Editor")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $editor;
+
+    /**
+     * @var Frontend\FrontOfficeBundle\Entity\Series
+     *
+     * @ORM\ManyToOne(targetEntity="Frontend\FrontOfficeBundle\Entity\Series")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $serie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_1", type="string", length=255, nullable=true)
+     */
+    private $image_1;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_2", type="string", length=255, nullable=true)
+     */
+    private $image_2;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image_3", type="string", length=255, nullable=true)
+     */
+    private $image_3;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="language", type="string", length=45, nullable=false)
+     */
+    private $language;
+    
+    /**
+     * @var Frontend\FrontOfficeBundle\Entity\GameType
+     *
+     * @ORM\ManyToOne(targetEntity="Frontend\FrontOfficeBundle\Entity\GameType")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $game_type;
+    
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Game
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set plateform
+     *
+     * @param Frontend\FrontOfficeBundle\Entity\Plateform $plateform
+     * @return Game
+     */
+    public function setPlateform(\Frontend\FrontOfficeBundle\Entity\Plateform $plateform)
+    {
+        $this->plateform = $plateform;
+    
+        return $this;
+    }
+
+    /**
+     * Get plateform
+     *
+     * @return Frontend\FrontOfficeBundle\Entity\Plateform
+     */
+    public function getPlateform()
+    {
+        return $this->plateform;
+    }
+
+    /**
+     * Set releasedYear
+     *
+     * @param integer $releasedYear
+     * @return Game
+     */
+    public function setReleasedYear($releasedYear)
+    {
+        $this->released_year = $releasedYear;
+    
+        return $this;
+    }
+
+    /**
+     * Get releasedYear
+     *
+     * @return integer 
+     */
+    public function getReleasedYear()
+    {
+        return $this->released_year;
+    }
+
+    /**
+     * Set editor
+     *
+     * @param Frontend\FrontOfficeBundle\Entity\Editor $editor
+     * @return Game
+     */
+    public function setIdEditor(\Frontend\FrontOfficeBundle\Entity\Editor $editor)
+    {
+        $this->editor = $editor;
+    
+        return $this;
+    }
+
+    /**
+     * Get editor
+     *
+     * @return Frontend\FrontOfficeBundle\Entity\Editor 
+     */
+    public function getEditor()
+    {
+        return $this->editor;
+    }
+
+    /**
+     * Set serie
+     *
+     * @param Frontend\FrontOfficeBundle\Entity\Series $serie
+     * @return Game
+     */
+    public function setSeries(\Frontend\FrontOfficeBundle\Entity\Series $serie)
+    {
+        $this->serie = $serie;
+    
+        return $this;
+    }
+
+    /**
+     * Get serie
+     *
+     * @return Frontend\FrontOfficeBundle\Entity\Series
+     */
+    public function getSeries()
+    {
+        return $this->serie;
+    }
+    
+    /**
+     * Set image_1
+     *
+     * @param string $image_1
+     * @return Game
+     */
+    public function setImage1($image_1)
+    {
+        $this->image_1 = $image_1;
+    
+        return $this;
+    }
+
+    /**
+     * Get image_1
+     *
+     * @return string 
+     */
+    public function getImage1()
+    {
+        return $this->image_1;
+    }
+    
+    /**
+     * Set image_2
+     *
+     * @param string $image_2
+     * @return Game
+     */
+    public function setImage2($image_2)
+    {
+        $this->image_2 = $image_2;
+    
+        return $this;
+    }
+
+    /**
+     * Get image_2
+     *
+     * @return string 
+     */
+    public function getImage2()
+    {
+        return $this->image_2;
+    }
+    
+    /**
+     * Set image_3
+     *
+     * @param string $image_3
+     * @return Game
+     */
+    public function setImage3($image_3)
+    {
+        $this->image_3 = $image_3;
+    
+        return $this;
+    }
+
+    /**
+     * Get image_3
+     *
+     * @return string 
+     */
+    public function getImage3()
+    {
+        return $this->image_3;
+    }
+    
+    /**
+     * Set language
+     *
+     * @param string $language
+     * @return Game
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+    
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return string 
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+    
+    /**
+     * Set game_type
+     *
+     * @param string $game_type
+     * @return Game
+     */
+    public function setGameType($game_type)
+    {
+        $this->game_type = $game_type;
+    
+        return $this;
+    }
+
+    /**
+     * Get game_type
+     *
+     * @return string 
+     */
+    public function getGameType()
+    {
+        return $this->game_type;
+    }
+}

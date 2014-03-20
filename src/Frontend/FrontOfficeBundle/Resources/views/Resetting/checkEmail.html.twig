@@ -1,0 +1,25 @@
+{% extends 'FrontendFrontOfficeBundle::baseFrontend.html.twig' %}
+
+{% trans_default_domain 'templatesTranslations' %}
+
+{% block title %} {{ 'reset_password.page_title'|trans }} {% endblock %}
+{% block body %}
+
+<div class="col-xs-12 col-sm-12 col-md-12 block-content">
+
+        <fieldset>
+                <legend>{{ 'reset_password.title'|trans }}</legend>
+        </fieldset>
+
+        {% block fos_user_content %}
+        <p>
+            {{ 'reset_password.check_email'|trans({'%email%': email}) }}
+        </p>
+        {% endblock %}    
+
+   <a href="{{ path('frontend_frontoffice_homepage') }}" class="btn btn-default"> {{ 'common.go_back'|trans }} </a>
+</div>
+
+{% endblock %}
+
+

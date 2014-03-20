@@ -1,0 +1,38 @@
+imports:
+    - { resource: config_dev.yml }
+
+framework:
+    secret: %secret%
+    translator:      { fallback: %prod_locale% }
+    default_locale:  "%prod_locale%"
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+    profiler:
+        enabled: false
+
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
+
+swiftmailer:
+    transport: %prod_mailer_transport%
+    host:      %prod_mailer_host%
+    username:  %prod_mailer_user%
+    password:  %prod_mailer_password%
+    disable_delivery: true
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   %prod_driver%
+        host:     %prod_host%
+        port:     %prod_port%
+        dbname:   %prod_dbname%
+        user:     %prod_user%
+        password: %prod_password%
+        charset:  %prod_charset%
+        
+
+parameters:
+   super_admin_email: %prod_super_admin_email% 

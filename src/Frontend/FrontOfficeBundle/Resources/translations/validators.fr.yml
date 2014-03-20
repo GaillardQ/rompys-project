@@ -1,0 +1,35 @@
+register:
+  username:
+    already_used: Ce pseudo est déjà utilisé
+    blank: Pseudo requis
+    short: Ce pseudo est trop court
+    long: Ce pseudo est trop long
+  email:
+    already_used: Cette adresse e-mail est déjà utilisée
+    blank: E-mail requis
+    short: Cet e-mail est trop court
+    long: Cet e-mail est trop long
+    invalid: Cet e-mail est invalide
+  firstname:
+    blank: Le prénom est obligatoire
+    short: Le prénom est trop court
+    long: Le prénom est trop long
+  lastname:
+    blank: Le nom est obligatoire
+    short: Le nom est trop court
+    long: Le nom est trop long
+  customer:
+    blank: Le nom du client est obligatoire
+    short: Le nom du client est trop court
+    long: Le nom du client est trop long
+  phone:
+    blank: Le téléphone est obligatoire
+    short: Le téléphone est trop court
+    long: Le téléphone est trop long
+  password:
+    blank: Un mot de passe est obligatoire
+    short: Votre mot de passe est trop court
+    not_the_same: Les mots de passe ne sont pas identiques
+  password_confirm:
+    blank: Un mot de passe est obligatoire
+    short: Votre mot de passe est trop court

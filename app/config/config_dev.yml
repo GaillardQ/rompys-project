@@ -1,0 +1,51 @@
+imports:
+    - { resource: config.yml }
+
+framework:
+    secret: %secret%
+    translator:      { fallback: %dev_locale% }
+    default_locale:  "%dev_locale%"
+    router:
+        resource: "%kernel.root_dir%/config/routing_dev.yml"
+        strict_requirements: true
+    profiler: { only_exceptions: false }
+
+web_profiler:
+    toolbar: true
+    intercept_redirects: false
+    
+swiftmailer:
+    transport: %dev_mailer_transport%
+    host:      %dev_mailer_host%
+    username:  %dev_mailer_user%
+    password:  %dev_mailer_password%
+
+monolog:
+    handlers:
+        main:
+            type:  stream
+            path:  %kernel.logs_dir%/%kernel.environment%.log
+            level: debug
+        firephp:
+            type:  firephp
+            level: info
+        chromephp:
+            type:  chromephp
+            level: info
+
+assetic:
+    use_controller: true
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   %dev_driver%
+        host:     %dev_host%
+        port:     %dev_port%
+        dbname:   %dev_dbname%
+        user:     %dev_user%
+        password: %dev_password%
+        charset:  %dev_charset%
+
+parameters:
+   super_admin_email: %dev_super_admin_email% 

@@ -1,0 +1,19 @@
+{% extends 'FrontendFrontOfficeBundle::baseFrontend.html.twig' %}
+
+{% trans_default_domain 'templatesTranslations' %}
+{% block body %}
+
+<div class="col-xs-12 col-sm-12 col-md-12">
+
+    <div class="block-content">
+        <fieldset>
+                <legend>{{ 'register_confirmed.title'|trans }}</legend>
+        </fieldset>
+        
+        <p> {{ 'register_confirmed.message'|trans|nl2br }} </p>
+
+        <a href={{ path('frontend_frontoffice_homepage') }} class='btn btn-default'> {{ 'register_confirmed.button'|trans }}</a>
+    </div>
+</div>
+
+{% endblock %}
