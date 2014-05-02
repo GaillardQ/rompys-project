@@ -67,15 +67,7 @@ class GameFormType extends AbstractType
                     'required' => false,
                     'choices'   => $years,
                     'expanded' => false,
-                    'multiple' => false,
-                ))
-                ->add('language', 'choice', array(
-                    'label' => 'profile.catalog.add_game.game.language.label',
-                    'translation_domain' => $translation_domain, 
-                    'required' => false,
-                    'choices'   => $years,
-                    'expanded' => true,
-                    'multiple' => false,
+                    'multiple' => false
                 ))
                 ->add('game_type', 'entity', array(
                     'label' => 'profile.catalog.add_game.game.game_type.label',

@@ -12,13 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Game
 {
-    const LANGUAGE_FR = "Français";
-    const LANGUAGE_US = "Anglais US";
-    const LANGUAGE_UK = "Anglais UK";
-    const LANGUAGE_JP = "Japonais";
-    const LANGUAGE_ZZ = "Autre langage";
-    
-    const GENDER_F = "Féminin";
+    const GENDER_F = "Femme";
     const GENDER_M = "Homme";
     /**
      * @var integer
@@ -87,13 +81,6 @@ class Game
      * @ORM\Column(name="image_3", type="string", length=255, nullable=true)
      */
     private $image_3;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="language", type="string", length=45, nullable=false)
-     */
-    private $language;
     
     /**
      * @var Frontend\FrontOfficeBundle\Entity\GameType
@@ -295,29 +282,6 @@ class Game
     public function getImage3()
     {
         return $this->image_3;
-    }
-    
-    /**
-     * Set language
-     *
-     * @param string $language
-     * @return Game
-     */
-    public function setLanguage($language)
-    {
-        $this->language = $language;
-    
-        return $this;
-    }
-
-    /**
-     * Get language
-     *
-     * @return string 
-     */
-    public function getLanguage()
-    {
-        return $this->language;
     }
     
     /**

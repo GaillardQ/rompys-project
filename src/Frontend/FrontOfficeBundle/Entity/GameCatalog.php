@@ -16,6 +16,12 @@ class GameCatalog
     const ZONE_NTSC = "NTSC";
     const ZONE_JAP  = "JAP";
     
+    const LANGUAGE_FR = "Français";
+    const LANGUAGE_US = "Anglais US";
+    const LANGUAGE_UK = "Anglais UK";
+    const LANGUAGE_JP = "Japonais";
+    const LANGUAGE_ZZ = "Autre langage";
+    
     /**
      * @var integer
      *
@@ -82,7 +88,14 @@ class GameCatalog
      * @ORM\ManyToOne(targetEntity="Frontend\FrontOfficeBundle\Entity\Seller")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $seller;
+    private $seller; 
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="language", type="string", length=45, nullable=false)
+     */
+    private $language;
 
     /**
      * @var string
@@ -335,5 +348,28 @@ class GameCatalog
     public function getAlternativeName()
     {
         return $this->alternative_name;
+    }
+    
+    /**
+     * Set language
+     *
+     * @param string $language
+     * @return Game
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+    
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return string 
+     */
+    public function getLanguage()
+    {
+        return $this->language;
     }
 }

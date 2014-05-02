@@ -16,9 +16,24 @@ class GameCatalogFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $translation_domain = "templatesTranslations";
+        
         $builder->add('game', new GameFormType(), array(
                     'label' => false,
                     'required' => false
+                ))
+                ->add('language', 'choice', array(
+                    'label' => 'profile.catalog.add_game.game_catalog.language.label',
+                    'translation_domain' => $translation_domain, 
+                    'required' => false,
+                    'choices'   => array(
+                        GameCatalog::LANGUAGE_FR => GameCatalog::LANGUAGE_FR, 
+                        GameCatalog::LANGUAGE_JP => GameCatalog::LANGUAGE_JP,
+                        GameCatalog::LANGUAGE_UK => GameCatalog::LANGUAGE_UK,
+                        GameCatalog::LANGUAGE_US => GameCatalog::LANGUAGE_US,
+                        GameCatalog::LANGUAGE_ZZ => GameCatalog::LANGUAGE_ZZ
+                    ),
+                    'expanded' => false,
+                    'multiple' => false,
                 ))
                 ->add('game_package', 'choice', array(
                     'label' => 'profile.catalog.add_game.game_catalog.game_package.label',

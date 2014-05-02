@@ -60,6 +60,8 @@ class ProfileController extends Controller {
         return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:add_game.html.twig', array(
             'form' => $form->createView()
         ));
+        
+        //return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:add_game.html.twig', array());
     }
 }
 

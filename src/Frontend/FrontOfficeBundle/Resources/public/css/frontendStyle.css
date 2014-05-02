@@ -37,6 +37,10 @@ body{
 {
     font-size: 7px;
 }
+.display-none
+{
+    display: none;
+}
 legend small{
 	font-size: 15px;
 	color: #999;

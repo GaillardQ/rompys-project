@@ -27,3 +27,7 @@ frontend_frontoffice_profile_add_game:
     defaults: { _controller: FrontendFrontOfficeBundle:Profile:addGame, _locale: fr }
     requirements:
           _locale: fr
+          
+frontend_frontoffice_common_get_all_games:
+    pattern:  /all_games
+    defaults: { _controller: FrontendFrontOfficeBundle:Common:getAllGames}

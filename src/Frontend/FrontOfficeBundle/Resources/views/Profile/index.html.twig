@@ -58,7 +58,10 @@
                             <a class="btn btn-default" href="#paneCatalog" data-toggle="tab">Retour au catalog</a> 
                         </div>
                         <div id="paneAddGAme" class="tab-pane fade">
-                            {{ render_hinclude(url('frontend_frontoffice_profile_add_game')) }}
+                            {#{{ render_hinclude(url('frontend_frontoffice_profile_add_game')) }}#}
+                            {{ render_hinclude(controller('FrontendFrontOfficeBundle:Profile:addGame'),  {
+                                'default': 'FrontendFrontOfficeBundle:Profile:loader.html.twig'
+                            }) }}
                         </div>
                     </div>
                 </div>

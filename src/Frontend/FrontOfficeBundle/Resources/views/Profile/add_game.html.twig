@@ -17,34 +17,36 @@
                             {{ form_widget(form.game.name, { 'attr': {'class': 'form-control'} }) }}
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.series) }}</label>
-                        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                            {{ form_widget(form.game.series, { 'attr': {'class': 'selectpicker full_parent_width'} }) }}
+                    <div id="div_game_fields" class="display-none">
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.series) }}</label>
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                {{ form_widget(form.game.series, { 'attr': {'class': 'form-control full_parent_width'} }) }}
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.game_type) }}</label>
-                        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                            {{ form_widget(form.game.game_type, { 'attr': {'class': 'selectpicker full_parent_width'} }) }}
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.game_type) }}</label>
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                {{ form_widget(form.game.game_type, { 'attr': {'class': 'form-control full_parent_width'} }) }}
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.plateform) }}</label>
-                        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                            {{ form_widget(form.game.plateform, { 'attr': {'class': 'selectpicker full_parent_width'} }) }}
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.plateform) }}</label>
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                {{ form_widget(form.game.plateform, { 'attr': {'class': 'form-control full_parent_width'} }) }}
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.editor) }}</label>
-                        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                            {{ form_widget(form.game.editor, { 'attr': {'class': 'selectpicker full_parent_width'} }) }}
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.editor) }}</label>
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                {{ form_widget(form.game.editor, { 'attr': {'class': 'form-control full_parent_width'} }) }}
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.released_year) }}</label>
-                        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                            {{ form_widget(form.game.released_year, { 'attr': {'class': 'form-control'} }) }}
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.released_year) }}</label>
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                {{ form_widget(form.game.released_year, { 'attr': {'class': 'form-control'} }) }}
+                            </div>
                         </div>
                     </div>
                 </fieldset>
@@ -59,33 +61,45 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.language) }}</label>
+                        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-6">
+                            {{ form_widget(form.language, { 'attr': {'class': 'form-control full_parent_width'} }) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game_package) }}</label>
                         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-6">
-                            {{ form_widget(form.game_package, { 'attr': {'class': 'selectpicker full_parent_width'} }) }}
+                            {{ form_widget(form.game_package, { 'attr': {'class': 'form-control full_parent_width'} }) }}
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.blister) }}</label>
                         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-6">
-                            {{ form_widget(form.blister, { 'attr': {'class': 'selectpicker full_parent_width'} }) }}
+                            {{ form_widget(form.blister, { 'attr': {'class': 'form-control full_parent_width'} }) }}
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.notice) }}</label>
                         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-6">
-                            {{ form_widget(form.notice, { 'attr': {'class': 'selectpicker full_parent_width'} }) }}
+                            {{ form_widget(form.notice, { 'attr': {'class': 'form-control full_parent_width'} }) }}
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.state) }}</label>
                         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-6">
-                            {{ form_widget(form.state, { 'attr': {'class': 'selectpicker full_parent_width'} }) }}
+                            {{ form_widget(form.state, { 'attr': {'class': 'form-control full_parent_width'} }) }}
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.zone) }}</label>
                         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-6">
-                            {{ form_widget(form.zone, { 'attr': {'class': 'selectpicker full_parent_width'} }) }}
+                            {{ form_widget(form.zone, { 'attr': {'class': 'form-control full_parent_width'} }) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.price) }}</label>
+                        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                            {{ form_widget(form.price, { 'attr': {'class': 'form-control'} }) }}
                         </div>
                     </div>
                     <div class="form-group">
@@ -97,12 +111,6 @@
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 {{ form_widget(form.comment, { 'attr': {'class': 'form-control'} }) }}
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.price) }}</label>
-                        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                            {{ form_widget(form.price, { 'attr': {'class': 'form-control'} }) }}
                         </div>
                     </div>
                 </fieldset>

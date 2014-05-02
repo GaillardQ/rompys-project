@@ -136,4 +136,9 @@
             </constraint>
         </property>
     </class>
+    
+    <class name="Frontend\FrontOfficeBundle\Entity\GameCatalog">
+        
+        
+    </class>
 </constraint-mapping>
