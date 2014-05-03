@@ -14,7 +14,7 @@ class CommonController extends Controller {
     {
         $all_games = $this->getDoctrine()
         ->getRepository('FrontendFrontOfficeBundle:Game')
-        ->findAll();
+        ->findAllInArray();
         
         $response = new Response();
         $response->setStatusCode(200);

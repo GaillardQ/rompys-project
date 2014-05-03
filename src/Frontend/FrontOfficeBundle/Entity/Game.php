@@ -57,7 +57,7 @@ class Game
      * @var Frontend\FrontOfficeBundle\Entity\Series
      *
      * @ORM\ManyToOne(targetEntity="Frontend\FrontOfficeBundle\Entity\Series")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $serie;
 

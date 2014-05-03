@@ -12,4 +12,29 @@ use Doctrine\ORM\EntityRepository;
  */
 class GameRepository extends EntityRepository
 {
+    public function findAllInArray()
+    {
+        $all_games = $this->findAll();
+        
+        $res_games = array();
+        $l = count($all_games);
+        for($i=0; $i<$l; $i++)
+        {
+            $game = $all_games[$i];
+            $res_games[$i]['name'] = $game->getName();
+            $res_games[$i]['plateform'] = $game->getPlateform()->getValue();
+            $res_games[$i]['editor'] = $game->getEditor()->getValue();
+            if($game->getSeries() != null)
+                $res_games[$i]['serie'] = $game->getSeries()->getValue();
+            else
+                $res_games[$i]['serie'] = null;
+            $res_games[$i]['game_type'] = $game->getGameType()->getValue();
+            $res_games[$i]['released_year'] = $game->getReleasedYear();
+            $res_games[$i]['image_1'] = $game->getImage1();
+            $res_games[$i]['image_2'] = $game->getImage2();
+            $res_games[$i]['image_3'] = $game->getImage3();
+        }
+        
+        return $res_games;
+    }
 }
