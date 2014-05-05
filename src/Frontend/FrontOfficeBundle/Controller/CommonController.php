@@ -16,11 +16,14 @@ class CommonController extends Controller {
         ->getRepository('FrontendFrontOfficeBundle:Game')
         ->findAllInArray();
         
+        $ar_res = array();
+        $ar_res["games"] = $all_games;
+        
         $response = new Response();
         $response->setStatusCode(200);
         $response->headers->set('Content-Type', 'application/json');
         
-        $response->setContent(json_encode($all_games));
+        $response->setContent(json_encode($ar_res));
         
         return $response;
     }

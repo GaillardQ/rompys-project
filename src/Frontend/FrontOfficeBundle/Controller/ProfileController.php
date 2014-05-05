@@ -32,18 +32,9 @@ class ProfileController extends Controller {
                 ));
     }
     
-    public function catalogAction()
-    {
-        return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:catalog.html.twig', array());
-    }
-    
-    public function searchAction()
-    {
-        return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:research.html.twig', array());
-    }
-    
     public function addGameAction(Request $request)
     {
+        $token_user = $this->container->get('security.context')->getToken()->getUser();
         $game = new GameCatalog();
         
         $form = $this->createForm(new GameCatalogFormType(), $game);
@@ -58,6 +49,7 @@ class ProfileController extends Controller {
             }
         }
         return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:add_game.html.twig', array(
+            "user" => $token_user,
             'form' => $form->createView()
         ));
         

@@ -1,84 +1,60 @@
-{% extends 'FrontendFrontOfficeBundle::baseFrontend.html.twig' %}
+{% extends 'FrontendFrontOfficeBundle:Profile:profile.html.twig' %}
 {% trans_default_domain 'templatesTranslations' %}
 
-{% block body %}
-<div id="home_content" class="row">
-    <div id="left_content" class="col-xs-2 col-sm-2 col-md-2">
-        <div class="block-content space-under">
-            <fieldset>
-                <legend>{{ 'profile.infos.title'|trans }}</legend>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 no-padding"><u><small>{{ 'profile.infos.username.label'|trans }}</small></u></div>
-                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 no-padding">{{ user.username }}</div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 no-padding"><u><small>{{ 'profile.infos.firstname.label'|trans }}</small></u></div>
-                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 no-padding">{{ user.firstname }}</div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 no-padding"><u><small>{{ 'profile.infos.lastname.label'|trans }}</small></u></div>
-                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 no-padding">{{ user.lastname }}</div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding"><u><small>{{ 'profile.infos.email.label'|trans }}</small></u></div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">{{ user.email }}</div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 no-padding"><u><small>{{ 'profile.infos.phone.label'|trans }}</small></u></div>
-                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 no-padding">{{ user.phone }}</div>
-                </div>
-                <div class="space-under"></div>
-                <center>
-                    <a class="btn btn-default" href="{{ path('frontend_frontoffice_profile_update') }}">{{ 'profile.infos.update.btn'|trans }}</a>
-                </center>
-            </fieldset>
-        </div>
-        <div id="profile_content" class="block-content">
-            <fieldset>
-                <legend>...</legend>
-                <div class="row">
-                    
-                </div>
-            </fieldset>
-        </div>
-    </div>
-    <div id="center_content" class="col-xs-7 col-sm-7 col-md-7">
-        <div class="block-content">
-            <fieldset>
-                <legend>{{ 'profile.catalog.title'|trans }}</legend>
-                <div class="tabbable">
-                    <div class="tab-content">
-                        <div id="paneCatalog" class="tab-pane fade active in">
-                            {{ render_hinclude(controller('FrontendFrontOfficeBundle:Profile:catalog'),  {
-                                'default': 'FrontendFrontOfficeBundle:Profile:loader.html.twig'
-                            }) }}
-                        </div>
-                        <div id="paneResearch" class="tab-pane fade">
-                            {{ render_hinclude(controller('FrontendFrontOfficeBundle:Profile:search')) }}
-                            <a class="btn btn-default" href="#paneCatalog" data-toggle="tab">Retour au catalog</a> 
-                        </div>
-                        <div id="paneAddGAme" class="tab-pane fade">
-                            {#{{ render_hinclude(url('frontend_frontoffice_profile_add_game')) }}#}
-                            {{ render_hinclude(controller('FrontendFrontOfficeBundle:Profile:addGame'),  {
-                                'default': 'FrontendFrontOfficeBundle:Profile:loader.html.twig'
-                            }) }}
-                        </div>
-                    </div>
-                </div>
-            </fieldset>
-        </div>
-    </div>
-    <div id="right_content" class="col-xs-3 col-sm-3 col-md-3">
-        <div class="block-content space-under">
-            <fieldset class="block-content">
-                <legend>...</legend>
-            </fieldset>
-        </div>
-        <div class="block-content">
-            <fieldset class="block-content">
-                <legend>...</legend>
-            </fieldset>
-        </div>
-    </div>
-</div>
+{% block profile_content %}
+    
+    <br />
+    
+    <table style="width:100%">
+        <thead>
+            <th>Col1</th>
+            <th>Col2</th>
+            <th>Col3</th>
+            <th>Col4</th>
+            <th>Col5</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <br />
+    
+    <center>
+        <a class="btn btn-default" href="{{ path('frontend_frontoffice_profile_add_game') }}">{{ 'profile.catalog.index.add_game.btn'|trans }}</a> 
+    </center>
 {% endblock %}
