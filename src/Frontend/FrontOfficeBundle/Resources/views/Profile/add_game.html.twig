@@ -135,6 +135,7 @@
         "Sortable"
     ];
         $('#frontend_frontoffice_addGame_game_name').autocomplete({
+            delay: 2000, 
             source : function(requete, reponse){ // les deux arguments représentent les données nécessaires au plugin
                 $.ajax({
                     url : "{{ path('frontend_frontoffice_common_get_all_games') }}",
@@ -146,10 +147,13 @@
                     success : function(donnee){
                         console.log(donnee);
                         reponse($.map(donnee.games, function(objet){
-                            return objet.name+" ("+objet.plateform+")";
+                            return objet.name+" ("+objet.plateform+") [#"+objet.id+"#]";
                         }));
                     }
                 });
+            },
+            select: function( event, ui ) {
+                console.log(ui);
             }
         });
     </script>
