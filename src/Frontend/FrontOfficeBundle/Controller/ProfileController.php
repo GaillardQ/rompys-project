@@ -44,7 +44,8 @@ class ProfileController extends Controller {
 
             if ($form->isValid()) {
                 return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:add_game.html.twig', array(
-                    'form' => $form->createView()
+                    'form' => $form->createView(),
+                    'add' => true
                 ));
             }
         }
@@ -52,8 +53,6 @@ class ProfileController extends Controller {
             "user" => $token_user,
             'form' => $form->createView()
         ));
-        
-        //return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:add_game.html.twig', array());
     }
 }
 

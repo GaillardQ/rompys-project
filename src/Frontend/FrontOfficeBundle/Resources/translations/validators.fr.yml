@@ -33,3 +33,33 @@ register:
   password_confirm:
     blank: Un mot de passe est obligatoire
     short: Votre mot de passe est trop court
+    
+add_game:
+  game_catalog:
+    language:
+      blank: Le champs \"langue\" doit être renseigné
+    blister:
+      blank: Le champs \"blister\" doit être renseigné
+    notice:
+      blank: Le champs \"notice\" doit être renseigné
+    game_package:
+      blank: Le champs \"boite\" doit être renseigné
+    state:
+      blank: Le champs \"état\" doit être renseigné
+    zone:
+      blank: Le champs \"zone\" doit être renseigné
+    price:
+      blank: Le champs \"prix\" doit être renseigné
+      sup_zero : Le prix doit être supérieur ou égal à 0.
+    comment:
+      length: Le commentaire doit comporter 500 caractères maximum.
+  game:
+    type:
+      blank: Le champs \"type\" doit être renseigné
+    editor:
+      blank: Le champs \"éditeur\" doit être renseigné
+    plateform:
+      blank: Le champs \"plateforme\" doit être renseigné
+    released_year:
+      blank: Le champs \"date de sortie\" doit être renseigné
+     

@@ -138,7 +138,112 @@
     </class>
     
     <class name="Frontend\FrontOfficeBundle\Entity\GameCatalog">
-        
-        
+        <property name="language">
+            <constraint name="NotBlank">
+                <option name="message">add_game.game_catalog.language.blank</option>
+                <option name="groups">
+                    <value>AddGame</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="blister">
+            <constraint name="NotBlank">
+                <option name="message">add_game.game_catalog.blister.blank</option>
+                <option name="groups">
+                    <value>AddGame</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="notice">
+            <constraint name="NotBlank">
+                <option name="message">add_game.game_catalog.notice.blank</option>
+                <option name="groups">
+                    <value>AddGame</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="game_package">
+            <constraint name="NotBlank">
+                <option name="message">add_game.game_catalog.game_package.blank</option>
+                <option name="groups">
+                    <value>AddGame</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="state">
+            <constraint name="NotBlank">
+                <option name="message">add_game.game_catalog.state.blank</option>
+                <option name="groups">
+                    <value>AddGame</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="zone">
+            <constraint name="NotBlank">
+                <option name="message">add_game.game_catalog.zone.blank</option>
+                <option name="groups">
+                    <value>AddGame</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="price">
+            <constraint name="NotBlank">
+                <option name="message">add_game.game_catalog.price.blank</option>
+                <option name="groups">
+                    <value>AddGame</value>
+                </option>
+            </constraint>
+            <constraint name="GreaterThanOrEqual">
+                <option name="value">0</option>
+                <option name="message">add_game.game_catalog.price.sup_zero</option>
+                <option name="groups">
+                    <value>AddGame</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="comment">
+            <constraint name="Length">
+                <option name="max">500</option>
+                <option name="message">add_game.game_catalog.comment.length</option>
+                <option name="groups">
+                    <value>AddGame</value>
+                </option>
+            </constraint>
+        </property>
+    </class>
+    
+    <class name="Frontend\FrontOfficeBundle\Entity\Game">
+        <property name="type">
+            <constraint name="NotBlank">
+                <option name="message">add_game.game.type.blank</option>
+                <option name="groups">
+                    <value>AddGame</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="plateform">
+            <constraint name="NotBlank">
+                <option name="message">add_game.game.plateform.blank</option>
+                <option name="groups">
+                    <value>AddGame</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="editor">
+            <constraint name="NotBlank">
+                <option name="message">add_game.game.editor.blank</option>
+                <option name="groups">
+                    <value>AddGame</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="released_year">
+            <constraint name="NotBlank">
+                <option name="message">add_game.game.released_year.blank</option>
+                <option name="groups">
+                    <value>AddGame</value>
+                </option>
+            </constraint>
+        </property>
     </class>
 </constraint-mapping>

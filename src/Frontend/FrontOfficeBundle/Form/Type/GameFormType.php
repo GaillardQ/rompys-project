@@ -20,7 +20,7 @@ class GameFormType extends AbstractType
         $j = 0;
         for($i =1980; $i<=$date_year; $i++)
         {
-            $years[$j++] = $i;
+            $years[$i] = $i;
         }
         
         $builder->add('name', 'text', array(

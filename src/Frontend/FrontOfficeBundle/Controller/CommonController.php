@@ -10,11 +10,13 @@ use Frontend\FrontOfficeBundle\Entity\GameCatalog;
 use Frontend\FrontOfficeBundle\Form\Type\GameCatalogFormType;
 
 class CommonController extends Controller {
-    public function getAllGamesAction()
+    public function getAllGamesAction(Request $request)
     {
+        $start =  $request->query->get('start');
+       
         $all_games = $this->getDoctrine()
         ->getRepository('FrontendFrontOfficeBundle:Game')
-        ->findAllInArray();
+        ->findStartWithInArray("%$start%");
         
         $ar_res = array();
         $ar_res["games"] = $all_games;

@@ -12,27 +12,46 @@ use Doctrine\ORM\EntityRepository;
  */
 class GameRepository extends EntityRepository
 {
-    public function findAllInArray()
+    public function findStartWithInArray($_start)
     {
-        $all_games = $this->findAll();
+        //$all_games = $this->findBy(array("name" => "%$_start%"));
+        
+        $qb = $this->createQueryBuilder('g');
+        
+        $query = $qb->where('g.name LIKE :name')
+         ->setParameter('name',"%$_start%")
+         ->getQuery();
+         
+        $all_games = $query->getResult();
         
         $res_games = array();
         $l = count($all_games);
         for($i=0; $i<$l; $i++)
         {
             $game = $all_games[$i];
-            $res_games[$i]['name'] = $game->getName();
-            $res_games[$i]['plateform'] = $game->getPlateform()->getValue();
-            $res_games[$i]['editor'] = $game->getEditor()->getValue();
+            $id = $game->getId();
+            $res_games[$id]['id'] = $game->getId();
+            $res_games[$id]['name'] = $game->getName();
+            $res_games[$id]['plateform'] = $game->getPlateform()->getValue();
+            $res_games[$id]['plateform_id'] = $game->getPlateform()->getId();
+            $res_games[$id]['editor'] = $game->getEditor()->getValue();
+            $res_games[$id]['editor_id'] = $game->getEditor()->getId();
             if($game->getSeries() != null)
-                $res_games[$i]['serie'] = $game->getSeries()->getValue();
+            {
+                $res_games[$id]['serie'] = $game->getSeries()->getValue();
+                $res_games[$id]['serie_id'] = $game->getSeries()->getId();
+            }
             else
-                $res_games[$i]['serie'] = null;
-            $res_games[$i]['game_type'] = $game->getGameType()->getValue();
-            $res_games[$i]['released_year'] = $game->getReleasedYear();
-            $res_games[$i]['image_1'] = $game->getImage1();
-            $res_games[$i]['image_2'] = $game->getImage2();
-            $res_games[$i]['image_3'] = $game->getImage3();
+            {
+                $res_games[$id]['serie'] = null;
+                $res_games[$id]['serie_id'] = 0;
+            }
+            $res_games[$id]['game_type'] = $game->getGameType()->getValue();
+            $res_games[$id]['game_type_id'] = $game->getGameType()->getId();
+            $res_games[$id]['released_year'] = $game->getReleasedYear();
+            $res_games[$id]['image_1'] = $game->getImage1();
+            $res_games[$id]['image_2'] = $game->getImage2();
+            $res_games[$id]['image_3'] = $game->getImage3();
         }
         
         return $res_games;
