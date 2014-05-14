@@ -51,7 +51,23 @@ class Game
      * @ORM\ManyToOne(targetEntity="Frontend\FrontOfficeBundle\Entity\Editor")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $editor;
+    private $editor_1;
+    
+    /**
+     * @var Frontend\FrontOfficeBundle\Entity\Editor
+     *
+     * @ORM\ManyToOne(targetEntity="Frontend\FrontOfficeBundle\Entity\Editor")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $editor_2;
+    
+    /**
+     * @var Frontend\FrontOfficeBundle\Entity\Editor
+     *
+     * @ORM\ManyToOne(targetEntity="Frontend\FrontOfficeBundle\Entity\Editor")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $editor_3;
 
     /**
      * @var Frontend\FrontOfficeBundle\Entity\Series
@@ -170,28 +186,73 @@ class Game
     }
 
     /**
-     * Set editor
+     * Set editor_1
      *
-     * @param Frontend\FrontOfficeBundle\Entity\Editor $editor
+     * @param Frontend\FrontOfficeBundle\Entity\Editor $editor_1
      * @return Game
      */
-    public function setIdEditor(\Frontend\FrontOfficeBundle\Entity\Editor $editor)
+    public function setEditor_1(\Frontend\FrontOfficeBundle\Entity\Editor $editor_1)
     {
-        $this->editor = $editor;
+        $this->editor_1 = $editor_1;
     
         return $this;
     }
 
     /**
-     * Get editor
+     * Get editor_1
      *
      * @return Frontend\FrontOfficeBundle\Entity\Editor 
      */
-    public function getEditor()
+    public function getEditor_1()
     {
-        return $this->editor;
+        return $this->editor_1;
     }
 
+    /**
+     * Set editor_2
+     *
+     * @param Frontend\FrontOfficeBundle\Entity\Editor $editor_2
+     * @return Game
+     */
+    public function setEditor_2(\Frontend\FrontOfficeBundle\Entity\Editor $editor_2)
+    {
+        $this->editor_2 = $editor_2;
+    
+        return $this;
+    }
+
+    /**
+     * Get editor_2
+     *
+     * @return Frontend\FrontOfficeBundle\Entity\Editor 
+     */
+    public function getEditor_2()
+    {
+        return $this->editor_2;
+    }
+    
+    /**
+     * Set editor_3
+     *
+     * @param Frontend\FrontOfficeBundle\Entity\Editor $editor_3
+     * @return Game
+     */
+    public function setEditor_3(\Frontend\FrontOfficeBundle\Entity\Editor $editor_3)
+    {
+        $this->editor_3 = $editor_3;
+    
+        return $this;
+    }
+
+    /**
+     * Get editor_3
+     *
+     * @return Frontend\FrontOfficeBundle\Entity\Editor 
+     */
+    public function getEditor_3()
+    {
+        return $this->editor_3;
+    }
     /**
      * Set serie
      *

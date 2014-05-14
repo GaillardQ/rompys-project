@@ -54,7 +54,7 @@
                     {% endif %}
                 </div>
             {% endif %}
-            {% if add is not null and add == true %}
+            {% if add is defined and add is not null and add == true %}
                 <div class="alert alert-block alert-success fade in">
                     Le jeu a été ajouté à votre catalogue
                 </div>
@@ -92,9 +92,21 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.editor) }}</label>
+                                <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.editor_1) }}</label>
                                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                                    {{ form_widget(form.game.editor, { 'attr': {'class': 'form-control full_parent_width', 'disabled':'disabled'} }) }}
+                                    {{ form_widget(form.game.editor_1, { 'attr': {'class': 'form-control full_parent_width', 'disabled':'disabled'} }) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.editor_2) }}</label>
+                                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                    {{ form_widget(form.game.editor_2, { 'attr': {'class': 'form-control full_parent_width', 'disabled':'disabled'} }) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.editor_3) }}</label>
+                                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                    {{ form_widget(form.game.editor_3, { 'attr': {'class': 'form-control full_parent_width', 'disabled':'disabled'} }) }}
                                 </div>
                             </div>
                             <div class="form-group">
@@ -223,7 +235,9 @@
                 $("#frontend_frontoffice_addGame_game_series").val(game.serie_id);
                 $("#frontend_frontoffice_addGame_game_game_type").val(game.game_type_id);
                 $("#frontend_frontoffice_addGame_game_plateform").val(game.plateform_id);
-                $("#frontend_frontoffice_addGame_game_editor").val(game.editor_id);
+                $("#frontend_frontoffice_addGame_game_editor_1").val(game.editor_1_id);
+                $("#frontend_frontoffice_addGame_game_editor_2").val(game.editor_2_id);
+                $("#frontend_frontoffice_addGame_game_editor_3").val(game.editor_3_id);
                 $("#frontend_frontoffice_addGame_game_released_year").val(game.released_year);
                 
                 // div : div_game_fields

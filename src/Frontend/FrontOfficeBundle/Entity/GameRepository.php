@@ -34,8 +34,31 @@ class GameRepository extends EntityRepository
             $res_games[$id]['name'] = $game->getName();
             $res_games[$id]['plateform'] = $game->getPlateform()->getValue();
             $res_games[$id]['plateform_id'] = $game->getPlateform()->getId();
-            $res_games[$id]['editor'] = $game->getEditor()->getValue();
-            $res_games[$id]['editor_id'] = $game->getEditor()->getId();
+            $res_games[$id]['editor_1'] = $game->getEditor_1()->getValue();
+            $res_games[$id]['editor_1_id'] = $game->getEditor_1()->getId();
+            
+            if($game->getEditor_2() != null)
+            {
+                $res_games[$id]['editor_2'] = $game->getEditor_2()->getValue();
+                $res_games[$id]['editor_2_id'] = $game->getEditor_2()->getId();
+            }
+            else
+            {
+                $res_games[$id]['editor_2'] = null;
+                $res_games[$id]['editor_2_id'] = 0;
+            }
+            
+            if($game->getEditor_3() != null)
+            {
+                $res_games[$id]['editor_3'] = $game->getEditor_3()->getValue();
+                $res_games[$id]['editor_3_id'] = $game->getEditor_3()->getId();
+            }
+            else
+            {
+                $res_games[$id]['editor_3'] = null;
+                $res_games[$id]['editor_3_id'] = 0;
+            }
+            
             if($game->getSeries() != null)
             {
                 $res_games[$id]['serie'] = $game->getSeries()->getValue();

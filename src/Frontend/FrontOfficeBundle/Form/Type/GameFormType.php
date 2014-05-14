@@ -39,7 +39,29 @@ class GameFormType extends AbstractType
                     },
                     'property' => 'value'
                 ))
-                ->add('editor', 'entity', array(
+                ->add('editor_1', 'entity', array(
+                    'label' => 'profile.catalog.add_game.game.editor.label',
+                    'translation_domain' => $translation_domain, 
+                    'required' => false,
+                    'class' => 'FrontendFrontOfficeBundle:Editor',
+                    'query_builder' => function(EntityRepository $er) {
+                        return $er->createQueryBuilder('e')
+                            ->orderBy('e.id', 'ASC');
+                    },
+                    'property' => 'value'
+                ))
+                ->add('editor_2', 'entity', array(
+                    'label' => 'profile.catalog.add_game.game.editor.label',
+                    'translation_domain' => $translation_domain, 
+                    'required' => false,
+                    'class' => 'FrontendFrontOfficeBundle:Editor',
+                    'query_builder' => function(EntityRepository $er) {
+                        return $er->createQueryBuilder('e')
+                            ->orderBy('e.id', 'ASC');
+                    },
+                    'property' => 'value'
+                ))
+                ->add('editor_3', 'entity', array(
                     'label' => 'profile.catalog.add_game.game.editor.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
