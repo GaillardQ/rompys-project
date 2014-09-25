@@ -1,5 +1,4 @@
 body{
-    color:black;
 }
 .row{
 	margin: 0;
@@ -41,7 +40,10 @@ body{
 }
 legend small{
 	font-size: 15px;
-	color: #999;
+}
+legend
+{
+    color: #c8c8c8;
 }
 div {
     table-layout: fixed;
@@ -84,8 +86,12 @@ th.width_auto
 }
 .block-content{
     border-radius: 10px 10px 10px 10px;
-    background-color: white;
-    padding: 5px;
+    padding: 15px;
+}
+.panel-extent
+{
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.45);
 }
 .container-main
 {
