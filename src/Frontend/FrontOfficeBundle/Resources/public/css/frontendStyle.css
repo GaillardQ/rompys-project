@@ -12,6 +12,12 @@ body{
 .space-under{
     margin-bottom: 10px;
 }
+.space-under-20{
+    margin-bottom: 20px;
+}
+.space-under-30{
+    margin-bottom: 30px;
+}
 .right_align{
     text-align: right;
 }

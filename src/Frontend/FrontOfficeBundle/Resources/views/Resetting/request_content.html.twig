@@ -1,25 +1,33 @@
 {% trans_default_domain 'templatesTranslations' %}
 
 <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request form-horizontal" role="form">
-        <fieldset>
-            <legend>{{ 'reset_password.title'|trans }}</legend>
-            {% if invalid_username is defined %}
-                <div class="alert alert-block alert-danger fade in">
-                    {{ 'reset_password.invalid_email'|trans({'%username%': invalid_username}) }}
-                </div>
-            {% endif %}
-            <div class="form-group">
-                <label class="control-label col-xs-5 col-sm-5 col-md-5" for="username">{{ 'reset_password.email'|trans }}</label>
-                <div class="col-xs-3 col-sm-3 col-md-3">
+    <fieldset>
+        <legend>{{ 'reset_password.title'|trans }}</legend>
+        {% if invalid_username is defined %}
+            <div class="alert alert-block alert-danger fade in">
+                {{ 'reset_password.invalid_email'|trans({'%username%': invalid_username}) }}
+            </div>
+        {% endif %}
+        <div class="row space-under-30">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8       col-xs-offset-0 col-sm-offset-0 col-md-offset-0 col-lg-offset-2">
+                <label class="control-label col-xs-12 col-sm-2 col-md-2 col-lg-2" for="username">{{ 'reset_password.email'|trans }}</label>
+                <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
                     <input type="text" id="username" name="username" value="" class="form-control">
                 </div>
             </div>
-            <div class="control-label col-xs-5 col-sm-5 col-md-5"></div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <button class='btn btn-primary' type="submit">{{ 'reset_password.submit'|trans }}</button>
-                <a href={{ path('frontend_frontoffice_homepage') }} class="btn btn-default"> {{ 'common.go_back'|trans }} </a>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8       col-xs-offset-0 col-sm-offset-0 col-md-offset-0 col-lg-offset-2">
+                <div class="row">
+                    <div class="col-xs-0 col-sm-2 col-md-2 col-lg-2"></div>
+                    <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                        <div class="row">
+                            <button class='btn btn-primary col-xs-12 col-sm-4 col-md-3 col-lg-3' type="submit">{{ 'reset_password.submit'|trans }}</button>
+                            <a href={{ path('frontend_frontoffice_homepage') }} class="btn btn-default col-xs-12 col-sm-4 col-md-3 col-lg-3"> {{ 'common.go_back'|trans }} </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </fieldset>
-        
-    </div>
+        </div>
+    </fieldset>
 </form>
