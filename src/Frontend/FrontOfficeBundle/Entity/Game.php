@@ -191,7 +191,7 @@ class Game
      * @param Frontend\FrontOfficeBundle\Entity\Editor $editor_1
      * @return Game
      */
-    public function setEditor_1(\Frontend\FrontOfficeBundle\Entity\Editor $editor_1)
+    public function setEditor1(\Frontend\FrontOfficeBundle\Entity\Editor $editor_1)
     {
         $this->editor_1 = $editor_1;
     
@@ -203,7 +203,7 @@ class Game
      *
      * @return Frontend\FrontOfficeBundle\Entity\Editor 
      */
-    public function getEditor_1()
+    public function getEditor1()
     {
         return $this->editor_1;
     }
@@ -214,7 +214,7 @@ class Game
      * @param Frontend\FrontOfficeBundle\Entity\Editor $editor_2
      * @return Game
      */
-    public function setEditor_2(\Frontend\FrontOfficeBundle\Entity\Editor $editor_2)
+    public function setEditor2(\Frontend\FrontOfficeBundle\Entity\Editor $editor_2)
     {
         $this->editor_2 = $editor_2;
     
@@ -226,7 +226,7 @@ class Game
      *
      * @return Frontend\FrontOfficeBundle\Entity\Editor 
      */
-    public function getEditor_2()
+    public function getEditor2()
     {
         return $this->editor_2;
     }
@@ -237,7 +237,7 @@ class Game
      * @param Frontend\FrontOfficeBundle\Entity\Editor $editor_3
      * @return Game
      */
-    public function setEditor_3(\Frontend\FrontOfficeBundle\Entity\Editor $editor_3)
+    public function setEditor3(\Frontend\FrontOfficeBundle\Entity\Editor $editor_3)
     {
         $this->editor_3 = $editor_3;
     
@@ -249,7 +249,7 @@ class Game
      *
      * @return Frontend\FrontOfficeBundle\Entity\Editor 
      */
-    public function getEditor_3()
+    public function getEditor3()
     {
         return $this->editor_3;
     }

@@ -34,13 +34,13 @@ class GameRepository extends EntityRepository
             $res_games[$id]['name'] = $game->getName();
             $res_games[$id]['plateform'] = $game->getPlateform()->getValue();
             $res_games[$id]['plateform_id'] = $game->getPlateform()->getId();
-            $res_games[$id]['editor_1'] = $game->getEditor_1()->getValue();
-            $res_games[$id]['editor_1_id'] = $game->getEditor_1()->getId();
+            $res_games[$id]['editor_1'] = $game->getEditor1()->getValue();
+            $res_games[$id]['editor_1_id'] = $game->getEditor1()->getId();
             
-            if($game->getEditor_2() != null)
+            if($game->getEditor2() != null)
             {
-                $res_games[$id]['editor_2'] = $game->getEditor_2()->getValue();
-                $res_games[$id]['editor_2_id'] = $game->getEditor_2()->getId();
+                $res_games[$id]['editor_2'] = $game->getEditor2()->getValue();
+                $res_games[$id]['editor_2_id'] = $game->getEditor2()->getId();
             }
             else
             {
@@ -48,10 +48,10 @@ class GameRepository extends EntityRepository
                 $res_games[$id]['editor_2_id'] = 0;
             }
             
-            if($game->getEditor_3() != null)
+            if($game->getEditor3() != null)
             {
-                $res_games[$id]['editor_3'] = $game->getEditor_3()->getValue();
-                $res_games[$id]['editor_3_id'] = $game->getEditor_3()->getId();
+                $res_games[$id]['editor_3'] = $game->getEditor3()->getValue();
+                $res_games[$id]['editor_3_id'] = $game->getEditor3()->getId();
             }
             else
             {

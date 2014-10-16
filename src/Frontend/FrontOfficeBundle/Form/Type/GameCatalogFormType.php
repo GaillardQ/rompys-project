@@ -18,8 +18,7 @@ class GameCatalogFormType extends AbstractType
         $translation_domain = "templatesTranslations";
         
         $builder->add('game', new GameFormType(), array(
-                    'label' => false,
-                    'required' => false
+                    'label' => false
                 ))
                 ->add('language', 'choice', array(
                     'label' => 'profile.catalog.add_game.game_catalog.language.label',
@@ -39,7 +38,6 @@ class GameCatalogFormType extends AbstractType
                     'label' => 'profile.catalog.add_game.game_catalog.game_package.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
-                    'empty_value' => false,
                     'choices'   => array('yes' => 'Oui', 'no' => 'Non'),
                     'expanded' => false,
                     'multiple' => false
@@ -110,15 +108,15 @@ class GameCatalogFormType extends AbstractType
     { 
         $resolver->setDefaults(
                 array( 
-                    'data_class' => 'Frontend\FrontOfficeBundle\Entity\GameCatalog', 
-                    'cascade_validation' => true, 
-                    'validation_groups' => array('AddGame') 
+                    'data_class' => 'Frontend\FrontOfficeBundle\Entity\GameCatalog',
+                    'validation_groups' => array('AddCatalogGame'), 
+                    'cascade_validation' => true
                 )
         ); 
     }
     
     public function getName()
     {
-        return 'frontend_frontoffice_addGame';
+        return 'frontend_frontoffice_addCatalogGame';
     }
 }

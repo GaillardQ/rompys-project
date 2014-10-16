@@ -75,7 +75,7 @@ class GameCatalog
     private $comment;
 
     /**
-     * @var Frontend\FrontOfficeBundle\Entity\State
+     * @var Frontend\FrontOfficeBundle\Entity\GameState
      *
      * @ORM\ManyToOne(targetEntity="Frontend\FrontOfficeBundle\Entity\GameState")
      * @ORM\JoinColumn(nullable=false)
@@ -262,10 +262,10 @@ class GameCatalog
     /**
      * Set state
      *
-     * @param Frontend\FrontOfficeBundle\Entity\State $state
+     * @param Frontend\FrontOfficeBundle\Entity\GameState $state
      * @return GameCatalog
      */
-    public function setState(\Frontend\FrontOfficeBundle\Entity\State $state)
+    public function setState(\Frontend\FrontOfficeBundle\Entity\GameState $state)
     {
         $this->state = $state;
     
@@ -275,7 +275,7 @@ class GameCatalog
     /**
      * Get state
      *
-     * @return Frontend\FrontOfficeBundle\Entity\State 
+     * @return Frontend\FrontOfficeBundle\Entity\GameState 
      */
     public function getState()
     {

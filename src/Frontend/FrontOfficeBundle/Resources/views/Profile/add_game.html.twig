@@ -19,8 +19,14 @@
                     {% if form_errors(form.game.plateform) is not null %}
                          {{ form_errors(form.game.plateform) }}
                     {% endif %}
-                    {% if form_errors(form.game.editor) is not null %}
-                         {{ form_errors(form.game.editor) }}
+                    {% if form_errors(form.game.editor_1) is not null %}
+                         {{ form_errors(form.game.editor_1) }}
+                    {% endif %}
+                    {% if form_errors(form.game.editor_2) is not null %}
+                         {{ form_errors(form.game.editor_2) }}
+                    {% endif %}
+                    {% if form_errors(form.game.editor_3) is not null %}
+                         {{ form_errors(form.game.editor_3) }}
                     {% endif %}
                     {% if form_errors(form.game.released_year) is not null %}
                          {{ form_errors(form.game.released_year) }}
@@ -52,6 +58,8 @@
                     {% if form_errors(form.comment) is not null %}
                          {{ form_errors(form.comment) }}
                     {% endif %}
+                    
+                    {{ form_errors(form) }}
                 </div>
             {% endif %}
             {% if add is defined and add is not null and add == true %}
@@ -72,47 +80,47 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="div_game_fields" class="display-none">
+                        <div id="div_game_fields">
                             <div class="form-group">
                                 <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.series) }}</label>
                                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                                    {{ form_widget(form.game.series, { 'attr': {'class': 'form-control full_parent_width', 'disabled':'disabled'} }) }}
+                                    {{ form_widget(form.game.series, { 'attr': {'class': 'form-control full_parent_width', 'readonly':'readonly'} }) }}
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.game_type) }}</label>
                                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                                    {{ form_widget(form.game.game_type, { 'attr': {'class': 'form-control full_parent_width', 'disabled':'disabled'} }) }}
+                                    {{ form_widget(form.game.game_type, { 'attr': {'class': 'form-control full_parent_width', 'readonly':'readonly'} }) }}
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.plateform) }}</label>
                                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                                    {{ form_widget(form.game.plateform, { 'attr': {'class': 'form-control full_parent_width', 'disabled':'disabled'} }) }}
+                                    {{ form_widget(form.game.plateform, { 'attr': {'class': 'form-control full_parent_width', 'readonly':'readonly'} }) }}
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.editor_1) }}</label>
                                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                                    {{ form_widget(form.game.editor_1, { 'attr': {'class': 'form-control full_parent_width', 'disabled':'disabled'} }) }}
+                                    {{ form_widget(form.game.editor_1, { 'attr': {'class': 'form-control full_parent_width', 'readonly':'readonly'} }) }}
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.editor_2) }}</label>
                                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                                    {{ form_widget(form.game.editor_2, { 'attr': {'class': 'form-control full_parent_width', 'disabled':'disabled'} }) }}
+                                    {{ form_widget(form.game.editor_2, { 'attr': {'class': 'form-control full_parent_width', 'readonly':'readonly'} }) }}
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.editor_3) }}</label>
                                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                                    {{ form_widget(form.game.editor_3, { 'attr': {'class': 'form-control full_parent_width', 'disabled':'disabled'} }) }}
+                                    {{ form_widget(form.game.editor_3, { 'attr': {'class': 'form-control full_parent_width', 'readonly':'readonly'} }) }}
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.released_year) }}</label>
                                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                                    {{ form_widget(form.game.released_year, { 'attr': {'class': 'form-control', 'disabled':'disabled'} }) }}
+                                    {{ form_widget(form.game.released_year, { 'attr': {'class': 'form-control', 'readonly':'readonly'} }) }}
                                 </div>
                             </div>
                         </div>
@@ -171,7 +179,7 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5 left-align">{{ form_label(form.comment) }}</label>
+                                <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5" style="text-align: left">{{ form_label(form.comment) }}</label>
                                 <div class="col-xs-0 col-sm-0 col-md-7 col-lg-7"></div>
                             </div>
                             <div class=""row>
@@ -183,16 +191,15 @@
                     </fieldset>
                 </div>
             </div>
-            
+            <center>
+                {{ form_rest(form) }} 
+                <input type="submit" class="btn btn-default" value="{{ 'profile.catalog.add_game.btn'|trans }}" /> 
+            </center>
         </div>
     </form>
     
-    <center>
-        <a class="btn btn-default" href="#paneCatalog" data-toggle="tab">{{ 'profile.catalog.add_game.btn'|trans }}</a> 
-    </center>
-    
     <script>
-        $('#frontend_frontoffice_addGame_game_name').autocomplete({
+        $('#frontend_frontoffice_addCatalogGame_game_name').autocomplete({
             delay: 1000, 
             search: function( event, ui ) {
                 $("#name-loader").show();
@@ -202,9 +209,8 @@
                     url : "{{ path('frontend_frontoffice_common_get_all_games') }}",
                     dataType : 'json', // on spécifie bien que le type de données est en JSON
                     data : {
-                        start : $('#frontend_frontoffice_addGame_game_name').val(), // on donne la chaîne de caractère tapée dans le champ de recherche
+                        start : $('#frontend_frontoffice_addCatalogGame_game_name').val(), // on donne la chaîne de caractère tapée dans le champ de recherche
                     },
-                     //$('#frontend_frontoffice_addGame_game_name').val('test');
                     success : function(donnee){
                         game_liste = new Array();
                         $.map(donnee.games, function(value, index) {
@@ -232,20 +238,13 @@
                 var game = game_liste[id];
                 
                 $("#div_game_fields").show();
-                $("#frontend_frontoffice_addGame_game_series").val(game.serie_id);
-                $("#frontend_frontoffice_addGame_game_game_type").val(game.game_type_id);
-                $("#frontend_frontoffice_addGame_game_plateform").val(game.plateform_id);
-                $("#frontend_frontoffice_addGame_game_editor_1").val(game.editor_1_id);
-                $("#frontend_frontoffice_addGame_game_editor_2").val(game.editor_2_id);
-                $("#frontend_frontoffice_addGame_game_editor_3").val(game.editor_3_id);
-                $("#frontend_frontoffice_addGame_game_released_year").val(game.released_year);
-                
-                // div : div_game_fields
-                // serie : frontend_frontoffice_addGame_game_series
-                // game_type : frontend_frontoffice_addGame_game_game_type
-                // plateform : frontend_frontoffice_addGame_game_plateform
-                // editor : frontend_frontoffice_addGame_game_editor
-                // released_year : frontend_frontoffice_addGame_game_released_year
+                $("#frontend_frontoffice_addCatalogGame_game_series").val(game.serie_id);
+                $("#frontend_frontoffice_addCatalogGame_game_game_type").val(game.game_type_id);
+                $("#frontend_frontoffice_addCatalogGame_game_plateform").val(game.plateform_id);
+                $("#frontend_frontoffice_addCatalogGame_game_editor_1").val(game.editor_1_id);
+                $("#frontend_frontoffice_addCatalogGame_game_editor_2").val(game.editor_2_id);
+                $("#frontend_frontoffice_addCatalogGame_game_editor_3").val(game.editor_3_id);
+                $("#frontend_frontoffice_addCatalogGame_game_released_year").val(game.released_year);
             }
         });
     </script>

@@ -108,9 +108,8 @@ class GameFormType extends AbstractType
     { 
         $resolver->setDefaults(
                 array( 
-                    'data_class' => 'Frontend\FrontOfficeBundle\Entity\GameCatalog', 
-                    'cascade_validation' => true, 
-                    'validation_groups' => array('AddGame') 
+                    'data_class' => 'Frontend\FrontOfficeBundle\Entity\Game',
+                    'validation_groups' => array('AddCatalogGame')
                 )
         ); 
     }

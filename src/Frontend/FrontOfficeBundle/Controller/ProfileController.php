@@ -38,13 +38,14 @@ class ProfileController extends Controller {
         $game = new GameCatalog();
         
         $form = $this->createForm(new GameCatalogFormType(), $game);
-
+        
         if ('POST' === $request->getMethod()) {
             $form->bind($request);
 
             if ($form->isValid()) {
                 return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:add_game.html.twig', array(
                     'form' => $form->createView(),
+                    "user" => $token_user,
                     'add' => true
                 ));
             }
