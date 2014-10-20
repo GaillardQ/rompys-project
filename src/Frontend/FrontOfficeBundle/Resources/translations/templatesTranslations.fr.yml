@@ -48,7 +48,7 @@ profile:
         update:
             btn: "Modifier"
     catalog:
-        title: Mon catalogue
+        title: Mes jeux
         index:
             search: 
                 btn: Plus de critères

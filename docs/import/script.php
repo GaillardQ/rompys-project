@@ -1,8 +1,8 @@
 <?php
-	$fichier="games";
+	$fichier="games_new";
 	$tabfich = file($fichier);
 
-	$fp = fopen('file.csv', 'w');
+	$fp = fopen('file_new.csv', 'w');
 
 	$res_table= "";
 	
@@ -16,7 +16,7 @@
 	$cpt_console = 0;
 	$q_console = "INSERT INTO plateform(id, value) VALUES ";
 
-	$query = "INSERT INTO game(name, plateform, released_year, editor_1, editor_2, editor_3, game_type) VALUES ";
+	$query = "INSERT INTO game(name, plateform_id, released_year, editor_1_id, editor_2_id, editor_3_id, game_type_id) VALUES ";
 
 	$res_table .= "<table style='border:1px'>";
 		$res_table .= "<tr>";
@@ -50,7 +50,7 @@
 			$ar_data = explode(",", $temp[0]);
 			
 			// Si le premier élément n'est pas un entier, c'est que nous avons un complément du nom du jeu
-			if(!is_numeric($ar_data[0]))
+			/*if(!is_numeric($ar_data[0]))
 			{
 				$fields[0] .= '('.$ar_data[0].')';
 				$i++;
@@ -59,7 +59,7 @@
 				$temp = explode(")", $ar_line[$i]);
 				// On explose ensuite par ','
 				$ar_data = explode(",", $temp[0]);
-			}
+			}*/
 			$i++;
 			
 			$editeurs = "";
@@ -78,7 +78,7 @@
 				{
 					$e = trim(strtoupper($e));
 					$echo_editeurs .= $e."<br />";
-					$editeurs .= "$e\n";
+					$editeurs .= "$e;";
 					
 					// On ne stock en bdd que les 3 premiers éditeurs
 					if($cpt < 3)
@@ -106,6 +106,7 @@
 					}
 				}
 			}
+			$editeurs = trim($editeurs, ";");
 			$fields[2] = $editeurs;
 
 			$temp = explode(")", $ar_line[$i]);
@@ -120,14 +121,17 @@
 				$c = trim(strtoupper($c));
 				
 				$echo_consoles .= $c."<br />";
-				$consoles .= "$c\n";
+				$consoles .= "$c;";
+				
+				$id_to_store = 0;
 				
 				// On récupère la clé correspondant à cette console
 				$k = array_search($c, $ar_console_val);
 				if(is_numeric($k))
 				{
 					// Si la clé existe, on récupère son id
-					$id_console[count($id_console)] = $ar_console_id[$k];
+					//$id_console[count($id_console)] = $ar_console_id[$k];
+					$id_to_store = $ar_console_id[$k];
 				}
 				else
 				{
@@ -137,12 +141,15 @@
 					$ar_console_val[count($ar_console_val)] = $c;
 					$ar_console_id[count($ar_console_id)] = $cpt_console;
 					
-					$id_console[count($id_console)] = $cpt_console;
+					//$id_console[count($id_console)] = $cpt_console;
+					$id_to_store = $cpt_console;
 					
 					$cpt_console++;
 				}
-				$ar_game_console[count($ar_game_console)] = $cpt_console - 1;	
+				//$ar_game_console[count($ar_game_console)] = $cpt_console - 1;	
+				$ar_game_console[count($ar_game_console)] = $id_to_store;	
 			}
+			$consoles = trim($consoles, ";");
 			$fields[4] = $consoles;
 			
 			fputcsv($fp, $fields);
@@ -150,7 +157,7 @@
 			// Insertion en base de données
 			foreach($ar_game_console as $a=>$b)
 			{
-				$query .= '(\"'.$fields[0].'\",'; // nom
+				$query .= '("'.$fields[0].'",'; // nom
 				$query .= $b.','; // plateform
 				$query .= $fields[1].','; // realeased_year
 				if(is_numeric($id_edit[0]))
@@ -187,9 +194,9 @@
 		$pdo = new PDO('mysql:host=rompy-db-instance.cwazuxifehxl.us-west-2.rds.amazonaws.com;dbname=rompy', 'rompy', '10ApQmWn');
 		$pdo->beginTransaction();
 		
-		$pdo->query($q_console);
-		$pdo->query($q_edit);
-		$pdo->query($query);
+		//$pdo->query($q_console);
+		//$pdo->query($q_edit);
+		//$pdo->query($query);
 		
 		$pdo->commit();
 	}
@@ -197,9 +204,12 @@
 	{
 	        echo '/ ! \ Erreur : <br />' . $e->getMessage().'<br /><br /><br />';
 	}*/
-	echo "<pre>";
-	var_dump($ar_console_val);
-	echo "</pre>";
+	sort($ar_edit_val);
+	foreach($ar_edit_val as $v)
+		echo $v."<br />";
+	//echo "<pre>";
+	//var_dump($ar_console_val);
+	//echo "</pre>";
 	//echo "$q_console <br /><br />";
 	//echo "$q_edit <br /><br />";
 	//echo "$query <br /><br />";
