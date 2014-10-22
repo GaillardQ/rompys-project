@@ -29,5 +29,34 @@ class CommonController extends Controller {
         
         return $response;
     }
+    
+    public function getGameInfoAction(Request $request)
+    {
+        $id =  $request->query->get('id');
+        
+        $game = $this->getDoctrine()
+        ->getRepository('FrontendFrontOfficeBundle:Game')
+        ->findFormattedGameInfos($id);
+
+        $ar_res = array();
+        $ar_res["game"] = $game;
+        
+        $response = new Response();
+        
+        if($game != null)
+        {
+            $response->setStatusCode(200);
+        }
+        else
+        {
+            $response->setStatusCode(404);
+        }
+        
+        $response->headers->set('Content-Type', 'application/json');
+        
+        $response->setContent(json_encode($ar_res));
+        
+        return $response;
+    }
 }
 

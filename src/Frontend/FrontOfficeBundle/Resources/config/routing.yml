@@ -31,3 +31,7 @@ frontend_frontoffice_profile_update:
 frontend_frontoffice_common_get_all_games:
     pattern:  /all_games
     defaults: { _controller: FrontendFrontOfficeBundle:Common:getAllGames}
+    
+frontend_frontoffice_common_get_game_info:
+    pattern:  /game/info
+    defaults: { _controller: FrontendFrontOfficeBundle:Common:getGameInfo}

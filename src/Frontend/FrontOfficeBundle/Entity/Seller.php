@@ -32,14 +32,14 @@ class Seller
     /**
      * @var float
      *
-     * @ORM\Column(name="mark", type="float")
+     * @ORM\Column(name="mark", type="float", nullable=true)
      */
     private $mark;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="fast", type="boolean")
+     * @ORM\Column(name="fast", type="boolean", nullable=true)
      */
     private $fast;
 
@@ -60,7 +60,7 @@ class Seller
      * @param Frontend\FrontOfficeBundle\Entity\User $user
      * @return Seller
      */
-    public function setIdUser(\Frontend\FrontOfficeBundle\Entity\User $user)
+    public function setUser(\Frontend\FrontOfficeBundle\Entity\User $user)
     {
         $this->user = $user;
     
@@ -106,7 +106,7 @@ class Seller
      * @param boolean $fast
      * @return Seller
      */
-    public function setFAST($fast)
+    public function setFast($fast)
     {
         $this->fast = $fast;
     
@@ -118,7 +118,7 @@ class Seller
      *
      * @return boolean 
      */
-    public function getFAST()
+    public function getFast()
     {
         return $this->fast;
     }

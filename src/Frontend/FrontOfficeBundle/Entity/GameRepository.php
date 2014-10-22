@@ -14,69 +14,82 @@ class GameRepository extends EntityRepository
 {
     public function findStartWithInArray($_start)
     {
-        //$all_games = $this->findBy(array("name" => "%$_start%"));
-        
-        $qb = $this->createQueryBuilder('g');
-        
-        $query = $qb->where('g.name LIKE :name')
+        // Ne récupérer que nom et id + event select : aller chercher les infos de ce jeu
+        $qb = $this->createQueryBuilder("g");
+    
+        $query = $qb->select("g.id, g.name, g.released_year, p.value as plateform")
+         ->join('g.plateform', 'p')
+         ->where('g.name LIKE :name')
          ->setParameter('name',"%$_start%")
+         ->orderBy('g.name', 'ASC')
+         ->addOrderBy('g.released_year', 'DESC')
          ->getQuery();
          
         $all_games = $query->getResult();
+        return $all_games;
+    }
+    
+    public function findFormattedGameInfos($_id)
+    {
+        // Ne récupérer que nom et id + event select : aller chercher les infos de ce jeu
+        $qb = $this->createQueryBuilder("g");
+    
+        $query = $qb
+         ->where('g.id = '.$_id)
+         ->getQuery();
+         
+        $game = $query->getSingleResult();
+        $res_game = array();
         
-        $res_games = array();
-        $l = count($all_games);
-        for($i=0; $i<$l; $i++)
+        if($game != null)
         {
-            $game = $all_games[$i];
-            $id = $game->getId();
-            $res_games[$id]['id'] = $game->getId();
-            $res_games[$id]['name'] = $game->getName();
-            $res_games[$id]['plateform'] = $game->getPlateform()->getValue();
-            $res_games[$id]['plateform_id'] = $game->getPlateform()->getId();
-            $res_games[$id]['editor_1'] = $game->getEditor1()->getValue();
-            $res_games[$id]['editor_1_id'] = $game->getEditor1()->getId();
+            $res_game['id'] = $game->getId();
+            $res_game['name'] = $game->getName();
+            $res_game['plateform'] = $game->getPlateform()->getValue();
+            $res_game['plateform_id'] = $game->getPlateform()->getId();
+            $res_game['editor_1'] = $game->getEditor1()->getValue();
+            $res_game['editor_1_id'] = $game->getEditor1()->getId();
             
             if($game->getEditor2() != null)
             {
-                $res_games[$id]['editor_2'] = $game->getEditor2()->getValue();
-                $res_games[$id]['editor_2_id'] = $game->getEditor2()->getId();
+                $res_game['editor_2'] = $game->getEditor2()->getValue();
+                $res_game['editor_2_id'] = $game->getEditor2()->getId();
             }
             else
             {
-                $res_games[$id]['editor_2'] = null;
-                $res_games[$id]['editor_2_id'] = 0;
+                $res_game['editor_2'] = null;
+                $res_game['editor_2_id'] = 0;
             }
             
             if($game->getEditor3() != null)
             {
-                $res_games[$id]['editor_3'] = $game->getEditor3()->getValue();
-                $res_games[$id]['editor_3_id'] = $game->getEditor3()->getId();
+                $res_game['editor_3'] = $game->getEditor3()->getValue();
+                $res_game['editor_3_id'] = $game->getEditor3()->getId();
             }
             else
             {
-                $res_games[$id]['editor_3'] = null;
-                $res_games[$id]['editor_3_id'] = 0;
+                $res_game['editor_3'] = null;
+                $res_game['editor_3_id'] = 0;
             }
             
             if($game->getSeries() != null)
             {
-                $res_games[$id]['serie'] = $game->getSeries()->getValue();
-                $res_games[$id]['serie_id'] = $game->getSeries()->getId();
+                $res_game['serie'] = $game->getSeries()->getValue();
+                $res_game['serie_id'] = $game->getSeries()->getId();
             }
             else
             {
-                $res_games[$id]['serie'] = null;
-                $res_games[$id]['serie_id'] = 0;
+                $res_game['serie'] = null;
+                $res_game['serie_id'] = 0;
             }
-            $res_games[$id]['game_type'] = $game->getGameType()->getValue();
-            $res_games[$id]['game_type_id'] = $game->getGameType()->getId();
-            $res_games[$id]['released_year'] = $game->getReleasedYear();
-            $res_games[$id]['image_1'] = $game->getImage1();
-            $res_games[$id]['image_2'] = $game->getImage2();
-            $res_games[$id]['image_3'] = $game->getImage3();
+            $res_game['game_type'] = $game->getGameType()->getValue();
+            $res_game['game_type_id'] = $game->getGameType()->getId();
+            $res_game['released_year'] = $game->getReleasedYear();
+            $res_game['image_1'] = $game->getImage1();
+            $res_game['image_2'] = $game->getImage2();
+            $res_game['image_3'] = $game->getImage3();
         }
         
-        return $res_games;
+        return $res_game;
     }
 }

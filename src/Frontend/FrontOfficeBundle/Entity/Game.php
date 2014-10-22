@@ -117,6 +117,20 @@ class Game
     }
 
     /**
+     * Set id
+     *
+     * @param integer $id
+     * @return Game
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    
+        return $this;
+    }
+    
+
+    /**
      * Set name
      *
      * @param string $name

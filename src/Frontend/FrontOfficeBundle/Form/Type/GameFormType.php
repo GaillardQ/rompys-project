@@ -23,7 +23,11 @@ class GameFormType extends AbstractType
             $years[$i] = $i;
         }
         
-        $builder->add('name', 'text', array(
+        $builder->add('id', 'text', array( 
+                    'label' => false,
+                    'required' => false
+                ))
+                ->add('name', 'text', array(
                     'label' => 'profile.catalog.add_game.game.game_name.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false

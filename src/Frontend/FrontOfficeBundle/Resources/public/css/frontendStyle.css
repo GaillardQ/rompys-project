@@ -18,6 +18,9 @@ body{
 .space-under-30{
     margin-bottom: 30px;
 }
+.center_align{
+    text-align: center;
+}
 .right_align{
     text-align: right;
 }
@@ -133,4 +136,15 @@ th.width_auto
 #secondNav{
 	min-height: 40px;
 	margin-left: -30px;
+}
+#name-loader,
+#series-loader,
+#type-loader,
+#plateform-loader,
+#editor1-loader,
+#editor2-loader,
+#editor3-loader,
+#year-loader{
+	display: block;
+	margin: auto;
 }
