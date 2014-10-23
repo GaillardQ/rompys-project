@@ -2,59 +2,145 @@
 {% trans_default_domain 'templatesTranslations' %}
 
 {% block profile_content %}
+    <div class="panel panel-default table-responsive">
+        <table class="table table-striped table-hover game">
+            <thead>
+                <tr>
+                    <th>{{ 'profile.catalog.index.table.head.name'|trans }}</th>
+                    <th>{{ 'profile.catalog.index.table.head.plateform'|trans }}</th>
+                    <th>{{ 'profile.catalog.index.table.head.type'|trans }}</th>
+                    <th>{{ 'profile.catalog.index.table.head.editors'|trans }}</th>
+                    <th>{{ 'profile.catalog.index.table.head.price'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for g in catalog %}
+                    <tr class="table-game-line" onclick="alert('test');">
+                        <td>{{ g.name }}</td>
+                        <td>{{ g.plateform }}</td>
+                        <td>{{ g.game_type }}</td>
+                        <td>
+                            {% if g.editor_1 is not null %}
+                                {{ g.editor_1 }}<br />
+                            {% endif %}
+                            {% if g.editor_2 is not null %}
+                                {{ g.editor_2 }}<br />
+                            {% endif %}
+                            {% if g.editor_3 is not null %}
+                                {{ g.editor_3 }}<br />
+                            {% endif %}
+                        </td>
+                        <td>{{ g.price }}&nbsp€</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr role="row">
+                	<th class="ts-pager form-horizontal tablesorter-pager tablesorter-headerAsc" colspan="7" data-column="0">
+                	    <div class="space-under">
+                    		<button class="btn first disabled" type="button" tabindex="0" aria-disabled="true"><i class="icon-step-backward glyphicon glyphicon-step-backward"></i></button>
+                    		<button class="btn prev disabled" type="button" tabindex="0" aria-disabled="true"><i class="icon-arrow-left glyphicon glyphicon-backward"></i></button>
+                    		<span class="pagedisplay">1 - 10 / 50 (50)</span> <!-- this can be any element, including an input -->
+                    		<button class="btn next" type="button" tabindex="0" aria-disabled="false"><i class="icon-arrow-right glyphicon glyphicon-forward"></i></button>
+                    		<button class="btn last" type="button" tabindex="0" aria-disabled="false"><i class="icon-step-forward glyphicon glyphicon-step-forward"></i></button>
+                    	</div>
+                    	<div class="space-under">
+                    	    <label for="select_pageSize">{{ 'profile.catalog.index.table.foot.results_page'|trans }} </label>
+                    		<select id="select_pageSize" class="pagesize input-mini" aria-disabled="false">
+                    			<option value="5">5</option>
+                    			<option value="10">10</option>
+                    			<option value="25">25</option>
+                    			<option value="50">50</option>
+                    			<option value="100">100</option>
+                    		</select>
+                    	</div>
+                		<div class="space-under">
+                    	    <label for="select_pageNum">{{ 'profile.catalog.index.table.foot.go_page'|trans }} </label>
+                		    <select id="select_pageNum" class="pagenum input-mini" aria-disabled="false">
+                		        <option>1</option>
+                		        <option>2</option>
+                		        <option>3</option>
+        	                </select>
+                		</div>
+                	</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
     
-    <br />
     
-    <table style="width:100%">
-        <thead>
-            <th>Col1</th>
-            <th>Col2</th>
-            <th>Col3</th>
-            <th>Col4</th>
-            <th>Col5</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>7</td>
-                <td>8</td>
-                <td>9</td>
-                <td>10</td>
-            </tr>
-            <tr>
-                <td>11</td>
-                <td>12</td>
-                <td>13</td>
-                <td>14</td>
-                <td>15</td>
-            </tr>
-            <tr>
-                <td>16</td>
-                <td>17</td>
-                <td>18</td>
-                <td>19</td>
-                <td>20</td>
-            </tr>
-            <tr>
-                <td>21</td>
-                <td>22</td>
-                <td>23</td>
-                <td>24</td>
-                <td>25</td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <br />
     
     <center>
         <a class="btn btn-default" href="{{ path('frontend_frontoffice_profile_add_game') }}">{{ 'profile.catalog.index.add_game.btn'|trans }}</a> 
     </center>
+    
+    <script>
+        $(function() {
+            $.extend($.tablesorter.themes.bootstrap, {
+                // these classes are added to the table. To see other table classes available,
+                // look here: http://twitter.github.com/bootstrap/base-css.html#tables
+                table      : 'table table-bordered',
+                caption    : 'caption',
+                header     : 'bootstrap-header', // give the header a gradient background
+                footerRow  : '',
+                footerCells: '',
+                icons      : '', // add "icon-white" to make them white; this icon class is added to the <i> in the header
+                sortNone   : 'bootstrap-icon-unsorted',
+                sortAsc    : 'icon-chevron-up glyphicon glyphicon-chevron-up',     // includes classes for Bootstrap v2 & v3
+                sortDesc   : 'icon-chevron-down glyphicon glyphicon-chevron-down', // includes classes for Bootstrap v2 & v3
+                active     : '', // applied when column is sorted
+                hover      : '', // use custom css here - bootstrap class may not override it
+                filterRow  : '', // filter row class
+                even       : '', // odd row zebra striping
+                odd        : ''  // even row zebra striping
+            });
+            
+            // call the tablesorter plugin and apply the uitheme widget
+            $("table").tablesorter({
+                // this will apply the bootstrap theme if "uitheme" widget is included
+                // the widgetOptions.uitheme is no longer required to be set
+                theme : "bootstrap",
+                
+                widthFixed: true,
+                
+                headerTemplate : '{content} {icon}', // new in v2.7. Needed to add the bootstrap icon!
+                
+                // widget code contained in the jquery.tablesorter.widgets.js file
+                // use the zebra stripe widget if you plan on hiding any rows (filter widget)
+                widgets : [ "uitheme", "filter", "zebra" ],
+                
+                widgetOptions : {
+                    // using the default zebra striping class name, so it actually isn't included in the theme variable above
+                    // this is ONLY needed for bootstrap theming if you are using the filter widget, because rows are hidden
+                    zebra : ["even", "odd"],
+                    
+                    // reset filters button
+                    filter_reset : ".reset"
+                    
+                    // set the uitheme widget to use the bootstrap theme class names
+                    // this is no longer required, if theme is set
+                    // ,uitheme : "bootstrap"
+                    
+                }
+            })
+            .tablesorterPager({
+            
+            // target the pager markup - see the HTML block below
+            container: $(".ts-pager"),
+            
+            // target the pager page select dropdown - choose a page
+            cssGoto  : ".pagenum",
+            
+            // remove rows from the table to speed up the sort of large tables.
+            // setting this to false, only hides the non-visible rows; needed if you plan to add/remove rows with the pager enabled.
+            removeRows: false,
+            
+            // output string - default is '{page}/{totalPages}';
+            // possible variables: {page}, {totalPages}, {filteredPages}, {startRow}, {endRow}, {filteredRows} and {totalRows}
+            output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
+            
+            });
+        
+        });
+    </script>
 {% endblock %}

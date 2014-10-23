@@ -33,7 +33,7 @@
               <div class="panel-body">
                 <fieldset>
                     <legend>{{ 'home.catalog.title'|trans }}</legend>
-                    Here is the catalog
+                    {{ render(controller('FrontendFrontOfficeBundle:Home:displayCatalog', {})) }}
                 </fieldset>
               </div>
             </div>

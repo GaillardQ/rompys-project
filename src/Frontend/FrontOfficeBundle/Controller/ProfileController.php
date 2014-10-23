@@ -11,12 +11,14 @@ use Frontend\FrontOfficeBundle\Entity\Seller;
 use Frontend\FrontOfficeBundle\Form\Type\GameCatalogFormType;
 
 class ProfileController extends Controller {
-
+    
     public function indexAction() 
     {
         $token_user = $this->container->get('security.context')->getToken()->getUser();
-        $catalog = array();
-        
+        $catalog  =  $this->get('Doctrine')
+                            ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
+                            ->getAllGamesForSellByAnUser($token_user->getId());
+       
         return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:index.html.twig', 
                 array(
                     "user" => $token_user,
@@ -37,15 +39,17 @@ class ProfileController extends Controller {
     public function addGameAction(Request $request)
     {
         $token_user = $this->container->get('security.context')->getToken()->getUser();
+        
+        
+        
         $gameCatalog = new GameCatalog();
         
         $form = $this->createForm(new GameCatalogFormType(), $gameCatalog);
         
         if ('POST' === $request->getMethod()) {
             $form->bind($request);
-
+            
             if ($form->isValid()) {
-                
                 $em = $this->container->get('Doctrine')->getManager();
                 
                 $game_id = $gameCatalog->getGame()->getId();
@@ -56,7 +60,7 @@ class ProfileController extends Controller {
                 
                 $seller =  $this->get('Doctrine')
                             ->getRepository('FrontendFrontOfficeBundle:Seller')
-                            ->find($token_user->getId());
+                            ->findOneBy(array("user" => $token_user->getId()));
                             
                 if($seller == null)
                 {
@@ -69,6 +73,9 @@ class ProfileController extends Controller {
                 
                 $em->persist($gameCatalog);
                 $em->flush();
+                
+                $gameCatalog = new GameCatalog();   
+                $form = $this->createForm(new GameCatalogFormType(), $gameCatalog);
                 
                 return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:add_game.html.twig', array(
                     'form' => $form->createView(),

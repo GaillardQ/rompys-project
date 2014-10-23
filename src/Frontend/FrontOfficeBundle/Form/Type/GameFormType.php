@@ -14,15 +14,6 @@ class GameFormType extends AbstractType
     {
         $translation_domain = "templatesTranslations";
         
-        $years = array();
-        $date = new \DateTime();
-        $date_year = (int)$date->format("Y");
-        $j = 0;
-        for($i =1980; $i<=$date_year; $i++)
-        {
-            $years[$i] = $i;
-        }
-        
         $builder->add('id', 'text', array( 
                     'label' => false,
                     'required' => false
@@ -87,13 +78,10 @@ class GameFormType extends AbstractType
                     },
                     'property' => 'value'
                 ))
-                ->add('released_year', 'choice', array(
+                ->add('released_year', 'text', array(
                     'label' => 'profile.catalog.add_game.game.released_year.label',
                     'translation_domain' => $translation_domain, 
-                    'required' => false,
-                    'choices'   => $years,
-                    'expanded' => false,
-                    'multiple' => false
+                    'required' => false
                 ))
                 ->add('game_type', 'entity', array(
                     'label' => 'profile.catalog.add_game.game.game_type.label',

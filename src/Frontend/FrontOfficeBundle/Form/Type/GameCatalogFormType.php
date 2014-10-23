@@ -38,7 +38,7 @@ class GameCatalogFormType extends AbstractType
                     'label' => 'profile.catalog.add_game.game_catalog.game_package.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
-                    'choices'   => array('yes' => 'Oui', 'no' => 'Non'),
+                    'choices'   => array(true => 'Oui', false => 'Non'),
                     'expanded' => false,
                     'multiple' => false
                 ))
@@ -46,7 +46,7 @@ class GameCatalogFormType extends AbstractType
                     'label' => 'profile.catalog.add_game.game_catalog.blister.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
-                    'choices'   => array('yes' => 'Oui', 'no' => 'Non'),
+                    'choices'   => array(true => 'Oui', false => 'Non'),
                     'expanded' => false,
                     'multiple' => false
                 ))
@@ -55,7 +55,7 @@ class GameCatalogFormType extends AbstractType
                     'translation_domain' => $translation_domain, 
                     'required' => false,
                     'attr' => array('style' => 'margin-right: 5px;'),
-                    'choices'   => array('yes' => 'Oui', 'no' => 'Non'),
+                    'choices'   => array(true => 'Oui', false => 'Non'),
                     'expanded' => false,
                     'multiple' => false
                 ))

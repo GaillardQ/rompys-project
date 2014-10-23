@@ -50,8 +50,16 @@ profile:
     catalog:
         title: Mes jeux
         index:
-            search: 
-                btn: Plus de critères
+            table:
+                head:
+                    name: NOM
+                    plateform: PLATEFORME
+                    type: GENRE
+                    editors: EDITEUR(S)
+                    price: PRIX
+                foot:
+                    results_page: "Résultats par page :"
+                    go_page: "Aller à la page :"
             add_game:
                 btn: Ajouter un jeu
         add_game:

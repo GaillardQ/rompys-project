@@ -75,7 +75,7 @@
                             <label class="control-label col-xs-12 col-sm-12 col-md-3 col-lg-3">{{ form_label(form.game.name) }}</label>
                             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                                 <div class="row">
-                                    {{ form_widget(form.game.name, { 'attr': {'class': 'form-control'} }) }}
+                                    {{ form_widget(form.game.name, { 'attr': {'class': 'form-control', 'onClick': 'showGameList()'} }) }}
                                     <img id="name-loader" src="/rompy/web/bundles/frontendfrontoffice/img/game-search.gif" alt="" class="img-responsive display-none align_center" onload='$("#name-loader").hide();' />
                                 </div>
                             </div>
@@ -89,42 +89,48 @@
                             <div class="form-group">
                                 <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.series) }}</label>
                                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                                    {{ form_widget(form.game.series, { 'attr': {'class': 'form-control full_parent_width', 'readonly':'readonly'} }) }}
+                                    {{ form_widget(form.game.series, { 'attr': {'class': 'form-control full_parent_width display-none',} }) }}
+                                    <input type="text" class="form-control" name="game_serie" id="game_serie" readonly>
                                     <img id="series-loader" src="/rompy/web/bundles/frontendfrontoffice/img/game-search.gif" alt="" class="img-responsive display-none align_center" onload='$("#series-loader").hide();' />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.game_type) }}</label>
                                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                                    {{ form_widget(form.game.game_type, { 'attr': {'class': 'form-control full_parent_width', 'readonly':'readonly'} }) }}
+                                    {{ form_widget(form.game.game_type, { 'attr': {'class': 'form-control full_parent_width display-none'} }) }}
+                                    <input type="text" class="form-control" name="game_type" id="game_type" readonly>
                                     <img id="type-loader" src="/rompy/web/bundles/frontendfrontoffice/img/game-search.gif" alt="" class="img-responsive display-none align_center" onload='$("#type-loader").hide();' />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.plateform) }}</label>
                                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                                    {{ form_widget(form.game.plateform, { 'attr': {'class': 'form-control full_parent_width', 'readonly':'readonly'} }) }}
+                                    {{ form_widget(form.game.plateform, { 'attr': {'class': 'form-control full_parent_width display-none'} }) }}
+                                    <input type="text" class="form-control" name="game_plateform" id="game_plateform" readonly>
                                     <img id="plateform-loader" src="/rompy/web/bundles/frontendfrontoffice/img/game-search.gif" alt="" class="img-responsive display-none align_center" onload='$("#plateform-loader").hide();' />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.editor_1) }}</label>
                                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                                    {{ form_widget(form.game.editor_1, { 'attr': {'class': 'form-control full_parent_width', 'readonly':'readonly'} }) }}
+                                    {{ form_widget(form.game.editor_1, { 'attr': {'class': 'form-control full_parent_width display-none'} }) }}
+                                    <input type="text" class="form-control" name="game_editor_1" id="game_editor_1" readonly>
                                     <img id="editor1-loader" src="/rompy/web/bundles/frontendfrontoffice/img/game-search.gif" alt="" class="img-responsive display-none align_center" onload='$("#editor1-loader").hide();' />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.editor_2) }}</label>
                                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                                    {{ form_widget(form.game.editor_2, { 'attr': {'class': 'form-control full_parent_width', 'readonly':'readonly'} }) }}
+                                    {{ form_widget(form.game.editor_2, { 'attr': {'class': 'form-control full_parent_width display-none'} }) }}
+                                    <input type="text" class="form-control" name="game_editor_2" id="game_editor_2" readonly>
                                     <img id="editor2-loader" src="/rompy/web/bundles/frontendfrontoffice/img/game-search.gif" alt="" class="img-responsive display-none align_center" onload='$("#editor2-loader").hide();' />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-5">{{ form_label(form.game.editor_3) }}</label>
                                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
-                                    {{ form_widget(form.game.editor_3, { 'attr': {'class': 'form-control full_parent_width', 'readonly':'readonly'} }) }}
+                                    {{ form_widget(form.game.editor_3, { 'attr': {'class': 'form-control full_parent_width display-none'} }) }}
+                                    <input type="text" class="form-control" name="game_editor_3" id="game_editor_3" readonly>
                                     <img id="editor3-loader" src="/rompy/web/bundles/frontendfrontoffice/img/game-search.gif" alt="" class="img-responsive display-none align_center" onload='$("#editor3-loader").hide();' />
                                 </div>
                             </div>
@@ -206,11 +212,20 @@
             <center>
                 {{ form_rest(form) }} 
                 <input type="submit" class="btn btn-default" value="{{ 'profile.catalog.add_game.btn'|trans }}" /> 
+                <a href="{{ path('frontend_frontoffice_profile_home') }}" class="btn btn-primary">{{ 'common.go_back'|trans }}</a>
             </center>
         </div>
     </form>
     
     <script>
+        function showGameList()
+        {
+            var list = $("#ui-id-1");
+            if(list)
+            {
+                list.show();
+            }
+        }
         $('#frontend_frontoffice_addCatalogGame_game_name').autocomplete({
             delay: 1000, 
             search: function( event, ui ) {
@@ -270,23 +285,29 @@
                         $("#frontend_frontoffice_addCatalogGame_game_name").val(game.name);
                         $("#frontend_frontoffice_addCatalogGame_game_id").val(game.id);
                         $("#frontend_frontoffice_addCatalogGame_game_series").val(game.serie_id);
+                        $("#game_serie").val(game.serie_val);
                         $("#series-loader").hide();
                         $("#frontend_frontoffice_addCatalogGame_game_game_type").val(game.game_type_id);
+                        $("#game_type").val(game.game_type_val);
                         $("#type-loader").hide();
                         $("#frontend_frontoffice_addCatalogGame_game_plateform").val(game.plateform_id);
+                        $("#game_plateform").val(game.plateform_val);
                         $("#plateform-loader").hide();
                         $("#frontend_frontoffice_addCatalogGame_game_editor_1").val(game.editor_1_id);
+                        $("#game_editor_1").val(game.editor_1_val);
                         $("#editor1-loader").hide();
                         $("#frontend_frontoffice_addCatalogGame_game_editor_2").val(game.editor_2_id);
+                        $("#game_editor_2").val(game.editor_2_val);
                         $("#editor2-loader").hide();
                         $("#frontend_frontoffice_addCatalogGame_game_editor_3").val(game.editor_3_id);
+                        $("#game_editor_3").val(game.editor_3_val);
                         $("#editor3-loader").hide();
                         $("#frontend_frontoffice_addCatalogGame_game_released_year").val(game.released_year);
                         $("#year-loader").hide();
                     },
                     error : function(jqXHR, textStatus, errorThrown)
                     {
-                        alert("Une erreur est survenue lors de la recherche des inforamtions de ce jeu, merci de re-essayer.");
+                        alert("Une erreur est survenue lors de la recherche des informations de ce jeu, merci de re-essayer.");
                         $("#series-loader").hide();
                         $("#type-loader").hide();
                         $("#plateform-loader").hide();

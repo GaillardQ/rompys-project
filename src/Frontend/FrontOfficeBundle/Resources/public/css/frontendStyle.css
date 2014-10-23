@@ -58,8 +58,11 @@ div {
     table-layout: fixed;
     word-wrap: break-word;
 }
-thead{
-	background-color: #bbbbbb;
+th{
+    text-align: center;
+}
+tr, th, td{
+    vertical-align: middle !important; 
 }
 .container{
     background-color: #fff;
@@ -110,7 +113,10 @@ th.width_auto
 {
     margin-top: 6px;
 }
-
+.table-game-line
+{
+    cursor:pointer;
+}
 
 /*** ID ***/
 #left_content
@@ -147,4 +153,41 @@ th.width_auto
 #year-loader{
 	display: block;
 	margin: auto;
+}
+
+
+
+
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('http://projets-c9-quenting.c9.io/rompy/web/bundles/frontendfrontoffice/fonts/glyphicons-halflings-regular.eot');
+  src: url('http://projets-c9-quenting.c9.io/rompy/web/bundles/frontendfrontoffice/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('http://projets-c9-quenting.c9.io/rompy/web/bundles/frontendfrontoffice/fonts/glyphicons-halflings-regular.woff') format('woff'), url('http://projets-c9-quenting.c9.io/rompy/web/bundles/frontendfrontoffice/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('http://projets-c9-quenting.c9.io/rompy/web/bundles/frontendfrontoffice/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+.tablesorter-bootstrap .tablesorter-header i {
+    background-repeat: no-repeat;
+    display: inline-block;
+    font-size: 11px;
+    height: 14px;
+    line-height: 14px;
+    margin-top: -7px;
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    width: 14px;
+}
+.tablesorter-bootstrap .bootstrap-icon-unsorted {
+    background-image: url("http://projets-c9-quenting.c9.io/rompy/web/bundles/frontendfrontoffice/img/double-arrow.png");
+}
+.glyphicon-chevron-up:before {
+    background-image: url("http://projets-c9-quenting.c9.io/rompy/web/bundles/frontendfrontoffice/img/up.png");
+    background-repeat: no-repeat;
+    content: '\0000a0\0000a0\0000a0\0000a0';
+}
+.glyphicon-chevron-down:before {
+    background-image: url("http://projets-c9-quenting.c9.io/rompy/web/bundles/frontendfrontoffice/img/down.png");
+    background-repeat: no-repeat;
+    content: '\0000a0\0000a0\0000a0\0000a0';
 }

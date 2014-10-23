@@ -12,4 +12,44 @@ use Doctrine\ORM\EntityRepository;
  */
 class GameCatalogRepository extends EntityRepository
 {
+	public function getAllGamesForSellByAnUser($_user_id)
+	{
+        $qb = $this->createQueryBuilder("gc");
+    
+        $query = $qb->select('g.name, p.value as plateform, gt.value as game_type, e1.value as editor_1, e2.value as editor_2, e3.value as editor_3, gc.price')
+         ->leftJoin('gc.seller', 's')
+         ->leftJoin('gc.game', 'g')
+         ->leftJoin('g.plateform', 'p')
+         ->leftJoin('g.game_type', 'gt')
+         ->leftJoin('g.editor_1', 'e1')
+         ->leftJoin('g.editor_2', 'e2')
+         ->leftJoin('g.editor_3', 'e3')
+         ->where('s.user = '.$_user_id)
+         ->orderBy('g.name', 'ASC')
+         ->addOrderBy('g.released_year', 'DESC')
+         ->getQuery();
+         
+        $all_games = $query->getResult();
+        return $all_games;
+	}
+	
+	public function getAllGamesForSell()
+	{
+        $qb = $this->createQueryBuilder("gc");
+    
+        $query = $qb->select('g.name, p.value as plateform, gt.value as game_type, e1.value as editor_1, e2.value as editor_2, e3.value as editor_3, gc.price')
+         ->leftJoin('gc.seller', 's')
+         ->leftJoin('gc.game', 'g')
+         ->leftJoin('g.plateform', 'p')
+         ->leftJoin('g.game_type', 'gt')
+         ->leftJoin('g.editor_1', 'e1')
+         ->leftJoin('g.editor_2', 'e2')
+         ->leftJoin('g.editor_3', 'e3')
+         ->orderBy('g.name', 'ASC')
+         ->addOrderBy('g.released_year', 'DESC')
+         ->getQuery();
+         
+        $all_games = $query->getResult();
+        return $all_games;
+	}
 }

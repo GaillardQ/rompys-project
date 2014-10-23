@@ -34,11 +34,27 @@ class GameRepository extends EntityRepository
         // Ne récupérer que nom et id + event select : aller chercher les infos de ce jeu
         $qb = $this->createQueryBuilder("g");
     
-        $query = $qb
+        $query = 
+          $qb->select('g.name, g.id, 
+                        s.id as serie_id, s.value as serie_val, 
+                        p.id as plateform_id, p.value as plateform_val, 
+                        gt.id as game_type_id, gt.value as game_type_val, 
+                        e1.id as editor_1_id, e1.value as editor_1_val, 
+                        e2.id as editor_2_id, e2.value as editor_2_val, 
+                        e3.id as editor_3_id, e3.value as editor_3_val, 
+                        g.released_year')
+         ->leftJoin('g.serie', 's')
+         ->leftJoin('g.plateform', 'p')
+         ->leftJoin('g.game_type', 'gt')
+         ->leftJoin('g.editor_1', 'e1')
+         ->leftJoin('g.editor_2', 'e2')
+         ->leftJoin('g.editor_3', 'e3')
          ->where('g.id = '.$_id)
          ->getQuery();
          
-        $game = $query->getSingleResult();
+         return $query->getSingleResult();
+         
+        /*$game = $query->getSingleResult();
         $res_game = array();
         
         if($game != null)
@@ -90,6 +106,6 @@ class GameRepository extends EntityRepository
             $res_game['image_3'] = $game->getImage3();
         }
         
-        return $res_game;
+        return $res_game;*/
     }
 }
