@@ -1,7 +1,15 @@
 common:
     head_title: "[SITE]"
+    menu:
+        catalog: Catalogue
+        best_sells: Meilleures ventes
+        last_adds: Derniers ajouts
+        help: Aide
+        about: A propos
+        legals: Mentions légales
     header:
-        logout: Se deconnecter
+        login: Connexion
+        logout: Déconnexion
     project_name: "[SITE]"
     go_back : Retour
 

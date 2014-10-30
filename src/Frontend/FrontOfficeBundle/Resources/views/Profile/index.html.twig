@@ -15,7 +15,7 @@
             </thead>
             <tbody>
                 {% for g in catalog %}
-                    <tr class="table-game-line" onclick="alert('test');">
+                    <tr class="table-game-line" data-toggle="modal" data-target="#game_card" onclick="displayProfileGameCard({{ g.id }},  '{{ path('frontend_frontoffice_common_get_game_catalog_info') }}');">
                         <td>{{ g.name }}</td>
                         <td>{{ g.plateform }}</td>
                         <td>{{ g.game_type }}</td>
@@ -68,7 +68,7 @@
         </table>
     </div>
     
-    
+    {% include 'FrontendFrontOfficeBundle:Profile:game_card.html.twig' %}
     
     <center>
         <a class="btn btn-default" href="{{ path('frontend_frontoffice_profile_add_game') }}">{{ 'profile.catalog.index.add_game.btn'|trans }}</a> 

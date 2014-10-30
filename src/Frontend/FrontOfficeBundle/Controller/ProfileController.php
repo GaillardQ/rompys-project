@@ -70,6 +70,7 @@ class ProfileController extends Controller {
                 }
                 
                 $gameCatalog->setSeller($seller);
+                $gameCatalog->setAddedAt(new  \DateTime());
                 
                 $em->persist($gameCatalog);
                 $em->flush();

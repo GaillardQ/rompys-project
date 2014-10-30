@@ -1,0 +1,13 @@
+{% extends 'FrontendFrontOfficeBundle::baseFrontend.html.twig' %}
+{% trans_default_domain 'templatesTranslations' %}
+
+{% block body %}
+    <div id="home_content" class="row">
+        <div class="jumbotron">
+            <h1>CONSTRUCTION</h1>
+            <p>This page is not finshed yet. But you can already browse our catalog.</p>
+            <p><a href="{{ path('frontend_frontoffice_catalog_home') }}" class="btn btn-primary btn-lg">C'est parti !</a></p>
+        </div>
+    </div>
+
+{% endblock %}

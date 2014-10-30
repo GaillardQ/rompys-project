@@ -112,6 +112,13 @@ class GameCatalog
     private $zone;
     
     /**
+     * @var \DateTime
+     * 
+     * @ORM\Column(name="added_at", type="datetime", nullable=false)
+     */
+    protected $addedAt;
+    
+    /**
      * Get id
      *
      * @return integer 
@@ -354,7 +361,7 @@ class GameCatalog
      * Set language
      *
      * @param string $language
-     * @return Game
+     * @return GameCatalog
      */
     public function setLanguage($language)
     {
@@ -371,5 +378,28 @@ class GameCatalog
     public function getLanguage()
     {
         return $this->language;
+    }
+    
+    /**
+     * Set addedAt
+     * 
+     * @param \DateTime $date
+     * @return GameCatalog
+     */
+    public function setAddedAt(\DateTime $date = null)
+    {
+        $this->addedAt = $date;
+
+        return $this;
+    }
+    
+     /**
+     * Get addedAt
+     *
+     * @return \DateTime
+     */
+    public function getAddedAt()
+    {
+        return $this->addedAt;
     }
 }

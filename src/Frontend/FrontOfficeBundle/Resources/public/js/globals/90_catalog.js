@@ -1,4 +1,4 @@
-function displayProfileGameCard(_id, _path)
+function displayCatalogGameCard(_id, _path)
 {
 	$.ajax({
         url : _path,
@@ -11,6 +11,9 @@ function displayProfileGameCard(_id, _path)
             $("#card-data").show();
             
             var game = data.game[0];
+            
+            $("#card-name").html(game.username+' vend :');
+            
             
             var photos = "";
             if(game.image_1 != null)
@@ -50,14 +53,14 @@ function displayProfileGameCard(_id, _path)
                 $("#card-data-serie-label").hide();
             }
                 
-            var edit = "<ul>";
+            var edit = "";
             if(game.editor_1 != null)
-                edit += "<li>"+game.editor_1+"</li>";
+                edit += "• "+game.editor_1+"<br />";
             if(game.editor_2 != null)
-                edit += "<li>"+game.editor_2+"</li>";
+                edit += "• "+game.editor_2+"<br />";
             if(game.editor_3 != null)
-                edit += "<li>"+game.editor_3+"</li>";
-            edit += "</ul>";
+                edit += "• "+game.editor_3+"<br />";
+            edit += "";
             $("#card-data-editors").html(edit);
             
             $("#card-data-language").text(game.language);

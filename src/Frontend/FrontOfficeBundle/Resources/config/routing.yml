@@ -10,6 +10,12 @@ frontend_frontoffice_homepage_slash:
     requirements:
           _locale: fr
           
+frontend_frontoffice_catalog_home:
+    pattern:  /{_locale}/catalog
+    defaults: { _controller: FrontendFrontOfficeBundle:Catalog:catalog, _locale: fr }
+    requirements:
+          _locale: fr
+          
 frontend_frontoffice_profile_home:
     pattern:  /{_locale}/profile
     defaults: { _controller: FrontendFrontOfficeBundle:Profile:index, _locale: fr }
@@ -35,3 +41,7 @@ frontend_frontoffice_common_get_all_games:
 frontend_frontoffice_common_get_game_info:
     pattern:  /game/info
     defaults: { _controller: FrontendFrontOfficeBundle:Common:getGameInfo}
+    
+frontend_frontoffice_common_get_game_catalog_info:
+    pattern:  /catalog/game/info
+    defaults: { _controller: FrontendFrontOfficeBundle:Common:getGameCatalogInfo}

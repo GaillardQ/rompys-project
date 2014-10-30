@@ -1,5 +1,53 @@
+/**
+ * HTML
+ **/
 body{
+    padding-top: 60px;
 }
+legend
+{
+    color: #dd4814;
+}
+legend small{
+	font-size: 15px;
+}
+div {
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+th{
+    text-align: center;
+}
+thead > tr > th {
+    color:white;
+    background-color: #dd4814;
+}
+tr, th, td{
+    vertical-align: middle !important; 
+}
+
+/**
+ * MIXED
+ */
+td.width_auto,
+th.width_auto
+{
+    width: 1px; 
+    white-space: nowrap;
+}
+tfoot > tr > th > div > .btn {
+    
+    background-color: #dd4814;
+    color: #ffffff;
+}
+tfoot > tr > th > div > .btn:hover {
+    
+    background-color: #aea79f;
+    color: #ffffff;
+}
+/**
+ * PROPERTIES
+ **/
 .row{
 	margin: 0;
 }
@@ -9,7 +57,7 @@ body{
 .center{
 	text-align: center;
 }
-.space-under{
+.space-under-10{
     margin-bottom: 10px;
 }
 .space-under-20{
@@ -18,14 +66,17 @@ body{
 .space-under-30{
     margin-bottom: 30px;
 }
-.center_align{
+.center-align{
     text-align: center;
 }
-.right_align{
+.right-align{
     text-align: right;
 }
-.left_align{
+.left-align{
     text-align: left;
+}
+.left-align-important {
+    text-align: left !important;
 }
 .no-margin{
     margin: 0;
@@ -33,37 +84,126 @@ body{
 .no-padding{
     padding: 0;
 }
-.small_10{
+.small-10{
     font-size: 10px;
 }
 .margin-10{
     margin: 10px;
 }
-.revision_number
+
+.font-weigth-900
 {
-    font-size: 7px;
+    font-weight: 900;    
 }
 .display-none
 {
     display: none;
 }
-legend small{
-	font-size: 15px;
-}
-legend
+.full-parent-width
 {
-    color: #c8c8c8;
+    width: 100%;
 }
-div {
-    table-layout: fixed;
-    word-wrap: break-word;
+
+/**
+ * ELEMENTS
+ */
+.btn-log{
+    margin-right: 20px;
 }
-th{
+.close {
+    color: #dd4814;
+    text-shadow: 0 1px 0 #ffffff;
+    opacity: 1;
+}
+.modal-header {
+    min-height: 50px;
+}
+.modal-footer {
+    margin-top: 0px;
+}
+.modal-title {
+    color: #dd4814;
+}
+.control-label {
+    color: #dd4814;
+}
+.btn-default-login
+{
+    background-color: #dd4814;
+    border-color: #dd4814;
+}
+.selectpicker
+{
+    margin-top: 6px;
+}
+.table-game-line
+{
+    cursor:pointer;
+}
+.tablesorter-filter-row
+{
     text-align: center;
 }
-tr, th, td{
-    vertical-align: middle !important; 
+.tablesorter-filter-row > td
+{
+    background-color: #dd4814;
 }
+.card-data-field
+{
+    text-align: left;
+    overflow:hidden; 
+    white-space:nowrap; 
+    text-overflow: ellipsis;
+}
+.card-data-value
+{
+    margin-bottom: 20px;
+    text-align: left;
+    overflow:hidden; 
+    white-space:nowrap; 
+    text-overflow: ellipsis;
+}
+.card-img
+{
+    height: 180px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+.slick-prev:before, .slick-next:before {
+    color: #dd4814 !important;
+}
+.img-bottom
+{
+    bottom: 2%;
+    left: 1%;
+    position: fixed;
+    z-index: -1;
+}
+
+/**
+ * ID
+ */
+#name-loader,
+#series-loader,
+#type-loader,
+#plateform-loader,
+#editor1-loader,
+#editor2-loader,
+#editor3-loader,
+#year-loader{
+	display: block;
+	margin: auto;
+}
+#card-loader
+{
+    text-align: center;
+}
+#card-data
+{
+    display: none;
+}
+/*
 .container{
     background-color: #fff;
     -webkit-border-radius: 10px;
@@ -77,24 +217,10 @@ tr, th, td{
 .subContainer{
 	background-color: #ccc;
 }
-@media (max-width: 768px){
-	#name{
-		float: initial !important;
-	}
-}
-td.width_auto,
-th.width_auto
-{
-    width: 1px; white-space: nowrap;
-}
 .upload_preview
 {
     width:  75px;
     height: auto;
-}
-.full_parent_width
-{
-    width: 100%;
 }
 .block-content{
     border-radius: 10px 10px 10px 10px;
@@ -109,17 +235,22 @@ th.width_auto
 {
     background-color: #CCC;
 }
-.selectpicker
-{
-    margin-top: 6px;
-}
-.table-game-line
-{
-    cursor:pointer;
-}
 
-/*** ID ***/
-#left_content
+
+
+
+.last-adds-div
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}*/
+
+/**
+ * ID
+ */
+/*#left_content
 {
     padding-left: 0;
 }
@@ -133,7 +264,11 @@ th.width_auto
 {
     padding-right: 0;
 }
-
+@media (max-width: 768px){
+	#name{
+		float: initial !important;
+	}
+}
 #name{
 	text-align: center;
 	margin-top: 10px;
@@ -143,21 +278,12 @@ th.width_auto
 	min-height: 40px;
 	margin-left: -30px;
 }
-#name-loader,
-#series-loader,
-#type-loader,
-#plateform-loader,
-#editor1-loader,
-#editor2-loader,
-#editor3-loader,
-#year-loader{
-	display: block;
-	margin: auto;
-}
+*/
 
 
-
-
+/**
+ * LIB OVERRIDE
+ */
 @-moz-document url-prefix() {
   fieldset { display: table-cell; }
 }

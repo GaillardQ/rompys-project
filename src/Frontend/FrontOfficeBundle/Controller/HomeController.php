@@ -7,20 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class HomeController extends Controller {
 
     public function indexAction() 
-    {                    
-        return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Home:index.html.twig', array());
-    }
-    
-    public function displayCatalogAction()
-    {
-        $catalog  =  $this->get('Doctrine')
-                            ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
-                            ->getAllGamesForSell();
-        
-        return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Home:catalog.html.twig', array(
-            "catalog" => $catalog    
+    {     
+        return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Home:home.html.twig', array(
         ));
-        
     }
     
     public function ProfileSummaryAction()

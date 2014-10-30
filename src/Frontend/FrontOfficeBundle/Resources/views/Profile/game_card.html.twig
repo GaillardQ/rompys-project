@@ -1,0 +1,127 @@
+<div class="row">
+	<div class="modal fade" id="game_card">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title" id="card_name"></h4>
+				</div>
+				<div class="modal-body">
+					<div id="card-loader"><img src="/rompy/web/bundles/frontendfrontoffice/img/loading.gif"/></div>
+					<div id="card-data" class="row">
+						<div class="row">
+							<div class="col-xs-0 col-sm-3 col-md-3 col-lg-3 space-under-20"></div>
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6  space-under-20 center">
+								<div id="card-data-photos" class="row">
+								</div>
+							</div>
+							<div class="col-xs-0 col-sm-3 col-md-3 col-lg-3 space-under-20"></div>
+						</div>
+						<div class="row">
+							<div class="col-xs-0 col-sm-3 col-md-3 col-lg-3 space-under-20"></div>
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6  space-under-20 center">
+								<div><span id="card-data-name" class="font-weigth-900"></span> (<span id="card-data-year"></span>)</div>
+								<div id="card-data-name-bis"></div>
+								<div id="card-data-plateform"></div>
+							</div>
+							<div class="col-xs-0 col-sm-3 col-md-3 col-lg-3 space-under-20"></div>
+						</div>
+						<div class="row">
+							<div class="col-xs-0 col-sm-0 col-md-0 col-lg-2"></div>
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 center">
+								<fieldset>
+									<legend>Jeu</legend>
+									<div class="row">
+										<div class="col-xs-6 col-sm-5 col-md-4 col-lg-4 card-data-field">Type : </div>
+										<div id="card-data-type" class="col-xs-6 col-sm-7 col-md-8 col-lg-8 card-data-value"></div>
+									</div>
+									<div class="row">
+										<div id="card-data-serie-label" class="col-xs-6 col-sm-5 col-md-4 col-lg-4 card-data-field">Serie : </div>
+										<div id="card-data-serie" class="col-xs-6 col-sm-7 col-md-8 col-lg-8 card-data-value"></div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 col-sm-5 col-md-4 col-lg-4 card-data-field">Editeurs : </div>
+										<div id="card-data-editors" class="col-xs-6 col-sm-7 col-md-8 col-lg-8 card-data-value"></div>
+									</div>
+								</fieldset>
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 center">
+								<fieldset>
+									<legend>Version vendue</legend>
+									<div class="row">
+										<div class="col-xs-6 col-sm-5 col-md-4 col-lg-5 card-data-field">Langage : </div>
+										<div id="card-data-language" class="col-xs-6 col-sm-7 col-md-8 col-lg-7 card-data-value"></div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 col-sm-5 col-md-4 col-lg-5 card-data-field">Boite : </div>
+										<div id="card-data-package" class="col-xs-6 col-sm-7 col-md-8 col-lg-7 card-data-value"></div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 col-sm-5 col-md-4 col-lg-5 card-data-field">Blister : </div>
+										<div id="card-data-blister" class="col-xs-6 col-sm-7 col-md-8 col-lg-7 card-data-value"></div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 col-sm-5 col-md-4 col-lg-5 card-data-field">Notice : </div>
+										<div id="card-data-notice" class="col-xs-6 col-sm-7 col-md-8 col-lg-7 card-data-value"></div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 col-sm-5 col-md-4 col-lg-5 card-data-field">Etat : </div>
+										<div id="card-data-state" class="col-xs-6 col-sm-7 col-md-8 col-lg-7 card-data-value"></div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 col-sm-5 col-md-4 col-lg-5 card-data-field">Zone : </div>
+										<div id="card-data-zone" class="col-xs-6 col-sm-7 col-md-8 col-lg-7 card-data-value"></div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6 col-sm-5 col-md-4 col-lg-5 card-data-field">Prix : </div>
+										<div id="card-data-price" class="col-xs-6 col-sm-7 col-md-8 col-lg-7 card-data-value"></div>
+									</div>
+								</fieldset>
+							</div>
+							<div class="col-xs-0 col-sm-0 col-md-0 col-lg-2"></div>
+						</div>
+						<div class="row">
+							<div class="col-xs-0 col-sm-0 col-md-0 col-lg-2"></div>
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+								<textarea id="card-data-comment" class="form-control" maxlength="500" readonly></textarea>
+							</div>
+							<div class="col-xs-0 col-sm-0 col-md-0 col-lg-2"></div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+</div>
+
+<script>
+	$('#game_card').on('hidden.bs.modal', function (e) {
+		$("#card-data").hide();
+        $("#card-loader").show();
+        
+		$("#card-data-serie").show();
+		$("#card-data-serie-label").show();
+		$("#card-data-comment").show();
+		
+		$("#card-data-name").text("");
+		$("#card-data-year").text("");	
+		$("#card-data-name-bis").text("");
+		$("#card-data-plateform").text("");
+		$("#card-data-type").text("");
+		$("#card-data-serie").text("");
+		$("#card-data-editors").text("");
+		$("#card-data-language").text("");
+		$("#card-data-package").text("");
+		$("#card-data-blister").text("");
+		$("#card-data-notice").text("");
+		$("#card-data-state").text("");
+		$("#card-data-zone").text("");
+		$("#card-data-price").text("");
+		$("#card-data-comment").text("");
+		
+		$('#card-data-photos').unslick();
+	})
+</script>
