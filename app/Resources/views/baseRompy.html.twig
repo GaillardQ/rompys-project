@@ -40,49 +40,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="{{ path('frontend_frontoffice_homepage') }}">{{ 'common.project_name'|trans }}</a>                
+                    </button>        
+                    <a class="navbar-brand" href="{{ path('frontend_frontoffice_homepage', {}) }}">{{ 'common.project_name'|trans }}</a>
                 </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li><a href="{{ path('frontend_frontoffice_catalog_home') }}">{{ 'common.menu.catalog'|trans }}</a></li>
-                        <li><a href="#">{{ 'common.menu.best_sells'|trans }}</a></li>
-                        <li><a href="#">{{ 'common.menu.last_adds'|trans }}</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ 'common.menu.help'|trans }}<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">{{ 'common.menu.help'|trans }}</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">{{ 'common.menu.about'|trans }}</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">{{ 'common.menu.legals'|trans }}</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                            <li><a class="btn-log" href="{{ path('fos_user_security_logout') }}"> <span class="badge">{{ 'common.header.logout'|trans }} </span></a></li>
-                        {% else %}
-                            <li><a class="btn-log" href="#" data-toggle="modal" data-target="#login-popup"> <span class="badge">{{ 'common.header.login'|trans }} </span></a></li>
-                        {% endif %}
-                    </ul>
-                </div>
+                {% block menu %}
+                    
+                {% endblock %}
             </nav>
-            
         {% endblock %}
 
-       <div class="margin-10">
-
-            <div class="row">
-                {% block body %}{% endblock %}
-            </div>
-
-        </div>
+        {% block body %}{% endblock %}
         
-        <div class="img-bottom">
-            <img src="/rompy/web/bundles/frontendfrontoffice/img/icons/icon_1.png"/>
-        </div>
-        
-        {% include 'FrontendFrontOfficeBundle:Common:login_popup.html.twig' %}
     </body>
 </html>

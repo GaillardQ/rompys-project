@@ -1,12 +1,16 @@
+"Bad credentials": Pseudo ou mot de passe incorrect
+
 common:
     head_title: "[SITE]"
     menu:
+        accueil: Accueil
         catalog: Catalogue
         best_sells: Meilleures ventes
         last_adds: Derniers ajouts
-        help: Aide
-        about: A propos
         legals: Mentions légales
+        profile: Mon profil
+        profile-info: Mes infos
+        profile-catalog: Mes jeux
     header:
         login: Connexion
         logout: Déconnexion
@@ -14,16 +18,10 @@ common:
     go_back : Retour
 
 home:
+    title: "Accueil"
     account:
         title: Mon compte
-    bests_sells:
-        title: "Meilleures ventes"
-    catalog:
-        title: "Catalogue"
-    help:
-        title: "Aide"
-    lasts_adds:
-        title: Derniers ajouts
+    
     login:
         title: "Se connecter"
         label:
@@ -36,12 +34,31 @@ home:
             forgot_password: "J'ai oublié mon mot de passe"
             submit: "Se connecter"
             register: "S'inscrire"
+    reset:
+        title: "J'ai oublié mon mot de passe..."
     profile:
          button:
              show: Mon profil
+about:
+    title: "A propos"
+    
+best_sells:
+    title: "Meilleures ventes"
+    
+catalog:
+    title: "Catalogue"
+    
+help:
+    title: "Aide"
+    
+last_adds:
+    title: "Derniers ajouts"
+    
+legals:
+    title: "Mentions légales"
              
 profile:
-    infos:
+    info:
         title: Mes infos
         username: 
             label: "Pseudo :"
@@ -53,8 +70,12 @@ profile:
             label: "E-mail :"
         phone: 
             label: "Tel. :"
-        update:
-            btn: "Modifier"
+        button:
+            password: "Changer de mot de passe"
+            update: "Modifier"
+    password:
+        title: "Changer de mot de passe"
+        button: "Modifier"
     catalog:
         title: Mes jeux
         index:
@@ -145,7 +166,7 @@ reset_password:
     check_email: Un e-mail a été envoyé à  l'adresse %email%. Il contient un lien qui vous permettra de regénérer votre mot de passe.
     password_already_requested: Le mot de passe pour cet utilisateur a déjà  été envoyé durant les 24 dernières heures.
     email_content:
-          subject: Carpaccio - Réinitialisation de votre mot de passe
+          subject: "[SITE] - Réinitialisation de votre mot de passe"
           message: |
               Bonjour %firstname%,
               pour réinitialiser votre mot de passe, merci de vous rendre sur %confirmationUrl%

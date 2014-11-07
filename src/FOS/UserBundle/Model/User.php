@@ -128,21 +128,24 @@ abstract class User implements UserInterface, GroupableInterface
         $this->enabled = false;
         $this->locked = false;
         $this->expired = false;
-        $this->roles = array();
         $this->credentialsExpired = false;
     }
 
     public function addRole($role)
     {
+        echo "test 1<br />";
         $role = strtoupper($role);
+        echo "test 2<br />";
         if ($role === static::ROLE_DEFAULT) {
+        echo "test 3<br />";
             return $this;
         }
 
+        echo "test 4<br />";
         if (!in_array($role, $this->roles, true)) {
             $this->roles[] = $role;
         }
-
+echo '<br />';
         return $this;
     }
 

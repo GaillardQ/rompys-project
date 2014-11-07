@@ -14,15 +14,13 @@ class ProfileController extends Controller {
     
     public function indexAction() 
     {
-        $token_user = $this->container->get('security.context')->getToken()->getUser();
-        $catalog  =  $this->get('Doctrine')
-                            ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
-                            ->getAllGamesForSellByAnUser($token_user->getId());
+        $token = $this->container->get('security.context')->getToken();
+        $token_user = $token->getUser();
        
         return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:index.html.twig', 
                 array(
                     "user" => $token_user,
-                    "catalog" => $catalog
+                    "token" => $token
                 ));
     }
     
@@ -33,6 +31,20 @@ class ProfileController extends Controller {
         return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:index.html.twig', 
                 array(
                     "user" => $token_user
+                ));
+    }
+    
+    public function catalogAction()
+    {
+        $token_user = $this->container->get('security.context')->getToken()->getUser();
+        $catalog  =  $this->get('Doctrine')
+                            ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
+                            ->getAllGamesForSellByAnUser($token_user->getId());
+       
+        return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:catalog.html.twig', 
+                array(
+                    "user" => $token_user,
+                    "catalog" => $catalog
                 ));
     }
     

@@ -1,0 +1,27 @@
+{% trans_default_domain 'templatesTranslations' %}
+
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	<ul class="nav navbar-nav">
+		<li><a href="{{ path('frontend_frontoffice_homepage', {}) }}#page-home">{{ 'common.menu.accueil'|trans }}</a></li>
+		<li><a href="{{ path('frontend_frontoffice_homepage', {}) }}#page-catalog">{{ 'common.menu.catalog'|trans }}</a></li>
+		<li><a href="{{ path('frontend_frontoffice_homepage', {}) }}#page-best-sells">{{ 'common.menu.best_sells'|trans }}</a></li>
+		<li><a href="{{ path('frontend_frontoffice_homepage', {}) }}#page-last-adds">{{ 'common.menu.last_adds'|trans }}</a></li>
+		<li><a href="{{ path('frontend_frontoffice_homepage', {}) }}#page-legals">{{ 'common.menu.legals'|trans }}</a></li>
+		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ 'common.menu.profile'|trans }} <span class="caret"></span></a>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="#page-info">{{ 'common.menu.profile-info'|trans }}</a></li>
+					<li><a href="#page-catalog">{{ 'common.menu.profile-catalog'|trans }}</a></li>
+				</ul>
+			</li>
+		{% endif %}
+	</ul>
+	<ul class="nav navbar-nav navbar-right">
+		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+			<li><a class="btn-log" href="{{ path('fos_user_security_logout') }}"> <span class="badge">{{ 'common.header.logout'|trans }} </span></a></li>
+		{% else %}
+			<li><a class="btn-log" href="#" data-toggle="modal" data-target="#login-popup"> <span class="badge">{{ 'common.header.login'|trans }} </span></a></li>
+		{% endif %}
+	</ul>
+</div>

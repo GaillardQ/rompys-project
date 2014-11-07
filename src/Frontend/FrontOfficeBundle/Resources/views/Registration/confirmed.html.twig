@@ -1,18 +1,26 @@
 {% extends 'FrontendFrontOfficeBundle::baseFrontend.html.twig' %}
 
 {% trans_default_domain 'templatesTranslations' %}
+
+{% block menu %}
+    {% include 'FrontendFrontOfficeBundle:Menu:menu_full.html.twig' %}
+{% endblock %}
+
 {% block body %}
 
-<div class="col-xs-12 col-sm-12 col-md-12">
-
-    <div class="block-content">
-        <fieldset>
-                <legend>{{ 'register_confirmed.title'|trans }}</legend>
-        </fieldset>
+<div id="page-register-confirmed" class="row">
+    <div id="register_content" class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8       col-xs-offset-0 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
+            <div class="block-content">
+                <fieldset>
+                        <legend><h1>{{ 'register_confirmed.title'|trans }}</h1></legend>
+                </fieldset>
+                
+                <p> {{ 'register_confirmed.message'|trans|nl2br }} </p>
         
-        <p> {{ 'register_confirmed.message'|trans|nl2br }} </p>
-
-        <a href={{ path('frontend_frontoffice_homepage') }} class='btn btn-default'> {{ 'register_confirmed.button'|trans }}</a>
+                <a href={{ path('frontend_frontoffice_homepage') }} class='btn btn-default white-background orange-color'> {{ 'register_confirmed.button'|trans }}</a>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -10,14 +10,14 @@ frontend_frontoffice_homepage_slash:
     requirements:
           _locale: fr
           
-frontend_frontoffice_catalog_home:
-    pattern:  /{_locale}/catalog
-    defaults: { _controller: FrontendFrontOfficeBundle:Catalog:catalog, _locale: fr }
+frontend_frontoffice_profile_home:
+    pattern:  /{_locale}/profile
+    defaults: { _controller: FrontendFrontOfficeBundle:Profile:index, _locale: fr }
     requirements:
           _locale: fr
           
-frontend_frontoffice_profile_home:
-    pattern:  /{_locale}/profile
+frontend_frontoffice_profile_home_slash:
+    pattern:  /{_locale}/profile/
     defaults: { _controller: FrontendFrontOfficeBundle:Profile:index, _locale: fr }
     requirements:
           _locale: fr

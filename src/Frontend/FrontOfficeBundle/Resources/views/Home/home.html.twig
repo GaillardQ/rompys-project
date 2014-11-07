@@ -1,13 +1,58 @@
 {% extends 'FrontendFrontOfficeBundle::baseFrontend.html.twig' %}
 {% trans_default_domain 'templatesTranslations' %}
 
+{% block menu %}
+    {% include 'FrontendFrontOfficeBundle:Menu:menu_home.html.twig' %}
+{% endblock %}
+
 {% block body %}
-    <div id="home_content" class="row">
-        <div class="jumbotron">
-            <h1>CONSTRUCTION</h1>
-            <p>This page is not finshed yet. But you can already browse our catalog.</p>
-            <p><a href="{{ path('frontend_frontoffice_catalog_home') }}" class="btn btn-primary btn-lg">C'est parti !</a></p>
+    
+    <div id="page-home" class="row">
+        <div id="home_content" class="row">
+            <div id="page-home-logo" class="space-under-30">
+                <p>{{ 'common.project_name'|trans }}</p>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
+                <div class="row">
+                    <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 center-align">
+                        <img id="home-img" src="/rompy/web/bundles/frontendfrontoffice/img/user.png" />
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 col-md-offset-3 col-lg-offset-3 center-align">
+                        <img id="home-img" src="/rompy/web/bundles/frontendfrontoffice/img/bucket.png" />
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2 col-md-offset-3 col-lg-offset-3 center-align">
+                        <img id="home-img" src="/rompy/web/bundles/frontendfrontoffice/img/game.png" />
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
+    <div id="page-catalog" class="row">
+        {{ render(controller('FrontendFrontOfficeBundle:Catalog:catalog', {})) }}
+        {# Impossible d'exécuter du code javascript après le innerHTML #}
+        {#{{ render_hinclude(controller('FrontendFrontOfficeBundle:Catalog:catalog'), {'default': 'Loading...'}) }}#}
+    </div>
+    <div id="page-best-sells" class="row">
+        {{ render(controller('FrontendFrontOfficeBundle:BestSells:bestSells', {})) }}
+    </div>
+    <div id="page-last-adds" class="row">
+        {{ render(controller('FrontendFrontOfficeBundle:LastAdds:lastAdds', {})) }}
+    </div>
+    <div id="page-legals" class="row">
+        {{ render(controller('FrontendFrontOfficeBundle:Legals:legals', {})) }}
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+        	$.localScroll();
+        	{% if invalid_username is not null %}
+        	    $('#login-popup').modal('show');
+        	    $('#reset-popup').modal('show');
+            {% endif %}
+        });
+    </script>
+    
+    {% include 'FrontendFrontOfficeBundle:Common:login_popup.html.twig' %}
+    {% include 'FrontendFrontOfficeBundle:Common:request_popup.html.twig' %}
 {% endblock %}
+

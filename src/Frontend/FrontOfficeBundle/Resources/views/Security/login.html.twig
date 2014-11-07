@@ -6,6 +6,9 @@
         <div class="alert alert-block alert-danger fade in">
             {{ error|trans }}
         </div>
+        <script>
+    	    $('#login-popup').modal('show');
+        </script>
     {% endif %}
     <input type="hidden" name="_csrf_token" value="" />
     <div>
@@ -17,10 +20,10 @@
         <input type="password" id="password" name="_password" placeholder="{{ 'home.login.placeholder.password'|trans }}" class="form-control">
     </div>
     <div class="space-under-20">
-        <a class="small_10" href="{{ path('fos_user_resetting_request') }}">{{ 'home.login.button.forgot_password'|trans }}</a>
+        <a class="small_10" href="#" data-toggle="modal" data-target="#reset-popup">{{ 'home.login.button.forgot_password'|trans }}</a>
     </div>
     <div class="center-align">
-        <button type="submit" id="_submit" name="_submit" class="btn btn-default full_parent_width">{{ 'home.login.button.submit'|trans }}</button>
-        <a class="btn btn-primary full_parent_width" href="{{ path('fos_user_registration_register') }}">{{ 'home.login.button.register'|trans }}</a>
+        <button type="submit" id="_submit" name="_submit" class="btn btn-primary full_parent_width">{{ 'home.login.button.submit'|trans }}</button>
+        <a class="btn btn-default full_parent_width" href="{{ path('fos_user_registration_register') }}">{{ 'home.login.button.register'|trans }}</a>
     </div>     
 </form>

@@ -3812,7 +3812,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-fixed-top .navbar-collapse,
 .navbar-fixed-bottom .navbar-collapse {
-  max-height: 340px;
+  max-height: 100vh;
 }
 @media (max-width: 480px) and (orientation: landscape) {
   .navbar-fixed-top .navbar-collapse,
@@ -4084,7 +4084,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default {
   background-color: #dd4814;
-  border-color: #bf3e11;
+  /*border-color: #bf3e11;*/
 }
 .navbar-default .navbar-brand {
   color: #ffffff;

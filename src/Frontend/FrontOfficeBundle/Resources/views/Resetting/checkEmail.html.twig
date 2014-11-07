@@ -2,24 +2,33 @@
 
 {% trans_default_domain 'templatesTranslations' %}
 
-{% block title %} {{ 'reset_password.page_title'|trans }} {% endblock %}
+{% block menu %}
+    {% include 'FrontendFrontOfficeBundle:Menu:menu_full.html.twig' %}
+{% endblock %}
+
 {% block body %}
 
-<div class="col-xs-12 col-sm-12 col-md-12 block-content">
-
-        <fieldset>
-                <legend>{{ 'reset_password.title'|trans }}</legend>
-        </fieldset>
-
-        {% block fos_user_content %}
-        <p>
-            {{ 'reset_password.check_email'|trans({'%email%': email}) }}
-        </p>
-        {% endblock %}    
-
-   <a href="{{ path('frontend_frontoffice_homepage') }}" class="btn btn-default"> {{ 'common.go_back'|trans }} </a>
-</div>
+        <div id="page-register-confirmed" class="row">
+                <div id="register_content" class="row">
+                        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8       col-xs-offset-0 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
+                                <div class="block-content">
+                                        <fieldset>
+                                                <legend><h1>{{ 'reset_password.title'|trans }}</h1></legend>
+                                        </fieldset>
+                                        
+                                        {% block fos_user_content %}
+                                        <p>
+                                            {{ 'reset_password.check_email'|trans({'%email%': email}) }}
+                                        </p>
+                                        {% endblock %}    
+                                        
+                                        <a href="{{ path('frontend_frontoffice_homepage') }}" class="btn btn-primary"> {{ 'common.go_back'|trans }} </a>
+                                </div>
+                        </div>
+                </div>
+        </div>
 
 {% endblock %}
+
 
 

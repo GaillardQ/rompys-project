@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
+use Frontend\FrontOfficeBundle\Entity\User;
+
 use FOS\UserBundle\Controller\RegistrationController as BaseController;
 
 class RegistrationController extends BaseController
@@ -24,7 +26,6 @@ class RegistrationController extends BaseController
         $dispatcher = $this->container->get('event_dispatcher');
 
         $user = $userManager->createUser();
-
         $dispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, new UserEvent($user, $request));
 
         $form = $formFactory->createForm();
@@ -38,7 +39,6 @@ class RegistrationController extends BaseController
                 
                 $event = new FormEvent($form, $request);
                 //$dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
-                
                 $userManager->updateUser($user);
                 
                 if (null === $response = $event->getResponse()) {

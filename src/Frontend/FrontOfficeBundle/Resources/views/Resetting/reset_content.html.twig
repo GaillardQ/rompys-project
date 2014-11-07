@@ -1,31 +1,28 @@
 {% trans_default_domain 'templatesTranslations' %}
 
-<form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset form-horizontal" role="form">
-	<fieldset>
-        <legend>{{ 'reset_password.title'|trans }}</legend>
-        {% if not form.vars.valid %}
-	        <div class="alert alert-block alert-danger fade in">
-	            {% if form_errors(form.plainPassword.first) is not null %}
-                    {{ form_errors(form.plainPassword.first) }}
-                {% endif %}
-                {% if form_errors(form.plainPassword.second) is not null %}
-                    {{ form_errors(form.plainPassword.second) }}
-                {% endif %}
-	        </div>
-        {% endif %}
-        <div class="form-group">
-            <label class="control-label col-xs-4 col-sm-2 col-md-2">{{ form_label(form.plainPassword.first) }}</label>
-            <div class="col-xs-8 col-sm-10 col-md-10">
-                {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control'} }) }}
-            </div>
+<form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset form-horizontal center-align" role="form">
+    {% if not form.vars.valid %}
+        <div class="alert alert-block alert-danger fade in">
+            {% if form_errors(form.plainPassword.first) is not null %}
+                {{ form_errors(form.plainPassword.first) }}
+            {% endif %}
+            {% if form_errors(form.plainPassword.second) is not null %}
+                {{ form_errors(form.plainPassword.second) }}
+            {% endif %}
         </div>
-        <div class="form-group">
-            <label class="control-label col-xs-4 col-sm-2 col-md-2">{{ form_label(form.plainPassword.second) }}</label>
-            <div class="col-xs-8 col-sm-10 col-md-10">
-                {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control'} }) }}
-            </div>
+    {% endif %}
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-4 col-md-4 col-lg-4">{{ form_label(form.plainPassword.first) }}</label>
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-6">
+            {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control'} }) }}
         </div>
-        <input class="btn btn-primary" type="submit" value="{{ 'reset_password.submit'|trans }}" />
-        {{ form_row(form._token) }}
-	</fieldset>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-4 col-md-4 col-lg-4">{{ form_label(form.plainPassword.second) }}</label>
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-6">
+            {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+    </div>
+    <input class="btn btn-primary" type="submit" value="{{ 'reset_password.submit'|trans }}" />
+    {{ form_row(form._token) }}
 </form>

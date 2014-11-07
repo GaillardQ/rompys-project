@@ -75,6 +75,18 @@ tfoot > tr > th > div > .btn:hover {
 .left-align{
     text-align: left;
 }
+.white-color {
+    color: white !important;
+}
+.orange-color {
+    color: #dd4814 !important;
+}
+.white-background {
+    background-color: white !important;
+}
+.grey-background {
+    background-color: #aea79f !important;
+}
 .left-align-important {
     text-align: left !important;
 }
@@ -148,6 +160,10 @@ tfoot > tr > th > div > .btn:hover {
 {
     background-color: #dd4814;
 }
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+  background-color: #dd4814;
+}
 .card-data-field
 {
     text-align: left;
@@ -175,10 +191,10 @@ tfoot > tr > th > div > .btn:hover {
 }
 .img-bottom
 {
-    bottom: 2%;
+    bottom: 4vh;
     left: 1%;
-    position: fixed;
-    z-index: -1;
+    position: absolute;
+    z-index: 0;
 }
 
 /**
@@ -202,6 +218,131 @@ tfoot > tr > th > div > .btn:hover {
 #card-data
 {
     display: none;
+}
+#home-img {
+    max-width: 20vw;
+}
+#page-home {
+    background-color: #dd4814;
+    height: auto;
+    min-height: 100vh;
+    margin-top: -60px;
+    padding-top: 60px;
+}
+#page-home-logo {
+    background-color: #ffffff;
+    color: #dd4814;
+    font-size: 7vw;
+    height: 11vw;
+    text-align: center;
+    vertical-align: middle;
+}
+#page-home-logo p {
+    vertical-align: middle;
+}
+#page-catalog {
+    background-color: #aea79f;
+    padding-top: 60px;
+    height: auto;
+    min-height: 100vh;
+}
+#page-catalog h1 {
+    color: #dd4814;
+}
+#page-catalog tfoot {
+    background-color: #aea79f;
+}
+#page-best-sells {
+    background-color: #dd4814;
+    height: auto;
+    padding-top: 60px;
+    min-height: 100vh;
+}
+#page-best-sells h1 {
+    color: #aea79f;
+}
+#page-last-adds {
+    background-color: #aea79f;
+    height: auto;
+    padding-top: 60px;
+    min-height: 100vh;
+}
+#page-last-adds h1 {
+    color: #dd4814;
+}
+#page-legals {
+    background-color: #dd4814;
+    height: auto;
+    padding-top: 60px;
+    min-height: 100vh;
+}
+#page-legals h1 {
+    color: #aea79f;
+}
+#page-register {
+    background-color: #aea79f;
+    height: auto;
+    min-height: 100vh;
+    margin-top: -60px;
+    padding-top: 60px;
+    color: white;
+}
+#page-register h1 {
+    color: #dd4814;
+}
+#page-request-password {
+    background-color: #aea79f;
+    height: auto;
+    min-height: 100vh;
+    margin-top: -60px;
+    padding-top: 60px;
+    color: white;
+}
+#page-request-password h1 {
+    color: #dd4814;
+}
+#page-register-confirmed {
+    background-color: #aea79f;
+    height: auto;
+    min-height: 100vh;
+    margin-top: -60px;
+    padding-top: 60px;
+    color: white;
+}
+#page-register-confirmed h1 {
+    color: #dd4814;
+}
+#page-info {
+    background-color: #dd4814;
+    height: auto;
+    min-height: 100vh;
+    margin-top: -60px;
+    padding-top: 60px;
+}
+#page-info h1 {
+    color: #aea79f;
+}
+#page-change-password {
+    background-color: #aea79f;
+    height: auto;
+    min-height: 100vh;
+    margin-top: -60px;
+    padding-top: 60px;
+    color: white;
+}
+#page-change-password h1 {
+    color: #dd4814;
+}
+#page-add-game {
+    background-color: #aea79f;
+    height: auto;
+    min-height: 100vh;
+    margin-top: -60px;
+    padding-top: 60px;
+    color: white;
+}
+#page-add-game h1 {
+    color: #dd4814;
 }
 /*
 .container{

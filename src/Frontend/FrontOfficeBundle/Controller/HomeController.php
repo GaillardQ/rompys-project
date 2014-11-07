@@ -8,7 +8,11 @@ class HomeController extends Controller {
 
     public function indexAction() 
     {     
+        $request = $this->getRequest();
+        $invalid_username = $request->query->get('invalid_username'); // get a $_GET parameter
+        
         return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Home:home.html.twig', array(
+            'invalid_username' => $invalid_username
         ));
     }
     

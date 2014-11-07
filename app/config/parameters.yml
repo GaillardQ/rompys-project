@@ -3,7 +3,7 @@ parameters:
     dev_mailer_transport: smtp
     dev_mailer_host: smtp.gmail.com
     dev_mailer_user: quentin.gaillard.4@gmail.com
-    dev_mailer_password: 10ApQmWn
+    dev_mailer_password: Alison.Quentin.2011
     dev_locale: fr
     dev_driver: pdo_mysql
     dev_host: rompy-db-instance.cwazuxifehxl.us-west-2.rds.amazonaws.com
@@ -12,11 +12,11 @@ parameters:
     dev_user: rompy
     dev_password: 10ApQmWn
     dev_charset: UTF8
-    dev_super_admin_email: quentin.gaillard.69@gmail.com
+    dev_super_admin_email: quentin.gaillard.4@gmail.com
     prod_mailer_transport: smtp
     prod_mailer_host: smtp.gmail.com
-    prod_mailer_user: q.gaillard@gmail.com
-    prod_mailer_password: quentin
+    prod_mailer_user: quentin.gaillard.4@gmail.com
+    prod_mailer_password: Alison.Quentin.2011
     prod_locale: en
     prod_driver: pdo_mysql
     prod_host: rompy-db-instance.cwazuxifehxl.us-west-2.rds.amazonaws.com
@@ -25,6 +25,6 @@ parameters:
     prod_user: rompy
     prod_password: 10ApQmWn
     prod_charset: UTF8
-    prod_super_admin_email: quentin.gaillard.69@gmail.com
+    prod_super_admin_email: quentin.gaillard.4@gmail.com
     secret: SecretTokenForAutoLogin
     current_revision: 0

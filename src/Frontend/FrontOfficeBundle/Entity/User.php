@@ -160,4 +160,9 @@ class User extends BaseUser {
     public function getRegisteredAt() {
         return $this->registered_at;
     } 
+    
+    public function addRole($role)
+    {
+        array_push($this->roles, $role);
+    }
 }
