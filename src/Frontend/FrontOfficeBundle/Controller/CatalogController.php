@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class CatalogController extends Controller {
 
     public function catalogAction() 
-    {         
+    {    
         $catalog  =  $this->get('Doctrine')
                             ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
                             ->getAllGamesForSell();

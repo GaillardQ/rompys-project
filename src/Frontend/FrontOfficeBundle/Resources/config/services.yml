@@ -17,3 +17,8 @@ services:
     arguments: [%fos_user.model.user.class%]
     tags:
       - { name: form.type, alias: carpaccio_user_change_password }
+  frontend.profile.form.type:
+    class: Frontend\FrontOfficeBundle\Form\Type\ProfileFormType
+    arguments: [%fos_user.model.user.class%]
+    tags:
+      - { name: form.type, alias: frontend_user_profile_update }

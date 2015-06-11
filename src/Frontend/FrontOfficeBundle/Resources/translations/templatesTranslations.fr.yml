@@ -14,7 +14,7 @@ common:
     header:
         login: Connexion
         logout: Déconnexion
-    project_name: "[SITE]"
+    project_name: "[ROMPY'S PROJECT]"
     go_back : Retour
 
 home:
@@ -129,6 +129,18 @@ profile:
                 alternative_name:
                     label: "Nom alternatif :"
             btn: Ajouter au catalogue
+            
+profile_update:
+    title: "Modifier ses infos"
+    label:
+        username: "Pseudo :"
+        firstname: "Prénom :"
+        lastname: "Nom :"
+        phone: "Téléphone :"
+        email: "Email :"
+    button:
+        submit: "Modifier"
+        
 mail:
     registered:
         subject: "[SITE]Inscription réussie"
