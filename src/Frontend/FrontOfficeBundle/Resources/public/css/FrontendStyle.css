@@ -1,7 +1,7 @@
 /**
  * HTML
  **/
-body{
+/*body{
     padding-top: 60px;
 }
 legend
@@ -24,7 +24,7 @@ thead > tr > th {
 }
 tr, th, td{
     vertical-align: middle !important; 
-}
+}*/
 
 /**
  * MIXED
@@ -223,11 +223,11 @@ tfoot > tr > th > div > .btn:hover {
     max-width: 20vw;
 }
 #page-home {
-    background-color: #dd4814;
-    height: auto;
-    min-height: 100vh;
-    margin-top: -60px;
-    padding-top: 60px;
+    /*background-color: #dd4814;*/
+    /*height: auto;*/
+    /*min-height: 100vh;*/
+    /*margin-top: -60px;*/
+    /*padding-top: 60px;*/
 }
 #page-home-logo {
     background-color: #ffffff;
@@ -425,14 +425,7 @@ tfoot > tr > th > div > .btn:hover {
 /**
  * LIB OVERRIDE
  */
-@-moz-document url-prefix() {
-  fieldset { display: table-cell; }
-}
-@font-face {
-  font-family: 'Glyphicons Halflings';
-  src: url('http://projets-c9-quenting.c9.io/rompy/web/bundles/frontendfrontoffice/fonts/glyphicons-halflings-regular.eot');
-  src: url('http://projets-c9-quenting.c9.io/rompy/web/bundles/frontendfrontoffice/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('http://projets-c9-quenting.c9.io/rompy/web/bundles/frontendfrontoffice/fonts/glyphicons-halflings-regular.woff') format('woff'), url('http://projets-c9-quenting.c9.io/rompy/web/bundles/frontendfrontoffice/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('http://projets-c9-quenting.c9.io/rompy/web/bundles/frontendfrontoffice/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
-}
+
 .tablesorter-bootstrap .tablesorter-header i {
     background-repeat: no-repeat;
     display: inline-block;

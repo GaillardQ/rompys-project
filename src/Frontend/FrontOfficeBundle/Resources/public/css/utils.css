@@ -1,0 +1,42 @@
+/** BACKGROUND **/
+
+.bgd-white {
+	background-color: white;
+}
+/** MARGIN **/
+
+.margin-top-50 {
+	margin-top: 50px;
+}
+.margin-right-5 {
+	margin-right: 5px;
+}
+/** PADDING **/
+
+.padding-20 {
+	padding: 20px;
+}
+/** TEXT **/
+
+.weight-bolder {
+	font-weight: bolder;
+}
+/** TEXT ALIGN **/
+
+.align-center {
+	text-align: center;
+}
+.align-left {
+	text-align: left;
+}
+.align-right {
+	text-align: right;
+}
+
+
+
+
+/** DEV **/
+.dev-border {
+	border: 1px dashed red;
+}

@@ -1,0 +1,135 @@
+/** 
+	HTML 
+**/
+body {
+	background-color: white;
+	margin: 4vh;
+	padding-top: 0;
+}
+
+/** 
+	CLASS 
+**/
+.page {
+	min-height: 92vh;
+}
+.home-block {
+		
+}
+.home-block.navbar-collapse {
+	padding: 0;
+}
+.home-block.navbar-collapse.in,
+.home-block.navbar-collapse.collapsing{
+	overflow-y: unset;
+}
+.home-side-div {
+}
+.home-center-div {
+}
+.home-panel {
+	margin-bottom: 0px;
+}
+.home-panel-center {
+	margin-bottom: 0px;
+}
+
+@media (min-width: 992px)
+{
+	.home-side-div {
+		min-height: 45vh;
+	}
+	.home-center-div {
+		min-height: 92vh;
+	}
+	.home-panel {
+		min-height: 45vh;
+	}
+	.home-panel-center {
+		min-height: 92vh;
+	}
+}
+
+/** ID **/
+#home-left-top {
+	margin-bottom: 2vh;
+}
+
+#home-left-bottom {
+
+}
+
+#home-center {
+}
+
+#home-right-top {
+	margin-bottom: 2vh;
+}
+
+#home-right-bottom {
+}
+
+@media (max-width: 992px)
+{
+	#home-center {
+		margin-bottom: 2vh;
+	}
+	
+	#home-right-top {
+		margin-top: 2vh;
+	}
+}
+
+@media (min-width: 992px)
+{
+	#home-left-top {
+		margin-right: 2vh;
+	}
+	
+	#home-left-bottom {
+		margin-right: 2vh;
+	}
+	
+	#home-right-top {
+		margin-left: 2vh;
+	}
+	
+	#home-right-bottom {
+		margin-left: 2vh;
+	}
+}
+
+.menu-toggle {
+}
+
+.menu-toggle .navbar-toggle {
+    float: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    width: 100%;
+}
+.menu-toggle .navbar-toggle .icon-bar {
+	background-color: #ddd;
+}
+
+.menu-toggle .navbar-toggle .icon-bar {
+	border-radius: 1px;
+	display: block;
+	height: 2px;
+	width: 22px;
+}
+
+/**
+	LIB OVERRIDE
+**/
+.container-fluid {
+    margin: 0;
+    padding: 0;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    padding: 0;
+}
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}

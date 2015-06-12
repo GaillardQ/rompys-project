@@ -1,3 +1,0 @@
-{% for g in last_adds %}
-    <div class="table-game-line last-adds-div" data-toggle="modal" data-target="#game_card" onclick="displayHomeGameCard({{ g.id }},  '{{ path('frontend_frontoffice_common_get_game_catalog_info') }}');">• {{ g.name }} ({{ g.plateform }})</div>
-{% endfor %}
