@@ -229,17 +229,6 @@ tfoot > tr > th > div > .btn:hover {
     /*margin-top: -60px;*/
     /*padding-top: 60px;*/
 }
-#page-home-logo {
-    background-color: #ffffff;
-    color: #dd4814;
-    font-size: 7vw;
-    height: 11vw;
-    text-align: center;
-    vertical-align: middle;
-}
-#page-home-logo p {
-    vertical-align: middle;
-}
 #page-catalog {
     background-color: #aea79f;
     padding-top: 60px;

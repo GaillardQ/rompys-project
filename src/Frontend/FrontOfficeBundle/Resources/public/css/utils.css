@@ -1,28 +1,34 @@
 /** BACKGROUND **/
-
 .bgd-white {
 	background-color: white;
 }
-/** MARGIN **/
 
+
+/** MARGIN **/
 .margin-top-50 {
 	margin-top: 50px;
 }
 .margin-right-5 {
 	margin-right: 5px;
 }
-/** PADDING **/
+.margin-auto {
+	margin: auto;
+}
 
+
+/** PADDING **/
 .padding-20 {
 	padding: 20px;
 }
-/** TEXT **/
 
+
+/** TEXT **/
 .weight-bolder {
 	font-weight: bolder;
 }
-/** TEXT ALIGN **/
 
+
+/** TEXT ALIGN **/
 .align-center {
 	text-align: center;
 }
@@ -34,9 +40,17 @@
 }
 
 
+/** WIDTH **/
+.width-parent {
+	width: 100%;
+}
 
 
-/** DEV **/
+
+
+/**********
+	DEV 
+**********/
 .dev-border {
 	border: 1px dashed red;
 }

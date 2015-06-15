@@ -1,5 +1,6 @@
 common:
-    head_title: Rompys project
+    head_title: Rompy's project
+    project_name: Rompy's project
     
 home:
     login:
