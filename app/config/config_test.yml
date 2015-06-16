@@ -36,3 +36,8 @@ doctrine:
 
 parameters:
    super_admin_email: %prod_super_admin_email% 
+
+fos_user:
+    from_email:
+        address:        %dev_mailer_user%
+        sender_name:    Rompy

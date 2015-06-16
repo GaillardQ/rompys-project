@@ -3,6 +3,7 @@
 namespace Frontend\FrontOfficeBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query\ResultSetMapping;
 
 /**
  * UserRepository
@@ -12,24 +13,19 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository {
 
-    public function getPendingRegistrationRequestsCount() {
-        $qb = $this->createQueryBuilder('u');
-        $qb->select('count(u)')
-                ->where('u.enabled = 0')
-                ->andWhere('u.expired = 0')
-                ->andWhere('u.locked = 0');
-        
-        return $qb->getQuery()->getSingleScalarResult();
-    }
-    
-    public function getAllPendingRegistrationRequests() {
-        $qb = $this->createQueryBuilder('u');
-        $qb->where('u.enabled = 0')
-                ->andWhere('u.expired = 0')
-                ->andWhere('u.locked = 0')
-                ->orderBy('u.registered_at', 'ASC');
-        
-        return $qb->getQuery()->getArrayResult();
+    public function getUserInfos($id)
+    {
+        $q = "SELECT u.username, u.firstname, u.lastname, u.email, u.phone, count(gc.id) as nb_games 
+                FROM FrontendFrontOfficeBundle:User u
+                JOIN FrontendFrontOfficeBundle:Seller s 
+                JOIN FrontendFrontOfficeBundle:GameCatalog gc 
+                WHERE u.id=:id";
+                
+        $query = $this->getEntityManager()->createQuery($q)->setParameter('id', $id);
+            
+         
+        $infos = $query->getResult();
+        return $infos;
     }
 
 }

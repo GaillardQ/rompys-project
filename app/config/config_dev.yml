@@ -16,7 +16,7 @@ web_profiler:
     
 swiftmailer:
     transport: %dev_mailer_transport%
-    host:      %dev_mailer_host%
+    #host:      %dev_mailer_host%
     username:  %dev_mailer_user%
     password:  %dev_mailer_password%
 
@@ -49,3 +49,8 @@ doctrine:
 
 parameters:
    super_admin_email: %dev_super_admin_email% 
+   
+fos_user:
+    from_email:
+        address:        %dev_mailer_user%
+        sender_name:    Rompy

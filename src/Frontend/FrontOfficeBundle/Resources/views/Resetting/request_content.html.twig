@@ -4,16 +4,16 @@
         <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request form-horizontal center-align" role="form">
             {% if invalid_username is defined and invalid_username is not null %}
                 <div class="alert alert-block alert-danger fade in">
-                    {{ 'reset_password.invalid_email'|trans({'%username%': invalid_username}) }}
+                    {{ 'request.invalid_email'|trans({'%username%': invalid_username}) }}
                 </div>
             {% endif %}
-            <div class="row space-under-30 left-align">
-                <label class="control-label col-xs-12 col-sm-2 col-md-2 col-lg-2 orange-color" for="username">{{ 'reset_password.email'|trans }}</label>
+            <div class="row left-align">
+                <label class="control-label col-xs-12 col-sm-2 col-md-2 col-lg-2 padding-right-5" for="username">{{ 'request.email.label'|trans }}</label>
                 <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
                     <input type="text" id="username" name="username" value="" class="form-control">
                 </div>
             </div>
-            <button class='btn btn-primary' type="submit">{{ 'reset_password.submit'|trans }}</button>
+            <button class='btn btn-primary margin-top-10' type="submit">{{ 'request.button'|trans }}</button>
         </form>
     </div>
 </div>

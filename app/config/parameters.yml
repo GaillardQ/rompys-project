@@ -1,9 +1,9 @@
 # This file is auto-generated during the composer install
 parameters:
-    dev_mailer_transport: smtp
+    dev_mailer_transport: gmail
     dev_mailer_host: smtp.gmail.com
-    dev_mailer_user: quentingaillard@aliceadsl.fr
-    dev_mailer_password: quentin0404
+    dev_mailer_user: quentin.gaillard.4@gmail.com
+    dev_mailer_password: Alison.Quentin.2011
     dev_locale: fr
     dev_driver: pdo_mysql
     dev_host: 0.0.0.0
@@ -13,7 +13,10 @@ parameters:
     dev_password: 
     dev_charset: UTF8
     dev_super_admin_email: quentin.gaillard.4@gmail.com
-    prod_mailer_password: quentin0404
+    prod_mailer_transport: smtp
+    prod_mailer_host: smtp.gmail.com
+    prod_mailer_user: quentin.gaillard.4@gmail.com
+    prod_mailer_password: Alison.Quentin.2011
     prod_locale: fr
     prod_driver: pdo_mysql
     prod_host: 0.0.0.0

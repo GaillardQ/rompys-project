@@ -11,18 +11,20 @@
             {% endif %}
         </div>
     {% endif %}
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-4 col-md-4 col-lg-4">{{ form_label(form.plainPassword.first) }}</label>
+    <div class="row">
+        <label class="control-label col-xs-12 col-sm-4 col-md-4 col-lg-4 margin-right-5">{{ form_label(form.plainPassword.first) }}</label>
         <div class="col-xs-12 col-sm-8 col-md-8 col-lg-6">
             {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control'} }) }}
         </div>
     </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-4 col-md-4 col-lg-4">{{ form_label(form.plainPassword.second) }}</label>
+    <div class="row">
+        <label class="control-label col-xs-12 col-sm-4 col-md-4 col-lg-4 margin-right-5">{{ form_label(form.plainPassword.second) }}</label>
         <div class="col-xs-12 col-sm-8 col-md-8 col-lg-6">
             {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control'} }) }}
         </div>
     </div>
-    <input class="btn btn-primary" type="submit" value="{{ 'reset_password.submit'|trans }}" />
+    <div class="margin-top-10 align-center">
+        <button class="btn btn-primary" type="submit">{{ 'reset_password.submit'|trans }}</button>
+    </div>
     {{ form_row(form._token) }}
 </form>

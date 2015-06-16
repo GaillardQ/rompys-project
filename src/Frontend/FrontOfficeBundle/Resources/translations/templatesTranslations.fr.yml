@@ -1,13 +1,83 @@
+"Bad credentials": Pseudo ou mot de passe incorrect
+
 common:
     head_title: Rompy's project
     project_name: Rompy's project
+    close: Fermer
+    go_back: Retour
     
 home:
     login:
         title: Se connecter
+        login:
+            label: Pseudo
+            placeholder: Pseudo...
+        password:
+            label: Mot de passe
+            placeholder: Mot de passe...
+        forgot_password:
+            button: Mot de passe oublié ?
+        submit:
+            button: Se connecter
+        register:
+            button: S'inscrire
+    profile:
+        title: Informations
     news:
         title: News
     last_adds:
         title: Derniers ajouts
     best_sellers:
         title: Meilleurs vendeurs
+
+request:
+    title: Mot de passe oublié
+    email:
+        label: "E-mail :"
+    invalid_email: E-mail invalide
+    button: Valider
+
+reset_password:
+    title: Mot de passe oublié
+    email: "Email :"
+    submit: Changer
+    invalid_email: E-mail invalide
+    check_email: Un e-mail a été envoyé à  l'adresse %email%. Il contient un lien qui vous permettra de regénérer votre mot de passe.
+    password_already_requested: Le mot de passe pour cet utilisateur a déjà  été envoyé durant les 24 dernières heures.
+    email_content:
+          subject: "Rompy's Project : Réinitialisation de votre mot de passe"
+          message: |
+              Bonjour %firstname%,
+              pour réinitialiser votre mot de passe, merci de vous rendre sur %confirmationUrl%
+
+              Cordialement,
+              Rompy.
+              
+register:
+    title: Inscription
+    label:
+        username: "Pseudo :"
+        firstname: "Prénom :"
+        lastname: "Nom :"
+        phone: "Téléphone :"
+        email: "E-mail :"
+        password: "Mot de passe :"
+        password_confirm: "Confirmation :"
+    button:
+        submit: Valider
+        
+register_confirmed:
+    title: "Inscription réussie"
+    message: "Vous avez bien été inscrit sur notre site, vous pouvez dès à présent compléter votre catalogue ou remplir votre panier."
+    button: "Accueil"
+    
+mail:
+    registered:
+        subject: "Rompy's Project : Inscription réussie"
+        content: |
+            Bonjour %username%,
+            vous avez bien été inscrit sur notre site. 
+            Vous pouvez dès à présent compléter votre catalogue ou remplir votre panier.
+
+            Cordialement,
+            Rompy.

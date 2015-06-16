@@ -136,6 +136,7 @@ class ResettingController extends ContainerAware
 
                 return $response;
             }
+        }
 
         return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:reset.html.'.$this->getEngine(), array(
             'token' => $token,

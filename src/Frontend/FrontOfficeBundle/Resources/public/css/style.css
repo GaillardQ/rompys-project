@@ -6,6 +6,13 @@ body {
 	margin: 4vh;
 	padding-top: 0;
 }
+legend {
+	background-color: #2196f3;
+    border-color: #2196f3;
+}
+legend h3 {
+    color: #ffffff !important;
+}
 
 /** 
 	CLASS 
@@ -43,6 +50,12 @@ body {
 	margin-bottom: 2vh;
 }
 
+#home-profile-infos {
+	font-size: 17px;
+	font-weight: bold;
+	padding: 10px;
+}
+
 #home-left-bottom {
 
 }
@@ -61,8 +74,13 @@ body {
 	margin-top: 10vh;	
 }
 
+#search-game-addon .glyphicon {
+	font-size: 20px;
+}
+
 #input-search-game {
-	width: calc(100% - 20px);
+	width: calc(100% - 25px);
+	font-size: 20px;
 }
 
 #home-right-top {
@@ -101,6 +119,14 @@ body {
 	.home-panel-center {
 		background-color: #2196f3;
 		color: #ffffff;
+	}
+	
+	.home-panel-center input {
+		color: #2196f3;
+	}
+	
+	.form-control {
+		background-color: white;
 	}
 	
 	#home-center {
@@ -153,6 +179,9 @@ body {
 }
 .row{
 	margin: 0;
+}
+.btn {
+	padding: 6px 16px !important;
 }
 @-moz-document url-prefix() {
   fieldset { display: table-cell; }
