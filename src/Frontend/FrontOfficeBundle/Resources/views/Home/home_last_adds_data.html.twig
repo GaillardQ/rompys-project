@@ -1,0 +1,15 @@
+{% trans_default_domain 'templatesTranslations' %}
+
+<table class="table table-striped table-condensed">
+    <tbody>
+        {% for g in games %}
+            <tr>
+                <td class="home-last-adds-photo"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></td>
+                <td class="home-last-adds-name">{{ g.name }}</td>
+                <td class="home-last-adds-plateform">{{ g.plateform }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a class="btn btn-primary margin-20" href="#">{{ 'home.last_adds.games.button'|trans }}</a>

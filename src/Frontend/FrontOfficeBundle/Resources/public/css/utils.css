@@ -5,6 +5,9 @@
 
 
 /** MARGIN **/
+.margin-20 {
+	margin: 20px;
+}
 .margin-top-50 {
 	margin-top: 50px;
 }
@@ -20,11 +23,17 @@
 
 
 /** PADDING **/
+.no-padding {
+	padding: 0 !important;
+}
 .padding-20 {
 	padding: 20px;
 }
 .padding-right-5 {
 	padding-right: 5px;
+}
+.padding-bottom-20 {
+	padding-bottom: 20px !important;
 }
 
 
@@ -46,6 +55,9 @@
 }
 .align-right {
 	text-align: right;
+}
+.valign-middle {
+	vertical-align: middle;
 }
 
 

@@ -35,13 +35,17 @@ frontend_frontoffice_profile_update:
           _locale: fr
           
 frontend_frontoffice_common_get_all_games:
-    pattern:  /all_games
+    pattern:  /ws/all_games
     defaults: { _controller: FrontendFrontOfficeBundle:Common:getAllGames}
     
 frontend_frontoffice_common_get_game_info:
-    pattern:  /game/info
+    pattern:  /ws/game/info
     defaults: { _controller: FrontendFrontOfficeBundle:Common:getGameInfo}
     
 frontend_frontoffice_common_get_game_catalog_info:
-    pattern:  /catalog/game/info
+    pattern:  /ws/catalog/game/info
     defaults: { _controller: FrontendFrontOfficeBundle:Common:getGameCatalogInfo}
+    
+frontend_frontoffice_common_get_last_add_games:
+    pattern:  /ws/last_adds
+    defaults: { _controller: FrontendFrontOfficeBundle:Common:getLastAddGames}

@@ -29,6 +29,9 @@ home:
         title: News
     last_adds:
         title: Derniers ajouts
+        error: Une erreur est survenue.
+        games:
+            button: Voir les jeux
     best_sellers:
         title: Meilleurs vendeurs
 

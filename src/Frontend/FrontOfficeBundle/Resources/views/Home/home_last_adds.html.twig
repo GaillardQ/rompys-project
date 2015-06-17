@@ -7,7 +7,8 @@
 	    </button>
 	    <h3 class="panel-title hidden-xs"><span class="glyphicon glyphicon-send" aria-hidden="true"></span>&nbsp&nbsp{{ 'home.last_adds.title'|trans }}</h3>
 	</div>
-	<div id="home-right-top-content" class="panel-body navbar-collapse collapse"> <!--  -->
-			Last adds content
+	<div id="home-right-top-content" class="panel-body no-padding navbar-collapse collapse">
+		<div id="home-last-adds-error" class="alert alert-danger align-center hidden"> {{ 'home.last_adds.error'|trans }} </div>
+		<div id="home-last-adds-list" class="align-center"></div>
 	</div>
 </div>

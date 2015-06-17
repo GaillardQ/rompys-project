@@ -80,7 +80,7 @@ class GameCatalogRepository extends EntityRepository
 	{
 	        $qb = $this->createQueryBuilder("gc");
             
-                $query = $qb->select('gc.id, g.name, p.value as plateform, gc.addedAt, gc.price, u.username')
+                $query = $qb->select("gc.id, g.name, p.value as plateform, gc.addedAt, gc.price, u.username")
                  ->leftJoin('gc.seller', 's')
                  ->leftJoin('s.user', 'u')
                  ->leftJoin('gc.game', 'g')
@@ -94,6 +94,14 @@ class GameCatalogRepository extends EntityRepository
                  ->getQuery();
                  
                 $last_adds = $query->getResult();
+                
+                foreach($last_adds as $k=>$v)
+                {
+                    $d = $v["addedAt"];
+                    $str_d = $d->format('d-m-Y');
+                    $last_adds[$k]["addedAt"] = $str_d;
+                }
+                
                 return $last_adds;
 	}
 }

@@ -13,6 +13,9 @@ legend {
 legend h3 {
     color: #ffffff !important;
 }
+ul {
+	padding-left: 10px;	
+}
 
 /** 
 	CLASS 
@@ -43,6 +46,22 @@ legend h3 {
 	min-height: 92vh;
 	background-color: #ffffff;
 	color: #2196f3;
+}
+.home-last-adds-photo {
+	width: 20px;
+	vertical-align: middle !important;
+}
+.home-last-adds-name {
+    width: calc(100% - 126px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.home-last-adds-plateform {
+    width: 110px;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    white-space: nowrap;
 }
 
 /** ID **/
@@ -92,6 +111,11 @@ legend h3 {
 }
 
 #home-right-bottom {
+}
+
+#home-last-adds-list li {
+	line-height: 2;
+	clear: both;
 }
 
 .menu-toggle {
@@ -174,6 +198,9 @@ legend h3 {
 /**
 	LIB OVERRIDE
 **/
+.btn {
+	padding: 6px 16px !important;
+}
 .container-fluid {
     margin: 0;
     padding: 0;
@@ -184,8 +211,13 @@ legend h3 {
 .row{
 	margin: 0;
 }
-.btn {
-	padding: 6px 16px !important;
+.table {
+	table-layout: fixed;
+	margin: 0;
+}
+.table-striped > tbody > tr:nth-of-type(2n+1) {
+    background-color: #77bbf3;
+    color: white;
 }
 @-moz-document url-prefix() {
   fieldset { display: table-cell; }
