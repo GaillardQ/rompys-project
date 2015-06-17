@@ -10,7 +10,7 @@
         </div>
         <div class="col-md-3 col-md-pull-6 col-lg-2 col-lg-pull-8">
             <div id="home-left-top" class="row home-block home-side-div">
-                {% include 'FrontendFrontOfficeBundle:Home:home_login.html.twig' with {'invalid_username' : invalid_username} %}
+                {% include 'FrontendFrontOfficeBundle:Home:home_login.html.twig' with {'invalid_username' : invalid_username, 'user':user, 'games':games} %}
             </div>
             
             <div id="home-left-bottom" class="row home-block home-side-div">

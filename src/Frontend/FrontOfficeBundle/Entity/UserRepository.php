@@ -13,19 +13,4 @@ use Doctrine\ORM\Query\ResultSetMapping;
  */
 class UserRepository extends EntityRepository {
 
-    public function getUserInfos($id)
-    {
-        $q = "SELECT u.username, u.firstname, u.lastname, u.email, u.phone, count(gc.id) as nb_games 
-                FROM FrontendFrontOfficeBundle:User u
-                JOIN FrontendFrontOfficeBundle:Seller s 
-                JOIN FrontendFrontOfficeBundle:GameCatalog gc 
-                WHERE u.id=:id";
-                
-        $query = $this->getEntityManager()->createQuery($q)->setParameter('id', $id);
-            
-         
-        $infos = $query->getResult();
-        return $infos;
-    }
-
 }

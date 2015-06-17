@@ -23,6 +23,8 @@ home:
             button: S'inscrire
     profile:
         title: Informations
+        games: '{0, 1} %count% jeu en vente|]1,Inf] %count% jeux en vente'
+        logout: Se déconnecter
     news:
         title: News
     last_adds:

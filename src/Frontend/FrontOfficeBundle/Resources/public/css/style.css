@@ -49,11 +49,15 @@ legend h3 {
 #home-left-top {
 	margin-bottom: 2vh;
 }
-
+#home-profile-avatar {
+	max-width: 70px;
+}
 #home-profile-infos {
 	font-size: 17px;
 	font-weight: bold;
-	padding: 10px;
+	padding-left: 10px;
+	max-width: calc(100% - 70px);
+	line-height: 1;
 }
 
 #home-left-bottom {

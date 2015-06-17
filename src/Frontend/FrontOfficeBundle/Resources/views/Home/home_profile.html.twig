@@ -1,11 +1,15 @@
 {% trans_default_domain 'templatesTranslations' %}
 
 <div class="row">
-	<div class="col-md-5 col-lg-5">
+	<div class="pull-left" id="home-profile-avatar">
 		<img src="bundles/frontendfrontoffice/img/avatar_default.png" alt="profile picture" class="img-responsive" />
 	</div>
-	<div class="col-md-7 col-lg-7" id="home-profile-infos">
-		<div class="row">Friday_XIII</div>
-		<div class="row">13 jeux</div>
+	<div class="pull-left" id="home-profile-infos">
+		<div class="row margin-top-10">{{ user.username }}</div>
+		<div class="row margin-top-10">{{ 'home.profile.games'|transchoice(games|length) }}</div>
+	</div>
+	
+	<div>
+		<a class="btn btn-primary width-parent margin-top-50" href="{{ path('fos_user_security_logout') }}">{{ 'home.profile.logout'|trans }}</a>
 	</div>
 </div>
