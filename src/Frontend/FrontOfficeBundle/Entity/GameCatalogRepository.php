@@ -78,30 +78,49 @@ class GameCatalogRepository extends EntityRepository
 	
 	public function getLastAdds($_nb = 5)
 	{
-	        $qb = $this->createQueryBuilder("gc");
-            
-                $query = $qb->select("gc.id, g.name, p.value as plateform, gc.addedAt, gc.price, u.username")
-                 ->leftJoin('gc.seller', 's')
-                 ->leftJoin('s.user', 'u')
-                 ->leftJoin('gc.game', 'g')
-                 ->leftJoin('g.plateform', 'p')
-                 ->leftJoin('g.game_type', 'gt')
-                 ->leftJoin('g.editor_1', 'e1')
-                 ->leftJoin('g.editor_2', 'e2')
-                 ->leftJoin('g.editor_3', 'e3')
-                 ->OrderBy('gc.addedAt', 'DESC')
-                 ->setMaxResults( $_nb )
-                 ->getQuery();
-                 
-                $last_adds = $query->getResult();
-                
-                foreach($last_adds as $k=>$v)
-                {
-                    $d = $v["addedAt"];
-                    $str_d = $d->format('d-m-Y');
-                    $last_adds[$k]["addedAt"] = $str_d;
-                }
-                
-                return $last_adds;
+        $qb = $this->createQueryBuilder("gc");
+        
+        $query = $qb->select("gc.id, g.name, p.value as plateform, gc.addedAt, gc.price, u.username")
+         ->leftJoin('gc.seller', 's')
+         ->leftJoin('s.user', 'u')
+         ->leftJoin('gc.game', 'g')
+         ->leftJoin('g.plateform', 'p')
+         ->leftJoin('g.game_type', 'gt')
+         ->leftJoin('g.editor_1', 'e1')
+         ->leftJoin('g.editor_2', 'e2')
+         ->leftJoin('g.editor_3', 'e3')
+         ->OrderBy('gc.addedAt', 'DESC')
+         ->setMaxResults( $_nb )
+         ->getQuery();
+         
+        $last_adds = $query->getResult();
+        
+        /* Inutile pour le moment, la date n'est plus affichée
+        foreach($last_adds as $k=>$v)
+        {
+            $d = $v["addedAt"];
+            $str_d = $d->format('d-m-Y');
+            $last_adds[$k]["addedAt"] = $str_d;
+        }
+        */
+        
+        return $last_adds;
 	}
+	
+	public function getGameBestSellers($limit)
+    {
+        $qb = $this->createQueryBuilder("gc");
+        
+        $query = $qb->select("u.username, u.id, count(gc.id) as nb")
+         ->leftJoin('gc.seller', 's')
+         ->leftJoin('s.user', 'u')
+         ->GroupBy('u.id')
+         ->OrderBy('nb', 'DESC')
+         ->setMaxResults( $limit )
+         ->getQuery();
+         
+        $sellers = $query->getResult();
+        
+        return $sellers;
+    }
 }

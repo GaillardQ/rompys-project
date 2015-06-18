@@ -4,9 +4,9 @@
     <tbody>
         {% for g in games %}
             <tr>
-                <td class="home-last-adds-photo"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></td>
-                <td class="home-last-adds-name">{{ g.name }}</td>
-                <td class="home-last-adds-plateform">{{ g.plateform }}</td>
+                <td class="home-last-adds-photo" data-toggle="tooltip" title="{{ g.name }} ({{ g.plateform }})"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></td>
+                <td class="home-last-adds-name" data-toggle="tooltip" title="{{ g.name }} ({{ g.plateform }})">{{ g.name }}</td>
+                <td class="home-last-adds-plateform" data-toggle="tooltip" title="{{ g.name }} ({{ g.plateform }})">{{ g.plateform }}</td>
             </tr>
         {% endfor %}
     </tbody>

@@ -34,6 +34,7 @@ home:
             button: Voir les jeux
     best_sellers:
         title: Meilleurs vendeurs
+        error: Une erreur est survenue.
 
 request:
     title: Mot de passe oublié

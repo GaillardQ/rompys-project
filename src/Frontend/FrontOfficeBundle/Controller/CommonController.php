@@ -91,17 +91,56 @@ class CommonController extends Controller {
     public function getLastAddGamesAction(Request $request)
     {
         try {
-            $output =  $request->request->get('output');
+            $output = $request->request->get('output');
+            $limit = $request->request->get('limit');
             
             $games = $this->getDoctrine()
             ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
-            ->getLastAdds(1000);
+            ->getLastAdds($limit);
             
             if($output == 'home')
             {
                 
                 return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Home:home_last_adds_data.html.twig', array(
-                    'games' => array_slice($games, 0, 10)
+                    'games' => $games
+                ));
+            }
+            else
+            {
+                $response = new Response();
+                $response->headers->set('Content-Type', 'application/json');
+                
+                $response->setContent(json_encode($games));
+                
+                return $response;
+            }
+        }
+        catch(\Exception $e)
+        {
+            $response = new Response();
+            $response->headers->set('Content-Type', 'application/json');
+            $response->setStatusCode(500);
+            $response->setContent(json_encode(array("error" => $e->getMessage())));
+            
+            return $response;
+        }
+    }
+    
+    public function getBestSellersAction(Request $request)
+    {
+        try {
+            $output = $request->request->get('output');
+            $limit = $request->request->get('limit');
+            
+            $sellers = $this->getDoctrine()
+            ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
+            ->getGameBestSellers($limit);
+            
+            if($output == 'home')
+            {
+                
+                return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Home:home_best_sellers_data.html.twig', array(
+                    'sellers' => $sellers
                 ));
             }
             else

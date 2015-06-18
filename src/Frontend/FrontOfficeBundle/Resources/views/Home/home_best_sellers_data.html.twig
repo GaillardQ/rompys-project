@@ -1,0 +1,13 @@
+{% trans_default_domain 'templatesTranslations' %}
+
+<table class="table table-striped table-condensed">
+    <tbody>
+        {% for s in sellers %}
+            <tr>
+                <td class="home-best-sellers-photo" data-toggle="tooltip" title="{{ s.username }}"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></td>
+                <td class="home-best-sellers-name" data-toggle="tooltip" title="{{ s.username }}">{{ s.username }}</td>
+                <td class="home-best-sellers-games" data-toggle="tooltip" title="{{ s.username }}">{{ s.nb }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

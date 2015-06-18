@@ -47,21 +47,29 @@ ul {
 	background-color: #ffffff;
 	color: #2196f3;
 }
-.home-last-adds-photo {
+.home-last-adds-photo,
+.home-best-sellers-photo {
 	width: 20px;
 	vertical-align: middle !important;
 }
-.home-last-adds-name {
+.home-last-adds-name,
+.home-best-sellers-name {
     width: calc(100% - 126px);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    text-align: left;
 }
-.home-last-adds-plateform {
+.home-last-adds-plateform,
+.home-best-sellers-games {
     width: 110px;
     text-overflow: ellipsis;
     vertical-align: middle;
     white-space: nowrap;
+}
+
+#home-best-sellers-list td {
+	padding: 2px;
 }
 
 /** ID **/
@@ -113,8 +121,42 @@ ul {
 #home-right-bottom {
 }
 
-#home-last-adds-list li {
+#home-last-adds-error,
+#home-best-sellers-error {
+	margin: 10px;
+}
+
+#home-last-adds-list li,
+#home-best-sellers-list li {
 	line-height: 2;
+	clear: both;
+}
+
+#home-news {
+	margin-bottom: 20px;
+}
+#home-news-img-div {
+	max-width: 50px;
+	float:left;
+}
+
+#home-news-title-div {
+	font-size: 19px;
+	padding-left: 10px;
+	max-width: calc(100% - 50px);
+	float:left;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#home-news-content-div {
+	margin-top: 10px;
+	font-size: 10px;
+	max-width: 100%;
+	text-align: justify;
+	line-height: 1;
+	border-bottom: 1px solid #aaaaaa;
 	clear: both;
 }
 
@@ -168,9 +210,9 @@ ul {
 
 @media (min-width: 992px)
 {
-	.home-side-div {
+	/*.home-side-div {
 		min-height: 45vh;
-	}
+	}*/
 	.home-center-div {
 		min-height: 92vh;
 	}
@@ -180,18 +222,31 @@ ul {
 	
 	#home-left-top {
 		margin-right: 2vh;
+		min-height: 35vh;
 	}
-	
+	#home-top-left-panel {
+		min-height: 35vh;
+	}
 	#home-left-bottom {
 		margin-right: 2vh;
+		min-height: 55vh;
 	}
-	
+	#home-bottom-left-panel {
+		min-height: 55vh;
+	}
 	#home-right-top {
 		margin-left: 2vh;
+		min-height: 61vh;
 	}
-	
+	#home-top-right-panel {
+		min-height: 61vh;
+	}
 	#home-right-bottom {
 		margin-left: 2vh;
+		min-height: 29vh;
+	}
+	#home-bottom-right-panel {
+		min-height: 29vh;
 	}
 }
 

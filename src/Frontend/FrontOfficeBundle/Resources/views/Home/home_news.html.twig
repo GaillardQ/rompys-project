@@ -1,6 +1,6 @@
 {% trans_default_domain 'templatesTranslations' %}
 
-<div class="panel panel-primary home-panel">
+<div id="home-bottom-left-panel" class="panel panel-primary home-panel">
 	<div class="panel-heading menu-toggle">
 		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#home-left-bottom-content">
 	        <h3 class="panel-title"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp&nbsp{{ 'home.news.title'|trans }}</h3>
@@ -8,6 +8,6 @@
 	    <h3 class="panel-title hidden-xs"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>&nbsp&nbsp{{ 'home.news.title'|trans }}</h3>
 	</div>
 	<div id="home-left-bottom-content" class="panel-body navbar-collapse collapse"> <!--  -->
-			News content
+			{% include 'FrontendFrontOfficeBundle:Home:home_news_data.html.twig' %}
 	</div>
 </div>
