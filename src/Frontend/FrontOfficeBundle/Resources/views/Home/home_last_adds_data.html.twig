@@ -4,9 +4,27 @@
     <tbody>
         {% for g in games %}
             <tr>
-                <td class="home-last-adds-photo" data-toggle="tooltip" title="{{ g.name }} ({{ g.plateform }})"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></td>
-                <td class="home-last-adds-name" data-toggle="tooltip" title="{{ g.name }} ({{ g.plateform }})">{{ g.name }}</td>
-                <td class="home-last-adds-plateform" data-toggle="tooltip" title="{{ g.name }} ({{ g.plateform }})">{{ g.plateform }}</td>
+                {% set img = null %}
+                {% if g.image_1 is not null %}
+                    {% set img = g.image_1 %}
+                {% elseif g.image_2 is not null %}
+                    {% set img = g.image_2 %}
+                {% elseif g.image_3 is not null %}
+                    {% set img = g.image_3 %}
+                {% endif %}
+                <td class="home-last-adds-photo hidden-xs hidden-sm" data-toggle="tooltip" title="{{ g.name }} ({{ g.plateform }}) : {{ g.price }}€">
+                    {% if img is not null %}
+                        <a id="game-{{ g.id }}" href="#" onclick="return false;" data-html="true" data-trigger="focus" data-placement="left" data-toggle="popover" title="{{ g.name }} ({{ g.plateform }})" data-content="<img class='margin-auto' src='pictures/{{ g.game_id }}/{{ g.image_1 }}' alt='Game picture' />"> 
+                            <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+                        </a>
+                    {% endif %}
+                </td>
+                <td class="home-last-adds-name" data-toggle="tooltip" title="{{ g.name }} ({{ g.plateform }}) : {{ g.price }}€">
+                    {{ g.name }}
+                </td>
+                <td class="home-last-adds-plateform" data-toggle="tooltip" title="{{ g.name }} ({{ g.plateform }}) : {{ g.price }}€">
+                    {{ g.plateform }}
+                </td>
             </tr>
         {% endfor %}
     </tbody>

@@ -34,6 +34,12 @@ frontend_frontoffice_profile_update:
     requirements:
           _locale: fr
           
+frontend_frontoffice_search_game:
+    pattern: /{_locale}/search
+    defaults: { _controller: FrontendFrontOfficeBundle:Catalog:index, _locale: fr }
+    requirements:
+          _locale: fr
+          
 frontend_frontoffice_common_get_all_games:
     pattern:  /ws/all_games
     defaults: { _controller: FrontendFrontOfficeBundle:Common:getAllGames}

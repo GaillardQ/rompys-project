@@ -1,0 +1,43 @@
+{% trans_default_domain 'templatesTranslations' %}
+
+<div id="search-menu" class="panel panel-primary home-panel">
+    <div class="panel-heading menu-toggle">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#search-filter-menu">
+	        <h3 class="panel-title"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span>&nbsp&nbsp{{ 'catalog.filter.title'|trans }}</h3>
+	    </button>
+	    <h3 class="panel-title hidden-xs"><span class="glyphicon glyphicon-filter" aria-hidden="true"></span>&nbsp&nbsp{{ 'catalog.filter.title'|trans }}</h3>
+	</div>
+	<div id="search-filter-menu" class="panel-body padding-bottom-20 navbar-collapse collapse">
+		<div id="tags-list"></div>
+        <div id="filter-form">
+            <div class="form-group margin-top-20">
+                <label for="tags-input">Tags</label>
+                <input type="text" class="form-control" id="tags-input" placeholder="Enter tag">
+            </div>
+            <div class="form-group margin-top-20">
+                <label >Media</label>
+                <div class="checkbox">
+                    <label>
+                        <input id="video-input" type="checkbox"> Video
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input id="text-input" type="checkbox"> Text
+                    </label>
+                </div>
+            </div>
+            <div class="form-group margin-top-20">
+                <label for="source-input">Source</label>
+                <select id="source-input" class="form-control">
+                    <option value="" selected>Select a source</option>
+                    <option value="o">Official</option>
+                    <option value="c">Community</option>
+                </select>
+            </div>
+            <div class="align-center margin-top-50">
+                <button role="button" onclick="alert('filtrage');" class="btn btn-primary">Filtering</button>
+            </div>
+        </div>
+	</div>
+</div>

@@ -25,10 +25,10 @@
 				</div>
 			</div>
 			<div class="row">
-				<form class="" id="home-search-form">
+				<form class="" id="home-search-form" action="{{ path("frontend_frontoffice_search_game") }}" method="POST">
 					<div class="col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
 						<div class="input-group input-group-lg width-parent">
-							<input id="input-search-game" type="text" class="" placeholder="Chercher un jeu..." aria-describedby="search-game-addon">
+							<input id="input-search-game" name="game-name" type="text" class="" placeholder="Chercher un jeu..." aria-describedby="search-game-addon">
 							<span class="input-search-game" id="search-game-addon">
 								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 							</span>

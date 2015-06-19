@@ -20,7 +20,7 @@ ul {
 /** 
 	CLASS 
 **/
-.page {
+.home {
 	min-height: 92vh;
 }
 .home-block {
@@ -66,6 +66,19 @@ ul {
     text-overflow: ellipsis;
     vertical-align: middle;
     white-space: nowrap;
+}
+
+.home-last-adds-photo .popover-content {
+	text-align: center;
+}
+
+.home-last-adds-photo .popover-content img {
+	max-width: 100px;
+}
+
+.page {
+	margin-top: 65px !important;
+    min-height: 85vh;
 }
 
 #home-best-sellers-list td {
@@ -206,6 +219,10 @@ ul {
 	#home-right-top {
 		margin-top: 2vh;
 	}
+	
+	#search-menu {
+		margin-bottom: 4vh;
+	}
 }
 
 @media (min-width: 992px)
@@ -248,6 +265,9 @@ ul {
 	#home-bottom-right-panel {
 		min-height: 29vh;
 	}
+	#search-content {
+		margin-left: 2vh;
+	}
 }
 
 /**
@@ -262,6 +282,9 @@ ul {
 }
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
     padding: 0;
+}
+.navbar-toggle {
+	color: #ffffff;
 }
 .row{
 	margin: 0;

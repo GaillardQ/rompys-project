@@ -13,7 +13,7 @@ function getLastAddGames()
     .done( function( res ) {
         $("#home-last-adds-error").addClass('hidden');
         $("#home-last-adds-list").html(res);
-        
+        $('[data-toggle="popover"]').popover()
     })
     .fail( function(err) {
         $("#home-last-adds-error").removeClass('hidden');
