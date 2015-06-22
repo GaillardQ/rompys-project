@@ -7,7 +7,7 @@
             {% include 'FrontendFrontOfficeBundle:Catalog:menu.html.twig' %}
         </div>
         <div class="col-sm-8 col-md-9">
-            {% include 'FrontendFrontOfficeBundle:Catalog:catalog.html.twig' %}
+            {% include 'FrontendFrontOfficeBundle:Catalog:catalog.html.twig' with {'games': games} %}
         </div>
     </div>
     

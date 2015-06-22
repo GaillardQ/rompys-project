@@ -81,8 +81,17 @@ ul {
     min-height: 85vh;
 }
 
-#home-best-sellers-list td {
-	padding: 2px;
+.search-price-input {
+    width: calc(50% - 40px);
+    text-align: center;
+}
+
+.search-game-block {
+	border-radius: 5px;
+	border: medium none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    padding: 10px !important;
+    margin: 5px;
 }
 
 /** ID **/
@@ -171,6 +180,17 @@ ul {
 	line-height: 1;
 	border-bottom: 1px solid #aaaaaa;
 	clear: both;
+}
+
+#home-best-sellers-list td {
+	padding: 2px;
+}
+
+#search-content {
+	margin-bottom: 0px;
+	min-height: 87vh;
+	background-color: #ffffff;
+	color: #2196f3;
 }
 
 .menu-toggle {

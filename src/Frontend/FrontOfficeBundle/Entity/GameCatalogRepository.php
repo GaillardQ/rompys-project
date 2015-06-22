@@ -123,4 +123,29 @@ class GameCatalogRepository extends EntityRepository
         
         return $sellers;
     }
+    
+    public function searchGamesByName($name)
+    {
+        $qb = $this->createQueryBuilder("gc");
+            
+        $query = $qb->select('g.id as game_id, g.image_1, g.image_2, g.image_3, g.name, g.released_year as year, s.value as serie, p.value as plateform, gt.value as game_type, e1.value as editor_1, e2.value as editor_2, e3.value as editor_3, 
+                            gc.price, gc.comment, gc.alternative_name, gc.language, gc.game_package, gc.blister, gc.notice, st.value as state, gc.zone, u.id as user_id, u.username, u.email')
+        ->leftJoin('gc.game', 'g')
+        ->leftJoin('g.serie', 's')
+        ->leftJoin('gc.seller', 'se')
+        ->leftJoin('se.user', 'u')
+        ->leftJoin('g.plateform', 'p')
+        ->leftJoin('g.game_type', 'gt')
+        ->leftJoin('g.editor_1', 'e1')
+        ->leftJoin('g.editor_2', 'e2')
+        ->leftJoin('g.editor_3', 'e3')
+        ->leftJoin('gc.state', 'st')
+        ->where('g.name LIKE \'%'.$name.'%\'')
+        ->orwhere('gc.alternative_name LIKE \'%'.$name.'%\'')
+        ->orderby('g.name', 'DESC')
+        ->getQuery();
+        
+        $games = $query->getResult();
+        return $games;
+    }
 }

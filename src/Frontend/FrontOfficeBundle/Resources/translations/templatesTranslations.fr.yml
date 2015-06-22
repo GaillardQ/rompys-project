@@ -76,7 +76,45 @@ register_confirmed:
     title: "Inscription réussie"
     message: "Vous avez bien été inscrit sur notre site, vous pouvez dès à présent compléter votre catalogue ou remplir votre panier."
     button: "Accueil"
-    
+
+catalog:
+    filter:
+        title: Filtres
+        name:
+            placeholder: Nom du jeu...
+        platform:
+            placeholder: Plateforme...
+        gametype:
+            placeholder: Type de jeu...
+        editor:
+            placeholder: Editeur...
+        zone:
+            placeholder: Zone...
+            ntsc: NTSC
+            pal: PAL
+            jap: JAP
+        state:
+            placeholder: Etat du jeu...
+        package:
+            placeholder: Package
+            yes: Dans sa boite
+            no: Pas de boite
+            nocare: Peu importe
+        blister:
+            placeholder: Blister
+            yes: Emballé
+            no: Non emballé
+            nocare: Peu importe
+        notice:
+            placeholder: Notice
+            yes: Avec la notice
+            no: Sans la notice
+            nocare: Peu importe
+        price:
+            label: < Prix (€) < 
+        button: Chercher
+        
+            
 mail:
     registered:
         subject: "Rompy's Project : Inscription réussie"
@@ -87,3 +125,17 @@ mail:
 
             Cordialement,
             Rompy.
+            
+db:
+    game_state:
+        very_good: Très bon état
+        good: Bon état
+        usage: Etat d'usage
+        bad: Mauvais état
+    game_type:
+        test: Test
+        action: Action
+        adventure: Aventure
+        rpg: RPG
+        simulation: Simulation
+        strategy: Stratégie

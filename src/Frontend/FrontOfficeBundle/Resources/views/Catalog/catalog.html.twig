@@ -1,9 +1,9 @@
 {% trans_default_domain 'templatesTranslations' %}
 
-<div id="search-content" class="panel panel-primary home-panel-center">
+<div id="search-content" class="panel panel-primary">
 	<div class="panel-body">
 		<div id="home_content">
-			Test
+			{% include 'FrontendFrontOfficeBundle:Catalog:catalog_data.html.twig' with {'games': games} %}
 		</div>
 	</div>
 </div>
