@@ -9,74 +9,125 @@
 	</div>
 	<div id="search-filter-menu" class="panel-body padding-bottom-20 navbar-collapse collapse">
         <div id="filter-form">
-            <div class="form-group margin-top-20">
-                <input type="text" class="form-control" id="name-input" placeholder="{{ 'catalog.filter.name.placeholder'|trans }}">
-            </div>
-            <div class="form-group margin-top-20">
-                <select id="plateform-input" class="form-control">
-                    <option value="" selected>{{ 'catalog.filter.platform.placeholder'|trans }}</option>
-                    <option value="1">PS3</option>
-                    <option value="2">Wii</option>
-                    <option value="3">PC</option>
-                    <option value="4">NES</option>
-                </select>
-            </div>
-            <div class="form-group margin-top-20">
-                <select id="gametype-input" class="form-control">
-                    <option value="0" selected>{{ 'catalog.filter.gametype.placeholder'|trans }}</option>
-                    {% for t in game_types %}
-                        <option value="{{ t.id }}">{{ t.value|trans }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-group margin-top-20">
-                <input type="text" class="form-control" id="editor-input" placeholder="{{ 'catalog.filter.editor.placeholder'|trans }}">
-            </div>
-            <div class="form-group margin-top-20">
-                <select id="zone-input" class="form-control">
-                    <option value="" selected>{{ 'catalog.filter.zone.placeholder'|trans }}</option>
-                    <option value="0">{{ 'catalog.filter.zone.pal'|trans }}</option>
-                    <option value="1">{{ 'catalog.filter.zone.ntsc'|trans }}</option>
-                    <option value="2">{{ 'catalog.filter.zone.jap'|trans }}</option>
-                </select>
-            </div>
-            <div class="form-group margin-top-20">
-                <select id="state-input" class="form-control">
-                    <option value="0" selected>{{ 'catalog.filter.state.placeholder'|trans }}</option>
-                    {% for s in game_states %}
-                        <option value="{{ s.id }}">{{ s.value|trans }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="form-group margin-top-20">
-                <select id="package-input" class="form-control">
-                    <option value="" selected>{{ 'catalog.filter.package.placeholder'|trans }}</option>
-                    <option value="1">{{ 'catalog.filter.package.yes'|trans }}</option>
-                    <option value="0">{{ 'catalog.filter.package.no'|trans }}</option>
-                    <option value="-1">{{ 'catalog.filter.package.nocare'|trans }}</option>
-                </select>
-            </div>
-            <div class="form-group margin-top-20">
-                <select id="blister-input" class="form-control">
-                    <option value="" selected>{{ 'catalog.filter.blister.placeholder'|trans }}</option>
-                    <option value="1">{{ 'catalog.filter.blister.yes'|trans }}</option>
-                    <option value="0">{{ 'catalog.filter.blister.no'|trans }}</option>
-                    <option value="-1">{{ 'catalog.filter.blister.nocare'|trans }}</option>
-                </select>
-            </div><div class="form-group margin-top-20">
-                <select id="notice-input" class="form-control">
-                    <option value="" selected>{{ 'catalog.filter.notice.placeholder'|trans }}</option>
-                    <option value="1">{{ 'catalog.filter.notice.yes'|trans }}</option>
-                    <option value="0">{{ 'catalog.filter.notice.no'|trans }}</option>
-                    <option value="-1">{{ 'catalog.filter.notice.nocare'|trans }}</option>
-                </select>
-            </div>
-            <div class="row">
-                <input type="text" id="pricemin-input" class="search-price-input"/> {{ 'catalog.filter.price.label'|trans }} <input type="text" id="pricemax-input" class="search-price-input" />
-            </div>
-            <div class="align-center margin-top-50">
-                <button role="button" onclick="alert('filtrage');" class="btn btn-primary">{{ 'catalog.filter.button'|trans }}</button>
-            </div>
+            <form id="search-game-form" action="{{ path("frontend_frontoffice_search_game") }}" method="POST">
+                <div class="form-group margin-top-20">
+                    {% if filters.name is defined %}
+                        <input type="text" class="form-control" id="name-input" name="name-input" value="{{ filters.name }}" placeholder="{{ 'catalog.filter.name.placeholder'|trans }}">
+                    {% else %}
+                        <input type="text" class="form-control" id="name-input" name="name-input" placeholder="{{ 'catalog.filter.name.placeholder'|trans }}">
+                    {% endif %}
+                </div>
+                <div class="form-group margin-top-20">
+                    <select id="plateform-input" name="plateform-input" class="form-control">
+                        <option value="-5" selected>{{ 'catalog.filter.platform.placeholder'|trans }}</option>
+                        {% for p in plateforms %}
+                            <option value="{{ p.id }}">{{ p.value }}</option>
+                        {% endfor %}
+                    </select>
+                    <script type="text/javascript">
+                        {% if filters.plateform is defined %}
+                            $("#plateform-input").val({{ filters.plateform }});
+                        {% endif %}
+                    </script>
+                </div>
+                <div class="form-group margin-top-20">
+                    <select id="gametype-input" name="gametype-input" class="form-control">
+                        <option value="-5" selected>{{ 'catalog.filter.gametype.placeholder'|trans }}</option>
+                        {% for t in game_types %}
+                            <option value="{{ t.id }}" >{{ t.value|trans }}</option>
+                        {% endfor %}
+                    </select>
+                    <script type="text/javascript">
+                        {% if filters.gametype is defined %}
+                            $("#gametype-input").val({{ filters.gametype }});
+                        {% endif %}
+                    </script>
+                </div>
+                <div class="form-group margin-top-20">
+                    {% if filters.editor is defined %}
+                        <input type="text" class="form-control" id="editor-input" name="editor-input" placeholder="{{ 'catalog.filter.editor.placeholder'|trans }}" value="{{ filters.editor }}">
+                    {% else %}
+                        <input type="text" class="form-control" id="editor-input" name="editor-input" placeholder="{{ 'catalog.filter.editor.placeholder'|trans }}">
+                    {% endif %}
+                </div>
+                <div class="form-group margin-top-20">
+                    <select id="zone-input" name="zone-input" class="form-control">
+                        <option value="-5" selected>{{ 'catalog.filter.zone.placeholder'|trans }}</option>
+                        <option value="0">{{ 'catalog.filter.zone.pal'|trans }}</option>
+                        <option value="1">{{ 'catalog.filter.zone.ntsc'|trans }}</option>
+                        <option value="2">{{ 'catalog.filter.zone.jap'|trans }}</option>
+                    </select>
+                    <script type="text/javascript">
+                        {% if filters.zone is defined %}
+                            $("#zone-input").val({{ filters.zone }});
+                        {% endif %}
+                    </script>
+                </div>
+                <div class="form-group margin-top-20">
+                    <select id="state-input" name="state-input" class="form-control">
+                        <option value="-5" selected>{{ 'catalog.filter.state.placeholder'|trans }}</option>
+                        {% for s in game_states %}
+                            <option value="{{ s.id }}">{{ s.value|trans }}</option>
+                        {% endfor %}
+                    </select>
+                    <script type="text/javascript">
+                        {% if filters.name is defined %}
+                            $("#state-input").val({{ filters.state }});
+                        {% endif %}
+                    </script>
+                </div>
+                <div class="form-group margin-top-20">
+                    <select id="package-input" name="package-input" class="form-control">
+                        <option value="-5" selected>{{ 'catalog.filter.package.placeholder'|trans }}</option>
+                        <option value="1">{{ 'catalog.filter.package.yes'|trans }}</option>
+                        <option value="0">{{ 'catalog.filter.package.no'|trans }}</option>
+                    </select>
+                    <script type="text/javascript">
+                        {% if filters.package is defined %}
+                            $("#package-input").val({{ filters.package }});
+                        {% endif %}
+                    </script>
+                </div>
+                <div class="form-group margin-top-20">
+                    <select id="blister-input" name="blister-input" class="form-control">
+                        <option value="-5" selected>{{ 'catalog.filter.blister.placeholder'|trans }}</option>
+                        <option value="1">{{ 'catalog.filter.blister.yes'|trans }}</option>
+                        <option value="0">{{ 'catalog.filter.blister.no'|trans }}</option>
+                    </select>
+                    <script type="text/javascript">
+                        {% if filters.blister is defined %}
+                            $("#blister-input").val({{ filters.blister }});
+                        {% endif %}
+                    </script>
+                </div><div class="form-group margin-top-20">
+                    <select id="notice-input" name="notice-input" class="form-control">
+                        <option value="-5" selected>{{ 'catalog.filter.notice.placeholder'|trans }}</option>
+                        <option value="1">{{ 'catalog.filter.notice.yes'|trans }}</option>
+                        <option value="0">{{ 'catalog.filter.notice.no'|trans }}</option>
+                    </select>
+                    <script type="text/javascript">
+                        {% if filters.notice is defined %}
+                            $("#notice-input").val({{ filters.notice }});
+                        {% endif %}
+                    </script>
+                </div>
+                <div class="row">
+                    {% if filters.pricemin is defined %}
+                        <input type="text" id="pricemin-input" name="pricemin-input" class="search-price-input" value="{{ filters.pricemin }}"/>
+                    {% else %}
+                        <input type="text" id="pricemin-input" name="pricemin-input" class="search-price-input"/>
+                    {% endif %}
+                    {{ 'catalog.filter.price.label'|trans }} 
+                    {% if filters.pricemax is defined %}
+                        <input type="text" id="pricemax-input" name="pricemax-input" class="search-price-input" value="{{ filters.pricemax }}"/>
+                    {% else %}
+                        <input type="text" id="pricemax-input" name="pricemax-input" class="search-price-input" />
+                    {% endif %}    
+                </div>
+                <div class="align-center margin-top-50">
+                    <input type="submit" class="btn btn-primary" value="{{ 'catalog.filter.button'|trans }}" />
+                </div>
+            </form>
         </div>
 	</div>
 </div>

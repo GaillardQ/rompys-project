@@ -6,9 +6,24 @@
         
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <meta name="author" content="Quenting Gaillard" />
+        <meta name="copyright" content="©Rompy" />
+        
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:type" content="article" />
+        
+        <meta property="og:site_name" content="Quentin Gaillard" />
+        
+        {% block meta %}
+            <meta name="description" content="Rompy's Project : vente de jeux vidéos récents et rétros de particuliers à particuliers" />
+            <meta property="og:description" content="Rompy's Project : vente de jeux vidéos récents et rétros de particuliers à particuliers" />
+            
+            <title>{{ 'common.head_title'|trans }}</title>
+            <meta property="og:title" content="{{ 'common.head_title'|trans }}" />
+        {% endblock %}
     
-    
-        <title>{% block title %} {{ 'common.head_title'|trans }} {% endblock %}</title>
+        
     
         {% block stylesheets %}
             <link rel="stylesheet" type="text/css" href="/bootstrap.min.css"/>

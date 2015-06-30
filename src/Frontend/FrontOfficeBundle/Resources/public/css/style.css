@@ -82,7 +82,7 @@ ul {
 }
 
 .search-price-input {
-    width: calc(50% - 40px);
+    width: calc(50% - 46px);
     text-align: center;
 }
 
@@ -93,7 +93,43 @@ ul {
     padding: 10px !important;
     margin: 5px;
 }
-
+.search-game-block a,
+.search-game-block a:hover,
+.search-game-block a:focus {
+	text-decoration: none;
+	color: #2196f3;
+	outline: none;
+}
+.search-game-name {
+	font-size: 16px;
+	font-weight: bolder;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}
+.search-game-img {
+	width: 100%;
+}
+.search-game-plateform {
+	font-size: 12px;
+}
+.search-game-type {
+	font-size: 12px;
+	color: #888888;
+}
+.search-game-editor {
+	font-size: 10px;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #bbbbbb;
+}
+.search-game-sellers {
+	font-weight: bold;
+	font-size: 10px;
+	color: #999999;
+}
 /** ID **/
 #home-left-top {
 	margin-bottom: 2vh;

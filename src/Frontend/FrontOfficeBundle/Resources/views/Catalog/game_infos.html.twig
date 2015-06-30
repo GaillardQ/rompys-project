@@ -1,0 +1,22 @@
+{% trans_default_domain 'templatesTranslations' %}
+<div class="col-sm-12">
+    <div class="row">
+        <div class="col-sm-12 col-sm-6 col-md-3 col-lg-2">
+            <div class="search-game-img">
+                {# Get the first image available #}
+                {% set img = null %}
+                {% if game.image_1 is not null %}
+                    {% set img = game.image_1 %}
+                {% elseif game.image_2 is not null %}
+                    {% set img = game.image_2 %}
+                {% elseif game.image_3 is not null %}
+                    {% set img = game.image_3 %}
+                {% endif %}
+	            <img src="/pictures/{{ game.id }}/{{ img }}" alt="{{ game.name }}" class="img-responsive" />
+	        </div>
+        </div>
+        <div class="col-sm-12 col-sm-6 col-md-9 col-lg-10">
+            <h6>{{ game.name }}</h6>
+        </div>
+    </div>
+</div>

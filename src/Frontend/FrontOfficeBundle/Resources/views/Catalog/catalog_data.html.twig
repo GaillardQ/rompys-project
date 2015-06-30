@@ -1,8 +1,56 @@
+{% trans_default_domain 'templatesTranslations' %}
 <div class="row">
     {% for g in games %}
+        
+        {# Get the first image available #}
+        {% set img = null %}
+        {% if g.image_1 is not null %}
+            {% set img = g.image_1 %}
+        {% elseif g.image_2 is not null %}
+            {% set img = g.image_2 %}
+        {% elseif g.image_3 is not null %}
+            {% set img = g.image_3 %}
+        {% endif %}
+        
     	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
     	    <div class="search-game-block">
-    	        {{ g.name }}
+    	        <a href="{{ path('frontend_frontoffice_game_page', {'id': g.game_id, 'name':g.name}) }}">
+        	        <div class="search-game-name" data-toggle="tooltip" title="{{ g.name }}">
+        	            {{ g.name }}
+                    </div>
+        	        <div class="search-game-img">
+        	            <img src="/pictures/{{ g.game_id }}/{{ img }}" alt="{{ g.name }}" class="img-responsive" />
+        	        </div>
+        	        <div class="search-game-plateform">
+        	            {{ g.plateform }}
+        	        </div>
+        	        <div class="search-game-type">
+        	            {{ g.game_type|trans }}
+        	        </div>
+        	        <div class="search-game-editor">
+        	            {% if g.editor_1 is not null %}
+        	                {{ g.editor_1 }}
+        	                {% if g.editor_2 is not null or g.editor_3 is not null %}
+        	                    &nbsp/&nbsp
+        	                {% endif %}
+                        {% endif %}
+                        {% if g.editor_2 is not null %}
+        	                {{ g.editor_2 }}
+        	                {% if g.editor_3 is not null %}
+        	                    &nbsp/&nbsp
+        	                {% endif %}
+                        {% endif %}
+                        {% if g.editor_3 is not null %}
+        	                {{ g.editor_3 }}
+                        {% endif %}
+        	        </div>
+        	        <div class="search-game-price">
+        	            {{ 'catalog.games.from_price'|trans }} <b>{{ g.min_price }} €</b>
+        	        </div>
+        	        <div class="search-game-sellers">
+        	            {{ 'catalog.games.nb_sellers'|transchoice(g.nb_sellers) }}
+        	        </div>
+        	    </a>
             </div>
     	</div>
     {% endfor %}

@@ -42,6 +42,7 @@ class GameRepository extends EntityRepository
                         e1.id as editor_1_id, e1.value as editor_1_val, 
                         e2.id as editor_2_id, e2.value as editor_2_val, 
                         e3.id as editor_3_id, e3.value as editor_3_val, 
+                        g.image_1, g.image_2, g.image_3,
                         g.released_year')
          ->leftJoin('g.serie', 's')
          ->leftJoin('g.plateform', 'p')

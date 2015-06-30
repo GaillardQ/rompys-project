@@ -1,6 +1,19 @@
 {% extends 'FrontendFrontOfficeBundle::baseMenu.html.twig' %}
 {% trans_default_domain 'templatesTranslations' %}
 
+{% block meta %}
+    <meta name="description" content="Rompy's Project : recherche de jeux selon différents critères (nom, éditeur, plateforme, genre, ...)" />
+    <meta property="og:description" content="Rompy's Project : recherche de jeux selon différents critères (nom, éditeur, plateforme, genre, ...)" />
+    
+    <title>Rompys Project : recherche</title>
+    <meta property="og:title" content="Rompys Project : recherche" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="bundles/frontendfrontoffice/js/page/90_catalog.js"></script>
+{% endblock %}
+
 {% block body %}
     <div id="catalog" class="row page">
         <div class="col-sm-4 col-md-3">

@@ -1,0 +1,15 @@
+{% trans_default_domain 'templatesTranslations' %}
+<div class="col-sm-12">
+    <div class="row">
+        <div class="col-sm-12">
+            <table>
+                {% for g in games %}
+                    <tr>
+                        <td>{{ g.username }}</td>
+                        <td>{{ g.price }} €</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>

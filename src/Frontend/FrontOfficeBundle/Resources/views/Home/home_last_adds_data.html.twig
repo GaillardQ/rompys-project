@@ -14,7 +14,7 @@
                 {% endif %}
                 <td class="home-last-adds-photo hidden-xs hidden-sm" data-toggle="tooltip" title="{{ g.name }} ({{ g.plateform }}) : {{ g.price }}€">
                     {% if img is not null %}
-                        <a id="game-{{ g.id }}" href="#" onclick="return false;" data-html="true" data-trigger="focus" data-placement="left" data-toggle="popover" title="{{ g.name }} ({{ g.plateform }})" data-content="<img class='margin-auto' src='pictures/{{ g.game_id }}/{{ g.image_1 }}' alt='Game picture' />"> 
+                        <a id="game-{{ g.id }}" href="#" onclick="return false;" data-html="true" data-trigger="focus" data-placement="left" data-toggle="popover" title="{{ g.name }} ({{ g.plateform }})" data-content="<img class='margin-auto' src='pictures/{{ g.game_id }}/{{ img }}' alt='Game picture' />"> 
                             <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
                         </a>
                     {% endif %}

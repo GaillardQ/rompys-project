@@ -102,17 +102,18 @@ catalog:
             nocare: Peu importe
         blister:
             placeholder: Blister
-            yes: Emballé
-            no: Non emballé
-            nocare: Peu importe
+            yes: Sous blister
+            no: Pas de blister
         notice:
             placeholder: Notice
             yes: Avec la notice
             no: Sans la notice
-            nocare: Peu importe
         price:
-            label: < Prix (€) < 
+            label: <= Prix (€) <= 
         button: Chercher
+    games:
+        from_price: A partir de 
+        nb_sellers: '{0, 1} %count% vendeur|]1,Inf] %count% vendeurs'
         
             
 mail:
