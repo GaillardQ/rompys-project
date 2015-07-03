@@ -4,17 +4,15 @@
         
         {# Get the first image available #}
         {% set img = null %}
-        {% if g.image_1 is not null %}
-            {% set img = g.image_1 %}
-        {% elseif g.image_2 is not null %}
-            {% set img = g.image_2 %}
-        {% elseif g.image_3 is not null %}
-            {% set img = g.image_3 %}
+        {% if g.image_game is not null %}
+            {% set img = g.image_game %}
+        {% else %}
+            {% set img = 'test.jpg' %}
         {% endif %}
         
     	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
     	    <div class="search-game-block">
-    	        <a href="{{ path('frontend_frontoffice_game_page', {'id': g.game_id, 'name':g.name}) }}">
+    	        <a href="{{ path('frontend_frontoffice_game_page', {'id': g.game_id, 'name':g.name|url_encode}) }}">
         	        <div class="search-game-name" data-toggle="tooltip" title="{{ g.name }}">
         	            {{ g.name }}
                     </div>

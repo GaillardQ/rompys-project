@@ -1,22 +1,73 @@
 {% trans_default_domain 'templatesTranslations' %}
 <div class="col-sm-12">
     <div class="row">
-        <div class="col-sm-12 col-sm-6 col-md-3 col-lg-2">
-            <div class="search-game-img">
-                {# Get the first image available #}
-                {% set img = null %}
-                {% if game.image_1 is not null %}
-                    {% set img = game.image_1 %}
-                {% elseif game.image_2 is not null %}
-                    {% set img = game.image_2 %}
-                {% elseif game.image_3 is not null %}
-                    {% set img = game.image_3 %}
-                {% endif %}
-	            <img src="/pictures/{{ game.id }}/{{ img }}" alt="{{ game.name }}" class="img-responsive" />
-	        </div>
-        </div>
-        <div class="col-sm-12 col-sm-6 col-md-9 col-lg-10">
-            <h6>{{ game.name }}</h6>
+        <div class="panel panel-primary">
+        	<div class="panel-heading">
+        	    <h5 class="panel-title">
+        	        <span class="glyphicon glyphicon-barcode" aria-hidden="true"></span>
+        	        &nbsp&nbsp
+        	        {{ 'game_card.title'|trans }}
+        	   </h5>
+        	</div>
+        	<div class="panel-body no-padding">
+        		<div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 game-infos-img">
+                    <div>
+                        {# Get the first image available #}
+                        {% set img = null %}
+                        {% if game.image_game is not null %}
+                            {% set img = game.image_game %}
+                        {% else %}
+                            {% set img = 'test.jpg' %}
+                        {% endif %}
+        	            <img src="/pictures/{{ game.id }}/{{ img }}" alt="{{ game.name }}" class="img-responsive margin-auto" />
+        	        </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-9 col-lg-10 game-infos-div">
+                    <h6>{{ game.name }}</h6>
+                    <div class="search-game-plateform">
+        	            {{ game.plateform_val }}
+        	        </div>
+        	        <div class="search-game-type">
+        	            {{ game.game_type_val|trans }}
+        	        </div>
+        	        <div class="search-game-editor">
+        	            {% if game.editor_1_val is not null %}
+        	                {{ game.editor_1_val }}
+        	                {% if game.editor_2_val is not null or game.editor_3_val is not null %}
+        	                    &nbsp/&nbsp
+        	                {% endif %}
+                        {% endif %}
+                        {% if game.editor_2_val is not null %}
+        	                {{ game.editor_2_val }}
+        	                {% if game.editor_3_val is not null %}
+        	                    &nbsp/&nbsp
+        	                {% endif %}
+                        {% endif %}
+                        {% if game.editor_3_val is not null %}
+        	                {{ game.editor_3_val }}
+                        {% endif %}
+        	        </div>
+        	        <div class="search-game-year">
+        	            {{ game.released_year }}
+        	        </div>
+        	        <div class="margin-top-20">
+        	            <table>
+        	               <tr>
+        	                   <td>{{ 'game_card.infos.dispo'|trans }}</td>
+        	                   <td class="align-right weight-bolder">{{ stats.nb }}</td>
+        	               </tr>
+        	               <tr>
+        	                   <td>{{ 'game_card.infos.min_price'|trans }}</td>
+        	                   <td class="align-right weight-bolder">{{ stats.min }}€</td>
+        	               </tr>
+        	               <tr>
+        	                   <td>{{ 'game_card.infos.average_price'|trans }}</td>
+        	                   <td class="align-right weight-bolder">{{ stats.avg }}€</td>
+        	               </tr>
+        	            </table>
+        	        </div>
+                </div>
+        	</div>
         </div>
     </div>
 </div>

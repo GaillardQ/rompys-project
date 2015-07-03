@@ -114,7 +114,13 @@ catalog:
     games:
         from_price: A partir de 
         nb_sellers: '{0, 1} %count% vendeur|]1,Inf] %count% vendeurs'
-        
+
+game_card:
+    title: Informations sur le jeu
+    infos:
+        dispo: "Exemplaires disponibles :"
+        min_price: "Disponible à partir de :"
+        average_price: "Tendance prix :"
             
 mail:
     registered:

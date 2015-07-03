@@ -11,11 +11,11 @@ class CatalogController extends Controller {
     {    
         $plateforms =  $this->get('Doctrine')
                             ->getRepository('FrontendFrontOfficeBundle:Plateform')
-                            ->findAll();
+                            ->findAllOrdered();
                             
         $gameTypes =  $this->get('Doctrine')
                             ->getRepository('FrontendFrontOfficeBundle:GameType')
-                            ->findAll();
+                            ->findAllOrdered();
                             
         $editors =  $this->get('Doctrine')
                             ->getRepository('FrontendFrontOfficeBundle:Editor')
@@ -48,8 +48,8 @@ class CatalogController extends Controller {
         if($pricemin != '')                         $filters["pricemin"]    = $pricemin;
         if($pricemax != '')                         $filters["pricemax"]    = $pricemax;
         
-        $games = array();                   
-        if($name != '' || $plateform != -5 || $gametype != -5 || $editor != '' || $zone != -5 || $state != -5 || $blister != -5 || $notice != -5 || $pricemin != '' || $pricemax != '')
+        $games = array();  
+        if($name != null || $plateform != null || $gametype != null || $editor != null || $zone != null || $state != null || $blister != null || $notice != null || $pricemin != null || $pricemax != null)
         {
             $games = $this->get('Doctrine')
                             ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
@@ -74,11 +74,35 @@ class CatalogController extends Controller {
         $gamesCatalog = $this->get('Doctrine')
                             ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
                             ->findFormatteGameCatalog($id);
+        $sum = 0;                 
+        $nb = 0;
+        $min = -1;
+        $avg = 0;
+        foreach($gamesCatalog as $k=>$v)
+        {
+            $nb++;
+            $p = $v["price"];
+            if($min == -1 || $p < $min)
+            {
+                $min = $p;
+            }
+            $sum += $p;
+        }
+        if($nb != 0)
+        {
+            $avg = round($sum / $nb, 2);
+        }
+        $stats = array(
+            "nb"  => $nb,
+            "min" => $min,
+            "avg" => $avg,
+        );
 
         return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Catalog:game_card.html.twig', array(
             "name" => $name,
             "games_catalog"=> $gamesCatalog,
-            "game" => $game
+            "game" => $game,
+            "stats"=>$stats
         ));
     }
 

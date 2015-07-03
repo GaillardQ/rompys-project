@@ -12,17 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class PlateformRepository extends EntityRepository
 {
-    public function array_findAll()
-    {
-        $allPlateforms = $this->findAll();
-        
-        $plateforms = array();
-        foreach($allPlateforms as $k=>$p)
-        {
-            $plateforms[$k]["id"] = $p->getId();
-            $plateforms[$k]["value"] = $p->getValue();
-        }
-        
-        return $plateforms;
+    public function findAllOrdered() {
+        $qb = $this->createQueryBuilder("p");
+            
+        $query = $qb->select('p.id, p.value')
+         ->orderby('p.value', 'ASC')
+         ->getQuery();
+         
+        return $query->getResult();
     }
 }

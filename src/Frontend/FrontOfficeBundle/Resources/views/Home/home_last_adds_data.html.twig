@@ -5,12 +5,8 @@
         {% for g in games %}
             <tr>
                 {% set img = null %}
-                {% if g.image_1 is not null %}
-                    {% set img = g.image_1 %}
-                {% elseif g.image_2 is not null %}
-                    {% set img = g.image_2 %}
-                {% elseif g.image_3 is not null %}
-                    {% set img = g.image_3 %}
+                {% if g.image_game is not null %}
+                    {% set img = g.image_game %}
                 {% endif %}
                 <td class="home-last-adds-photo hidden-xs hidden-sm" data-toggle="tooltip" title="{{ g.name }} ({{ g.plateform }}) : {{ g.price }}€">
                     {% if img is not null %}

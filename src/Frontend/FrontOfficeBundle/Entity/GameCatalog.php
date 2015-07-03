@@ -119,6 +119,13 @@ class GameCatalog
     protected $addedAt;
     
     /**
+     * @var string
+     *
+     * @ORM\Column(name="image_seller", type="string", length=255, nullable=true)
+     */
+    private $image_seller;
+    
+    /**
      * Get id
      *
      * @return integer 
@@ -401,5 +408,28 @@ class GameCatalog
     public function getAddedAt()
     {
         return $this->addedAt;
+    }
+    
+    /**
+     * Set image_seller
+     *
+     * @param string $image_seller
+     * @return Game
+     */
+    public function setImageSeller($image_seller)
+    {
+        $this->image_seller = $image_seller;
+    
+        return $this;
+    }
+
+    /**
+     * Get image_seller
+     *
+     * @return string 
+     */
+    public function getImageSeller()
+    {
+        return $this->image_seller;
     }
 }

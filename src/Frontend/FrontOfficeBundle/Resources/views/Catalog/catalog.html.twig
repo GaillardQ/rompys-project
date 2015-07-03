@@ -3,7 +3,11 @@
 <div id="search-content" class="panel panel-primary">
 	<div class="panel-body">
 		<div id="home_content">
-			{% include 'FrontendFrontOfficeBundle:Catalog:catalog_data.html.twig' with {'games': games} %}
+			{% if games|length == 0 %}
+				<h1 class="align-center"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><br />Pas de résultat</h1>
+			{% else %}
+				{% include 'FrontendFrontOfficeBundle:Catalog:catalog_data.html.twig' with {'games': games} %}
+			{% endif %}
 		</div>
 	</div>
 </div>

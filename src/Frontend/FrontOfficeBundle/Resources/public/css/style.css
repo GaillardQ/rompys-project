@@ -125,10 +125,23 @@ ul {
     white-space: nowrap;
     color: #bbbbbb;
 }
+.search-game-year {
+	font-size: 10px;
+    color: #aaaaaa;
+}
 .search-game-sellers {
 	font-weight: bold;
 	font-size: 10px;
 	color: #999999;
+}
+.game-infos-img {
+	padding: 20px !important;
+}
+.game-infos-div {
+	padding: 20px !important;
+}
+.game-infos-div h6 {
+	color: #2196f3;
 }
 /** ID **/
 #home-left-top {
@@ -278,6 +291,21 @@ ul {
 	
 	#search-menu {
 		margin-bottom: 4vh;
+	}
+}
+
+@media (max-width: 768px)
+{
+	.game-infos-img {
+		border-bottom: 1px solid #2196f3;
+	}
+}
+
+@media (min-width: 768px)
+{
+	.game-infos-img {
+		border-right: 1px solid #2196f3;
+		min-height: 305px;
 	}
 }
 

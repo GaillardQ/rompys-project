@@ -80,23 +80,9 @@ class Game
     /**
      * @var string
      *
-     * @ORM\Column(name="image_1", type="string", length=255, nullable=true)
+     * @ORM\Column(name="image_game", type="string", length=255, nullable=true)
      */
-    private $image_1;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="image_2", type="string", length=255, nullable=true)
-     */
-    private $image_2;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="image_3", type="string", length=255, nullable=true)
-     */
-    private $image_3;
+    private $image_game;
     
     /**
      * @var Frontend\FrontOfficeBundle\Entity\GameType
@@ -291,72 +277,26 @@ class Game
     }
     
     /**
-     * Set image_1
+     * Set image_game
      *
-     * @param string $image_1
+     * @param string $image_game
      * @return Game
      */
-    public function setImage1($image_1)
+    public function setImageGame($image_game)
     {
-        $this->image_1 = $image_1;
+        $this->image_game = $image_game;
     
         return $this;
     }
 
     /**
-     * Get image_1
+     * Get image_game
      *
      * @return string 
      */
-    public function getImage1()
+    public function getImageGame()
     {
-        return $this->image_1;
-    }
-    
-    /**
-     * Set image_2
-     *
-     * @param string $image_2
-     * @return Game
-     */
-    public function setImage2($image_2)
-    {
-        $this->image_2 = $image_2;
-    
-        return $this;
-    }
-
-    /**
-     * Get image_2
-     *
-     * @return string 
-     */
-    public function getImage2()
-    {
-        return $this->image_2;
-    }
-    
-    /**
-     * Set image_3
-     *
-     * @param string $image_3
-     * @return Game
-     */
-    public function setImage3($image_3)
-    {
-        $this->image_3 = $image_3;
-    
-        return $this;
-    }
-
-    /**
-     * Get image_3
-     *
-     * @return string 
-     */
-    public function getImage3()
-    {
-        return $this->image_3;
+        return $this->image_game;
     }
     
     /**

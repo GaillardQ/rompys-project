@@ -2,11 +2,11 @@
 {% trans_default_domain 'templatesTranslations' %}
 
 {% block meta %}
-    <meta name="description" content="Rompy's Project : recherche de jeux selon différents critères (nom, éditeur, plateforme, genre, ...)" />
-    <meta property="og:description" content="Rompy's Project : recherche de jeux selon différents critères (nom, éditeur, plateforme, genre, ...)" />
+    <meta name="description" content="Rompy's Project : informations sur le jeu {{ game.name }}" />
+    <meta property="og:description" content="Rompy's Project : informations sur le jeu {{ game.name }}" />
     
-    <title>Rompys Project : recherche</title>
-    <meta property="og:title" content="Rompys Project : recherche" />
+    <title>Rompys Project : {{ game.name }}</title>
+    <meta property="og:title" content="Rompys Project : {{ game.name }}" />
 {% endblock %}
 
 {% block javascripts %}
@@ -15,10 +15,10 @@
 
 {% block body %}
     <div id="catalog" class="page">
-        <div class="row">
-            {% include 'FrontendFrontOfficeBundle:Catalog:game_infos.html.twig' with {'infos': game} %}
+        <div id="game-infos" class="row">
+            {% include 'FrontendFrontOfficeBundle:Catalog:game_infos.html.twig' with {'infos': game, 'stats': stats} %}
         </div>
-        <div class="row">
+        <div id="game-sellers" class="row">
             {% include 'FrontendFrontOfficeBundle:Catalog:game_sellers.html.twig' with {'games': games_catalog} %}
         </div>
     </div>

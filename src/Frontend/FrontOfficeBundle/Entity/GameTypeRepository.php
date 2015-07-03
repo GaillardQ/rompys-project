@@ -12,17 +12,13 @@ use Doctrine\ORM\EntityRepository;
  */
 class GameTypeRepository extends EntityRepository
 {
-    public function array_findAll()
-    {
-        $allGameTypes = $this->findAll();
-        
-        $gameTypes = array();
-        foreach($allGameTypes as $k=>$gt)
-        {
-            $gameTypes[$k]["id"] = $gt->getId();
-            $gameTypes[$k]["value"] = $gt->getValue();
-        }
-        
-        return $gameTypes;
+    public function findAllOrdered() {
+        $qb = $this->createQueryBuilder("gt");
+            
+        $query = $qb->select('gt.id, gt.value')
+         ->orderby('gt.value', 'ASC')
+         ->getQuery();
+         
+        return $query->getResult();
     }
 }
