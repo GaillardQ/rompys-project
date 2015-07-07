@@ -242,6 +242,10 @@ ul {
 	color: #2196f3;
 }
 
+#table-sellers {
+    table-layout: auto;
+}
+
 .menu-toggle {
 }
 
@@ -299,6 +303,12 @@ ul {
 	.game-infos-img {
 		border-bottom: 1px solid #2196f3;
 	}
+	#table-sellers .username {
+		width: 75%;
+	}
+	#table-sellers .price {
+		width: 25%;
+	}
 }
 
 @media (min-width: 768px)
@@ -306,6 +316,33 @@ ul {
 	.game-infos-img {
 		border-right: 1px solid #2196f3;
 		min-height: 305px;
+	}
+	#table-sellers .username {
+		width: 30%;
+	}
+	#table-sellers .price {
+		width: 10%;
+	}
+	#table-sellers .photo {
+		width: 5%;
+	}
+	#table-sellers .state {
+		width: 15%;
+	}
+	#table-sellers .blister {
+		width: 5%;
+	}
+	#table-sellers .notice {
+		width: 5%;
+	}
+	#table-sellers .package {
+		width: 5%;
+	}
+	#table-sellers .zone {
+		width: 10%;
+	}
+	#table-sellers .language {
+		width: 15%;
 	}
 }
 
@@ -352,6 +389,67 @@ ul {
 	#search-content {
 		margin-left: 2vh;
 	}
+	#table-sellers .username {
+		width: 30%;
+	}
+	#table-sellers .price {
+		width: 10%;
+	}
+	#table-sellers .photo {
+		width: 5%;
+	}
+	#table-sellers .state {
+		width: 15%;
+	}
+	#table-sellers .blister {
+		width: 5%;
+	}
+	#table-sellers .notice {
+		width: 5%;
+	}
+	#table-sellers .package {
+		width: 5%;
+	}
+	#table-sellers .zone {
+		width: 10%;
+	}
+	#table-sellers .language {
+		width: 15%;
+	}
+}
+
+@media (min-width: 1200px)
+{
+	#table-sellers .username {
+		width: 20%;
+	}
+	#table-sellers .price {
+		width: 10%;
+	}
+	#table-sellers .photo {
+		width: 5%;
+	}
+	#table-sellers .state {
+		width: 10%;
+	}
+	#table-sellers .blister {
+		width: 5%;
+	}
+	#table-sellers .notice {
+		width: 5%;
+	}
+	#table-sellers .package {
+		width: 5%;
+	}
+	#table-sellers .zone {
+		width: 10%;
+	}
+	#table-sellers .language {
+		width: 10%;
+	}
+	#table-sellers .other-name {
+		width: 20%;
+	}
 }
 
 /**
@@ -384,3 +482,24 @@ ul {
 @-moz-document url-prefix() {
   fieldset { display: table-cell; }
 }
+.tablesorter-bootstrap > tbody > tr.odd > td, .tablesorter-bootstrap > tbody > tr.tablesorter-hasChildRow.odd:hover ~ tr.tablesorter-hasChildRow.odd ~ .tablesorter-childRow.odd > td {
+    background-color: #77bbf3 !important;
+    color: white;
+}
+
+.tablesorter-bootstrap th {
+	text-align: center;
+}
+
+.tablesorter-filter.form-control {
+    background-color: white;
+    font-size: 13px;
+    height: 25px;
+    line-height: 1;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+	line-height: 1;
+}
+
+.tablesorter thead .disabled {display: none}

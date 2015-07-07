@@ -137,9 +137,11 @@ class GameCatalogRepository extends EntityRepository
     public function findFormatteGameCatalog($_id)
 	{
 	        $qb = $this->createQueryBuilder("gc");
-            
-                $query = $qb->select('g.id as game_id, g.image_game, gc.image_seller, g.name, g.released_year as year, s.value as serie, p.value as plateform, gt.value as game_type, e1.value as editor_1, e2.value as editor_2, e3.value as editor_3, 
-                                        gc.price, gc.comment, gc.alternative_name, gc.language, gc.game_package, gc.blister, gc.notice, st.value as state, gc.zone, u.id as user_id, u.username, u.email')
+/*
+g.id as game_id, g.image_game, gc.image_seller, g.name, g.released_year as year, s.value as serie, p.value as plateform, gt.value as game_type, e1.value as editor_1, e2.value as editor_2, e3.value as editor_3, 
+                                        gc.price, gc.comment, gc.alternative_name, gc.language, gc.game_package, gc.blister, gc.notice, st.value as state, gc.zone, u.id as user_id, u.username, u.email
+*/            
+                $query = $qb->select('g.id as game_id, gc.image_seller, gc.price, gc.alternative_name, gc.language, gc.game_package, gc.blister, gc.notice, st.value as state, gc.zone, u.id as user_id, u.username, u.email')
                  ->leftJoin('gc.game', 'g')
                  ->leftJoin('g.serie', 's')
                  ->leftJoin('gc.seller', 'se')
