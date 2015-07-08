@@ -60,6 +60,13 @@ ul {
     white-space: nowrap;
     text-align: left;
 }
+.home-last-adds-name a,
+.home-last-adds-name a:hover,
+.home-last-adds-name a:focus {
+	text-decoration: none;
+	outline: none;
+	color: unset;
+}
 .home-last-adds-plateform,
 .home-best-sellers-games {
     width: 110px;

@@ -16,7 +16,7 @@
                     {% endif %}
                 </td>
                 <td class="home-last-adds-name" data-toggle="tooltip" title="{{ g.name }} ({{ g.plateform }}) : {{ g.price }}€">
-                    {{ g.name }}
+                    <a href="{{ path('frontend_frontoffice_game_page', {'id': g.game_id, 'name':g.name|url_encode}) }}">{{ g.name }}</a>
                 </td>
                 <td class="home-last-adds-plateform" data-toggle="tooltip" title="{{ g.name }} ({{ g.plateform }}) : {{ g.price }}€">
                     {{ g.plateform }}
