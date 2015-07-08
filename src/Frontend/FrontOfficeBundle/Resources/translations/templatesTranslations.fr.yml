@@ -121,6 +121,18 @@ game_card:
         dispo: "Exemplaires disponibles :"
         min_price: "Disponible à partir de :"
         average_price: "Tendance prix :"
+    seller:
+        user: Vendeur
+        price: Prix
+        photo: Photo
+        state: Etat
+        blister: Blister
+        notice: Notice
+        game_package: Boitier
+        zone: Zone
+        language: Langue
+        other_name: Nom alternatif
+        comment: Commentaire
             
 mail:
     registered:

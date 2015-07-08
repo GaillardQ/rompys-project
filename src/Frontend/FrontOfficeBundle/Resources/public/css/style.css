@@ -242,8 +242,21 @@ ul {
 	color: #2196f3;
 }
 
-#table-sellers {
-    table-layout: auto;
+#table-sellers .username,
+#table-sellers .state,
+#table-sellers .other-name {
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#table-sellers .popover-content,
+#table-sellers .popover-title {
+	text-align: center;
+}
+
+#table-sellers .popover-content img {
+	max-width: 100px;
 }
 
 .menu-toggle {
@@ -318,28 +331,16 @@ ul {
 		min-height: 305px;
 	}
 	#table-sellers .username {
-		width: 30%;
+		width: 40%;
 	}
 	#table-sellers .price {
-		width: 10%;
-	}
-	#table-sellers .photo {
-		width: 5%;
-	}
-	#table-sellers .state {
 		width: 15%;
 	}
-	#table-sellers .blister {
-		width: 5%;
-	}
-	#table-sellers .notice {
-		width: 5%;
-	}
-	#table-sellers .package {
-		width: 5%;
-	}
-	#table-sellers .zone {
+	#table-sellers .photo {
 		width: 10%;
+	}
+	#table-sellers .state {
+		width: 20%;
 	}
 	#table-sellers .language {
 		width: 15%;
@@ -390,47 +391,47 @@ ul {
 		margin-left: 2vh;
 	}
 	#table-sellers .username {
-		width: 30%;
+		width: 25%;
 	}
 	#table-sellers .price {
 		width: 10%;
 	}
 	#table-sellers .photo {
-		width: 5%;
+		width: 8%;
 	}
 	#table-sellers .state {
-		width: 15%;
+		width: 10%;
 	}
 	#table-sellers .blister {
-		width: 5%;
+		width: 8%;
 	}
 	#table-sellers .notice {
-		width: 5%;
+		width: 8%;
 	}
 	#table-sellers .package {
-		width: 5%;
+		width: 8%;
 	}
 	#table-sellers .zone {
 		width: 10%;
 	}
 	#table-sellers .language {
-		width: 15%;
+		width: 13%;
 	}
 }
 
 @media (min-width: 1200px)
 {
 	#table-sellers .username {
-		width: 20%;
+		width: 15%;
 	}
 	#table-sellers .price {
-		width: 10%;
+		width: 8%;
 	}
 	#table-sellers .photo {
 		width: 5%;
 	}
 	#table-sellers .state {
-		width: 10%;
+		width: 5%;
 	}
 	#table-sellers .blister {
 		width: 5%;
@@ -442,13 +443,16 @@ ul {
 		width: 5%;
 	}
 	#table-sellers .zone {
-		width: 10%;
+		width: 8%;
 	}
 	#table-sellers .language {
-		width: 10%;
+		width: 9%;
 	}
 	#table-sellers .other-name {
-		width: 20%;
+		width: 12%;
+	}
+	#table-sellers .comment {
+		width: 23%;
 	}
 }
 

@@ -39,7 +39,7 @@ $(document).ready(function() {
         headers: {
             // disable sorting of the first & second column - before we would have to had made two entries
             // note that "first-name" is a class on the span INSIDE the first column th cell
-            '.blister, .notice, .game-package, .photo' : {
+            '.blister, .notice, .game-package, .photo, .state' : {
                 // disable it by setting the property sorter to false
                 sorter: false,
                 filter: false
@@ -87,11 +87,14 @@ $(document).ready(function() {
     
     $("#table-sellers .tablesorter-filter-row td:nth-child(2)").addClass("hidden-xs");
     $("#table-sellers .tablesorter-filter-row td:nth-child(3)").addClass("hidden-xs");
-    $("#table-sellers .tablesorter-filter-row td:nth-child(4)").addClass("hidden-xs");
-    $("#table-sellers .tablesorter-filter-row td:nth-child(5)").addClass("hidden-xs");
-    $("#table-sellers .tablesorter-filter-row td:nth-child(6)").addClass("hidden-xs");
-    $("#table-sellers .tablesorter-filter-row td:nth-child(7)").addClass("hidden-xs");
+    $("#table-sellers .tablesorter-filter-row td:nth-child(4)").addClass("hidden-xs hidden-sm");
+    $("#table-sellers .tablesorter-filter-row td:nth-child(5)").addClass("hidden-xs hidden-sm");
+    $("#table-sellers .tablesorter-filter-row td:nth-child(6)").addClass("hidden-xs hidden-sm");
+    $("#table-sellers .tablesorter-filter-row td:nth-child(7)").addClass("hidden-xs hidden-sm");
     $("#table-sellers .tablesorter-filter-row td:nth-child(8)").addClass("hidden-xs");
     $("#table-sellers .tablesorter-filter-row td:nth-child(9)").addClass("visible-lg");
+    $("#table-sellers .tablesorter-filter-row td:nth-child(10)").addClass("visible-lg");
+    
+    $('[data-toggle="popover"]').popover();
 
 });

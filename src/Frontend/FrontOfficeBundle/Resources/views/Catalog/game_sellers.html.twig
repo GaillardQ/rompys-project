@@ -14,49 +14,69 @@
         <table id="table-sellers" class="table tablesorter">
             <thead>
                 <tr>
-                    <th class="username">User</th>
-                    <th class="price">Price</th>
-                    <th class="photo hidden-xs">Photo</th>
-                    <th class="state hidden-xs">Etat</th>
-                    <th class="blister hidden-xs">Blister</th>
-                    <th class="notice hidden-xs">Notice</th>
-                    <th class="game-package hidden-xs ">Boite</th>
-                    <th class="zone hidden-xs">Zone</th>
-                    <th class="language hidden-xs">Langue</th>
-                    <th class="other-name visible-lg">Nom alternatif</th>
+                    <th class="username">{{ 'game_card.seller.user'|trans }}</th>
+                    <th class="price">{{ 'game_card.seller.price'|trans }}</th>
+                    <th class="photo hidden-xs" data-toggle="tooltip" title="{{ 'game_card.seller.photo'|trans }}"><span class="glyphicon glyphicon-picture"></span></th>
+                    <th class="state hidden-xs">{{ 'game_card.seller.state'|trans }}</th>
+                    <th class="blister hidden-xs hidden-sm" data-toggle="tooltip" title="{{ 'game_card.seller.blister'|trans }}">
+                        <span class="glyphicon glyphicon-gift">
+                    </th>
+                    <th class="notice hidden-xs hidden-sm" data-toggle="tooltip" title="{{ 'game_card.seller.notice'|trans }}">
+                        <span class="glyphicon glyphicon-book">
+                    </th>
+                    <th class="game-package hidden-xs hidden-sm" data-toggle="tooltip" title="{{ 'game_card.seller.game_package'|trans }}">
+                        <span class="glyphicon glyphicon-inbox">
+                    </th>
+                    <th class="zone hidden-xs hidden-sm">{{ 'game_card.seller.zone'|trans }}</th>
+                    <th class="language hidden-xs">{{ 'game_card.seller.language'|trans }}</th>
+                    <th class="other-name visible-lg">{{ 'game_card.seller.other_name'|trans }}</th>
+                    <th class="comment visible-lg">{{ 'game_card.seller.comment'|trans }}</th>
                 </tr>
             </thead>
             <tbody>
             {% for g in games %}
                 <tr>
-                    <td>{{ g.username }}</td>
+                    <td class="username" data-toggle="tooltip" title="{{ g.username }}">{{ g.username }}</td>
                     <td class="align-right">{{ g.price }} €</td>
                     <td class="align-center hidden-xs">
                         {% if g.image_seller is defined and g.image_seller != "" %}
-                            <a href="#" onclick="return false;" aria-hidden="true" data-html="true" data-trigger="focus" data-placement="top" data-toggle="popover" title="{{ g.username }}" data-content="<img class='margin-auto' src='pictures/{{ g.game_id }}/{{ g.image_seller }}' alt='Game picture' />">
+                            <a href="#" onclick="return false;" data-html="true" data-trigger="focus" data-placement="top" data-toggle="popover" title="{{ 'game_card.seller.photo'|trans }}" data-content="<img class='margin-auto' src='/pictures/{{ g.game_id }}/{{ g.image_seller }}' alt='Game picture' />">
                                 <span class="glyphicon glyphicon-picture" ></span>
                             </a>
                         {% endif %}
                     </td>
-                    <td class="align-center hidden-xs">{{ g.state|trans }}</td>
+                    <td class="align-center hidden-xs" data-toggle="tooltip" title="{{ g.state|trans }}">
+                        {% if g.state_id == 1 %}
+                            <span class="glyphicon glyphicon-thumbs-up" ></span>
+                            <span class="glyphicon glyphicon-thumbs-up" ></span>
+                        {% elseif g.state_id == 2 %}
+                            <span class="glyphicon glyphicon-thumbs-up" ></span>
+                        {% elseif g.state_id == 3 %}
+                            <span class="glyphicon glyphicon-thumbs-down" ></span>
+                        {% else %}
+                            <span class="glyphicon glyphicon-thumbs-down" ></span>
+                            <span class="glyphicon glyphicon-thumbs-down" ></span>
+                        {% endif %}
+                    </td>
                     {% if g.blister is defined and g.blister==1 %}
-                        <td class="align-center hidden-xs"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                        <td class="align-center hidden-xs hidden-sm"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
                     {% else %}
-                        <td class="align-center hidden-xs"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                        <td class="align-center hidden-xs hidden-sm"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
                     {% endif %}
                     {% if g.notice is defined and g.notice==1 %}
-                        <td class="align-center hidden-xs"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                        <td class="align-center hidden-xs hidden-sm"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
                     {% else %}
-                        <td class="align-center hidden-xs"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                        <td class="align-center hidden-xs hidden-sm"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
                     {% endif %}
                     {% if g.game_package is defined and g.game_package==1 %}
-                        <td class="align-center hidden-xs"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                        <td class="align-center hidden-xs hidden-sm"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
                     {% else %}
-                        <td class="align-center hidden-xs"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+                        <td class="align-center hidden-xs hidden-sm"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
                     {% endif %}
-                    <td class="align-center hidden-xs">{{ g.zone }}</td>
+                    <td class="align-center hidden-xs hidden-sm">{{ g.zone }}</td>
                     <td class="align-center hidden-xs">{{ g.language }}</td>
-                    <td class="align-center visible-lg">{{ g.alternative_name }}</td>
+                    <td class="other-name align-center visible-lg" data-toggle="tooltip" title="{{ g.alternative_name }}">{{ g.alternative_name }}</td>
+                    <td class="comment align-center visible-lg" data-toggle="tooltip" title="{{ g.comment }}">{{ g.comment }}</td>
                 </tr>
             {% endfor %}
             </tbody>
