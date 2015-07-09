@@ -45,6 +45,12 @@ frontend_frontoffice_game_page:
     defaults: { _controller: FrontendFrontOfficeBundle:Catalog:game, _locale: fr }
     requirements:
           _locale: fr
+
+frontend_frontoffice_last_adds:
+    pattern: /{_locale}/last_added_games
+    defaults: { _controller: FrontendFrontOfficeBundle:LastAdds:index, _locale: fr }
+    requirements:
+          _locale: fr
           
 frontend_frontoffice_common_get_all_games:
     pattern:  /ws/all_games

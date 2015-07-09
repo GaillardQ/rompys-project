@@ -116,12 +116,13 @@ catalog:
         nb_sellers: '{0, 1} %count% vendeur|]1,Inf] %count% vendeurs'
 
 game_card:
-    title: Informations sur le jeu
     infos:
+        title: Informations sur le jeu
         dispo: "Exemplaires disponibles :"
         min_price: "Disponible à partir de :"
         average_price: "Tendance prix :"
     seller:
+        title: Informations sur les exemplaires
         user: Vendeur
         price: Prix
         photo: Photo
@@ -132,6 +133,17 @@ game_card:
         zone: Zone
         language: Langue
         other_name: Nom alternatif
+        comment: Commentaire
+        
+last_adds:
+    list:
+        username: Vendeur
+        name: Jeu
+        plateform: Plateforme
+        date: Ajouté
+        price: Prix
+        state: Etat
+        language: Langue
         comment: Commentaire
             
 mail:

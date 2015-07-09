@@ -6,40 +6,27 @@ body {
 	margin: 4vh;
 	padding-top: 0;
 }
+
 legend {
 	background-color: #2196f3;
     border-color: #2196f3;
 }
-legend h3 {
-    color: #ffffff !important;
-}
-ul {
-	padding-left: 10px;	
-}
+
+legend h3 { color: #ffffff !important; }
+
+ul { padding-left: 10px; }
 
 /** 
 	CLASS 
 **/
-.home {
-	min-height: 92vh;
-}
-.home-block {
-		
-}
-.home-block.navbar-collapse {
-	padding: 0;
-}
+.home { min-height: 92vh; }
+
+.home-block.navbar-collapse { padding: 0; }
+
 .home-block.navbar-collapse.in,
-.home-block.navbar-collapse.collapsing{
-	overflow-y: unset;
-}
-.home-side-div {
-}
-.home-center-div {
-}
-.home-panel {
-	margin-bottom: 0px;
-}
+.home-block.navbar-collapse.collapsing{ overflow-y: unset;}
+
+.home-panel { margin-bottom: 0px; }
 
 .home-panel-center {
 	margin-bottom: 0px;
@@ -47,11 +34,13 @@ ul {
 	background-color: #ffffff;
 	color: #2196f3;
 }
+
 .home-last-adds-photo,
 .home-best-sellers-photo {
 	width: 20px;
 	vertical-align: middle !important;
 }
+
 .home-last-adds-name,
 .home-best-sellers-name {
     width: calc(100% - 126px);
@@ -60,6 +49,7 @@ ul {
     white-space: nowrap;
     text-align: left;
 }
+
 .home-last-adds-name a,
 .home-last-adds-name a:hover,
 .home-last-adds-name a:focus {
@@ -67,6 +57,7 @@ ul {
 	outline: none;
 	color: unset;
 }
+
 .home-last-adds-plateform,
 .home-best-sellers-games {
     width: 110px;
@@ -75,13 +66,9 @@ ul {
     white-space: nowrap;
 }
 
-.home-last-adds-photo .popover-content {
-	text-align: center;
-}
+.home-last-adds-photo .popover-content { text-align: center; }
 
-.home-last-adds-photo .popover-content img {
-	max-width: 100px;
-}
+.home-last-adds-photo .popover-content img { max-width: 100px; }
 
 .page {
 	margin-top: 65px !important;
@@ -100,6 +87,7 @@ ul {
     padding: 10px !important;
     margin: 5px;
 }
+
 .search-game-block a,
 .search-game-block a:hover,
 .search-game-block a:focus {
@@ -107,6 +95,7 @@ ul {
 	color: #2196f3;
 	outline: none;
 }
+
 .search-game-name {
 	font-size: 16px;
 	font-weight: bolder;
@@ -115,16 +104,16 @@ ul {
     white-space: nowrap;
     text-align: center;
 }
-.search-game-img {
-	width: 100%;
-}
-.search-game-plateform {
-	font-size: 12px;
-}
+
+.search-game-img { width: 100%; }
+
+.search-game-plateform { font-size: 12px; }
+
 .search-game-type {
 	font-size: 12px;
 	color: #888888;
 }
+
 .search-game-editor {
 	font-size: 10px;
 	overflow: hidden;
@@ -132,44 +121,35 @@ ul {
     white-space: nowrap;
     color: #bbbbbb;
 }
+
 .search-game-year {
 	font-size: 10px;
     color: #aaaaaa;
 }
+
 .search-game-sellers {
 	font-weight: bold;
 	font-size: 10px;
 	color: #999999;
 }
-.game-infos-img {
-	padding: 20px !important;
-}
-.game-infos-div {
-	padding: 20px !important;
-}
-.game-infos-div h6 {
-	color: #2196f3;
-}
+
+.game-infos-img { padding: 20px !important; }
+
+.game-infos-div { padding: 20px !important; }
+
+.game-infos-div h6 { color: #2196f3; }
+
 /** ID **/
-#home-left-top {
-	margin-bottom: 2vh;
-}
-#home-profile-avatar {
-	max-width: 70px;
-}
+#home-left-top { margin-bottom: 2vh; }
+
+#home-profile-avatar { max-width: 70px; }
+
 #home-profile-infos {
 	font-size: 17px;
 	font-weight: bold;
 	padding-left: 10px;
 	max-width: calc(100% - 70px);
 	line-height: 1;
-}
-
-#home-left-bottom {
-
-}
-
-#home-center {
 }
 
 #page-home-logo {
@@ -179,25 +159,16 @@ ul {
     margin-top: 5vh;
 }
 
-#home-search-form {
-	margin-top: 10vh;	
-}
+#home-search-form { margin-top: 10vh; }
 
-#search-game-addon .glyphicon {
-	font-size: 20px;
-}
+#search-game-addon .glyphicon { font-size: 20px; }
 
 #input-search-game {
 	width: calc(100% - 25px);
 	font-size: 20px;
 }
 
-#home-right-top {
-	margin-bottom: 2vh;
-}
-
-#home-right-bottom {
-}
+#home-right-top { margin-bottom: 2vh; }
 
 #home-last-adds-error,
 #home-best-sellers-error {
@@ -210,9 +181,8 @@ ul {
 	clear: both;
 }
 
-#home-news {
-	margin-bottom: 20px;
-}
+#home-news { margin-bottom: 20px; }
+
 #home-news-img-div {
 	max-width: 50px;
 	float:left;
@@ -238,9 +208,7 @@ ul {
 	clear: both;
 }
 
-#home-best-sellers-list td {
-	padding: 2px;
-}
+#home-best-sellers-list td { padding: 2px; }
 
 #search-content {
 	margin-bottom: 0px;
@@ -250,8 +218,8 @@ ul {
 }
 
 #table-sellers .username,
-#table-sellers .state,
-#table-sellers .other-name {
+#table-last-adds .username
+{
 	overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -262,12 +230,7 @@ ul {
 	text-align: center;
 }
 
-#table-sellers .popover-content img {
-	max-width: 100px;
-}
-
-.menu-toggle {
-}
+#table-sellers .popover-content img { max-width: 100px; }
 
 .menu-toggle .navbar-toggle {
     float: none;
@@ -276,6 +239,7 @@ ul {
     text-align: left;
     width: 100%;
 }
+
 .menu-toggle .navbar-toggle .icon-bar {
 	background-color: #ddd;
 }
@@ -297,38 +261,27 @@ ul {
 		color: #ffffff;
 	}
 	
-	.home-panel-center input {
-		color: #2196f3;
-	}
+	.home-panel-center input { color: #2196f3; }
 	
-	.form-control {
-		background-color: white;
-	}
+	.form-control { background-color: white; }
 	
-	#home-center {
-		margin-bottom: 4vh;
-	}
+	#home-center { margin-bottom: 4vh; }
 	
-	#home-right-top {
-		margin-top: 2vh;
-	}
+	#home-right-top { margin-top: 2vh; }
 	
-	#search-menu {
-		margin-bottom: 4vh;
-	}
+	#search-menu { margin-bottom: 4vh; }
 }
 
 @media (max-width: 768px)
 {
-	.game-infos-img {
-		border-bottom: 1px solid #2196f3;
-	}
-	#table-sellers .username {
-		width: 75%;
-	}
-	#table-sellers .price {
-		width: 25%;
-	}
+	.game-infos-img { border-bottom: 1px solid #2196f3; }
+	
+	#table-sellers .username { width: 65%; }
+	#table-sellers .price { width: 35%; }
+	
+	#table-last-adds .name { width: 47%; }
+	#table-last-adds .price {	width: 33%; }
+	#table-last-adds .view { width: 20%; }
 }
 
 @media (min-width: 768px)
@@ -337,138 +290,106 @@ ul {
 		border-right: 1px solid #2196f3;
 		min-height: 305px;
 	}
-	#table-sellers .username {
-		width: 40%;
-	}
-	#table-sellers .price {
-		width: 15%;
-	}
-	#table-sellers .photo {
-		width: 10%;
-	}
-	#table-sellers .state {
-		width: 20%;
-	}
-	#table-sellers .language {
-		width: 15%;
-	}
+	
+	#table-sellers .username { width: 40%; }
+	#table-sellers .price { width: 15%; }
+	#table-sellers .photo { width: 10%; }
+	#table-sellers .state { width: 20%; }
+	#table-sellers .language { width: 15%; }
+	
+	#table-last-adds .username { width: 22%; }
+	#table-last-adds .name { width: 22%; }
+	#table-last-adds .plateform { width: 17%; }
+	#table-last-adds .date { width: 12%; }
+	#table-last-adds .price {	width: 10%; }
+	#table-last-adds .state { width: 10%; }
+	#table-last-adds .view { width: 7%; }
 }
 
 @media (min-width: 992px)
 {
-	/*.home-side-div {
-		min-height: 45vh;
-	}*/
-	.home-center-div {
-		min-height: 92vh;
-	}
-	.home-panel {
-		min-height: 45vh;
-	}
+	.home-center-div { min-height: 92vh; }
+	.home-panel { min-height: 45vh; }
 	
 	#home-left-top {
 		margin-right: 2vh;
 		min-height: 35vh;
 	}
-	#home-top-left-panel {
-		min-height: 35vh;
-	}
+	
+	#home-top-left-panel { min-height: 35vh; }
+	
 	#home-left-bottom {
 		margin-right: 2vh;
 		min-height: 55vh;
 	}
-	#home-bottom-left-panel {
-		min-height: 55vh;
-	}
+	
+	#home-bottom-left-panel { min-height: 55vh; }
+	
 	#home-right-top {
 		margin-left: 2vh;
 		min-height: 61vh;
 	}
-	#home-top-right-panel {
-		min-height: 61vh;
-	}
+	
+	#home-top-right-panel { min-height: 61vh; }
+	
 	#home-right-bottom {
 		margin-left: 2vh;
 		min-height: 29vh;
 	}
-	#home-bottom-right-panel {
-		min-height: 29vh;
-	}
-	#search-content {
-		margin-left: 2vh;
-	}
-	#table-sellers .username {
-		width: 25%;
-	}
-	#table-sellers .price {
-		width: 10%;
-	}
-	#table-sellers .photo {
-		width: 8%;
-	}
-	#table-sellers .state {
-		width: 10%;
-	}
-	#table-sellers .blister {
-		width: 8%;
-	}
-	#table-sellers .notice {
-		width: 8%;
-	}
-	#table-sellers .package {
-		width: 8%;
-	}
-	#table-sellers .zone {
-		width: 10%;
-	}
-	#table-sellers .language {
-		width: 13%;
-	}
+	
+	#home-bottom-right-panel { min-height: 29vh; }
+	
+	#search-content { margin-left: 2vh; }
+	
+	#table-sellers .username { width: 25%; }
+	#table-sellers .price {	width: 10%;	}
+	#table-sellers .photo {	width: 8%; }
+	#table-sellers .state {	width: 10%;	}
+	#table-sellers .blister { width: 8%; }
+	#table-sellers .notice { width: 8%;	}
+	#table-sellers .package { width: 8%; }
+	#table-sellers .zone { width: 10%;	}
+	#table-sellers .language { width: 13%; }
+	
+	#table-last-adds .username { width: 22%; }
+	#table-last-adds .name { width: 22%; }
+	#table-last-adds .plateform { width: 12%; }
+	#table-last-adds .date { width: 10%; }
+	#table-last-adds .price {	width: 10%; }
+	#table-last-adds .state { width: 9%; }
+	#table-last-adds .language { width: 10%; }
+	#table-last-adds .view { width: 5%; }
 }
 
 @media (min-width: 1200px)
 {
-	#table-sellers .username {
-		width: 15%;
-	}
-	#table-sellers .price {
-		width: 8%;
-	}
-	#table-sellers .photo {
-		width: 5%;
-	}
-	#table-sellers .state {
-		width: 5%;
-	}
-	#table-sellers .blister {
-		width: 5%;
-	}
-	#table-sellers .notice {
-		width: 5%;
-	}
-	#table-sellers .package {
-		width: 5%;
-	}
-	#table-sellers .zone {
-		width: 8%;
-	}
-	#table-sellers .language {
-		width: 9%;
-	}
-	#table-sellers .other-name {
-		width: 12%;
-	}
-	#table-sellers .comment {
-		width: 23%;
-	}
+	#table-sellers .username { width: 15%; }
+	#table-sellers .price {	width: 8%; }
+	#table-sellers .photo {	width: 5%; }
+	#table-sellers .state { width: 5%; }
+	#table-sellers .blister { width: 5%; }
+	#table-sellers .notice { width: 5%; }
+	#table-sellers .package { width: 5%; }
+	#table-sellers .zone { width: 8%; }
+	#table-sellers .language { width: 9%; }
+	#table-sellers .other-name { width: 12%; }
+	#table-sellers .comment { width: 23%; }
+	
+	#table-last-adds .username { width: 15%; }
+	#table-last-adds .name { width: 15%; }
+	#table-last-adds .plateform { width: 10%; }
+	#table-last-adds .date { width: 10%; }
+	#table-last-adds .price {	width: 7%; }
+	#table-last-adds .state { width: 5%; }
+	#table-last-adds .language { width: 8%; }
+	#table-last-adds .comment { width: 25%; }
+	#table-last-adds .view { width: 5%; }
 }
 
 /**
 	LIB OVERRIDE
 **/
-.btn {
-	padding: 6px 16px !important;
-}
+.btn { padding: 6px 16px !important; }
 .container-fluid {
     margin: 0;
     padding: 0;

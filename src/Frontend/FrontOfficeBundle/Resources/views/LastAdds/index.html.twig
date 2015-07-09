@@ -1,0 +1,71 @@
+{% extends 'FrontendFrontOfficeBundle::baseMenu.html.twig' %}
+{% trans_default_domain 'templatesTranslations' %}
+
+{% block meta %}
+    <meta name="description" content="Rompy's Project : derniers jeux ajoutés" />
+    <meta property="og:description" content="Rompy's Project : derniers jeux ajoutés" />
+    
+    <title>Rompys Project : derniers jeux ajoutés</title>
+    <meta property="og:title" content="Rompys Project : derniers jeux ajoutés" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="/bundles/frontendfrontoffice/js/page/last_adds.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div id="last_adds" class="row page">
+        <div class="col-sm-12">
+            <div id="search-content" class="panel panel-primary">
+            	<table id="table-last-adds" class="table tablesorter">
+                    <thead>
+                        <tr>
+                            <th class="username hidden-xs">{{ 'last_adds.list.username'|trans }}</th>
+                        	<th class="name">{{ 'last_adds.list.name'|trans }}</th>
+                        	<th class="plateform hidden-xs">{{ 'last_adds.list.plateform'|trans }}</th>
+                        	<th class="date hidden-xs">{{ 'last_adds.list.date'|trans }}</th>
+                        	<th class="price">{{ 'last_adds.list.price'|trans }}</th>
+                        	<th class="state hidden-xs">{{ 'last_adds.list.state'|trans }}</th>
+                        	<th class="language hidden-xs hidden-sm">{{ 'last_adds.list.language'|trans }}</th>
+                        	<th class="comment visible-lg">{{ 'last_adds.list.comment'|trans }}</th>
+                        	<th class="view"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	{% for g in games %}
+                    	    <tr>
+                    	        <td class="username hidden-xs">{{ g.username }}</td>
+                    	        <td class="name">{{ g.name }}</td>
+                            	<td class="plateform align-center hidden-xs">{{ g.plateform }}</td>
+                            	<td class="date align-center hidden-xs">{{ g.added_at|date('d-m-Y') }}</td>
+                            	<td class="price align-center">{{ g.price }} €</td>
+                            	<td class="state align-center hidden-xs">
+                            	    {% if g.state_id == 1 %}
+                                        <span class="glyphicon glyphicon-thumbs-up" ></span>
+                                        <span class="glyphicon glyphicon-thumbs-up" ></span>
+                                    {% elseif g.state_id == 2 %}
+                                        <span class="glyphicon glyphicon-thumbs-up" ></span>
+                                    {% elseif g.state_id == 3 %}
+                                        <span class="glyphicon glyphicon-thumbs-down" ></span>
+                                    {% else %}
+                                        <span class="glyphicon glyphicon-thumbs-down" ></span>
+                                        <span class="glyphicon glyphicon-thumbs-down" ></span>
+                                    {% endif %}
+                            	</td>
+                            	<td class="language align-center hidden-xs hidden-sm">{{ g.language }}</td>
+                            	<td class="comment visible-lg">{{ g.comment }}</td>
+                            	<td class="view align-center">
+                            	    <a href="{{ path('frontend_frontoffice_game_page', {'id': g.game_id, 'name':g.name|url_encode}) }}">
+                            	        <span class="glyphicon glyphicon-eye-open" ></span>
+                            	    </a>
+                            	</td>
+                    	    </tr>
+                    	{% endfor %}
+                    </tbody>
+            	</table>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

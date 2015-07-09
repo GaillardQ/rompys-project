@@ -16,7 +16,7 @@ class GameCatalogRepository extends EntityRepository
 	{
         $qb = $this->createQueryBuilder("gc");
         
-        $query = $qb->select("gc.id, g.name, p.value as plateform, gc.addedAt, gc.price, u.username, g.id as game_id, g.image_game, gc.image_seller")
+        $query = $qb->select("gc.id, g.name, p.value as plateform, gc.addedAt as added_at, gc.price, u.username, g.id as game_id, g.image_game, gc.language, gc.image_seller, gc.comment,st.id as state_id, st.value as state_value")
          ->leftJoin('gc.seller', 's')
          ->leftJoin('s.user', 'u')
          ->leftJoin('gc.game', 'g')
@@ -25,6 +25,7 @@ class GameCatalogRepository extends EntityRepository
          ->leftJoin('g.editor_1', 'e1')
          ->leftJoin('g.editor_2', 'e2')
          ->leftJoin('g.editor_3', 'e3')
+         ->leftJoin('gc.state', 'st')
          ->OrderBy('gc.addedAt', 'DESC')
          ->setMaxResults( $_nb )
          ->getQuery();
