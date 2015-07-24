@@ -27,7 +27,9 @@
             <tbody>
             {% for g in games %}
                 <tr>
-                    <td class="name" data-toggle="tooltip" title="{{ g.name }}">{{ g.name }}</td>
+                    <td class="name" data-toggle="tooltip" title="{{ g.name }}">
+                        <a href="{{ path('frontend_frontoffice_game_page', {'id': g.game_id, 'name':g.name|url_encode}) }}">{{ g.name }}</a>
+                    </td>
                     <td class="align-right">{{ g.price }} €</td>
                     <td class="plateform hidden-xs">{{ g.plateform }}</td>
                     <td class="align-center hidden-xs">

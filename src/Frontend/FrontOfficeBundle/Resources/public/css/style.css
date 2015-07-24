@@ -244,6 +244,14 @@ ul { padding-left: 10px; }
 	/*font-weight: bolder;*/
 }
 
+#table-sellers-games a,
+#table-sellers-games a:hover,
+#table-sellers-games a:focus {
+	text-decoration: none;
+	color: inherit;
+	outline: none;
+}
+
 .menu-toggle .navbar-toggle {
     float: none;
     margin: 0;
