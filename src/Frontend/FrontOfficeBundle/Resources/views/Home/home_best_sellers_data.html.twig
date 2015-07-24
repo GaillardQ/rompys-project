@@ -4,9 +4,10 @@
     <tbody>
         {% for s in sellers %}
             <tr>
-                <td class="home-best-sellers-photo" data-toggle="tooltip" title="{{ s.username }}"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span></td>
-                <td class="home-best-sellers-name" data-toggle="tooltip" title="{{ s.username }}">{{ s.username }}</td>
-                <td class="home-best-sellers-games" data-toggle="tooltip" title="{{ s.username }}">{{ s.nb }}</td>
+                <td class="home-best-sellers-name" data-toggle="tooltip" title="{{ s.username }}">
+                    <a href="{{ path('frontend_frontoffice_best_sellers', {'id': s.id, 'name':s.username|url_encode}) }}">{{ s.username }}</a>
+                </td>
+                <td class="home-best-sellers-games align-center" data-toggle="tooltip" title="{{ s.username }}">{{ s.nb }}</td>
             </tr>
         {% endfor %}
     </tbody>

@@ -52,6 +52,12 @@ frontend_frontoffice_last_adds:
     requirements:
           _locale: fr
           
+frontend_frontoffice_best_sellers:
+    pattern: /{_locale}/seller/{id}/{name}
+    defaults: { _controller: FrontendFrontOfficeBundle:BestSellers:seller, _locale: fr }
+    requirements:
+          _locale: fr
+          
 frontend_frontoffice_common_get_all_games:
     pattern:  /ws/all_games
     defaults: { _controller: FrontendFrontOfficeBundle:Common:getAllGames}
@@ -65,9 +71,9 @@ frontend_frontoffice_common_get_game_catalog_info:
     defaults: { _controller: FrontendFrontOfficeBundle:Common:getGameCatalogInfo}
     
 frontend_frontoffice_common_get_last_add_games:
-    pattern:  /ws/last_adds
+    pattern:  /ws/get_last_adds
     defaults: { _controller: FrontendFrontOfficeBundle:Common:getLastAddGames}
     
 frontend_frontoffice_common_get_best_sellers:
-    pattern:  /ws/best_sellers
+    pattern:  /ws/get_best_sellers
     defaults: { _controller: FrontendFrontOfficeBundle:Common:getBestSellers}

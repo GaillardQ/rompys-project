@@ -50,9 +50,16 @@ ul { padding-left: 10px; }
     text-align: left;
 }
 
+.home-best-sellers-name {
+	padding-left: 10px !important;
+}
+
 .home-last-adds-name a,
 .home-last-adds-name a:hover,
-.home-last-adds-name a:focus {
+.home-last-adds-name a:focus,
+.home-best-sellers-name a,
+.home-best-sellers-name a:hover,
+.home-best-sellers-name a:focus{
 	text-decoration: none;
 	outline: none;
 	color: unset;
@@ -232,6 +239,11 @@ ul { padding-left: 10px; }
 
 #table-sellers .popover-content img { max-width: 100px; }
 
+#seller-infos .infos-label {
+	color: #2196f3;
+	/*font-weight: bolder;*/
+}
+
 .menu-toggle .navbar-toggle {
     float: none;
     margin: 0;
@@ -282,6 +294,9 @@ ul { padding-left: 10px; }
 	#table-last-adds .name { width: 47%; }
 	#table-last-adds .price {	width: 33%; }
 	#table-last-adds .view { width: 20%; }
+	
+	#table-sellers-games .name { width: 65%; }
+	#table-sellers-games .price { width: 35%; }
 }
 
 @media (min-width: 768px)
@@ -304,6 +319,14 @@ ul { padding-left: 10px; }
 	#table-last-adds .price {	width: 10%; }
 	#table-last-adds .state { width: 10%; }
 	#table-last-adds .view { width: 7%; }
+	
+	#table-sellers-games .name { width: 25%; }
+	#table-sellers-games .price { width: 10%; }
+	#table-sellers-games .plateform { width: 15%; }
+	#table-sellers-games .photo { width: 10%; }
+	#table-sellers-games .state { width: 15%; }
+	#table-sellers-games .zone { width: 10%; }
+	#table-sellers-games .language { width: 15%; }
 }
 
 @media (min-width: 992px)
@@ -359,6 +382,14 @@ ul { padding-left: 10px; }
 	#table-last-adds .state { width: 9%; }
 	#table-last-adds .language { width: 10%; }
 	#table-last-adds .view { width: 5%; }
+	
+	#table-sellers-games .name { width: 30%; }
+	#table-sellers-games .price { width: 10%; }
+	#table-sellers-games .plateform { width: 15%; }
+	#table-sellers-games .photo { width: 10%; }
+	#table-sellers-games .state { width: 15%; }
+	#table-sellers-games .zone { width: 10%; }
+	#table-sellers-games .language { width: 10%; }
 }
 
 @media (min-width: 1200px)
@@ -384,6 +415,15 @@ ul { padding-left: 10px; }
 	#table-last-adds .language { width: 8%; }
 	#table-last-adds .comment { width: 25%; }
 	#table-last-adds .view { width: 5%; }
+	
+	#table-sellers-games .name { width: 23%; }
+	#table-sellers-games .price { width: 10%; }
+	#table-sellers-games .plateform { width: 12%; }
+	#table-sellers-games .photo { width: 5%; }
+	#table-sellers-games .state { width: 10%; }
+	#table-sellers-games .zone { width: 10%; }
+	#table-sellers-games .language { width: 10%; }
+	#table-sellers-games .comment { width: 20%; }
 }
 
 /**

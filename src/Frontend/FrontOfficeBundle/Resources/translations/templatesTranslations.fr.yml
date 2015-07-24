@@ -136,6 +136,7 @@ game_card:
         comment: Commentaire
         
 last_adds:
+    title: Derniers jeux ajoutés
     list:
         username: Vendeur
         name: Jeu
@@ -143,6 +144,25 @@ last_adds:
         date: Ajouté
         price: Prix
         state: Etat
+        language: Langue
+        comment: Commentaire
+
+best_sellers:
+    infos:
+        title: Informations sur le vendeur
+        name: 'Pseudo : '
+        sells: 'Nombre de jeux en vente : '
+    games:
+        title: Jeux en vente
+        name: Nom
+        price: Prix
+        plateform: Plateforme
+        photo: Photo
+        state: Etat
+        blister: Blister
+        notice: Notice
+        game_package: Boitier
+        zone: Zone
         language: Langue
         comment: Commentaire
             

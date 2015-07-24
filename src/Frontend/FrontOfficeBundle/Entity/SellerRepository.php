@@ -12,5 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class SellerRepository extends EntityRepository
 {
-    
+    public function getSellerInfos($id)
+    {
+        $qb = $this->createQueryBuilder("se");
+	    
+	    $query = $qb->select('u.id as user_id, u.username, u.email')
+        ->leftJoin('se.user', 'u')
+        ->where('u.id='.$id)
+        ->getQuery();
+        
+        $infos = $query->getResult();
+        
+        return $infos;
+    }
 }

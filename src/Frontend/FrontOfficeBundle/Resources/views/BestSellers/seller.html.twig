@@ -1,0 +1,27 @@
+{% extends 'FrontendFrontOfficeBundle::baseMenu.html.twig' %}
+{% trans_default_domain 'templatesTranslations' %}
+
+{% block meta %}
+    <meta name="description" content="Rompy's Project : informations sur le vendeur {{ infos.username }}" />
+    <meta property="og:description" content="Rompy's Project : informations sur le vendeur {{ infos.username }}" />
+    
+    <title>Rompys Project : {{ infos.username }}</title>
+    <meta property="og:title" content="Rompys Project : {{ infos.username }}" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="/bundles/frontendfrontoffice/js/page/seller.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div id="catalog" class="page">
+        <div id="seller-infos" class="row">
+            {% include 'FrontendFrontOfficeBundle:BestSellers:seller_infos.html.twig' with {'infos': infos} %}
+        </div>
+        <div id="seller-games" class="row">
+            {% include 'FrontendFrontOfficeBundle:BestSellers:seller_games.html.twig' with {'games': games} %}
+        </div>
+    </div>
+
+{% endblock %}

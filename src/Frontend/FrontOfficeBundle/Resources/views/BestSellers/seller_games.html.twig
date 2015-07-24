@@ -1,0 +1,61 @@
+{% trans_default_domain 'templatesTranslations' %}
+<div class="col-sm-12">
+    <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            <h5 class="panel-title">
+    	        <span class="glyphicon glyphicon-barcode" aria-hidden="true"></span>
+    	        &nbsp&nbsp
+    	        {{ 'best_sellers.games.title'|trans }}
+    	   </h5>
+        </div>
+        
+        <!-- Table -->
+        <table id="table-sellers-games" class="table tablesorter">
+            <thead>
+                <tr>
+                    <th class="name">{{ 'best_sellers.games.name'|trans }}</th>
+                    <th class="price">{{ 'best_sellers.games.price'|trans }}</th>
+                    <th class="plateform hidden-xs">{{ 'best_sellers.games.plateform'|trans }}</th>
+                    <th class="photo hidden-xs" data-toggle="tooltip" title="{{ 'best_sellers.games.photo'|trans }}"><span class="glyphicon glyphicon-picture"></span></th>
+                    <th class="state hidden-xs">{{ 'best_sellers.games.state'|trans }}</th>
+                    <th class="zone hidden-xs hidden-sm">{{ 'best_sellers.games.zone'|trans }}</th>
+                    <th class="language hidden-xs">{{ 'best_sellers.games.language'|trans }}</th>
+                    <th class="comment visible-lg">{{ 'best_sellers.games.comment'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for g in games %}
+                <tr>
+                    <td class="name" data-toggle="tooltip" title="{{ g.name }}">{{ g.name }}</td>
+                    <td class="align-right">{{ g.price }} €</td>
+                    <td class="plateform hidden-xs">{{ g.plateform }}</td>
+                    <td class="align-center hidden-xs">
+                        {% if g.image_seller is defined and g.image_seller != "" %}
+                            <a href="#" onclick="return false;" data-html="true" data-trigger="focus" data-placement="top" data-toggle="popover" title="{{ 'game_card.seller.photo'|trans }}" data-content="<img class='margin-auto' src='/pictures/{{ g.game_id }}/{{ g.image_seller }}' alt='Game picture' />">
+                                <span class="glyphicon glyphicon-picture" ></span>
+                            </a>
+                        {% endif %}
+                    </td>
+                    <td class="align-center hidden-xs" data-toggle="tooltip" title="{{ g.state|trans }}">
+                        {% if g.state_id == 1 %}
+                            <span class="glyphicon glyphicon-thumbs-up" ></span>
+                            <span class="glyphicon glyphicon-thumbs-up" ></span>
+                        {% elseif g.state_id == 2 %}
+                            <span class="glyphicon glyphicon-thumbs-up" ></span>
+                        {% elseif g.state_id == 3 %}
+                            <span class="glyphicon glyphicon-thumbs-down" ></span>
+                        {% else %}
+                            <span class="glyphicon glyphicon-thumbs-down" ></span>
+                            <span class="glyphicon glyphicon-thumbs-down" ></span>
+                        {% endif %}
+                    </td>
+                    <td class="align-center hidden-xs hidden-sm">{{ g.zone }}</td>
+                    <td class="align-center hidden-xs">{{ g.language }}</td>
+                    <td class="comment align-center visible-lg" data-toggle="tooltip" title="{{ g.comment }}">{{ g.comment }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
