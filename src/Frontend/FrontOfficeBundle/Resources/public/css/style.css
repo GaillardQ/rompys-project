@@ -252,6 +252,10 @@ ul { padding-left: 10px; }
 	outline: none;
 }
 
+#profile .infos-label {
+	color: #2196f3;
+}
+
 .menu-toggle .navbar-toggle {
     float: none;
     margin: 0;

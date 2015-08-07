@@ -5,9 +5,9 @@
         {# Get the first image available #}
         {% set img = null %}
         {% if g.image_game is not null %}
-            {% set img = g.image_game %}
+            {% set img = '/pictures/' ~ g.game_id ~ '/' ~ g.image_game %}
         {% else %}
-            {% set img = 'test.jpg' %}
+            {% set img = '/bundles/frontendfrontoffice/img/game_default.png' %}
         {% endif %}
         
     	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -17,7 +17,7 @@
         	            {{ g.name }}
                     </div>
         	        <div class="search-game-img">
-        	            <img src="/pictures/{{ g.game_id }}/{{ img }}" alt="{{ g.name }}" class="img-responsive" />
+        	            <img src="{{ img }}" alt="{{ g.name }}" class="img-responsive" />
         	        </div>
         	        <div class="search-game-plateform">
         	            {{ g.plateform }}

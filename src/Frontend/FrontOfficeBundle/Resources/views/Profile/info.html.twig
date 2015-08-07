@@ -1,37 +1,48 @@
 {% trans_default_domain 'templatesTranslations' %}
-
-<div id="help_content" class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
-        <fieldset>
-            <legend><h1>{{ 'profile.info.title'|trans }}</h1></legend>
-            <div class="col-xs-0 col-sm-3 col-md-3 col-lg-4"></div>
-        	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 center">
-				<div class="row">
-					<div class="col-xs-6 col-sm-5 col-md-4 col-lg-5 card-data-field white-color">{{'profile.info.username.label'|trans}}</div>
-					<div class="col-xs-6 col-sm-7 col-md-8 col-lg-7 card-data-value">{{ user.username }}</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-6 col-sm-5 col-md-4 col-lg-5 card-data-field white-color">{{'profile.info.firstname.label'|trans}}</div>
-					<div class="col-xs-6 col-sm-7 col-md-8 col-lg-7 card-data-value">{{ user.firstname }}</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-6 col-sm-5 col-md-4 col-lg-5 card-data-field white-color">{{'profile.info.lastname.label'|trans}}</div>
-					<div class="col-xs-6 col-sm-7 col-md-8 col-lg-7 card-data-value">{{ user.lastname }}</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 col-sm-5 col-md-4 col-lg-5 card-data-field white-color">{{'profile.info.email.label'|trans}}</div>
-					<div class="col-xs-12 col-sm-7 col-md-8 col-lg-7 card-data-value">{{ user.email }}</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-6 col-sm-5 col-md-4 col-lg-5 card-data-field white-color">{{'profile.info.phone.label'|trans}}</div>
-					<div class="col-xs-6 col-sm-7 col-md-8 col-lg-7 card-data-value">{{ user.phone }}</div>
-				</div>
-				<div class="row">
-                    <a href="{{ path('fos_user_change_password') }}" class='btn btn-primary col-xs-12 col-sm-5 col-md-4 col-lg-5 grey-background' type="submit">{{ 'profile.info.button.password'|trans }}</button>
-                    <a href={{ path('frontend_frontoffice_profile_update') }} class="btn btn-default col-xs-12 col-sm-7 col-md-8 col-lg-7 white-background orange-color"> {{ 'profile.info.button.update'|trans }} </a>
-                </div>
-			</div>
-            </div>
-        </fieldset>
+<div class="col-sm-12">
+    <div class="row">
+        <div class="panel panel-primary">
+        	<div class="panel-heading">
+        	    <h5 class="panel-title">
+        	        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        	        &nbsp&nbsp
+        	        {{ 'profile.info.title'|trans }}
+        	   </h5>
+        	</div>
+        	<div class="panel-body">
+        		<div class="row">
+        			<div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+	        		    <div class="row">
+							<span class="infos-label">{{'profile.info.username'|trans}}</span>
+							<span>{{ user.username }}</span>
+						</div>
+						<div class="row">
+							<span class="infos-label">{{'profile.info.firstname'|trans}}</span>
+							<span>{{ user.firstname }}</span>
+						</div>
+						<div class="row">
+							<span class="infos-label">{{'profile.info.lastname'|trans}}</span>
+							<span>{{ user.lastname }}</span>
+						</div>
+						<div class="row">
+							<span class="infos-label">{{'profile.info.email'|trans}}</span>
+							<span>{{ user.email }}</span>
+						</div>
+						<div class="row">
+							<span class="infos-label">{{'profile.info.phone'|trans}}</span>
+							<span>{{ user.phone }}</span>
+						</div>
+			    	</div>
+			    	<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+			    		<div class="row">
+			                <a href="{{ path('fos_user_change_password') }}" class='btn btn-primary margin-top-20 width-parent' type="submit">{{ 'profile.info.button.password'|trans }}</a>
+			            </div>
+			            <div class="row">
+			                <a href={{ path('frontend_frontoffice_profile_update') }} class="btn btn-default margin-top-10 width-parent"> {{ 'profile.info.button.update'|trans }} </a>
+			            </div>
+			    	</div>
+        		</div>
+        	</div>
+        </div>
     </div>
 </div>

@@ -22,11 +22,16 @@ class ProfileController extends Controller {
     {
         $token = $this->container->get('security.context')->getToken();
         $token_user = $token->getUser();
+        
+        $games = $this->getDoctrine()
+        ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
+        ->getSellerGames($token_user->getId());
        
         return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:index.html.twig', 
                 array(
                     "user" => $token_user,
-                    "token" => $token
+                    "token" => $token,
+                    "games" => $games
                 ));
     }
     

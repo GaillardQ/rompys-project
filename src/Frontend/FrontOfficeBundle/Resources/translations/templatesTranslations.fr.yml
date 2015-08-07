@@ -24,6 +24,7 @@ home:
     profile:
         title: Informations
         games: '{0, 1} %count% jeu en vente|]1,Inf] %count% jeux en vente'
+        profile: Mon profil
         logout: Se déconnecter
     news:
         title: News
@@ -77,6 +78,18 @@ register_confirmed:
     message: "Vous avez bien été inscrit sur notre site, vous pouvez dès à présent compléter votre catalogue ou remplir votre panier."
     button: "Accueil"
 
+profile:
+    info:
+        title: Mon profil
+        username: "Pseudo :"
+        firstname: "Prénom : "
+        lastname: "Nom : "
+        email: "E-mail : "
+        phone: "Téléphone :"
+        button:
+            password: Modifier le mot de passe
+            update: Mettre à jour
+    
 catalog:
     filter:
         title: Filtres

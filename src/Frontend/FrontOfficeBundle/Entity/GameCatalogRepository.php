@@ -180,7 +180,6 @@ class GameCatalogRepository extends EntityRepository
         return $games;
 	}
     
-    /*
     public function getAllGamesForSellByAnUser($_user_id)
 	{
                 $qb = $this->createQueryBuilder("gc");
@@ -201,7 +200,7 @@ class GameCatalogRepository extends EntityRepository
                 $all_games = $query->getResult();
                 return $all_games;
 	}
-	
+	/*
 	public function getAllGamesForSell()
 	{
                 $qb = $this->createQueryBuilder("gc");

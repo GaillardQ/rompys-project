@@ -1,20 +1,26 @@
-{% extends 'FrontendFrontOfficeBundle::baseFrontend.html.twig' %}
+{% extends 'FrontendFrontOfficeBundle::baseMenu.html.twig' %}
 {% trans_default_domain 'templatesTranslations' %}
 
-{% block menu-content %}
-    {% include 'FrontendFrontOfficeBundle:Menu:menu_profile.html.twig' %}
+{% block meta %}
+    <meta name="description" content="Rompy's Project : mon profil" />
+    <meta property="og:description" content="Rompy's Project : mon profil" />
+    
+    <title>Rompys Project : profil de {{ user.username }}</title>
+    <meta property="og:title" content="Rompys Project : profil de {{ user.username }}" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="/bundles/frontendfrontoffice/js/page/profile.js"></script>
 {% endblock %}
 
 {% block body %}
-    <div id="page-info" class="row">
-        {% include 'FrontendFrontOfficeBundle:Profile:info.html.twig' with {'user': user} %}
+    <div id="profile" class="page">
+        <div class="row">
+            {% include 'FrontendFrontOfficeBundle:Profile:info.html.twig' with {'user': user} %}
+        </div>
+        <div id="page-catalog" class="row">
+            {% include 'FrontendFrontOfficeBundle:Profile:catalog.html.twig' with {'games': games} %}
+        </div>
     </div>
-    <div id="page-catalog" class="row">
-        {{ render(controller('FrontendFrontOfficeBundle:Profile:catalog', {})) }}
-    </div>
-    <script>
-        $(document).ready(function() {
-        	$.localScroll();	
-        });
-    </script>
 {% endblock %}

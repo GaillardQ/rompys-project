@@ -15,11 +15,11 @@
                         {# Get the first image available #}
                         {% set img = null %}
                         {% if game.image_game is not null %}
-                            {% set img = game.image_game %}
+                            {% set img = '/pictures/' ~ game.id ~ '/' ~ game.image_game %}
                         {% else %}
-                            {% set img = 'test.jpg' %}
+                            {% set img = '/bundles/frontendfrontoffice/img/game_default.png' %}
                         {% endif %}
-        	            <img src="/pictures/{{ game.id }}/{{ img }}" alt="{{ game.name }}" class="img-responsive margin-auto" />
+        	            <img src="{{ img }}" alt="{{ game.name }}" class="img-responsive margin-auto" />
         	        </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-9 col-lg-10 game-infos-div">
