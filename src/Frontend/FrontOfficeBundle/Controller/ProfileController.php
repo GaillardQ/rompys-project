@@ -3,6 +3,7 @@
 namespace Frontend\FrontOfficeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
@@ -79,7 +80,7 @@ class ProfileController extends Controller {
                 return $response;
             }
         }
-
+        
         return $this->container->get('templating')->renderResponse(
             'FrontendFrontOfficeBundle:Profile:edit.html.'.$this->container->getParameter('fos_user.template.engine'),
             array('form' => $form->createView())

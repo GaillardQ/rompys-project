@@ -1,76 +1,49 @@
 {% trans_default_domain 'templatesTranslations' %}
 
-<div id="register_content" class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8       col-xs-offset-0 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
-        <form action="{{ path('frontend_frontoffice_profile_update') }}" {{ form_enctype(form) }} method="POST" class="form-horizontal fos_user_profile_edit">
-            <div class="block-content">
-                <fieldset>
-                    <legend><h1>{{ 'profile_update.title'|trans }}</h1></legend>
-                    {% if not form.vars.valid %}
-                        <div class="alert alert-block alert-danger fade in">
-                            {% if form_errors(form.username) is not null %}
-                                {{ form_errors(form.username) }}
-                            {% endif %}
-                            {% if form_errors(form.firstname) is not null %}
-                                {{ form_errors(form.firstname) }}
-                            {% endif %}
-                            {% if form_errors(form.lastname) is not null %}
-                                {{ form_errors(form.lastname) }}
-                            {% endif %}
-                            {% if form_errors(form.phone) is not null %}
-                                {{ form_errors(form.phone) }}
-                            {% endif %}
-                            {% if form_errors(form.email) is not null %}
-                                {{ form_errors(form.email) }}
-                            {% endif %}
-                             {{ form_errors(form) }}
-                        </div>
-                    {% endif %}
-                    
-                    <div class="form-group">
-                        <label class="control-label col-xs-12 col-sm-5 col-md-5 col-lg-5 white-color">{{ form_label(form.username) }}</label>
-                        <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
-                            {{ form_widget(form.username, { 'attr': {'class': 'form-control'} }) }}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-xs-12 col-sm-5 col-md-5 col-lg-5 white-color">{{ form_label(form.firstname) }}</label>
-                        <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
-                            {{ form_widget(form.firstname, { 'attr': {'class': 'form-control'} }) }}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-xs-12 col-sm-5 col-md-5 col-lg-5 white-color">{{ form_label(form.lastname) }}</label>
-                        <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
-                            {{ form_widget(form.lastname, { 'attr': {'class': 'form-control'} }) }}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-xs-12 col-sm-5 col-md-5 col-lg-5 white-color">{{ form_label(form.phone) }}</label>
-                        <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
-                            {{ form_widget(form.phone, { 'attr': {'class': 'form-control'} }) }}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-xs-12 col-sm-5 col-md-5 col-lg-5 white-color">{{ form_label(form.email) }}</label>
-                        <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
-                            {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
-                        </div>
-                    </div>
-                
-                    <div class="row">
-                        <div class="col-xs-0 col-sm-5 col-md-5 col-lg-5"></div>
-                        <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
-                            <div class="row">
-                                <button class='btn btn-primary col-xs-12 col-sm-12 col-md-12 col-lg-12' type="submit">{{ 'profile_update.button.submit'|trans }}</button>
-                                <a href={{ path('frontend_frontoffice_homepage') }} class="btn btn-default col-xs-12 col-sm-12 col-md-12 col-lg-12 white-background orange-color"> {{ 'common.go_back'|trans }} </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    {{ form_row(form._token) }}
-                </fieldset>
-            </div>
-        </form>
+<form action="{{ path('frontend_frontoffice_profile_update') }}" {{ form_enctype(form) }} method="POST" class="form-horizontal fos_user_profile_edit">
+
+    {% if not form.vars.valid %}
+    <div class="alert alert-block alert-danger fade in">
+        {% if form_errors(form.username) is not null %} {{ form_errors(form.username) }} {% endif %} {% if form_errors(form.firstname) is not null %} {{ form_errors(form.firstname) }} {% endif %} {% if form_errors(form.lastname) is not null %} {{ form_errors(form.lastname)
+        }} {% endif %} {% if form_errors(form.phone) is not null %} {{ form_errors(form.phone) }} {% endif %} {% if form_errors(form.email) is not null %} {{ form_errors(form.email) }} {% endif %} {{ form_errors(form) }}
     </div>
-</div>
+    {% endif %}
+
+    <div class="form-group">
+        <label class="control-label col-xs-10 col-sm-4 col-md-3 col-lg-3 margin-right-5">{{ form_label(form.username) }}</label>
+        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
+            {{ form_widget(form.username, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-4 col-md-3 col-lg-3 margin-right-5">{{ form_label(form.firstname) }}</label>
+        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
+            {{ form_widget(form.firstname, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-4 col-md-3 col-lg-3 margin-right-5">{{ form_label(form.lastname) }}</label>
+        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
+            {{ form_widget(form.lastname, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-4 col-md-3 col-lg-3 margin-right-5">{{ form_label(form.phone) }}</label>
+        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
+            {{ form_widget(form.phone, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-4 col-md-3 col-lg-3 margin-right-5">{{ form_label(form.email) }}</label>
+        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
+            {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
+        </div>
+    </div>
+    <div class="margin-top-10 align-center">
+        <input type="submit" value="{{ 'profile.update.submit'|trans }}" class="btn btn-primary" />
+        <a class="btn btn-default" href="{{ path('frontend_frontoffice_profile_home') }}">{{ 'common.go_back'|trans }}</a>
+    </div>
+
+    {{ form_row(form._token) }}
+
+</form>

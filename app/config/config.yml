@@ -65,4 +65,7 @@ fos_user:
     change_password:
       form:
         type: carpaccio_user_change_password
+    profile:
+        form:
+            type: frontend_user_profile_update
    

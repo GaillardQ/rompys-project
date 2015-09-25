@@ -89,6 +89,15 @@ profile:
         button:
             password: Modifier le mot de passe
             update: Mettre à jour
+    password:
+        title: "Changer de mot de passe"
+        button: "Modifier"
+        return: "Retour"
+    update:
+        title: Modifier ses infos
+        submit: Modifier
+    games:
+        add: Ajouter un jeu au catalogue
     
 catalog:
     filter:
