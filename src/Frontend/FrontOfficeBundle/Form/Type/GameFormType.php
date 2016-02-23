@@ -19,12 +19,12 @@ class GameFormType extends AbstractType
                     'required' => false
                 ))
                 ->add('name', 'text', array(
-                    'label' => 'profile.catalog.add_game.game.game_name.label',
+                    'label' => 'profile.add_game.game.game_name.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false
                 ))
                 ->add('plateform', 'entity', array(
-                    'label' => 'profile.catalog.add_game.game.plateform.label',
+                    'label' => 'profile.add_game.game.plateform.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
                     'class' => 'FrontendFrontOfficeBundle:Plateform',
@@ -35,7 +35,7 @@ class GameFormType extends AbstractType
                     'property' => 'value'
                 ))
                 ->add('editor_1', 'entity', array(
-                    'label' => 'profile.catalog.add_game.game.editor.label',
+                    'label' => 'profile.add_game.game.editor.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
                     'class' => 'FrontendFrontOfficeBundle:Editor',
@@ -46,7 +46,7 @@ class GameFormType extends AbstractType
                     'property' => 'value'
                 ))
                 ->add('editor_2', 'entity', array(
-                    'label' => 'profile.catalog.add_game.game.editor.label',
+                    'label' => 'profile.add_game.game.editor.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
                     'class' => 'FrontendFrontOfficeBundle:Editor',
@@ -57,7 +57,7 @@ class GameFormType extends AbstractType
                     'property' => 'value'
                 ))
                 ->add('editor_3', 'entity', array(
-                    'label' => 'profile.catalog.add_game.game.editor.label',
+                    'label' => 'profile.add_game.game.editor.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
                     'class' => 'FrontendFrontOfficeBundle:Editor',
@@ -68,7 +68,7 @@ class GameFormType extends AbstractType
                     'property' => 'value'
                 ))
                 ->add('series', 'entity', array(
-                    'label' => 'profile.catalog.add_game.game.series.label',
+                    'label' => 'profile.add_game.game.series.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
                     'class' => 'FrontendFrontOfficeBundle:Series',
@@ -79,12 +79,12 @@ class GameFormType extends AbstractType
                     'property' => 'value'
                 ))
                 ->add('released_year', 'text', array(
-                    'label' => 'profile.catalog.add_game.game.released_year.label',
+                    'label' => 'profile.add_game.game.released_year.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false
                 ))
                 ->add('game_type', 'entity', array(
-                    'label' => 'profile.catalog.add_game.game.game_type.label',
+                    'label' => 'profile.add_game.game.game_type.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
                     'class' => 'FrontendFrontOfficeBundle:GameType',

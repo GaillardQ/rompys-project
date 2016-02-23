@@ -161,7 +161,7 @@ class GameCatalogRepository extends EntityRepository
 	{
 	    $qb = $this->createQueryBuilder("gc");
 	    
-	    $query = $qb->select('g.id as game_id, g.name, p.value as plateform, gc.image_seller, gc.price, gc.alternative_name, gc.comment, gc.language, gc.game_package, gc.blister, gc.notice, st.value as state, st.id as state_id, gc.zone, u.id as user_id, u.username, u.email')
+	    $query = $qb->select('gc.id, g.id as game_id, g.name, p.value as plateform, gc.image_seller, gc.price, gc.alternative_name, gc.comment, gc.language, gc.game_package, gc.blister, gc.notice, st.value as state, st.id as state_id, gc.zone, u.id as user_id, u.username, u.email')
 	    ->leftJoin('gc.game', 'g')
         ->leftJoin('g.serie', 's')
         ->leftJoin('gc.seller', 'se')

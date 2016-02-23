@@ -30,6 +30,8 @@
                     <th class="zone hidden-xs hidden-sm">{{ 'best_sellers.games.zone'|trans }}</th>
                     <th class="language hidden-xs">{{ 'best_sellers.games.language'|trans }}</th>
                     <th class="comment visible-lg">{{ 'best_sellers.games.comment'|trans }}</th>
+                    <th class="update visible-lg" data-toggle="tooltip" title="{{ 'best_sellers.games.update'|trans }}"><span class="glyphicon glyphicon-pencil"></span></th>
+                    <th class="delete visible-lg" data-toggle="tooltip" title="{{ 'best_sellers.games.delete'|trans }}"><span class="glyphicon glyphicon-trash"></span></th>
                 </tr>
             </thead>
             <tbody>
@@ -63,6 +65,16 @@
                     <td class="align-center hidden-xs hidden-sm">{{ g.zone }}</td>
                     <td class="align-center hidden-xs">{{ g.language }}</td>
                     <td class="comment align-center visible-lg" data-toggle="tooltip" title="{{ g.comment }}">{{ g.comment }}</td>
+                    <td class="update align-center visible-lg" data-toggle="tooltip" title="{{ 'best_sellers.games.update'|trans }}">
+                        <a href="{{ g.id }}">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                    </td>
+                    <td class="delete align-center visible-lg" data-toggle="tooltip" title="{{ 'best_sellers.games.delete'|trans }}">
+                        <a href="#" onclick="deleteGameCatalog({{ g.id }});">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>

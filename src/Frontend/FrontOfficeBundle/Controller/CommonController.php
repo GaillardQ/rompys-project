@@ -38,6 +38,10 @@ class CommonController extends Controller {
         ->getRepository('FrontendFrontOfficeBundle:Game')
         ->findFormattedGameInfos($id);
 
+        $trans = $this->get('translator');
+        
+        $game['game_type_val'] = $trans->trans($game['game_type_val'], array(), 'templatesTranslations');
+
         $ar_res = array();
         $ar_res["game"] = $game;
         

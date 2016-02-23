@@ -1,0 +1,13 @@
+db:
+    game_state:
+        very_good: Très bon état
+        good: Bon état
+        usage: Etat d'usage
+        bad: Mauvais état
+    game_type:
+        test: "Test 666"
+        action: Action
+        adventure: Aventure
+        rpg: RPG
+        simulation: Simulation
+        strategy: Stratégie

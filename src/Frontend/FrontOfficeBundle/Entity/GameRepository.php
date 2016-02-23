@@ -12,6 +12,23 @@ use Doctrine\ORM\EntityRepository;
  */
 class GameRepository extends EntityRepository
 {
+    public function findStartWithInArray($_start)
+    {
+        // Ne récupérer que nom et id + event select : aller chercher les infos de ce jeu
+        $qb = $this->createQueryBuilder("g");
+    
+        $query = $qb->select("g.id, g.name, g.released_year, p.value as plateform")
+         ->join('g.plateform', 'p')
+         ->where('g.name LIKE :name')
+         ->setParameter('name',"%$_start%")
+         ->orderBy('g.name', 'ASC')
+         ->addOrderBy('g.released_year', 'DESC')
+         ->getQuery();
+         
+        $all_games = $query->getResult();
+        return $all_games;
+    }
+    
     public function findFormattedGameInfos($_id)
     {
         // Ne récupérer que nom et id + event select : aller chercher les infos de ce jeu
@@ -36,6 +53,6 @@ class GameRepository extends EntityRepository
          ->where('g.id = '.$_id)
          ->getQuery();
          
-         return $query->getSingleResult();
+         return $query->getSingleResult();;
     }
 }

@@ -3,7 +3,7 @@ imports:
 
 framework:
     secret: %secret%
-    translator:      { fallback: %dev_locale% }
+    translator:      { fallback: %dev_locale% } 
     default_locale:  "%dev_locale%"
     router:
         resource: "%kernel.root_dir%/config/routing_dev.yml"

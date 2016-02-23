@@ -21,7 +21,7 @@ class GameCatalogFormType extends AbstractType
                     'label' => false
                 ))
                 ->add('language', 'choice', array(
-                    'label' => 'profile.catalog.add_game.game_catalog.language.label',
+                    'label' => 'profile.add_game.game_catalog.language.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
                     'choices'   => array(
@@ -35,7 +35,7 @@ class GameCatalogFormType extends AbstractType
                     'multiple' => false,
                 ))
                 ->add('game_package', 'choice', array(
-                    'label' => 'profile.catalog.add_game.game_catalog.game_package.label',
+                    'label' => 'profile.add_game.game_catalog.game_package.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
                     'choices'   => array(true => 'Oui', false => 'Non'),
@@ -43,7 +43,7 @@ class GameCatalogFormType extends AbstractType
                     'multiple' => false
                 ))
                 ->add('blister', 'choice', array(
-                    'label' => 'profile.catalog.add_game.game_catalog.blister.label',
+                    'label' => 'profile.add_game.game_catalog.blister.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
                     'choices'   => array(true => 'Oui', false => 'Non'),
@@ -51,7 +51,7 @@ class GameCatalogFormType extends AbstractType
                     'multiple' => false
                 ))
                 ->add('notice', 'choice', array(
-                    'label' => 'profile.catalog.add_game.game_catalog.notice.label',
+                    'label' => 'profile.add_game.game_catalog.notice.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
                     'attr' => array('style' => 'margin-right: 5px;'),
@@ -60,20 +60,20 @@ class GameCatalogFormType extends AbstractType
                     'multiple' => false
                 ))
                 ->add('price', 'text', array(
-                    'label' => 'profile.catalog.add_game.game_catalog.price.label',
+                    'label' => 'profile.add_game.game_catalog.price.label',
                     'translation_domain' => $translation_domain, 
                     'attr' => array('placeholder' => 'En euro'),
                     'required' => false
                 ))
                 ->add('comment', 'textarea', array(
-                    'label' => 'profile.catalog.add_game.game_catalog.comment.label',
+                    'label' => 'profile.add_game.game_catalog.comment.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
                     'max_length' => 500,
                     'attr' => array('placeholder' => 'Entrez votre commentaire (500 car. max)...')
                 ))
                 ->add('state', 'entity', array(
-                    'label' => 'profile.catalog.add_game.game_catalog.state.label',
+                    'label' => 'profile.add_game.game_catalog.state.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
                     'class' => 'FrontendFrontOfficeBundle:GameState',
@@ -84,7 +84,7 @@ class GameCatalogFormType extends AbstractType
                     'property' => 'value'
                 ))
                 ->add('zone', 'choice', array(
-                    'label' => 'profile.catalog.add_game.game_catalog.zone.label',
+                    'label' => 'profile.add_game.game_catalog.zone.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
                     'choices'   => array(
@@ -96,7 +96,7 @@ class GameCatalogFormType extends AbstractType
                     'multiple' => false
                 ))
                 ->add('alternative_name', 'text', array(
-                    'label' => 'profile.catalog.add_game.game_catalog.alternative_name.label',
+                    'label' => 'profile.add_game.game_catalog.alternative_name.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
                     'attr' => array('placeholder' => 'Dépend de la zone')

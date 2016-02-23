@@ -1,9 +1,22 @@
-{% extends 'FrontendFrontOfficeBundle::baseFrontend.html.twig' %}
+{% extends 'FrontendFrontOfficeBundle::baseMenu.html.twig' %}
 {% trans_default_domain 'templatesTranslations' %}
+
+{% block meta %}
+    <meta name="description" content="Rompy's Project : mon profil" />
+    <meta property="og:description" content="Rompy's Project : mon profil" />
+    
+    <title>Rompys Project : Modification du profil</title>
+    <meta property="og:title" content="Modification du profil" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="/bundles/frontendfrontoffice/js/page/profile.js"></script>
+{% endblock %}
 
 {% block body %}
 
-    <div id="home" class="row page">
+    <div id="profile" class="row page">
         <div class="col-md-6 col-offset-md-3 col-lg-8 col-lg-offset-2">
             <div id="home-center" class="row home-block home-center-div">
                 <div class="panel panel-primary home-panel-center">

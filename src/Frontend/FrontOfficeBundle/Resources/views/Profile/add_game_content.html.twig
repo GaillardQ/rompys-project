@@ -1,0 +1,304 @@
+{% trans_default_domain 'templatesTranslations' %}
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 center">
+    <form action="{{ path('frontend_frontoffice_profile_add_game') }}" {{ form_enctype(form) }} method="POST" class="form-horizontal space-under" role="form">
+        <div class="block-content">
+            {% if not form.vars.valid %}
+            <div class="alert alert-block alert-danger fade in">
+                Une erreur est survenue lors de l'ajout de votre jeu au catalogue : {% if form_errors(form.game.name) is not null %} {{ form_errors(form.game.name) }} {% endif %} {% if form_errors(form.game.series) is not null %} {{ form_errors(form.game.series) }} {%
+                endif %} {% if form_errors(form.game.game_type) is not null %} {{ form_errors(form.game.game_type) }} {% endif %} {% if form_errors(form.game.plateform) is not null %} {{ form_errors(form.game.plateform) }} {% endif %} {% if form_errors(form.game.editor_1)
+                is not null %} {{ form_errors(form.game.editor_1) }} {% endif %} {% if form_errors(form.game.editor_2) is not null %} {{ form_errors(form.game.editor_2) }} {% endif %} {% if form_errors(form.game.editor_3) is not null %} {{ form_errors(form.game.editor_3)
+                }} {% endif %} {% if form_errors(form.game.released_year) is not null %} {{ form_errors(form.game.released_year) }} {% endif %} {% if form_errors(form.alternative_name) is not null %} {{ form_errors(form.alternative_name) }} {% endif %}
+                {% if form_errors(form.language) is not null %} {{ form_errors(form.language) }} {% endif %} {% if form_errors(form.game_package) is not null %} {{ form_errors(form.game_package) }} {% endif %} {% if form_errors(form.blister) is not null
+                %} {{ form_errors(form.blister) }} {% endif %} {% if form_errors(form.notice) is not null %} {{ form_errors(form.notice) }} {% endif %} {% if form_errors(form.state) is not null %} {{ form_errors(form.state) }} {% endif %} {% if form_errors(form.zone)
+                is not null %} {{ form_errors(form.zone) }} {% endif %} {% if form_errors(form.price) is not null %} {{ form_errors(form.price) }} {% endif %} {% if form_errors(form.comment) is not null %} {{ form_errors(form.comment) }} {% endif %} {{
+                form_errors(form) }}
+            </div>
+            {% endif %} {% if add is defined and add is not null and add == true %}
+            <div class="alert alert-block alert-success fade in">
+                Le jeu a été ajouté à votre catalogue
+            </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <fieldset>
+                        <legend class="align-center"><small>{{ 'profile.add_game.game.title'|trans }}</small></legend>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-12 col-md-3 col-lg-3 margin-right-5">{{ form_label(form.game.name) }}</label>
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                <div class="row">
+                                    {{ form_widget(form.game.name, { 'attr': {'class': 'form-control', 'onClick': 'showGameList()'} }) }}
+                                    <img id="name-loader" src="/bundles/frontendfrontoffice/img/game-search.gif" alt="" class="img-responsive display-none align_center" onload='$("#name-loader").hide();' />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="div_game_fields">
+                            <div class="form-group">
+                                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                    {{ form_widget(form.game.id, { 'attr': {'class': 'form-control full_parent_width display-none'} }) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-3 margin-right-5">{{ form_label(form.game.series) }}</label>
+                                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                    {{ form_widget(form.game.series, { 'attr': {'class': 'form-control full_parent_width display-none',} }) }}
+                                    {% if form.vars.value.game != null %}
+                                        <input type="text" class="form-control" name="game_serie" id="game_serie" value="{{ form.vars.value.game.series }}" disabled>
+                                    {% else %}
+                                        <input type="text" class="form-control" name="game_serie" id="game_serie" value="" disabled>
+                                    {% endif %}
+                                    <img id="series-loader" src="/bundles/frontendfrontoffice/img/game-search.gif" alt="" class="img-responsive display-none align_center" onload='$("#series-loader").hide();' />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-3 margin-right-5">{{ form_label(form.game.game_type) }}</label>
+                                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                    {{ form_widget(form.game.game_type, { 'attr': {'class': 'form-control full_parent_width display-none'} }) }}
+                                    {% if form.vars.value.game != null and form.vars.value.game.gametype != null %}
+                                        <input type="text" class="form-control" name="game_type" id="game_type" value="{{ form.vars.value.game.gametype.value|trans }}" disabled>
+                                    {% else %}
+                                        <input type="text" class="form-control" name="game_type" id="game_type" value="" disabled>
+                                    {% endif %}
+                                    <img id="type-loader" src="/bundles/frontendfrontoffice/img/game-search.gif" alt="" class="img-responsive display-none align_center" onload='$("#type-loader").hide();' />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-3 margin-right-5">{{ form_label(form.game.plateform) }}</label>
+                                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                    {{ form_widget(form.game.plateform, { 'attr': {'class': 'form-control full_parent_width display-none'} }) }}
+                                    {% if form.vars.value.game != null and form.vars.value.game.plateform != null %}
+                                        <input type="text" class="form-control" name="game_plateform" id="game_plateform" value="{{ form.vars.value.game.plateform.value }}" disabled>
+                                    {% else %}
+                                        <input type="text" class="form-control" name="game_plateform" id="game_plateform" value="" disabled>
+                                    {% endif %}
+                                    <img id="plateform-loader" src="/bundles/frontendfrontoffice/img/game-search.gif" alt="" class="img-responsive display-none align_center" onload='$("#plateform-loader").hide();' />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-3 margin-right-5">{{ form_label(form.game.editor_1) }}</label>
+                                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                    {{ form_widget(form.game.editor_1, { 'attr': {'class': 'form-control full_parent_width display-none'} }) }}
+                                    {% if form.vars.value.game != null and form.vars.value.game.editor1 != null %}
+                                        <input type="text" class="form-control" name="game_editor_1" id="game_editor_1" value="{{ form.vars.value.game.editor1.value }}" disabled>
+                                    {% else %}
+                                        <input type="text" class="form-control" name="game_editor_1" id="game_editor_1" value="" disabled>
+                                    {% endif %}
+                                    <img id="editor1-loader" src="/bundles/frontendfrontoffice/img/game-search.gif" alt="" class="img-responsive display-none align_center" onload='$("#editor1-loader").hide();' />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-3 margin-right-5">{{ form_label(form.game.editor_2) }}</label>
+                                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                    {{ form_widget(form.game.editor_2, { 'attr': {'class': 'form-control full_parent_width display-none'} }) }}
+                                    {% if form.vars.value.game != null and form.vars.value.game.editor2 != null %}
+                                        <input type="text" class="form-control" name="game_editor_2" id="game_editor_2" value="{{ form.vars.value.game.editor2.value }}" disabled>
+                                    {% else %}
+                                        <input type="text" class="form-control" name="game_editor_2" id="game_editor_2" value="" disabled>
+                                    {% endif %}
+                                    <img id="editor2-loader" src="/bundles/frontendfrontoffice/img/game-search.gif" alt="" class="img-responsive display-none align_center" onload='$("#editor2-loader").hide();' />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-3 margin-right-5">{{ form_label(form.game.editor_3) }}</label>
+                                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                    {{ form_widget(form.game.editor_3, { 'attr': {'class': 'form-control full_parent_width display-none'} }) }}
+                                    {% if form.vars.value.game != null and form.vars.value.game.editor3 != null %}
+                                        <input type="text" class="form-control" name="game_editor_3" id="game_editor_3" value="{{ form.vars.value.game.editor3.value }}" disabled>
+                                    {% else %}
+                                        <input type="text" class="form-control" name="game_editor_3" id="game_editor_3" value="" disabled>
+                                    {% endif %}
+                                    <img id="editor3-loader" src="/bundles/frontendfrontoffice/img/game-search.gif" alt="" class="img-responsive display-none align_center" onload='$("#editor3-loader").hide();' />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-3 margin-right-5">{{ form_label(form.game.released_year) }}</label>
+                                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                    {{ form_widget(form.game.released_year, { 'attr': {'class': 'form-control full_parent_width display-none'} }) }}
+                                    {% if form.vars.value.game != null %}
+                                        <input type="text" class="form-control" id="game_released_year" id="game_released_year" value="{{ form.vars.value.game.releasedyear }}" disabled>
+                                    {% else %}
+                                        <input type="text" class="form-control" id="game_released_year" id="game_released_year" value="" disabled>
+                                    {% endif %}
+                                    <img id="year-loader" src="/bundles/frontendfrontoffice/img/game-search.gif" alt="" class="img-responsive display-none align_center" onload='$("#year-loader").hide();' />
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <fieldset>
+                        <legend class="align-center"><small>{{ 'profile.add_game.game_catalog.title'|trans }}</small></legend>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-3 margin-right-5">{{ form_label(form.alternative_name) }}</label>
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                {{ form_widget(form.alternative_name, { 'attr': {'class': 'form-control'} }) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-3 margin-right-5">{{ form_label(form.language) }}</label>
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                {{ form_widget(form.language, { 'attr': {'class': 'form-control full_parent_width'} }) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-3 margin-right-5">{{ form_label(form.game_package) }}</label>
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                {{ form_widget(form.game_package, { 'attr': {'class': 'form-control full_parent_width'} }) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-3 margin-right-5">{{ form_label(form.blister) }}</label>
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                {{ form_widget(form.blister, { 'attr': {'class': 'form-control full_parent_width'} }) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-3 margin-right-5">{{ form_label(form.notice) }}</label>
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                {{ form_widget(form.notice, { 'attr': {'class': 'form-control full_parent_width'} }) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-3 margin-right-5">{{ form_label(form.state) }}</label>
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                {{ form_widget(form.state, { 'attr': {'class': 'form-control full_parent_width'} }) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-3 margin-right-5">{{ form_label(form.zone) }}</label>
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                {{ form_widget(form.zone, { 'attr': {'class': 'form-control full_parent_width'} }) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-3 margin-right-5">{{ form_label(form.price) }}</label>
+                            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                {{ form_widget(form.price, { 'attr': {'class': 'form-control'} }) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-3 margin-right-5" style="text-align: left">{{ form_label(form.comment) }}</label>
+                                <div class="col-xs-0 col-sm-0 col-md-7 col-lg-7"></div>
+                            </div>
+                            <div class="" row>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    {{ form_widget(form.comment, { 'attr': {'class': 'form-control'} }) }}
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <center>
+                {{ form_rest(form) }}
+                <input type="submit" class="btn btn-primary" value="{{ 'profile.add_game.btn'|trans }}" />
+                <a href="{{ path('frontend_frontoffice_profile_home') }}" class="btn btn-default white-background orange-color">{{ 'common.go_back'|trans }}</a>
+            </center>
+        </div>
+    </form>
+
+    <script>
+        function showGameList() {
+            var list = $("#ui-id-1");
+            if (list) {
+                list.show();
+            }
+        }
+        $('#frontend_frontoffice_addCatalogGame_game_name').autocomplete({
+            delay: 1000,
+            search: function(event, ui) {
+                $("#ui-id-1").hide();
+                $("#name-loader").show();
+            },
+            source: function(requete, reponse) { // les deux arguments représentent les données nécessaires au plugin
+                $.ajax({
+                    url: "{{ path('frontend_frontoffice_common_get_all_games') }}",
+                    dataType: 'json', // on spécifie bien que le type de données est en JSON
+                    data: {
+                        start: $('#frontend_frontoffice_addCatalogGame_game_name').val(), // on donne la chaîne de caractère tapée dans le champ de recherche
+                    },
+                    success: function(donnee) {
+                        game_liste = new Array();
+                        $.map(donnee.games, function(value, index) {
+                            game_liste[index] = value;
+                        });
+                        reponse($.map(donnee.games, function(objet) {
+                            return objet.name + " (" + objet.plateform + "  / " + objet.released_year + ") [#" + objet.id + "#]";
+                        }));
+                        $("#name-loader").hide();
+                        //$("#ui-id-1").show();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert("Une erreur est survenue lors de la recherche des jeux, merci de re-essayer.");
+                        $("#name-loader").hide();
+                    },
+                    timeout: 120000
+                });
+            },
+            select: function(event, ui) {
+
+                $("#series-loader").show();
+                $("#type-loader").show();
+                $("#plateform-loader").show();
+                $("#editor1-loader").show();
+                $("#editor2-loader").show();
+                $("#editor3-loader").show();
+                $("#year-loader").show();
+
+                var value = ui.item.value;
+                var ar_value = value.split("[#");
+                var ar_id = ar_value[1].split("#]");
+                var id = parseInt(ar_id[0]);
+
+                $.ajax({
+                    url: "{{ path('frontend_frontoffice_common_get_game_info') }}",
+                    dataType: 'json', // on spécifie bien que le type de données est en JSON
+                    data: {
+                        id: id
+                    },
+                    success: function(donnee) {
+                        var game = donnee.game;
+                        $("#div_game_fields").show();
+                        $("#frontend_frontoffice_addCatalogGame_game_name").val(game.name);
+                        $("#frontend_frontoffice_addCatalogGame_game_id").val(game.id);
+                        $("#frontend_frontoffice_addCatalogGame_game_series").val(game.serie_id);
+                        $("#game_serie").val(game.serie_val);
+                        $("#series-loader").hide();
+                        $("#frontend_frontoffice_addCatalogGame_game_game_type").val(game.game_type_id);
+                        $("#game_type").val(game.game_type_val);
+                        $("#type-loader").hide();
+                        $("#frontend_frontoffice_addCatalogGame_game_plateform").val(game.plateform_id);
+                        $("#game_plateform").val(game.plateform_val);
+                        $("#plateform-loader").hide();
+                        $("#frontend_frontoffice_addCatalogGame_game_editor_1").val(game.editor_1_id);
+                        $("#game_editor_1").val(game.editor_1_val);
+                        $("#editor1-loader").hide();
+                        $("#frontend_frontoffice_addCatalogGame_game_editor_2").val(game.editor_2_id);
+                        $("#game_editor_2").val(game.editor_2_val);
+                        $("#editor2-loader").hide();
+                        $("#frontend_frontoffice_addCatalogGame_game_editor_3").val(game.editor_3_id);
+                        $("#game_editor_3").val(game.editor_3_val);
+                        $("#editor3-loader").hide();
+                        $("#game_released_year").val(game.released_year);
+                        $("#frontend_frontoffice_addCatalogGame_game_released_year").val(game.released_year);
+                        $("#year-loader").hide();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert("Une erreur est survenue lors de la recherche des informations de ce jeu, merci de re-essayer.");
+                        $("#series-loader").hide();
+                        $("#type-loader").hide();
+                        $("#plateform-loader").hide();
+                        $("#editor1-loader").hide();
+                        $("#editor2-loader").hide();
+                        $("#editor3-loader").hide();
+                        $("#year-loader").hide();
+                    },
+                    timeout: 120000
+                });
+
+            }
+        });
+    </script>
+</div>

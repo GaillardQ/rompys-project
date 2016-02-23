@@ -12,7 +12,10 @@ legend {
     border-color: #2196f3;
 }
 
-legend h3 { color: #ffffff !important; }
+legend h3,
+legend small { 
+	color: #ffffff !important; 
+}
 
 ul { padding-left: 10px; }
 
@@ -429,13 +432,15 @@ ul { padding-left: 10px; }
 	#table-last-adds .view { width: 5%; }
 	
 	#table-sellers-games .name { width: 23%; }
-	#table-sellers-games .price { width: 10%; }
+	#table-sellers-games .price { width: 5%; }
 	#table-sellers-games .plateform { width: 12%; }
 	#table-sellers-games .photo { width: 5%; }
 	#table-sellers-games .state { width: 10%; }
 	#table-sellers-games .zone { width: 10%; }
 	#table-sellers-games .language { width: 10%; }
-	#table-sellers-games .comment { width: 20%; }
+	#table-sellers-games .comment { width: 15%; }
+	#table-sellers-games .update { width: 5%; }
+	#table-sellers-games .delete { width: 5%; }
 }
 
 /**

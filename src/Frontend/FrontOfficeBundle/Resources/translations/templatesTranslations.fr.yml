@@ -98,6 +98,45 @@ profile:
         submit: Modifier
     games:
         add: Ajouter un jeu au catalogue
+    add_game:
+        title: Ajouter un jeu au catalogue
+        game:
+            title:
+                Informations générales
+            game_name:
+                label: "Nom :"
+            plateform:
+                label: "Plateforme :"
+            editor:
+                label: "Editeur :"
+            series:
+                label: "Série :"
+            released_year:
+                label: "Date de sortie :"
+            game_type: 
+                label: "Type :"
+        game_catalog:
+            title:
+                Votre version
+            language:
+                label: "Langue :"
+            game_package:
+                label: "Boite :"
+            blister:
+                label: "Blister :"
+            notice:
+                label: "Notice :"
+            price:
+                label: "Prix :"
+            comment:
+                label: "Commentaire :"
+            state:
+                label: "Etat :"
+            zone:
+                label: "Zone :"
+            alternative_name:
+                label: "Nom alternatif :"
+        btn: Ajouter au catalogue
     
 catalog:
     filter:

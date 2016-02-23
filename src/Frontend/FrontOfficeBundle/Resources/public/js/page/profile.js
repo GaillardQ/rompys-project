@@ -39,7 +39,7 @@ $(document).ready(function() {
         headers: {
             // disable sorting of the first & second column - before we would have to had made two entries
             // note that "first-name" is a class on the span INSIDE the first column th cell
-            '.photo, .state' : {
+            '.photo, .state, .update, .delete' : {
                 // disable it by setting the property sorter to false
                 sorter: false,
                 filter: false
@@ -85,11 +85,17 @@ $(document).ready(function() {
     $("#table-sellers-games .tablesorter-filter-row td:nth-child(5)").addClass("hidden-xs hidden-sm");
     $("#table-sellers-games .tablesorter-filter-row td:nth-child(6)").addClass("hidden-xs");
     $("#table-sellers-games .tablesorter-filter-row td:nth-child(7)").addClass("visible-lg");
+    $("#table-sellers-games .tablesorter-filter-row td:nth-child(8)").addClass("visible-lg");
+    $("#table-sellers-games .tablesorter-filter-row td:nth-child(9)").addClass("visible-lg");
     
     $('[data-toggle="popover"]').popover();
 
 });
 
+function deleteGameCatalog(id)
+{
+    alert("We delete the game from your catalog with the id : "+id);
+}
 
 function displayProfileGameCard(_id, _path)
 {

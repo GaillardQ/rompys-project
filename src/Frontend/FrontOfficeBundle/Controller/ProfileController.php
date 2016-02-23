@@ -105,8 +105,6 @@ class ProfileController extends Controller {
     {
         $token_user = $this->container->get('security.context')->getToken()->getUser();
         
-        
-        
         $gameCatalog = new GameCatalog();
         
         $form = $this->createForm(new GameCatalogFormType(), $gameCatalog);
@@ -122,7 +120,6 @@ class ProfileController extends Controller {
                             ->getRepository('FrontendFrontOfficeBundle:Game')
                             ->find($game_id);
                 $gameCatalog->setGame($game);
-                
                 $seller =  $this->get('Doctrine')
                             ->getRepository('FrontendFrontOfficeBundle:Seller')
                             ->findOneBy(array("user" => $token_user->getId()));
