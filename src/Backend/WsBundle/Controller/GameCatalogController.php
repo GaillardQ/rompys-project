@@ -19,6 +19,8 @@ class GameCatalogController extends Controller
             $em = $this->get('doctrine')->getManager();
             $gameCatalog = $em->getRepository('FrontendFrontOfficeBundle:Game')->find($id);
             
+            $img = $gameCatalog->getImage();
+            
             if($gameCatalog == null)
             {
                 $code = 404;
@@ -28,6 +30,9 @@ class GameCatalogController extends Controller
                 
                 $em->remove($gameCatalog);
                 $em->flush();
+                
+                unlink(__DIR__.'/../../../../web/public/pictures/'.$img);
+                
                 $code = 200;
             }
         }
