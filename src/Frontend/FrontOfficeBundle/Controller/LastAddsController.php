@@ -9,7 +9,7 @@ class LastAddsController extends Controller {
     public function indexAction() 
     {       
         $games = $this->getDoctrine()
-            ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
+            ->getRepository('FrontendFrontOfficeBundle:Game')
             ->getLastAdds(20);
             
         return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:LastAdds:index.html.twig', array('games' => $games));

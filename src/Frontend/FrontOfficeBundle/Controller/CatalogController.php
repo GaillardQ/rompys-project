@@ -17,10 +17,6 @@ class CatalogController extends Controller {
                             ->getRepository('FrontendFrontOfficeBundle:GameType')
                             ->findAllOrdered();
                             
-        $editors =  $this->get('Doctrine')
-                            ->getRepository('FrontendFrontOfficeBundle:Editor')
-                            ->findAll();
-                            
         $gameStates =  $this->get('Doctrine')
                             ->getRepository('FrontendFrontOfficeBundle:GameState')
                             ->findAll();
@@ -52,7 +48,7 @@ class CatalogController extends Controller {
         if($name != null || $plateform != null || $gametype != null || $editor != null || $zone != null || $state != null || $blister != null || $notice != null || $pricemin != null || $pricemax != null)
         {
             $games = $this->get('Doctrine')
-                            ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
+                            ->getRepository('FrontendFrontOfficeBundle:Game')
                             ->searchGames($filters);
         }
                   
@@ -60,7 +56,6 @@ class CatalogController extends Controller {
             "games" => $games,
             "plateforms" => $plateforms,
             "game_types" => $gameTypes,
-            "editors" => $editors,
             "game_states" => $gameStates,
             "filters" => $filters
         ));
@@ -71,14 +66,15 @@ class CatalogController extends Controller {
         $game = $this->get('Doctrine')
                             ->getRepository('FrontendFrontOfficeBundle:Game')
                             ->findFormattedGameInfos($id);
-        $gamesCatalog = $this->get('Doctrine')
-                            ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
-                            ->findFormatteGameCatalog($id);
+                      
+        $games = $this->get('Doctrine')
+                            ->getRepository('FrontendFrontOfficeBundle:Game')
+                            ->findFormattedOtherGames($game);
         $sum = 0;                 
         $nb = 0;
         $min = -1;
         $avg = 0;
-        foreach($gamesCatalog as $k=>$v)
+        foreach($games as $k=>$v)
         {
             $nb++;
             $p = $v["price"];
@@ -100,7 +96,7 @@ class CatalogController extends Controller {
 
         return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Catalog:game_card.html.twig', array(
             "name" => $name,
-            "games_catalog"=> $gamesCatalog,
+            "games"=> $games,
             "game" => $game,
             "stats"=>$stats
         ));

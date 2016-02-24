@@ -11,7 +11,7 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="/bundles/frontendfrontoffice/js/page/profile.js"></script>
+    <script type="text/javascript" src="/public/js/page/profile.js"></script>
 {% endblock %}
 
 {% block body %}
@@ -24,7 +24,7 @@
                 			<div class="row">
                 			        <fieldset>
                                         <legend class="align-center"><h3>{{ 'profile.add_game.title'|trans|upper }}</h3></legend>
-                                            {% include "FrontendFrontOfficeBundle:Profile:add_game_content.html.twig" %}
+                                            {% include "FrontendFrontOfficeBundle:Profile:add_game_content.html.twig" with {'data': data} %}
                                     </fieldset>
                 			</div>
                 		</div>

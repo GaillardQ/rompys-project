@@ -12,17 +12,200 @@ use Doctrine\ORM\EntityRepository;
  */
 class GameRepository extends EntityRepository
 {
-    public function findStartWithInArray($_start)
+    public function getLastAdds($_nb = 5)
+	{
+        $qb = $this->createQueryBuilder("g");
+        
+        $query = $qb->select("g.id, g.name, p.value as plateform, g.addedAt as added_at, g.price, u.username, g.image, g.language, g.comment,st.id as state_id, st.value as state_value")
+         ->leftJoin('g.seller', 's')
+         ->leftJoin('s.user', 'u')
+         ->leftJoin('g.plateform', 'p')
+         ->leftJoin('g.gameType', 'gt')
+         ->leftJoin('g.state', 'st')
+         ->OrderBy('g.addedAt', 'DESC')
+         ->setMaxResults( $_nb )
+         ->getQuery();
+         
+        $last_adds = $query->getResult();
+        
+        return $last_adds;
+	}
+	
+	public function getGameBestSellers($limit)
+    {
+        $qb = $this->createQueryBuilder("g");
+        
+        $query = $qb->select("u.username, u.id, count(g.id) as nb")
+         ->leftJoin('g.seller', 's')
+         ->leftJoin('s.user', 'u')
+         ->GroupBy('u.id')
+         ->OrderBy('nb', 'DESC')
+         ->setMaxResults( $limit )
+         ->getQuery();
+         
+        $sellers = $query->getResult();
+        
+        return $sellers;
+    }
+    
+    public function searchGames($filters)
+    {
+        $qb = $this->createQueryBuilder("g");
+            
+        $qb->select('g.id as game_id, g.image, g.name, g.releasedYear as year, g.serie, 
+                              p.value as plateform, gt.value as game_type, g.editor1, g.editor2, g.editor3, 
+                              MIN(g.price) as min_price, count(se.id) as nb_sellers')
+        ->leftJoin('g.seller', 'se')
+        ->leftJoin('se.user', 'u')
+        ->leftJoin('g.plateform', 'p')
+        ->leftJoin('g.gameType', 'gt')
+        ->leftJoin('g.state', 'st')
+        ->where('g.id > 0');
+        
+        if(array_key_exists('name', $filters))
+        {
+            $name = $filters['name'];
+            $qb->andwhere('(LOWER(g.name) LIKE LOWER(\'%'.$name.'%\') OR LOWER(g.alternativeName) LIKE LOWER(\'%'.$name.'%\'))');
+        }
+        if(array_key_exists('plateform', $filters) && $filters['plateform'] != -5)
+        {
+            $plateform = $filters['plateform'];
+            $qb->andwhere('p.id = '.$plateform);
+        }
+        if(array_key_exists('gametype', $filters) && $filters['gametype'] != -5)
+        {
+            $gametype = $filters['gametype'];
+            $qb->andwhere('gt.id = '.$gametype);
+        }
+        if(array_key_exists('editor', $filters))
+        {
+            $editor = $filters['editor'];
+            $qb->andwhere('(LOWER(g.editor1) LIKE LOWER(\'%'.$editor.'%\') OR LOWER(g.editor2) LIKE LOWER(\'%'.$editor.'%\') OR LOWER(g.editor3) LIKE LOWER(\'%'.$editor.'%\'))');
+        }
+        if(array_key_exists('zone', $filters) && $filters['zone'] != -5)
+        {
+            $zone = $filters['zone'];
+            $qb->andwhere('gt.id = '.$zone);
+        }
+        if(array_key_exists('state', $filters) && $filters['state'] != -5)
+        {
+            $state = $filters['state'];
+            $qb->andwhere('st.id = '.$state);
+        }
+        if(array_key_exists('package', $filters) && $filters['package'] != -5)
+        {
+            $package = $filters['package'];
+            $qb->andwhere('g.package = '.$package);
+        }
+        if(array_key_exists('blister', $filters) && $filters['blister'] != -5)
+        {
+            $blister = $filters['blister'];
+            $qb->andwhere('g.blister = '.$blister);
+        }
+        if(array_key_exists('notice', $filters) && $filters['notice'] != -5)
+        {
+            $notice = $filters['notice'];
+            $qb->andwhere('g.notice = '.$notice);
+        }
+        if(array_key_exists('pricemin', $filters))
+        {
+            $pricemin = $filters['pricemin'];
+            $qb->andwhere('g.price >= '.$pricemin);
+        }
+        if(array_key_exists('pricemax', $filters))
+        {
+            $pricemax = $filters['pricemax'];
+            $qb->andwhere('g.price <= '.$pricemax);
+        }
+        
+        $query = $qb->groupby('g.name, plateform, year')
+                    ->orderby('g.name', 'DESC')
+                    ->getQuery();
+        
+        $games = $query->getResult();
+        return $games;
+    }
+    
+    public function findFormattedOtherGames($_game)
+	{
+	        $qb = $this->createQueryBuilder("g");
+	        
+                $query = $qb->select('g.id as game_id, g.image, g.price, g.alternativeName, g.comment, g.language, g.package, g.blister, g.notice, st.value as state, st.id as state_id, g.zone, u.id as user_id, u.username, u.email')
+                 ->leftJoin('g.seller', 'se')
+                 ->leftJoin('se.user', 'u')
+                 ->leftJoin('g.plateform', 'p')
+                 ->leftJoin('g.gameType', 'gt')
+                 ->leftJoin('g.state', 'st');
+                 
+                if(array_key_exists("name", $_game))
+                    $query = $query->where('g.name LIKE \''.$_game["name"].'\'');
+                if(array_key_exists("serie", $_game))
+                    $query = $query->where('g.serie LIKE \''.$_game["serie"].'\'');    
+                if(array_key_exists("plateform_id", $_game))
+                    $query = $query->where('p.id = \''.$_game["plateform_id"].'\'');    
+                if(array_key_exists("game_type_id", $_game))
+                    $query = $query->where('gt.id = \''.$_game["game_type_id"].'\''); 
+                if(array_key_exists("editor1", $_game))
+                    $query = $query->where('g.editor1 LIKE \''.$_game["editor1"].'\'');    
+                if(array_key_exists("editor2", $_game))
+                    $query = $query->where('g.editor2 LIKE \''.$_game["editor2"].'\'');    
+                if(array_key_exists("editor3", $_game))
+                    $query = $query->where('g.editor3 LIKE \''.$_game["editor3"].'\'');  
+                if(array_key_exists("releasedYear", $_game))
+                    $query = $query->where('g.releasedYear = \''.$_game["releasedYear"].'\'');    
+                    
+                 $query = $query->getQuery();
+                 
+                $games = $query->getResult();
+                return $games;
+	}
+	
+	public function getSellerGames($id)
+	{
+	    $qb = $this->createQueryBuilder("g");
+	    
+	    $query = $qb->select('g.id, g.name, p.value as plateform, g.image, g.price, g.alternativeName, g.comment, g.language, g.package, g.blister, g.notice, st.value as state, st.id as state_id, g.zone, u.id as user_id, u.username, u.email')
+        ->leftJoin('g.seller', 'se')
+        ->leftJoin('se.user', 'u')
+        ->leftJoin('g.plateform', 'p')
+        ->leftJoin('g.gameType', 'gt')
+        ->leftJoin('g.state', 'st')
+        ->where('u.id='.$id)
+        ->orderby('g.name', 'ASC')
+        ->getQuery();
+        
+        $games = $query->getResult();
+        return $games;
+	}
+    
+    public function getAllGamesForSellByAnUser($_user_id)
+	{
+                $qb = $this->createQueryBuilder("g");
+            
+                $query = $qb->select('g.id, g.name, p.value as plateform, g.releasedYear, gt.value as game_type, g.editor1, g.editor2, g.editor3, g.price')
+                 ->leftJoin('g.seller', 's')
+                 ->leftJoin('g.plateform', 'p')
+                 ->leftJoin('g.gameType', 'gt')
+                 ->where('s.user = '.$_user_id)
+                 ->orderBy('g.name', 'ASC')
+                 ->addOrderBy('g.releasedYear', 'DESC')
+                 ->getQuery();
+                 
+                $all_games = $query->getResult();
+                return $all_games;
+	}
+	
+	    public function findStartWithInArray($_start)
     {
         // Ne récupérer que nom et id + event select : aller chercher les infos de ce jeu
         $qb = $this->createQueryBuilder("g");
     
-        $query = $qb->select("g.id, g.name, g.released_year, p.value as plateform")
+        $query = $qb->select("g.id, g.name, g.releasedYear, p.value as plateform")
          ->join('g.plateform', 'p')
          ->where('g.name LIKE :name')
          ->setParameter('name',"%$_start%")
          ->orderBy('g.name', 'ASC')
-         ->addOrderBy('g.released_year', 'DESC')
+         ->addOrderBy('g.releasedYear', 'DESC')
          ->getQuery();
          
         $all_games = $query->getResult();
@@ -36,23 +219,67 @@ class GameRepository extends EntityRepository
     
         $query = 
           $qb->select('g.name, g.id, 
-                        s.id as serie_id, s.value as serie_val, 
+                        g.serie,
                         p.id as plateform_id, p.value as plateform_val, 
                         gt.id as game_type_id, gt.value as game_type_val, 
-                        e1.id as editor_1_id, e1.value as editor_1_val, 
-                        e2.id as editor_2_id, e2.value as editor_2_val, 
-                        e3.id as editor_3_id, e3.value as editor_3_val, 
-                        g.image_game,
-                        g.released_year')
-         ->leftJoin('g.serie', 's')
+                        g.editor1,
+                        g.editor2,
+                        g.editor3,
+                        g.image,
+                        g.releasedYear')
          ->leftJoin('g.plateform', 'p')
-         ->leftJoin('g.game_type', 'gt')
-         ->leftJoin('g.editor_1', 'e1')
-         ->leftJoin('g.editor_2', 'e2')
-         ->leftJoin('g.editor_3', 'e3')
+         ->leftJoin('g.gameType', 'gt')
          ->where('g.id = '.$_id)
          ->getQuery();
          
-         return $query->getSingleResult();;
+         return $query->getSingleResult();
+    }
+    
+    public function getAllGamesData()
+    {
+        // Ne récupérer que nom et id + event select : aller chercher les infos de ce jeu
+        $qb = $this->createQueryBuilder("g");
+    
+        $query = 
+          $qb->select('g.name,
+                       g.serie,
+                       g.editor1,
+                       g.editor2,
+                       g.editor3')
+         ->getQuery();
+         
+         $res = $query->getResult();
+         
+         $data = array(
+            "name"   => array(),
+            "serie"  => array(),
+            "editor" => array()
+         );
+         
+         foreach($res as $k=>$v)
+         {
+              $name    = $v["name"];
+              $serie   = $v["serie"];
+              $editor1 = $v["editor1"];
+              $editor2 = $v["editor2"];
+              $editor3 = $v["editor3"];
+              
+              if(!in_array($name, $data["name"]))
+                  $data["name"][] = $name;
+                  
+              if(!in_array($serie, $data["serie"]))
+                  $data["serie"][] = $serie;
+                  
+              if(!in_array($editor1, $data["editor"]))
+                  $data["editor"][] = $editor1;
+                  
+              if(!in_array($editor2, $data["editor"]))
+                  $data["editor"][] = $editor2;
+                  
+              if(!in_array($editor3, $data["editor"]))
+                  $data["editor"][] = $editor3;
+         }
+         
+         return $data;
     }
 }

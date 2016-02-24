@@ -27,6 +27,12 @@ frontend_frontoffice_profile_add_game:
     defaults: { _controller: FrontendFrontOfficeBundle:Profile:addGame, _locale: fr }
     requirements:
           _locale: fr
+          
+frontend_frontoffice_profile_update_game:
+    pattern:  /{_locale}/profile/update_game/{id}/{hash}
+    defaults: { _controller: FrontendFrontOfficeBundle:Profile:updateGame, _locale: fr }
+    requirements:
+          _locale: fr
 
 frontend_frontoffice_profile_update:
     pattern:  /{_locale}/profile/update

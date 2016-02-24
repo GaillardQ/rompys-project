@@ -4,10 +4,10 @@
         
         {# Get the first image available #}
         {% set img = null %}
-        {% if g.image_game is not null %}
-            {% set img = '/pictures/' ~ g.game_id ~ '/' ~ g.image_game %}
+        {% if g.image is not null %}
+            {% set img = '/public/pictures/' ~ g.image %}
         {% else %}
-            {% set img = '/bundles/frontendfrontoffice/img/game_default.png' %}
+            {% set img = '/public/img/game_default.png' %}
         {% endif %}
         
     	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -26,20 +26,20 @@
         	            {{ g.game_type|trans }}
         	        </div>
         	        <div class="search-game-editor">
-        	            {% if g.editor_1 is not null %}
-        	                {{ g.editor_1 }}
-        	                {% if g.editor_2 is not null or g.editor_3 is not null %}
+        	            {% if g.editor1 is not null %}
+        	                {{ g.editor1 }}
+        	                {% if g.editor2 is not null or g.editor3 is not null %}
         	                    &nbsp/&nbsp
         	                {% endif %}
                         {% endif %}
-                        {% if g.editor_2 is not null %}
-        	                {{ g.editor_2 }}
-        	                {% if g.editor_3 is not null %}
+                        {% if g.editor2 is not null %}
+        	                {{ g.editor2 }}
+        	                {% if g.editor3 is not null %}
         	                    &nbsp/&nbsp
         	                {% endif %}
                         {% endif %}
-                        {% if g.editor_3 is not null %}
-        	                {{ g.editor_3 }}
+                        {% if g.editor3 is not null %}
+        	                {{ g.editor3 }}
                         {% endif %}
         	        </div>
         	        <div class="search-game-price">

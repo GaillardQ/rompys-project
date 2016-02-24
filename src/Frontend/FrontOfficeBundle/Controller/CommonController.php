@@ -6,8 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-use Frontend\FrontOfficeBundle\Entity\GameCatalog;
-use Frontend\FrontOfficeBundle\Form\Type\GameCatalogFormType;
+use Frontend\FrontOfficeBundle\Entity\Game;
+use Frontend\FrontOfficeBundle\Form\Type\GameFormType;
 
 class CommonController extends Controller {
     public function getAllGamesAction(Request $request)
@@ -30,68 +30,6 @@ class CommonController extends Controller {
         return $response;
     }
     
-    public function getGameInfoAction(Request $request)
-    {
-        $id =  $request->query->get('id');
-        
-        $game = $this->getDoctrine()
-        ->getRepository('FrontendFrontOfficeBundle:Game')
-        ->findFormattedGameInfos($id);
-
-        $trans = $this->get('translator');
-        
-        $game['game_type_val'] = $trans->trans($game['game_type_val'], array(), 'templatesTranslations');
-
-        $ar_res = array();
-        $ar_res["game"] = $game;
-        
-        $response = new Response();
-        
-        if($game != null)
-        {
-            $response->setStatusCode(200);
-        }
-        else
-        {
-            $response->setStatusCode(404);
-        }
-        
-        $response->headers->set('Content-Type', 'application/json');
-        
-        $response->setContent(json_encode($ar_res));
-        
-        return $response;
-    }
-    
-    public function getGameCatalogInfoAction(Request $request)
-    {
-        $id =  $request->query->get('id');
-        
-        $game = $this->getDoctrine()
-        ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
-        ->findFormatteGameCatalog($id);
-
-        $ar_res = array();
-        $ar_res["game"] = $game;
-        
-        $response = new Response();
-        
-        if($game != null)
-        {
-            $response->setStatusCode(200);
-        }
-        else
-        {
-            $response->setStatusCode(404);
-        }
-        
-        $response->headers->set('Content-Type', 'application/json');
-        
-        $response->setContent(json_encode($ar_res));
-        
-        return $response;
-    }
-    
     public function getLastAddGamesAction(Request $request)
     {
         try {
@@ -99,7 +37,7 @@ class CommonController extends Controller {
             $limit = $request->request->get('limit');
             
             $games = $this->getDoctrine()
-            ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
+            ->getRepository('FrontendFrontOfficeBundle:Game')
             ->getLastAdds($limit);
             
             if($output == 'home')
@@ -137,7 +75,7 @@ class CommonController extends Controller {
             $limit = $request->request->get('limit');
             
             $sellers = $this->getDoctrine()
-            ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
+            ->getRepository('FrontendFrontOfficeBundle:Game')
             ->getGameBestSellers($limit);
             
             if($output == 'home')

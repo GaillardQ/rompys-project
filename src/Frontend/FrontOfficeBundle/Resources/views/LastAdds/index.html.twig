@@ -11,7 +11,7 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="/bundles/frontendfrontoffice/js/page/last_adds.js"></script>
+    <script type="text/javascript" src="/public/js/page/last_adds.js"></script>
 {% endblock %}
 
 {% block body %}
@@ -63,7 +63,7 @@
                             	<td class="language align-center hidden-xs hidden-sm">{{ g.language }}</td>
                             	<td class="comment visible-lg">{{ g.comment }}</td>
                             	<td class="view align-center">
-                            	    <a href="{{ path('frontend_frontoffice_game_page', {'id': g.game_id, 'name':g.name|url_encode}) }}">
+                            	    <a href="{{ path('frontend_frontoffice_game_page', {'id': g.id, 'name':g.name|url_encode}) }}">
                             	        <span class="glyphicon glyphicon-eye-open" ></span>
                             	    </a>
                             	</td>

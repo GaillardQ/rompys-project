@@ -30,12 +30,12 @@ class Buyer
     private $user;
 
     /**
-     * @var Frontend\FrontOfficeBundle\Entity\GameCatalog
+     * @var Frontend\FrontOfficeBundle\Entity\Game
      *
-     * @ORM\ManyToOne(targetEntity="Frontend\FrontOfficeBundle\Entity\GameCatalog")
+     * @ORM\ManyToOne(targetEntity="Frontend\FrontOfficeBundle\Entity\Game")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $game_catalog;
+    private $game;
     
     /**
      * Get id
@@ -71,25 +71,25 @@ class Buyer
     }
     
     /**
-     * Set game_catalog
+     * Set game
      *
-     * @param Frontend\FrontOfficeBundle\Entity\GameCatalog $game_catalog
+     * @param Frontend\FrontOfficeBundle\Entity\Game $game
      * @return Buyer
      */
-    public function setGameCatalog(\Frontend\FrontOfficeBundle\Entity\GameCatalog $game_catalog)
+    public function setGameCatalog(\Frontend\FrontOfficeBundle\Entity\Game $game)
     {
-        $this->game_catalog = $game_catalog;
+        $this->game = $game;
     
         return $this;
     }
 
     /**
-     * Get game_catalog
+     * Get game
      *
-     * @return Frontend\FrontOfficeBundle\Entity\GameCatalog
+     * @return Frontend\FrontOfficeBundle\Entity\Game
      */
-    public function getGameCatalog()
+    public function getGame()
     {
-        return $this->game_catalog;
+        return $this->game;
     }
 }

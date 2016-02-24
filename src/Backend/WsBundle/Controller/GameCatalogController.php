@@ -7,21 +7,29 @@ use Symfony\Component\HttpFoundation\Response;
 
 class GameCatalogController extends Controller
 {
-    public function deleteGameCatalogAction($id)
+    public function deleteGameCatalogAction($id, $hash)
     {
-        $em = $this->get('doctrine')->getManager();
-        $gameCatalog = $em->getRepository('FrontendFrontOfficeBundle:GameCatalog')->find($id);
-        
-        if($gameCatalog == null)
+        $salt = $this->container->getParameter('secret');
+        if($hash != md5($id."_".$salt))
         {
             $code = 404;
         }
         else
         {
+            $em = $this->get('doctrine')->getManager();
+            $gameCatalog = $em->getRepository('FrontendFrontOfficeBundle:Game')->find($id);
             
-            $em->remove($gameCatalog);
-            $em->flush();
-            $code = 200;
+            if($gameCatalog == null)
+            {
+                $code = 404;
+            }
+            else
+            {
+                
+                $em->remove($gameCatalog);
+                $em->flush();
+                $code = 200;
+            }
         }
         
         $return = array();

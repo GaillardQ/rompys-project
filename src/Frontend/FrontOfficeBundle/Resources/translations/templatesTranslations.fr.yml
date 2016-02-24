@@ -134,9 +134,14 @@ profile:
                 label: "Etat :"
             zone:
                 label: "Zone :"
+            image:
+                label: "Image (png/jpeg) :"
             alternative_name:
                 label: "Nom alternatif :"
         btn: Ajouter au catalogue
+    edit_game:
+        title: Edition d'un jeu
+        btn: Modifier
     
 catalog:
     filter:

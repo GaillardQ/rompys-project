@@ -4,14 +4,43 @@
 
 {% block stylesheets %}
 	{{ parent() }}
-	{% stylesheets 'bundles/frontendfrontoffice/css/*.css' filter='cssrewrite' %}
+	{% stylesheets
+	    'public/css/bootstrap-datetimepicker.min.css'
+	    'public/css/bootswatch.min.css'
+	    'public/css/filter.formatter.css'
+	    'public/css/jquery.fileupload-ui.css'
+	    'public/css/style.css'
+	    'public/css/tablesorter.pager.css'
+	    'public/css/theme.bootstrap.css'
+	    'public/css/utils.css'
+	    filter='cssrewrite' output='public/css/compiled/app.css' %}
 	    <link rel="stylesheet" href="{{ asset_url }}" />
 	{% endstylesheets %}
 {% endblock %}
 
 {% block javascripts %}
 	{{ parent() }}
-    {% javascripts '@FrontendFrontOfficeBundle/Resources/public/js/globals/*' %}
-	    <script type="text/javascript" src="{{ asset_url }}"></script>
+	{% javascripts
+	    'public/js/globals/10_jquery-1.9.1.js'
+	    'public/js/globals/20_jquery-ui-1.10.2.js'
+	    'public/js/globals/21_jquery.ui.widget.js'
+	    'public/js/globals/22_jquery-migrate-1.2.1.min.js'
+	    'public/js/globals/30_bootstrap.min.js'
+	    'public/js/globals/40_bootstrap-datetimepicker.min.js'
+	    'public/js/globals/44_jquery.localscroll.js'
+	    'public/js/globals/45_jquery.scrollTo.js'
+	    'public/js/globals/60_hinclude.js'
+	    'public/js/globals/70_jquery.tablesorter.combined.js'
+	    'public/js/globals/71_jquery.tablesorter.js'
+	    'public/js/globals/72_jquery.tablesorter.widgets.js'
+	    'public/js/globals/73_widget-filter-formatter-html5.js'
+	    'public/js/globals/74_widget-filter-formatter-jui.js'
+	    'public/js/globals/75_widget-filter-formatter-select2.js'
+	    'public/js/globals/76_widget-filter-type-insideRange.js'
+	    'public/js/globals/77_widget-filter.js'
+	    'public/js/globals/78_widget-pager.js'
+	    'public/js/globals/79_widget-uitheme.js'
+	    output='public/js/compiled/app.js' %}
+	    <script src="{{ asset_url }}"></script>
 	{% endjavascripts %}
 {% endblock %}

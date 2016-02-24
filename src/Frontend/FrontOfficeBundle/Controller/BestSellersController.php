@@ -9,7 +9,7 @@ class BestSellersController extends Controller {
     public function sellerAction($id, $name) 
     {   
         $games = $this->getDoctrine()
-        ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
+        ->getRepository('FrontendFrontOfficeBundle:Game')
         ->getSellerGames($id);
         
         $infos_tmp = $this->getDoctrine()

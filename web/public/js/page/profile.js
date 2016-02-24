@@ -89,12 +89,21 @@ $(document).ready(function() {
     $("#table-sellers-games .tablesorter-filter-row td:nth-child(9)").addClass("visible-lg");
     
     $('[data-toggle="popover"]').popover();
-
+    
 });
 
-function deleteGameCatalog(id)
+function deleteGameCatalog(id, hash)
 {
-    alert("We delete the game from your catalog with the id : "+id);
+    $.ajax({
+        url : "/ws/game_catalog/"+id+"/delete/"+hash,
+        dataType : 'json', // on spécifie bien que le type de données est en JSON
+        data : {
+            id : id
+        },
+        success : function(data){
+            location.reload();
+        }
+    });
 }
 
 function displayProfileGameCard(_id, _path)

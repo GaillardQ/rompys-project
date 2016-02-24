@@ -4,7 +4,9 @@ namespace Frontend\FrontOfficeBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;;
+
+use Frontend\FrontOfficeBundle\Entity\Game;
 
 use Doctrine\ORM\EntityRepository;
 
@@ -34,56 +36,32 @@ class GameFormType extends AbstractType
                     },
                     'property' => 'value'
                 ))
-                ->add('editor_1', 'entity', array(
+                ->add('editor1', 'text', array(
                     'label' => 'profile.add_game.game.editor.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
-                    'class' => 'FrontendFrontOfficeBundle:Editor',
-                    'query_builder' => function(EntityRepository $er) {
-                        return $er->createQueryBuilder('e')
-                            ->orderBy('e.id', 'ASC');
-                    },
-                    'property' => 'value'
                 ))
-                ->add('editor_2', 'entity', array(
+                ->add('editor2', 'text', array(
                     'label' => 'profile.add_game.game.editor.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
-                    'class' => 'FrontendFrontOfficeBundle:Editor',
-                    'query_builder' => function(EntityRepository $er) {
-                        return $er->createQueryBuilder('e')
-                            ->orderBy('e.id', 'ASC');
-                    },
-                    'property' => 'value'
                 ))
-                ->add('editor_3', 'entity', array(
+                ->add('editor3', 'text', array(
                     'label' => 'profile.add_game.game.editor.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
-                    'class' => 'FrontendFrontOfficeBundle:Editor',
-                    'query_builder' => function(EntityRepository $er) {
-                        return $er->createQueryBuilder('e')
-                            ->orderBy('e.id', 'ASC');
-                    },
-                    'property' => 'value'
                 ))
-                ->add('series', 'entity', array(
+                ->add('serie', 'text', array(
                     'label' => 'profile.add_game.game.series.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
-                    'class' => 'FrontendFrontOfficeBundle:Series',
-                    'query_builder' => function(EntityRepository $er) {
-                        return $er->createQueryBuilder('s')
-                            ->orderBy('s.id', 'ASC');
-                    },
-                    'property' => 'value'
                 ))
-                ->add('released_year', 'text', array(
+                ->add('releasedYear', 'text', array(
                     'label' => 'profile.add_game.game.released_year.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false
                 ))
-                ->add('game_type', 'entity', array(
+                ->add('gameType', 'entity', array(
                     'label' => 'profile.add_game.game.game_type.label',
                     'translation_domain' => $translation_domain, 
                     'required' => false,
@@ -93,6 +71,92 @@ class GameFormType extends AbstractType
                             ->orderBy('gt.id', 'ASC');
                     },
                     'property' => 'value'
+                ))
+                ->add('language', 'choice', array(
+                    'label' => 'profile.add_game.game_catalog.language.label',
+                    'translation_domain' => $translation_domain, 
+                    'required' => false,
+                    'choices'   => array(
+                        Game::LANGUAGE_FR => Game::LANGUAGE_FR, 
+                        Game::LANGUAGE_JP => Game::LANGUAGE_JP,
+                        Game::LANGUAGE_UK => Game::LANGUAGE_UK,
+                        Game::LANGUAGE_US => Game::LANGUAGE_US,
+                        Game::LANGUAGE_ZZ => Game::LANGUAGE_ZZ
+                    ),
+                    'expanded' => false,
+                    'multiple' => false,
+                ))
+                ->add('package', 'choice', array(
+                    'label' => 'profile.add_game.game_catalog.game_package.label',
+                    'translation_domain' => $translation_domain, 
+                    'required' => false,
+                    'choices'   => array(true => 'Oui', false => 'Non'),
+                    'expanded' => false,
+                    'multiple' => false
+                ))
+                ->add('blister', 'choice', array(
+                    'label' => 'profile.add_game.game_catalog.blister.label',
+                    'translation_domain' => $translation_domain, 
+                    'required' => false,
+                    'choices'   => array(true => 'Oui', false => 'Non'),
+                    'expanded' => false,
+                    'multiple' => false
+                ))
+                ->add('notice', 'choice', array(
+                    'label' => 'profile.add_game.game_catalog.notice.label',
+                    'translation_domain' => $translation_domain, 
+                    'required' => false,
+                    'attr' => array('style' => 'margin-right: 5px;'),
+                    'choices'   => array(true => 'Oui', false => 'Non'),
+                    'expanded' => false,
+                    'multiple' => false
+                ))
+                ->add('price', 'text', array(
+                    'label' => 'profile.add_game.game_catalog.price.label',
+                    'translation_domain' => $translation_domain, 
+                    'attr' => array('placeholder' => 'En euro'),
+                    'required' => false
+                ))
+                ->add('comment', 'textarea', array(
+                    'label' => 'profile.add_game.game_catalog.comment.label',
+                    'translation_domain' => $translation_domain, 
+                    'required' => false,
+                    'max_length' => 500,
+                    'attr' => array('placeholder' => 'Entrez votre commentaire (500 car. max)...')
+                ))
+                ->add('state', 'entity', array(
+                    'label' => 'profile.add_game.game_catalog.state.label',
+                    'translation_domain' => $translation_domain, 
+                    'required' => false,
+                    'class' => 'FrontendFrontOfficeBundle:GameState',
+                    'query_builder' => function(EntityRepository $er) {
+                        return $er->createQueryBuilder('s')
+                            ->orderBy('s.id', 'ASC');
+                    },
+                    'property' => 'value'
+                ))
+                ->add('zone', 'choice', array(
+                    'label' => 'profile.add_game.game_catalog.zone.label',
+                    'translation_domain' => $translation_domain, 
+                    'required' => false,
+                    'choices'   => array(
+                        Game::ZONE_JAP => Game::ZONE_JAP, 
+                        Game::ZONE_NTSC => Game::ZONE_NTSC,
+                        Game::ZONE_PAL => Game::ZONE_PAL
+                    ),
+                    'expanded' => false,
+                    'multiple' => false
+                ))
+                ->add('file', 'file', array(
+                    'label' => 'profile.add_game.game_catalog.image.label',
+                    'translation_domain' => $translation_domain, 
+                    'required' => false,
+                ))
+                ->add('alternativeName', 'text', array(
+                    'label' => 'profile.add_game.game_catalog.alternative_name.label',
+                    'translation_domain' => $translation_domain, 
+                    'required' => false,
+                    'attr' => array('placeholder' => 'Dépend de la zone')
                 ));
     }
 

@@ -5,8 +5,8 @@
     <meta name="description" content="Rompy's Project : mon profil" />
     <meta property="og:description" content="Rompy's Project : mon profil" />
     
-    <title>Rompys Project : Modification du mot de passe</title>
-    <meta property="og:title" content="Modification du mot de passe" />
+    <title>Rompys Project : édition d'un jeu</title>
+    <meta property="og:title" content="Rompys Project : édition d'un jeu" />
 {% endblock %}
 
 {% block javascripts %}
@@ -15,19 +15,16 @@
 {% endblock %}
 
 {% block body %}
-
-    <div id="home" class="row page">
-        <div class="col-md-6 col-offset-md-3 col-lg-8 col-lg-offset-2">
+<div id="profile" class="row page">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
             <div id="home-center" class="row home-block home-center-div">
                 <div class="panel panel-primary home-panel-center">
                 	<div class="panel-body">
                 		<div id="home_content">
                 			<div class="row">
                 			        <fieldset>
-                                            <legend class="align-center"><h3>{{ 'profile.password.title'|trans|upper }}</h3></legend>
-                                            {% block fos_user_content %}
-                                                {% include "FOSUserBundle:ChangePassword:changePassword_content.html.twig" %}
-                                            {% endblock fos_user_content %}  
+                                        <legend class="align-center"><h3>{{ 'profile.edit_game.title'|trans|upper }}</h3></legend>
+                                            {% include "FrontendFrontOfficeBundle:Profile:edit_game_content.html.twig" with {'data': data} %}
                                     </fieldset>
                 			</div>
                 		</div>
@@ -36,6 +33,5 @@
             </div>
         </div>
     </div>
-
+    
 {% endblock %}
-

@@ -12,10 +12,9 @@ use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 
-use Frontend\FrontOfficeBundle\Entity\GameCatalog;
 use Frontend\FrontOfficeBundle\Entity\Game;
 use Frontend\FrontOfficeBundle\Entity\Seller;
-use Frontend\FrontOfficeBundle\Form\Type\GameCatalogFormType;
+use Frontend\FrontOfficeBundle\Form\Type\GameFormType;
 
 class ProfileController extends Controller {
     
@@ -25,8 +24,17 @@ class ProfileController extends Controller {
         $token_user = $token->getUser();
         
         $games = $this->getDoctrine()
-        ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
+        ->getRepository('FrontendFrontOfficeBundle:Game')
         ->getSellerGames($token_user->getId());
+       
+       $salt = $this->container->getParameter('secret');
+       
+       foreach($games as $k=>$v)
+       {
+            $id = $v["id"];
+            $hash = md5($id."_".$salt);
+            $games[$k]["hash"] = $hash;
+       }
        
         return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:index.html.twig', 
                 array(
@@ -91,7 +99,7 @@ class ProfileController extends Controller {
     {
         $token_user = $this->container->get('security.context')->getToken()->getUser();
         $catalog  =  $this->get('Doctrine')
-                            ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
+                            ->getRepository('FrontendFrontOfficeBundle:Game')
                             ->getAllGamesForSellByAnUser($token_user->getId());
        
         return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:catalog.html.twig', 
@@ -105,9 +113,9 @@ class ProfileController extends Controller {
     {
         $token_user = $this->container->get('security.context')->getToken()->getUser();
         
-        $gameCatalog = new GameCatalog();
+        $game = new Game();
         
-        $form = $this->createForm(new GameCatalogFormType(), $gameCatalog);
+        $form = $this->createForm(new GameFormType(), $game);
         
         if ('POST' === $request->getMethod()) {
             $form->bind($request);
@@ -115,11 +123,6 @@ class ProfileController extends Controller {
             if ($form->isValid()) {
                 $em = $this->container->get('Doctrine')->getManager();
                 
-                $game_id = $gameCatalog->getGame()->getId();
-                $game =  $this->get('Doctrine')
-                            ->getRepository('FrontendFrontOfficeBundle:Game')
-                            ->find($game_id);
-                $gameCatalog->setGame($game);
                 $seller =  $this->get('Doctrine')
                             ->getRepository('FrontendFrontOfficeBundle:Seller')
                             ->findOneBy(array("user" => $token_user->getId()));
@@ -131,25 +134,113 @@ class ProfileController extends Controller {
                     $em->persist($seller);
                 }
                 
-                $gameCatalog->setSeller($seller);
-                $gameCatalog->setAddedAt(new  \DateTime());
+                $game->setSeller($seller);
+                $game->setAddedAt(new  \DateTime());
                 
-                $em->persist($gameCatalog);
+                $em->persist($game);
                 $em->flush();
                 
-                $gameCatalog = new GameCatalog();   
-                $form = $this->createForm(new GameCatalogFormType(), $gameCatalog);
+                if($game->getAbsolutePath() != null)
+                    $game->setImage($game->getId().".".$game->getPath());
+                $em->flush();
+                
+                $game = new Game();   
+                $form = $this->createForm(new GameFormType(), $game);
+                
+                $data =  $this->get('Doctrine')
+                            ->getRepository('FrontendFrontOfficeBundle:Game')
+                            ->getAllGamesData();
                 
                 return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:add_game.html.twig', array(
                     'form' => $form->createView(),
                     "user" => $token_user,
-                    'add' => true
+                    'add'  => true,
+                    "data" => $data
                 ));
             }
         }
+        
+        $data =  $this->get('Doctrine')
+                            ->getRepository('FrontendFrontOfficeBundle:Game')
+                            ->getAllGamesData();
+                            
         return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:add_game.html.twig', array(
             "user" => $token_user,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            "data" => $data
+        ));
+    }
+    
+    public function updateGameAction(Request $request, $id, $hash)
+    {
+        $salt = $this->container->getParameter('secret');
+        if($hash != md5($id."_".$salt))
+        {
+            return $this->redirect($this->generateUrl('frontend_frontoffice_profile_home'));
+        }
+        
+        $token_user = $this->container->get('security.context')->getToken()->getUser();
+        $em = $this->container->get('Doctrine')->getManager();
+        
+        $game = $em->getRepository('FrontendFrontOfficeBundle:Game')->find($id);
+            
+        if($game == null)
+        {
+            return $this->redirect($this->generateUrl('frontend_frontoffice_profile_home'));
+        }
+        
+        $form = $this->createForm(new GameFormType(), $game);
+        
+        if ('POST' === $request->getMethod()) {
+            $form->bind($request);
+            
+            if ($form->isValid()) {
+                $em = $this->container->get('Doctrine')->getManager();
+                
+                $seller =  $this->get('Doctrine')
+                            ->getRepository('FrontendFrontOfficeBundle:Seller')
+                            ->findOneBy(array("user" => $token_user->getId()));
+                            
+                if($seller == null)
+                {
+                    $seller = new Seller();
+                    $seller->setUser($token_user);
+                    $em->persist($seller);
+                }
+                
+                $game->setSeller($seller);
+                $game->setAddedAt(new  \DateTime());
+                
+                $em->persist($game);
+                $em->flush();
+                
+                $form = $this->createForm(new GameFormType(), $game);
+                
+                $data =  $this->get('Doctrine')
+                            ->getRepository('FrontendFrontOfficeBundle:Game')
+                            ->getAllGamesData();
+                
+                return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:edit_game.html.twig', array(
+                    'form' => $form->createView(),
+                    "user" => $token_user,
+                    'add' => true,
+                    'id' => $id,
+                    'hash' => $hash,
+                    'data' => $data
+                ));
+            }
+        }
+                
+        $data =  $this->get('Doctrine')
+                    ->getRepository('FrontendFrontOfficeBundle:Game')
+                    ->getAllGamesData();
+                    
+        return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Profile:edit_game.html.twig', array(
+            "user" => $token_user,
+            'form' => $form->createView(),
+            'id' => $id,
+            'hash' => $hash,
+            'data' => $data
         ));
     }
 }

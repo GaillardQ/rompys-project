@@ -112,13 +112,6 @@
         </property>
         
         <property name="phone">
-            <constraint name="NotBlank">
-                <option name="message">register.phone.blank</option>
-                <option name="groups">
-                    <value>Register</value>
-                    <value>Profile</value>
-                </option>
-            </constraint>
             <constraint name="Length">
                 <option name="min">2</option>
                 <option name="minMessage">register.phone.short</option>
@@ -150,7 +143,47 @@
         </property>
     </class>
     
-    <class name="Frontend\FrontOfficeBundle\Entity\GameCatalog">
+    <class name="Frontend\FrontOfficeBundle\Entity\Game">
+        <property name="name">
+            <constraint name="NotBlank">
+                <option name="message">add_game.game.name.blank</option>
+                <option name="groups">
+                    <value>AddCatalogGame</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="gameType">
+            <constraint name="NotBlank">
+                <option name="message">add_game.game.type.blank</option>
+                <option name="groups">
+                    <value>AddCatalogGame</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="plateform">
+            <constraint name="NotBlank">
+                <option name="message">add_game.game.plateform.blank</option>
+                <option name="groups">
+                    <value>AddCatalogGame</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="editor1">
+            <constraint name="NotBlank">
+                <option name="message">add_game.game.editor.blank</option>
+                <option name="groups">
+                    <value>AddCatalogGame</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="releasedYear">
+            <constraint name="NotBlank">
+                <option name="message">add_game.game.released_year.blank</option>
+                <option name="groups">
+                    <value>AddCatalogGame</value>
+                </option>
+            </constraint>
+        </property>
         <property name="language">
             <constraint name="NotBlank">
                 <option name="message">add_game.game_catalog.language.blank</option>
@@ -175,7 +208,7 @@
                 </option>
             </constraint>
         </property>
-        <property name="game_package">
+        <property name="package">
             <constraint name="NotBlank">
                 <option name="message">add_game.game_catalog.game_package.blank</option>
                 <option name="groups">
@@ -218,49 +251,6 @@
             <constraint name="Length">
                 <option name="max">500</option>
                 <option name="maxMessage">add_game.game_catalog.comment.length</option>
-                <option name="groups">
-                    <value>AddCatalogGame</value>
-                </option>
-            </constraint>
-        </property>
-    </class>
-    
-    <class name="Frontend\FrontOfficeBundle\Entity\Game">
-        <property name="name">
-            <constraint name="NotBlank">
-                <option name="message">add_game.game.name.blank</option>
-                <option name="groups">
-                    <value>AddCatalogGame</value>
-                </option>
-            </constraint>
-        </property>
-        <property name="game_type">
-            <constraint name="NotBlank">
-                <option name="message">add_game.game.type.blank</option>
-                <option name="groups">
-                    <value>AddCatalogGame</value>
-                </option>
-            </constraint>
-        </property>
-        <property name="plateform">
-            <constraint name="NotBlank">
-                <option name="message">add_game.game.plateform.blank</option>
-                <option name="groups">
-                    <value>AddCatalogGame</value>
-                </option>
-            </constraint>
-        </property>
-        <property name="editor_1">
-            <constraint name="NotBlank">
-                <option name="message">add_game.game.editor.blank</option>
-                <option name="groups">
-                    <value>AddCatalogGame</value>
-                </option>
-            </constraint>
-        </property>
-        <property name="released_year">
-            <constraint name="NotBlank">
-                <option name="message">add_game.game.released_year.blank</option>
                 <option name="groups">
                     <value>AddCatalogGame</value>
                 </option>

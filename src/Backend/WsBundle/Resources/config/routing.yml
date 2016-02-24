@@ -3,5 +3,5 @@ backend_ws_get_infos_add_game:
     defaults: { _controller: BackendWsBundle:Infos:createGame }
     
 backend_ws_delete_game_catalog:
-    pattern: /ws/game_catalog/{id}/delete
+    pattern: /ws/game_catalog/{id}/delete/{hash}
     defaults: { _controller: BackendWsBundle:GameCatalog:deleteGameCatalog }

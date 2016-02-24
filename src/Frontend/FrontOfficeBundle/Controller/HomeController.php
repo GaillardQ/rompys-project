@@ -20,7 +20,7 @@ class HomeController extends Controller {
             $user_id = $token_user->getId();
             
             $games = $this->getDoctrine()
-            ->getRepository('FrontendFrontOfficeBundle:GameCatalog')
+            ->getRepository('FrontendFrontOfficeBundle:Game')
             ->getAllGamesForSellByAnUser($user_id);
             
         }

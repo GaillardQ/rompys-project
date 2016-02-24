@@ -39,8 +39,8 @@
                     <td class="username" data-toggle="tooltip" title="{{ g.username }}">{{ g.username }}</td>
                     <td class="align-right">{{ g.price }} €</td>
                     <td class="align-center hidden-xs">
-                        {% if g.image_seller is defined and g.image_seller != "" %}
-                            <a href="#" onclick="return false;" data-html="true" data-trigger="focus" data-placement="top" data-toggle="popover" title="{{ 'game_card.seller.photo'|trans }}" data-content="<img class='margin-auto' src='/pictures/{{ g.game_id }}/{{ g.image_seller }}' alt='Game picture' />">
+                        {% if g.image is defined and g.image != "" %}
+                            <a href="#" onclick="return false;" data-html="true" data-trigger="focus" data-placement="top" data-toggle="popover" title="{{ 'game_card.seller.photo'|trans }}" data-content="<img class='margin-auto' src='/public/pictures/{{ g.image }}' alt='Game picture' />">
                                 <span class="glyphicon glyphicon-picture" ></span>
                             </a>
                         {% endif %}
@@ -68,14 +68,14 @@
                     {% else %}
                         <td class="align-center hidden-xs hidden-sm"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
                     {% endif %}
-                    {% if g.game_package is defined and g.game_package==1 %}
+                    {% if g.package is defined and g.package==1 %}
                         <td class="align-center hidden-xs hidden-sm"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
                     {% else %}
                         <td class="align-center hidden-xs hidden-sm"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
                     {% endif %}
                     <td class="align-center hidden-xs hidden-sm">{{ g.zone }}</td>
                     <td class="align-center hidden-xs">{{ g.language }}</td>
-                    <td class="other-name align-center visible-lg" data-toggle="tooltip" title="{{ g.alternative_name }}">{{ g.alternative_name }}</td>
+                    <td class="other-name align-center visible-lg" data-toggle="tooltip" title="{{ g.alternativeName }}">{{ g.alternativeName }}</td>
                     <td class="comment align-center visible-lg" data-toggle="tooltip" title="{{ g.comment }}">{{ g.comment }}</td>
                 </tr>
             {% endfor %}

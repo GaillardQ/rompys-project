@@ -28,13 +28,13 @@
             {% for g in games %}
                 <tr>
                     <td class="name" data-toggle="tooltip" title="{{ g.name }}">
-                        <a href="{{ path('frontend_frontoffice_game_page', {'id': g.game_id, 'name':g.name|url_encode}) }}">{{ g.name }}</a>
+                        <a href="{{ path('frontend_frontoffice_game_page', {'id': g.id, 'name':g.name|url_encode}) }}">{{ g.name }}</a>
                     </td>
                     <td class="align-right">{{ g.price }} €</td>
                     <td class="plateform hidden-xs">{{ g.plateform }}</td>
                     <td class="align-center hidden-xs">
-                        {% if g.image_seller is defined and g.image_seller != "" %}
-                            <a href="#" onclick="return false;" data-html="true" data-trigger="focus" data-placement="top" data-toggle="popover" title="{{ 'game_card.seller.photo'|trans }}" data-content="<img class='margin-auto' src='/pictures/{{ g.game_id }}/{{ g.image_seller }}' alt='Game picture' />">
+                        {% if g.image is defined and g.image != "" %}
+                            <a href="#" onclick="return false;" data-html="true" data-trigger="focus" data-placement="top" data-toggle="popover" title="{{ 'game_card.seller.photo'|trans }}" data-content="<img class='margin-auto' src='/public/pictures/{{ g.image }}' alt='Game picture' />">
                                 <span class="glyphicon glyphicon-picture" ></span>
                             </a>
                         {% endif %}
