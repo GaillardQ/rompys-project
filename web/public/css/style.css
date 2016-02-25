@@ -492,3 +492,11 @@ ul { padding-left: 10px; }
 }
 
 .tablesorter thead .disabled {display: none}
+
+#div_game_fields .thumbnail {
+	max-width: 50px;
+	margin-bottom: 0px;
+	position: relative;
+    vertical-align: middle;
+    display: inline-block;
+}

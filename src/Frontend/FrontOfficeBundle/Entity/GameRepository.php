@@ -118,7 +118,7 @@ class GameRepository extends EntityRepository
             $qb->andwhere('g.price <= '.$pricemax);
         }
         
-        $query = $qb->groupby('g.name, plateform, year')
+        $query = $qb->groupby('g.name, plateform')
                     ->orderby('g.name', 'DESC')
                     ->getQuery();
         

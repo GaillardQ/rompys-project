@@ -152,6 +152,12 @@ class GameFormType extends AbstractType
                     'translation_domain' => $translation_domain, 
                     'required' => false,
                 ))
+                ->add('delete', 'checkbox', array(
+                    'label' => 'profile.add_game.game.delete_image.label',
+                    'translation_domain' => $translation_domain, 
+                    'required' => false,
+                    'mapped' => false
+                ))
                 ->add('alternativeName', 'text', array(
                     'label' => 'profile.add_game.game_catalog.alternative_name.label',
                     'translation_domain' => $translation_domain, 

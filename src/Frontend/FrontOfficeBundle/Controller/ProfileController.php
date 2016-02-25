@@ -211,6 +211,23 @@ class ProfileController extends Controller {
                 $game->setSeller($seller);
                 $game->setAddedAt(new  \DateTime());
                 
+                if($game->getAbsolutePath() != null)
+                    $game->setImage($game->getId().".".$game->getPath());
+                
+                $imageDeletion = 0;
+                $formData = $request->request->get('frontend_frontoffice_addGame');
+                if(array_key_exists("delete", $formData))
+                {
+                    $imageDeletion = intval($formData["delete"]);
+                }
+                
+                if($imageDeletion == 1)
+                {
+                    $img = $game->getImage();
+                    $game->setImage(NULL);
+                    unlink(__DIR__.'/../../../../web/public/pictures/'.$img);
+                }
+                
                 $em->persist($game);
                 $em->flush();
                 
@@ -226,7 +243,8 @@ class ProfileController extends Controller {
                     'add' => true,
                     'id' => $id,
                     'hash' => $hash,
-                    'data' => $data
+                    'data' => $data,
+                    "game" => $game
                 ));
             }
         }
@@ -240,7 +258,8 @@ class ProfileController extends Controller {
             'form' => $form->createView(),
             'id' => $id,
             'hash' => $hash,
-            'data' => $data
+            'data' => $data,
+            "game" => $game
         ));
     }
 }

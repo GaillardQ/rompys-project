@@ -780,7 +780,6 @@ class Game
             $this->getUploadRootDir(),
             $file_name
         );
-
         $this->setFile(null);
     }
 

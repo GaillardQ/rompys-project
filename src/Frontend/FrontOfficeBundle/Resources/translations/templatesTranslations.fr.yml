@@ -115,6 +115,8 @@ profile:
                 label: "Date de sortie :"
             game_type: 
                 label: "Type :"
+            delete_image:
+                label: "OU supprimer l'image ?"
         game_catalog:
             title:
                 Votre version
