@@ -17,9 +17,9 @@
                             {% if form_errors(form.lastname) is not null %}
                                 {{ form_errors(form.lastname) }}
                             {% endif %}
-                            {% if form_errors(form.phone) is not null %}
+                            {#{% if form_errors(form.phone) is not null %}
                                 {{ form_errors(form.phone) }}
-                            {% endif %}
+                            {% endif %}#}
                             {% if form_errors(form.email) is not null %}
                                 {{ form_errors(form.email) }}
                             {% endif %}
@@ -49,12 +49,13 @@
                             {{ form_widget(form.lastname, { 'attr': {'class': 'form-control'} }) }}
                         </div>
                     </div>
-                    <div class="form-group">
+                    {#<div class="form-group">
                         <label class="control-label col-xs-12 col-sm-4 col-md-3 col-lg-3 margin-right-5">{{ form_label(form.phone) }}</label>
                         <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">
                             {{ form_widget(form.phone, { 'attr': {'class': 'form-control'} }) }}
                         </div>
-                    </div>
+                    </div>#}
+                    {% do form.phone.setRendered %}
                     <div class="form-group">
                         <label class="control-label col-xs-12 col-sm-4 col-md-3 col-lg-3 margin-right-5">{{ form_label(form.email) }}</label>
                         <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7">

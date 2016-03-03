@@ -31,12 +31,19 @@
                     <th class="language hidden-xs">{{ 'game_card.seller.language'|trans }}</th>
                     <th class="other-name visible-lg">{{ 'game_card.seller.other_name'|trans }}</th>
                     <th class="comment visible-lg">{{ 'game_card.seller.comment'|trans }}</th>
+                    <th class="contact" data-toggle="tooltip" title="{{ 'game_card.seller.contact'|trans }}">
+                        <span class="glyphicon glyphicon-envelope">
+                    </th>
                 </tr>
             </thead>
             <tbody>
             {% for g in games %}
                 <tr>
-                    <td class="username" data-toggle="tooltip" title="{{ g.username }}">{{ g.username }}</td>
+                    <td class="username" data-toggle="tooltip" title="{{ g.username }}">
+                        <a href="{{ path('frontend_frontoffice_best_sellers', {'id': g.user_id, 'name':g.username|url_encode}) }}">
+                            {{ g.username }}
+                    	</a>
+                    </td>
                     <td class="align-right">{{ g.price }} €</td>
                     <td class="align-center hidden-xs">
                         {% if g.image is defined and g.image != "" %}
@@ -77,6 +84,11 @@
                     <td class="align-center hidden-xs">{{ g.language }}</td>
                     <td class="other-name align-center visible-lg" data-toggle="tooltip" title="{{ g.alternativeName }}">{{ g.alternativeName }}</td>
                     <td class="comment align-center visible-lg" data-toggle="tooltip" title="{{ g.comment }}">{{ g.comment }}</td>
+                    <td class="align-center">
+                        <a href="{{ path('frontend_frontoffice_contact_seller', {'seller': g.user_id, 'game':g.game_id}) }}">
+                            <span class="glyphicon glyphicon-envelope">
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>

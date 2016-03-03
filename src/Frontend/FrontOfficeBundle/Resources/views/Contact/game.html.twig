@@ -1,0 +1,75 @@
+{% extends 'FrontendFrontOfficeBundle::baseFrontend.html.twig' %}
+{% trans_default_domain 'templatesTranslations' %}
+
+{% block body %}
+
+    <div id="home" class="row page">
+        <div class="col-md-6 col-offset-md-3 col-lg-8 col-lg-offset-2">
+            <div id="home-center" class="row home-block">
+                <div class="panel panel-primary">
+                	<div class="panel-body">
+                		<div id="home_content">
+                			<div class="row">
+                				<div id="register_content" class="row">
+                                    <div class="col-xs-12 col-sm-10 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-1 col-md-offset-2 col-lg-offset-2">
+                                        <form id="register-form" action="{{ path('frontend_frontoffice_contact_seller', {'game': game, 'seller':seller|url_encode}) }}" method="POST" class="form-horizontal fos_user_registration_register" role="form">
+                                            <div class="padding-20">
+                                                <fieldset>
+                                                    <legend class="align-center"><h3>{{ 'contact.game.title'|trans|upper }}</h3></legend>
+                                                    {% if not sent %}
+                                                        {% if error is not null %}
+                                                            <div class="alert alert-block alert-danger fade in">
+                                                                {{ 'contact.game.error.default'|trans }}
+                                                            </div>
+                                                        {% endif %}
+                                                        <div id="div_contact_seller">
+                                                            <div class="form-group">
+                                                                <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-3 margin-right-5">{{ 'contact.game.seller.label'|trans }}</label>
+                                                                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                                                    <input type="text" value="{{ data.username }}" class="form-control" disabled />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-3 margin-right-5">{{ 'contact.game.game.label'|trans }}</label>
+                                                                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                                                    <input type="text" value="{{ data.game }} ({{ data.plateform }})" class="form-control" disabled />
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label col-xs-12 col-sm-12 col-md-5 col-lg-3 margin-right-5">{{ 'contact.game.message.label'|trans }}</label>
+                                                                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                                                                    {% if message is not null %}
+                                                                        <textarea class="form-control" name="message" placeholder="{{ 'contact.game.message.placeholder'|trans }}" rows="10" required>{{ message }}</textarea>
+                                                                    {% else %}
+                                                                        <textarea class="form-control" name="message" placeholder="{{ 'contact.game.message.placeholder'|trans }}" rows="10" required></textarea>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <center>
+                                                            <input type="submit" class="btn btn-primary" value="{{ 'contact.game.btn'|trans }}" />
+                                                            <a href="{{ path('frontend_frontoffice_homepage') }}" class="btn btn-default white-background orange-color">{{ 'contact.game.return'|trans }}</a>
+                                                        </center>
+                                                    {% else %}
+                                                        <div class="align-center">
+                                                            <h5>
+                                                                <span class="glyphicon glyphicon-send" aria-hidden="true"></span>&nbsp&nbsp
+                                                                {{ 'contact.game.sent.message'|trans }}
+                                                            </h5>
+                                                            <a href="{{ path('frontend_frontoffice_homepage') }}" class="btn btn-default white-background orange-color">{{ 'contact.game.return'|trans }}</a>
+                                                        </div>
+                                                    {% endif %}
+                                                </fieldset>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                			</div>
+                		</div>
+                	</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

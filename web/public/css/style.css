@@ -249,10 +249,20 @@ ul { padding-left: 10px; }
 
 #table-sellers-games a,
 #table-sellers-games a:hover,
-#table-sellers-games a:focus {
+#table-sellers-games a:focus,
+#table-last-adds a,
+#table-last-adds a:hover,
+#table-last-adds a:focus,
+#table-sellers a,
+#table-sellers a:hover,
+#table-sellers a:focus,
+#table-user-games a,
+#table-user-games a:hover,
+#table-user-games a:focus {
 	text-decoration: none;
 	color: inherit;
 	outline: none;
+	display: block;
 }
 
 #profile .infos-label {
@@ -303,15 +313,20 @@ ul { padding-left: 10px; }
 {
 	.game-infos-img { border-bottom: 1px solid #2196f3; }
 	
-	#table-sellers .username { width: 65%; }
-	#table-sellers .price { width: 35%; }
+	#table-sellers .username { width: 50%; }
+	#table-sellers .price 	 { width: 30%; }
+	#table-sellers .contact  { width: 20%; }
 	
-	#table-last-adds .name { width: 47%; }
-	#table-last-adds .price {	width: 33%; }
-	#table-last-adds .view { width: 20%; }
+	#table-last-adds .name 	{ width: 47%; }
+	#table-last-adds .price { width: 33%; }
+	#table-last-adds .view 	{ width: 20%; }
 	
-	#table-sellers-games .name { width: 65%; }
-	#table-sellers-games .price { width: 35%; }
+	#table-sellers-games .name 		{ width: 50%; }
+	#table-sellers-games .price 	{ width: 30%; }
+	#table-sellers-games .contact 	{ width: 20%; }
+	
+	#table-user-games .name 		{ width: 65%; }
+	#table-user-games .price 		{ width: 35%; }
 }
 
 @media (min-width: 768px)
@@ -321,27 +336,36 @@ ul { padding-left: 10px; }
 		min-height: 305px;
 	}
 	
-	#table-sellers .username { width: 40%; }
-	#table-sellers .price { width: 15%; }
-	#table-sellers .photo { width: 10%; }
-	#table-sellers .state { width: 20%; }
-	#table-sellers .language { width: 15%; }
+	#table-sellers .username 	{ width: 34%; }
+	#table-sellers .price 		{ width: 14%; }
+	#table-sellers .photo 		{ width:  9%; }
+	#table-sellers .state 		{ width: 19%; }
+	#table-sellers .language 	{ width: 14%; }
+	#table-sellers .contact 	{ width: 10%; }
 	
-	#table-last-adds .username { width: 22%; }
-	#table-last-adds .name { width: 22%; }
+	#table-last-adds .username 	{ width: 22%; }
+	#table-last-adds .name 		{ width: 22%; }
 	#table-last-adds .plateform { width: 17%; }
-	#table-last-adds .date { width: 12%; }
-	#table-last-adds .price {	width: 10%; }
-	#table-last-adds .state { width: 10%; }
-	#table-last-adds .view { width: 7%; }
+	#table-last-adds .date 		{ width: 12%; }
+	#table-last-adds .price 	{ width: 10%; }
+	#table-last-adds .state 	{ width: 10%; }
+	#table-last-adds .view 		{ width:  7%; }
 	
-	#table-sellers-games .name { width: 25%; }
-	#table-sellers-games .price { width: 10%; }
+	#table-sellers-games .name 		{ width: 15%; }
+	#table-sellers-games .price 	{ width: 10%; }
 	#table-sellers-games .plateform { width: 15%; }
-	#table-sellers-games .photo { width: 10%; }
-	#table-sellers-games .state { width: 15%; }
-	#table-sellers-games .zone { width: 10%; }
-	#table-sellers-games .language { width: 15%; }
+	#table-sellers-games .photo 	{ width: 10%; }
+	#table-sellers-games .state 	{ width: 15%; }
+	#table-sellers-games .zone 		{ width: 10%; }
+	#table-sellers-games .language 	{ width: 15%; }
+	#table-sellers-games .contact 	{ width: 10%; }
+	
+	#table-user-games .name 		{ width: 25%; }
+	#table-user-games .price 		{ width: 15%; }
+	#table-user-games .plateform 	{ width: 20%; }
+	#table-user-games .photo 		{ width: 10%; }
+	#table-user-games .state 		{ width: 15%; }
+	#table-user-games .language 	{ width: 15%; }
 }
 
 @media (min-width: 992px)
@@ -379,68 +403,89 @@ ul { padding-left: 10px; }
 	
 	#search-content { margin-left: 2vh; }
 	
-	#table-sellers .username { width: 25%; }
-	#table-sellers .price {	width: 10%;	}
-	#table-sellers .photo {	width: 8%; }
-	#table-sellers .state {	width: 10%;	}
-	#table-sellers .blister { width: 8%; }
-	#table-sellers .notice { width: 8%;	}
-	#table-sellers .package { width: 8%; }
-	#table-sellers .zone { width: 10%;	}
-	#table-sellers .language { width: 13%; }
+	#table-sellers .username 	{ width: 20%; }
+	#table-sellers .price 		{ width:  9%; }
+	#table-sellers .photo 		{ width:  8%; }
+	#table-sellers .state 		{ width:  9%; }
+	#table-sellers .blister 	{ width:  8%; }
+	#table-sellers .notice 		{ width:  8%; }
+	#table-sellers .package 	{ width:  8%; }
+	#table-sellers .zone 		{ width:  9%; }
+	#table-sellers .language 	{ width: 13%; }
+	#table-sellers .contact 	{ width:  8%; }
 	
-	#table-last-adds .username { width: 22%; }
-	#table-last-adds .name { width: 22%; }
+	#table-last-adds .username 	{ width: 22%; }
+	#table-last-adds .name 		{ width: 22%; }
 	#table-last-adds .plateform { width: 12%; }
-	#table-last-adds .date { width: 10%; }
-	#table-last-adds .price {	width: 10%; }
-	#table-last-adds .state { width: 9%; }
-	#table-last-adds .language { width: 10%; }
-	#table-last-adds .view { width: 5%; }
+	#table-last-adds .date 		{ width: 10%; }
+	#table-last-adds .price 	{ width: 10%; }
+	#table-last-adds .state 	{ width:  9%; }
+	#table-last-adds .language 	{ width: 10%; }
+	#table-last-adds .view 		{ width:  5%; }
 	
-	#table-sellers-games .name { width: 30%; }
-	#table-sellers-games .price { width: 10%; }
+	#table-sellers-games .name 		{ width: 20%; }
+	#table-sellers-games .price 	{ width: 10%; }
 	#table-sellers-games .plateform { width: 15%; }
-	#table-sellers-games .photo { width: 10%; }
-	#table-sellers-games .state { width: 15%; }
-	#table-sellers-games .zone { width: 10%; }
-	#table-sellers-games .language { width: 10%; }
+	#table-sellers-games .photo 	{ width: 10%; }
+	#table-sellers-games .state 	{ width: 15%; }
+	#table-sellers-games .zone 		{ width: 10%; }
+	#table-sellers-games .language 	{ width: 10%; }
+	#table-sellers-games .contact 	{ width: 10%; }
+	
+	#table-user-games .name 		{ width: 22%; }
+	#table-user-games .price 		{ width: 12%; }
+	#table-user-games .plateform 	{ width: 15%; }
+	#table-user-games .photo 		{ width: 12%; }
+	#table-user-games .state 		{ width: 15%; }
+	#table-user-games .zone 		{ width: 12%; }
+	#table-user-games .language 	{ width: 12%; }
 }
 
 @media (min-width: 1200px)
 {
-	#table-sellers .username { width: 15%; }
-	#table-sellers .price {	width: 8%; }
-	#table-sellers .photo {	width: 5%; }
-	#table-sellers .state { width: 5%; }
-	#table-sellers .blister { width: 5%; }
-	#table-sellers .notice { width: 5%; }
-	#table-sellers .package { width: 5%; }
-	#table-sellers .zone { width: 8%; }
-	#table-sellers .language { width: 9%; }
-	#table-sellers .other-name { width: 12%; }
-	#table-sellers .comment { width: 23%; }
+	#table-sellers .username 	{ width: 14%; }
+	#table-sellers .price 		{ width:  7%; }
+	#table-sellers .photo 		{ width:  5%; }
+	#table-sellers .state 		{ width:  5%; }
+	#table-sellers .blister 	{ width:  5%; }
+	#table-sellers .notice 		{ width:  5%; }
+	#table-sellers .package 	{ width:  5%; }
+	#table-sellers .zone 		{ width:  8%; }
+	#table-sellers .language 	{ width:  9%; }
+	#table-sellers .other-name 	{ width: 12%; }
+	#table-sellers .comment 	{ width: 20%; }
+	#table-sellers .contact 	{ width:  5%; }
 	
-	#table-last-adds .username { width: 15%; }
-	#table-last-adds .name { width: 15%; }
+	#table-last-adds .username 	{ width: 15%; }
+	#table-last-adds .name 		{ width: 15%; }
 	#table-last-adds .plateform { width: 10%; }
-	#table-last-adds .date { width: 10%; }
-	#table-last-adds .price {	width: 7%; }
-	#table-last-adds .state { width: 5%; }
-	#table-last-adds .language { width: 8%; }
-	#table-last-adds .comment { width: 25%; }
-	#table-last-adds .view { width: 5%; }
+	#table-last-adds .date 		{ width: 10%; }
+	#table-last-adds .price 	{ width:  7%; }
+	#table-last-adds .state 	{ width:  5%; }
+	#table-last-adds .language 	{ width:  8%; }
+	#table-last-adds .comment 	{ width: 25%; }
+	#table-last-adds .view 		{ width:  5%; }
 	
-	#table-sellers-games .name { width: 23%; }
-	#table-sellers-games .price { width: 5%; }
-	#table-sellers-games .plateform { width: 12%; }
-	#table-sellers-games .photo { width: 5%; }
-	#table-sellers-games .state { width: 10%; }
-	#table-sellers-games .zone { width: 10%; }
-	#table-sellers-games .language { width: 10%; }
-	#table-sellers-games .comment { width: 15%; }
-	#table-sellers-games .update { width: 5%; }
-	#table-sellers-games .delete { width: 5%; }
+	#table-sellers-games .name 		{ width: 20%; }
+	#table-sellers-games .price 	{ width: 10%; }
+	#table-sellers-games .plateform { width: 10%; }
+	#table-sellers-games .photo 	{ width:  5%; }
+	#table-sellers-games .state 	{ width: 10%; }
+	#table-sellers-games .zone 		{ width:  7%; }
+	#table-sellers-games .language 	{ width:  8%; }
+	#table-sellers-games .comment 	{ width: 25%; }
+	#table-sellers-games .contact 	{ width:  5%; }
+	
+	#table-user-games .name 		{ width: 20%; }
+	#table-user-games .price 		{ width:  8%; }
+	#table-user-games .plateform 	{ width: 12%; }
+	#table-user-games .photo 		{ width:  5%; }
+	#table-user-games .state 		{ width:  8%; }
+	#table-user-games .zone 		{ width:  7%; }
+	#table-user-games .language 	{ width: 10%; }
+	#table-user-games .comment 		{ width: 20%; }
+	#table-user-games .update 		{ width:  5%; }
+	#table-user-games .delete 		{ width:  5%; }
 }
 
 /**
@@ -499,4 +544,28 @@ ul { padding-left: 10px; }
 	position: relative;
     vertical-align: middle;
     display: inline-block;
+}
+
+#div_contact_seller {
+	color: #2196f3;
+}
+
+#footer {
+    color: #2196f3;
+    padding-top: 10px;
+    text-align: center;
+}
+
+#footer a {
+	cursor: pointer;
+}
+
+#legalsModal,
+#contactModal {
+	color: #2196f3 !important;
+}
+
+#legalsModal h4,
+#contactModal h4 {
+	color: #2196f3 !important;
 }

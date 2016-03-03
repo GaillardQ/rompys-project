@@ -19,6 +19,7 @@ swiftmailer:
     host:      %prod_mailer_host%
     username:  %prod_mailer_user%
     password:  %prod_mailer_password%
+    port:      %prod_mailer_port%
     
 monolog:
     handlers:

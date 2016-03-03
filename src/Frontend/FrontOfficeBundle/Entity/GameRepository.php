@@ -16,7 +16,7 @@ class GameRepository extends EntityRepository
 	{
         $qb = $this->createQueryBuilder("g");
         
-        $query = $qb->select("g.id, g.name, p.value as plateform, g.addedAt as added_at, g.price, u.username, g.image, g.language, g.comment,st.id as state_id, st.value as state_value")
+        $query = $qb->select("g.id, g.name, p.value as plateform, g.addedAt as added_at, g.price, u.username, g.image, g.language, g.comment,st.id as state_id, st.value as state_value, u.id as seller_id")
          ->leftJoin('g.seller', 's')
          ->leftJoin('s.user', 'u')
          ->leftJoin('g.plateform', 'p')
@@ -281,5 +281,25 @@ class GameRepository extends EntityRepository
          }
          
          return $data;
+    }
+    
+    public function checkIfUserSellGame($seller, $game)
+    {
+        $qb = $this->createQueryBuilder("g");
+            
+        $query = $qb->select('g.id, u.username, u.email, g.name as game, p.value as plateform')
+         ->leftJoin('g.seller', 's')
+         ->leftJoin('s.user', 'u')
+         ->leftJoin('g.plateform', 'p')
+         ->where('s.user = '.$seller)
+         ->andwhere('g.id = '.$game)
+         ->getQuery();
+         
+        $data = $query->getResult();
+        
+        $res = null;
+        (count($data) > 0) ? $res = $data[0] : $res = false;
+        
+        return $res;
     }
 }

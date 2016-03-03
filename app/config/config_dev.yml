@@ -16,10 +16,10 @@ web_profiler:
     
 swiftmailer:
     transport: %dev_mailer_transport%
-    #host:      %dev_mailer_host%
+    host:      %dev_mailer_host%
     username:  %dev_mailer_user%
     password:  %dev_mailer_password%
-
+    port:      %dev_mailer_port%
 monolog:
     handlers:
         main:

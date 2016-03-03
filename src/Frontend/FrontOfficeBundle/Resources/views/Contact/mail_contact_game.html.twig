@@ -1,0 +1,3 @@
+{% trans_default_domain 'templatesTranslations' %}
+
+{{ 'contact.game.mail'|trans({'%message%': message, '%pseudo%':pseudo, '%email%':email})|e('html') }}

@@ -22,6 +22,9 @@
                     <th class="zone hidden-xs hidden-sm">{{ 'best_sellers.games.zone'|trans }}</th>
                     <th class="language hidden-xs">{{ 'best_sellers.games.language'|trans }}</th>
                     <th class="comment visible-lg">{{ 'best_sellers.games.comment'|trans }}</th>
+                    <th class="contact" data-toggle="tooltip" title="{{ 'best_sellers.seller.contact'|trans }}">
+                        <span class="glyphicon glyphicon-envelope">
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -55,6 +58,11 @@
                     <td class="align-center hidden-xs hidden-sm">{{ g.zone }}</td>
                     <td class="align-center hidden-xs">{{ g.language }}</td>
                     <td class="comment align-center visible-lg" data-toggle="tooltip" title="{{ g.comment }}">{{ g.comment }}</td>
+                    <td class="align-center">
+                        <a href="{{ path('frontend_frontoffice_contact_seller', {'seller': g.user_id, 'game':g.id}) }}">
+                            <span class="glyphicon glyphicon-envelope">
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>

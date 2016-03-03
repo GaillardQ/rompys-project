@@ -46,9 +46,9 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    encryption: ssl
-    auth_mode: login
-    spool:     { type: memory }
+    encryption: tls
+    # auth_mode: login
+    # spool:     { type: memory }
 
 fos_user:
     db_driver: orm

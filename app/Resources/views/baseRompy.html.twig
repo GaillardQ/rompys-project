@@ -23,14 +23,12 @@
             <meta property="og:title" content="{{ 'common.head_title'|trans }}" />
         {% endblock %}
     
-        
-    
         {% block stylesheets %}
             <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css"/>
             <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
         {% endblock %}
 
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/png" href="/public/img/game.png">
         
         {% block javascripts %}{% endblock %}
         
@@ -48,6 +46,6 @@
             {% block menu %}{% endblock %}
             {% block body %}{% endblock %}
         </div>
-        
+        {% include '::footer.html.twig' %}
     </body>
 </html>

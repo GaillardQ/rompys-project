@@ -97,7 +97,7 @@ profile:
         title: Modifier ses infos
         submit: Modifier
     games:
-        add: Ajouter un jeu au catalogue
+        add: Ajouter un jeu
     add_game:
         title: Ajouter un jeu au catalogue
         game:
@@ -258,3 +258,22 @@ db:
         rpg: RPG
         simulation: Simulation
         strategy: Stratégie
+        
+contact:
+    game:
+        title: Contacter un vendeur
+        error: 
+            default: Une erreur est survenue lors de l'envoi de votre message.
+        seller:
+            label: "Vendeur :"
+        game:
+            label: "Jeu :"
+        message:
+            label: "Message :"
+            placeholder: Votre message...
+        btn: Envoyer le message
+        return: Accueil
+        subject: "%pseudo% vous contacte à propos de %game% (%plateform%)"
+        mail: "%message% \n\n\n-----------------\n\n Coordonées de l'utilisateur :\nNom : %pseudo%\nEmail : %email% \n\n Cet email vous a été envoyé atuomatiquement par le site Rompy's Project. Merci de ne pas y répondre.\n\nRompy."
+        sent:
+            message: Votre message a été envoyé.

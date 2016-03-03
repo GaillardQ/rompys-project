@@ -64,6 +64,12 @@ frontend_frontoffice_best_sellers:
     requirements:
           _locale: fr
           
+frontend_frontoffice_contact_seller:
+    pattern: /{_locale}/seller/{seller}/game/{game}/contact
+    defaults: { _controller: FrontendFrontOfficeBundle:Contact:game, _locale: fr }
+    requirements:
+          _locale: fr
+          
 frontend_frontoffice_common_get_all_games:
     pattern:  /ws/all_games
     defaults: { _controller: FrontendFrontOfficeBundle:Common:getAllGames}

@@ -23,7 +23,7 @@ $(document).ready(function() {
         odd: '' // odd row zebra striping
     };
 
-    $("#table-sellers-games").tablesorter({
+    $("#table-user-games").tablesorter({
         // this will apply the bootstrap theme if "uitheme" widget is included
         // the widgetOptions.uitheme is no longer required to be set
         theme: "bootstrap",
@@ -79,14 +79,14 @@ $(document).ready(function() {
         output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
 
     });*/
-    $("#table-sellers-games .tablesorter-filter-row td:nth-child(2)").addClass("hidden-xs");
-    $("#table-sellers-games .tablesorter-filter-row td:nth-child(3)").addClass("hidden-xs");
-    $("#table-sellers-games .tablesorter-filter-row td:nth-child(4)").addClass("hidden-xs");
-    $("#table-sellers-games .tablesorter-filter-row td:nth-child(5)").addClass("hidden-xs hidden-sm");
-    $("#table-sellers-games .tablesorter-filter-row td:nth-child(6)").addClass("hidden-xs");
-    $("#table-sellers-games .tablesorter-filter-row td:nth-child(7)").addClass("visible-lg");
-    $("#table-sellers-games .tablesorter-filter-row td:nth-child(8)").addClass("visible-lg");
-    $("#table-sellers-games .tablesorter-filter-row td:nth-child(9)").addClass("visible-lg");
+    $("#table-user-games .tablesorter-filter-row td:nth-child(2)").addClass("hidden-xs");
+    $("#table-user-games .tablesorter-filter-row td:nth-child(3)").addClass("hidden-xs");
+    $("#table-user-games .tablesorter-filter-row td:nth-child(4)").addClass("hidden-xs");
+    $("#table-user-games .tablesorter-filter-row td:nth-child(5)").addClass("hidden-xs hidden-sm");
+    $("#table-user-games .tablesorter-filter-row td:nth-child(6)").addClass("hidden-xs");
+    $("#table-user-games .tablesorter-filter-row td:nth-child(7)").addClass("visible-lg");
+    $("#table-user-games .tablesorter-filter-row td:nth-child(8)").addClass("visible-lg");
+    $("#table-user-games .tablesorter-filter-row td:nth-child(9)").addClass("visible-lg");
     
     $('[data-toggle="popover"]').popover();
     

@@ -48,4 +48,5 @@ security:
     access_control:
         #^/(en|fr)
         - { path: ^/(en|fr)/profile/*, role: ROLE_USER }
+        - { path: ^/(en|fr)/seller/[0-9]*/game/[0-9]*/contact, role: ROLE_USER }
         - { path: ^/(en|fr)/*, role: IS_AUTHENTICATED_ANONYMOUSLY }

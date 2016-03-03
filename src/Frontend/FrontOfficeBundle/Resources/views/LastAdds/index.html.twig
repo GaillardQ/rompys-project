@@ -42,8 +42,16 @@
                     <tbody>
                     	{% for g in games %}
                     	    <tr>
-                    	        <td class="username hidden-xs">{{ g.username }}</td>
-                    	        <td class="name">{{ g.name }}</td>
+                    	        <td class="username hidden-xs">
+                    	            <a href="{{ path('frontend_frontoffice_best_sellers', {'id': g.seller_id, 'name':g.username|url_encode}) }}">
+                    	                {{ g.username }}
+                    	            </a>
+                    	        </td>
+                    	        <td class="name">
+                    	            <a href="{{ path('frontend_frontoffice_game_page', {'id':g.id, 'name':g.name|url_encode}) }}">
+                    	               {{ g.name }}
+                    	            </a>
+                    	        </td>
                             	<td class="plateform align-center hidden-xs">{{ g.plateform }}</td>
                             	<td class="date align-center hidden-xs">{{ g.added_at|date('d-m-Y') }}</td>
                             	<td class="price align-center">{{ g.price }} €</td>

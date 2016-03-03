@@ -7,7 +7,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class HomeController extends Controller {
 
     public function indexAction() 
-    {     
+    {    
+        /*$w1 = "Assassin's Creed";
+        $w2 = "Assassins  Creed";
+        similar_text ( $w1, $w2, $percent );
+        echo "$w1 / $w2 => $percent %<br />";
+        
+        $w1 = "Colni mcrea";
+        $w2 = "Colin Macrae";
+        similar_text ( $w1, $w2, $percent );
+        echo "$w1 / $w2 => $percent %<br />";
+        
+        $w1 = "Rise of tomb raider";
+        $w2 = "Rise of tomb raider";
+        similar_text ( $w1, $w2, $percent );
+        echo "$w1 / $w2 => $percent %<br />";*/
+        
         $request = $this->getRequest();
         $invalid_username = $request->query->get('invalid_username'); // get a $_GET parameter
         
