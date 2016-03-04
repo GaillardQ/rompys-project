@@ -1,0 +1,32 @@
+parameters:
+    dev_mailer_transport: smtp
+    dev_mailer_host: smtp.test.com
+    dev_mailer_port: 587
+    dev_mailer_user: mail@test.fr
+    dev_mailer_password: password
+    dev_locale: fr
+    dev_driver: pdo_mysql
+    dev_host: localhost
+    dev_port: 3306
+    dev_dbname: dbname
+    dev_user: user
+    dev_password: password
+    dev_charset: UTF8
+    dev_super_admin_email: mail@test.fr
+    
+    prod_mailer_transport: smtp
+    prod_mailer_host: smtp.test.com
+    prod_mailer_port: 587
+    prod_mailer_user: mail@test.fr 
+    prod_mailer_password: password
+    prod_locale: fr
+    prod_driver: pdo_mysql
+    prod_host: 0.0.0.0
+    prod_port: 3306
+    prod_dbname: dbname
+    prod_user: user
+    prod_password: password
+    prod_charset: UTF8
+    prod_super_admin_email: mail@test.fr
+    secret: keySecret
+    current_revision: 0
