@@ -297,6 +297,12 @@ ul { padding-left: 10px; }
 		background-color: #2196f3;
 		color: #ffffff;
 	}
+
+	a,
+	a:hover,
+	a:focus {
+		color: #ffffff;	
+	}
 	
 	.home-panel-center input { color: #2196f3; }
 	
@@ -307,6 +313,8 @@ ul { padding-left: 10px; }
 	#home-right-top { margin-top: 2vh; }
 	
 	#search-menu { margin-bottom: 4vh; }
+
+	#input-search-game { padding: 5px; }
 }
 
 @media (max-width: 768px)
@@ -561,11 +569,13 @@ ul { padding-left: 10px; }
 }
 
 #legalsModal,
-#contactModal {
+#contactModal,
+#faqModal {
 	color: #2196f3 !important;
 }
 
 #legalsModal h4,
-#contactModal h4 {
+#contactModal h4,
+#faqModal h4 {
 	color: #2196f3 !important;
 }
