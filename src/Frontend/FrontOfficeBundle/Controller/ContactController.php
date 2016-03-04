@@ -37,25 +37,25 @@ class ContactController extends Controller {
                         "%plateform%"   => $data["plateform"]
                     ), $domain);
                     
+                    $user = $this->container->get('security.context')->getToken()->getUser();
+                    
                     $content = $this->container
                                     ->get('templating')
                                     ->render('FrontendFrontOfficeBundle:Contact:mail_contact_game.html.twig', 
                                         array(
                                             'message'   => $m,
-                                            'pseudo'    => "Toto",
-                                            'email'     => "toto@gmail.com",
+                                            'pseudo'    => $user->getUsername(),
+                                            'email'     => $user->getEmail(),
                                         )
                                     );
-                    /*$transport = \Swift_SmtpTransport::newInstance('smtp-mail.outlook.com', 587, 'tls')
-                                        ->setUsername('rompys-project@outlook.fr')
-                                        ->setPassword('Rompys--Project');
-                    $mailer = \Swift_Mailer::newInstance($transport);*/
-                    
+
                     $message = \Swift_Message::newInstance()
                         ->setSubject($subject)
-                        ->setFrom(/*$user->getEmail()*/"dieu@paradis.net")
-                        ->setTo($data["email"])
+                        ->setFrom(array($user->getEmail() => "DIEU"))// => $user->getUsername()))
+                        ->setReplyTo(array($user->getEmail() => $user->getUsername()))
+                        ->setTo(array($data["email"] => $data["username"]))
                         ->setBody(nl2br($content), 'text/html');
+
                     $this->container->get('mailer')->send($message);
                     //$mailer->send($message);
                     

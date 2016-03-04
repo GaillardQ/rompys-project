@@ -23,7 +23,8 @@ twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
     globals:
-      current_revision: %current_revision%
+        current_revision: %current_revision%
+        contact_mail: %contact_mail%
 
 # Assetic Configuration
 assetic:

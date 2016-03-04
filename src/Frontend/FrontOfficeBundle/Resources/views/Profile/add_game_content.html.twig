@@ -181,17 +181,17 @@
 <script>
     var names = [];
     {% for n in data.name %}
-        names.push('{{ n }}');
+        names.push('{{ n|e('js')|raw }}');
     {% endfor %}
     
     var series = [];
     {% for s in data.serie %}
-        series.push('{{ s }}');
+        series.push('{{ s|e('js')|raw }}');
     {% endfor %}
     
     var editors = [];
     {% for e in data.editor %}
-        editors.push('{{ e }}');
+        editors.push('{{ e|e('js')|raw }}');
     {% endfor %}
     
     function showGameList() {
@@ -216,4 +216,8 @@
     $('#frontend_frontoffice_addGame_editor3').autocomplete({
         source: editors
     });
+
+    function addSlashes(str) {
+        return str.replace(/'/g, "\\'");
+    }
 </script>
