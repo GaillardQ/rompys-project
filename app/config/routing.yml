@@ -1,8 +1,12 @@
+frontend_back_office:
+    resource: "@FrontendBackOfficeBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
 backend_ws:
     resource: "@BackendWsBundle/Resources/config/routing.yml"
     prefix:   /
 
-frontend_scientist:
+frontend_front_office:
     resource: "@FrontendFrontOfficeBundle/Resources/config/routing.yml"
     prefix:   /
 
