@@ -4,10 +4,10 @@
  <property name="source" value="src" />
 
  <target name="build"
-   depends="prepare,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdox,phpunit,phpcb"/>
+   depends="prepare,composer,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdox,phpunit,phpcb"/>
 
  <target name="build-parallel"
-   depends="prepare,tools-parallel,phpunit,phpcb"/>
+   depends="prepare,composer,tools-parallel,phpunit,phpcb"/>
 
  <target name="tools-parallel" description="Run tools in parallel">
   <parallel threadCount="2">
@@ -38,6 +38,17 @@
   <mkdir dir="${project.basedir}/build/pdepend"/>
   <mkdir dir="${project.basedir}/build/phpdox"/>
  </target>
+
+<target name="composer" description="Installing composer dependencies">
+ <exec executable="composer" failonerror="true">
+  <arg value="install" />
+  <arg value="--dev" />
+  <arg value="--prefer-dist" />
+  <arg value="--no-progress" />
+
+  <env key="SYMFONY_ENV" value="test"/>
+ </exec>
+</target>
 
  <target name="lint" description="Perform syntax check of sourcecode files">
   <apply executable="php" checkreturn="1">
