@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project name="Rompy's Project" default="build" basedir=".">
- <property name="source" value="jobs/Rompy's Project/workspace/src" />
+ <property name="source" value="src" />
 
  <target name="build"
    depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdox,phpunit,phpcb"/>
