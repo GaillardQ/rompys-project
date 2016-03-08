@@ -3,6 +3,7 @@
 	"phpmd/phpmd": "2.1.*",
 	"sebastian/phpcpd": "2.0.*",
 	"pdepend/pdepend": "2.0.*",
-	"squizlabs/php_codesniffer": "2.*"
+	"squizlabs/php_codesniffer": "2.*",
+	"escapestudios/symfony2-coding-standard":"~2.0"
     }
 }
