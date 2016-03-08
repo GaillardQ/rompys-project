@@ -5,7 +5,7 @@
 
 	<property name="pdepend" value="${basedir}/vendor/bin/pdepend"/>
 	<property name="phpmd"   value="${basedir}/vendor/bin/phpmd"/>
-	<property name="phpcpd"  value="vendor/bin/phpcpd"/>
+	<property name="phpcs"   value="${basedir}/vendor/bin/phpcs"/>
 
 
 	<target name="build"
@@ -30,7 +30,7 @@
 	<target name="qa" description="Lance les outils d'analyse">
 	    	<phingcall target="pdepend" />
 		<phingcall target="phpmd" />
-		<phingcall target="phpcpd" />
+		<phingcall target="phpcs" />
 	</target>
 
 	<target name="pdepend">
@@ -45,9 +45,12 @@
 			<formatter type="xml" outfile="${project.basedir}/build/phpmd.xml" />
 		</phpmd>
 	</target>
-	<target name="phpcpd">
-		<phpcpd file="${project.basedir}/${source}">
-			<formatter type="pmd" outfile="${project.basedir}/build/logs/pmd-cpd.xml"/>
-		</phpcpd>
+	<target name="phpcs">
+		<phpcodesniffer standard="Symfony2">
+			<fileset dir="${project.basedir}/${source}">
+	    			<include name="**/*.php"/>
+			</fileset>
+			<formatter type="checkstyle" outfile="${project.basedir}/build/logs/checkstyle.xml"/>
+		</phpcodesniffer>
 	</target>
 </project>
