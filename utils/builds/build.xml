@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="Rompy's Project" default="ci" basedir="../../..">
+<project name="Rompy's Project" default="build" basedir="../../..">
 	<property name="source" value="jobs/Rompy's Project/workspace/src" />
 
 	<property name="pdepend" value="${basedir}/vendor/bin/pdepend"/>
 	<property name="phpmd"   value="${basedir}/vendor/bin/phpmd"/>
-	<property name="phpcpd"  value="${basedir}/vendor/bin/phpcpd"/>
+	<property name="phpcpd"  value="vendor/bin/phpcpd"/>
 
 
 	<target name="build"
