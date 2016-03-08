@@ -1,0 +1,4 @@
+function activateMenu(menu)
+{
+    
+}
