@@ -4,6 +4,8 @@
 	<property name="source" value="jobs/Rompy's Project/workspace/src" />
 
 	<property name="pdepend" value="${basedir}/vendor/bin/pdepend"/>
+	<property name="phpmd"   value="${basedir}/vendor/bin/phpmd"/>
+
 
 	<target name="build"
         	description="Tâche principale d'intégration continue"
@@ -26,6 +28,7 @@
 
 	<target name="qa" description="Lance les outils d'analyse">
 	    	<phingcall target="pdepend" />
+		<phingcall target="phpmd" />
 	</target>
 
 	<target name="pdepend">
@@ -34,5 +37,10 @@
 			<logger type="jdepend-chart" outfile="${project.basedir}/build/pdepend/dependencies.svg" />
 			<logger type="overview-pyramid" outfile="${project.basedir}/build/pdepend/overview-pyramid.svg" />
 	    	</phpdepend>
+	</target>
+	<target name="phpmd">
+		<phpmd file="${project.basedir}/${source}">
+			<formatter type="xml" outfile="${project.basedir}/build/phpmd.xml" />
+		</phpmd>
 	</target>
 </project>
