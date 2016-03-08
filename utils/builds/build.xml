@@ -5,6 +5,7 @@
 
 	<property name="pdepend" value="${basedir}/vendor/bin/pdepend"/>
 	<property name="phpmd"   value="${basedir}/vendor/bin/phpmd"/>
+	<property name="phpcpd"  value="${basedir}/vendor/bin/phpcpd"/>
 
 
 	<target name="build"
@@ -29,6 +30,7 @@
 	<target name="qa" description="Lance les outils d'analyse">
 	    	<phingcall target="pdepend" />
 		<phingcall target="phpmd" />
+		<phingcall target="phpcpd" />
 	</target>
 
 	<target name="pdepend">
@@ -42,5 +44,10 @@
 		<phpmd file="${project.basedir}/${source}">
 			<formatter type="xml" outfile="${project.basedir}/build/phpmd.xml" />
 		</phpmd>
+	</target>
+	<target name="phpcpd">
+		<phpcpd file="${project.basedir}/${source}">
+			<formatter type="pmd" outfile="${project.basedir}/build/logs/pmd-cpd.xml"/>
+		</phpcpd>
 	</target>
 </project>
