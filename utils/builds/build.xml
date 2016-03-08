@@ -5,7 +5,7 @@
 
 	<property name="pdepend" value="${basedir}/vendor/bin/pdepend"/>
 
-	<target name="ci"
+	<target name="build"
         	description="Tâche principale d'intégration continue"
 	        depends="clean,qa"
     	/>
