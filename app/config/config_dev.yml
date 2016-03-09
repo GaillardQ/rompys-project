@@ -3,8 +3,8 @@ imports:
 
 framework:
     secret: %secret%
-    translator:      { fallback: %dev_locale% } 
-    default_locale:  "%dev_locale%"
+    translator:      { fallback: %locale% } 
+    default_locale:  "%locale%"
     router:
         resource: "%kernel.root_dir%/config/routing_dev.yml"
         strict_requirements: true
@@ -15,11 +15,11 @@ web_profiler:
     intercept_redirects: false
     
 swiftmailer:
-    transport: %dev_mailer_transport%
-    host:      %dev_mailer_host%
-    username:  %dev_mailer_user%
-    password:  %dev_mailer_password%
-    port:      %dev_mailer_port%
+    transport: %mailer_transport%
+    host:      %mailer_host%
+    username:  %mailer_user%
+    password:  %mailer_password%
+    port:      %mailer_port%
 monolog:
     handlers:
         main:
@@ -39,18 +39,18 @@ assetic:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   %dev_driver%
-        host:     %dev_host%
-        port:     %dev_port%
-        dbname:   %dev_dbname%
-        user:     %dev_user%
-        password: %dev_password%
-        charset:  %dev_charset%
+        driver:   %driver%
+        host:     %host%
+        port:     %port%
+        dbname:   %dbname%
+        user:     %user%
+        password: %password%
+        charset:  %charset%
 
 parameters:
-   super_admin_email: %dev_super_admin_email% 
+   super_admin_email: %super_admin_email% 
    
 fos_user:
     from_email:
-        address:        %dev_mailer_user%
+        address:        %mailer_user%
         sender_name:    Rompy

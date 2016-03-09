@@ -3,8 +3,8 @@ imports:
 
 framework:
     secret: %secret%
-    translator:      { fallback: %prod_locale% }
-    default_locale:  "%prod_locale%"
+    translator:      { fallback: %locale% }
+    default_locale:  "%locale%"
 #    validation:
 #        cache: apc
 
@@ -15,11 +15,11 @@ framework:
 #        query_cache_driver: apc
     
 swiftmailer:
-    transport: %prod_mailer_transport%
-    host:      %prod_mailer_host%
-    username:  %prod_mailer_user%
-    password:  %prod_mailer_password%
-    port:      %prod_mailer_port%
+    transport: %mailer_transport%
+    host:      %mailer_host%
+    username:  %mailer_user%
+    password:  %mailer_password%
+    port:      %mailer_port%
     
 monolog:
     handlers:
@@ -35,18 +35,18 @@ monolog:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   %prod_driver%
-        host:     %prod_host%
-        port:     %prod_port%
-        dbname:   %prod_dbname%
-        user:     %prod_user%
-        password: %prod_password%
-        charset:  %prod_charset%
+        driver:   %driver%
+        host:     %host%
+        port:     %port%
+        dbname:   %dbname%
+        user:     %user%
+        password: %password%
+        charset:  %charset%
 
 parameters:
-   super_admin_email: %prod_super_admin_email% 
+   super_admin_email: %super_admin_email% 
    
 fos_user:
     from_email:
-        address:        %prod_mailer_user%
+        address:        %mailer_user%
         sender_name:    Rompy
