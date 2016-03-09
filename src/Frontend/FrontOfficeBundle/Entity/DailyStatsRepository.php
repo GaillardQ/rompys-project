@@ -12,4 +12,54 @@ use Doctrine\ORM\EntityRepository;
  */
 class DailyStatsRepository extends EntityRepository
 {
+    public function findYesterday()
+    {
+        $d1 = new \DateTime('-1 day');
+        $d1->setTime(0, 0, 0);
+        
+        $d2 = new \DateTime();
+        $d2->setTime(0, 0, 0);
+        
+        $qb = $this->createQueryBuilder("d");
+
+        $query = $qb->select("d.nbRegistrations")
+                ->where('d.addedAt >= :date1')
+                ->setParameter('date1', $d1)
+                ->andWhere('d.addedAt < :date2')
+                ->setParameter('date2', $d2)
+                ->getQuery();
+
+        $lastRegistrations = $query->getResult();
+        
+        if(count($lastRegistrations) > 0)
+        {
+            return $lastRegistrations[0]["nbRegistrations"];
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    
+    public function findUsersByMonths()
+    {
+        return $this->findDataByMonths("nbUsers");
+    }
+    
+    public function findGamessByMonths()
+    {
+        $this->findDataByMonths("nbGames");
+    }
+    
+    public function findDataByMonths($col)
+    {
+        $qb = $this->createQueryBuilder("d");
+
+        $query = $qb->select("SUM(d.$col) as nb, YEAR(d.addedAt) as year, MONTH(d.addedAt) as month")
+                ->groupBy('year, month')
+                ->orderBy('d.addedAt', 'ASC')
+                ->getQuery();
+        
+        return $query->getResult();
+    }
 }

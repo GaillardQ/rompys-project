@@ -41,6 +41,20 @@ class DailyStats
      * @ORM\Column(name="nb_games", type="integer")
      */
     private $nbGames;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nb_registrations", type="integer")
+     */
+    private $nbRegistrations;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="added_at", type="datetime")
+     */
+    private $addedAt;
 
 
     /**
@@ -120,5 +134,51 @@ class DailyStats
     public function getNbGames()
     {
         return $this->nbGames;
+    }
+    
+    /**
+     * Set nbRegistrations
+     *
+     * @param integer $nbRegistrations
+     * @return DailyStats
+     */
+    public function setNbRegistrations($nbRegistrations)
+    {
+        $this->nbRegistrations = $nbRegistrations;
+    
+        return $this;
+    }
+
+    /**
+     * Get nbRegistrations
+     *
+     * @return integer 
+     */
+    public function getNbRegistrations()
+    {
+        return $this->nbRegistrations;
+    }
+    
+    /**
+     * Set addedAt
+     *
+     * @param \DateTime $addedAt
+     * @return DailyStats
+     */
+    public function setAddedAt($addedAt)
+    {
+        $this->addedAt = $addedAt;
+    
+        return $this;
+    }
+
+    /**
+     * Get addedAt
+     *
+     * @return integer 
+     */
+    public function getAddedAt()
+    {
+        return $this->addedAt;
     }
 }

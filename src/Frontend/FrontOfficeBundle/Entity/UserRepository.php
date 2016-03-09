@@ -12,5 +12,19 @@ use Doctrine\ORM\Query\ResultSetMapping;
  * repository methods below.
  */
 class UserRepository extends EntityRepository {
+    public function findTodayRegistration() {
+        $d1 = new \DateTime();
+        $d1->setTime(0, 0, 0);
+        
+        $qb = $this->createQueryBuilder("u");
 
+        $query = $qb->select("u.id")
+                ->where("u.registered_at >= :date")
+                ->setParameter('date', $d1)
+                ->getQuery();
+
+        $lastRegistrations = $query->getResult();
+
+        return $lastRegistrations;
+    }
 }
