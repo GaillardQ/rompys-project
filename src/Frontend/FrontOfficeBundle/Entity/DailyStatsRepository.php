@@ -48,7 +48,12 @@ class DailyStatsRepository extends EntityRepository
     
     public function findNewsByDays()
     {
-        $this->findDataByDays(array("users" => "nbRegistrations", "games" => "nbNewGames"));
+        return $this->findDataByDays(array("users" => "nbRegistrations", "games" => "nbNewGames"));
+    }
+    
+    public function findPricesByDays()
+    {
+        return $this->findDataByDays(array("price" => "averagePrice"));
     }
     
     public function findDataByDays($ar_col)

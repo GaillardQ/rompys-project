@@ -30,6 +30,9 @@ class HomeController extends Controller
         $gamesByConsole = $this->get('doctrine')->getManager()->getRepository('FrontendFrontOfficeBundle:Game')->findGamesByConsoleDistribution();
         $pricesByConsole = $this->get('doctrine')->getManager()->getRepository('FrontendFrontOfficeBundle:Game')->findPricesByConsoleDistribution();
         
+        // Prix moyen
+        $pricesByDays = $this->get('doctrine')->getManager()->getRepository('FrontendFrontOfficeBundle:DailyStats')->findPricesByDays();
+        
         return $this->render('FrontendBackOfficeBundle:Home:index.html.twig', array(
             "nb_games"                  => $nbGames,
             "nb_users"                  => $nbUsers,
@@ -38,7 +41,8 @@ class HomeController extends Controller
             "trends_by_days"            => $trendsByDays,
             "news_by_days"              => $newsByDays,
             "games_by_console"          => $gamesByConsole,
-            "prices_by_console"         => $pricesByConsole
+            "prices_by_console"         => $pricesByConsole,
+            "prices_by_days"         => $pricesByDays
         ));
     }
 }

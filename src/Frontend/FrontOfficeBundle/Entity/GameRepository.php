@@ -347,4 +347,23 @@ class GameRepository extends EntityRepository
 
         return $prices;
     }
+    
+    public function findAveragePrice()
+    {
+        $qb = $this->createQueryBuilder("g");
+        
+        $query = $qb->select("avg(g.price) as price")
+                    ->getQuery();
+        
+        $price = $query->getResult();
+        
+        if(count($price) > 0)
+        {
+            return $price[0]['price'];
+        }
+        else
+        {
+            return 0;
+        }
+    }
 }

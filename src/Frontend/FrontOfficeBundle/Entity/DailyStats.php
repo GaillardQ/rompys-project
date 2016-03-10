@@ -57,6 +57,13 @@ class DailyStats
     private $nbNewGames;
     
     /**
+     * @var float
+     *
+     * @ORM\Column(name="average_price", type="float")
+     */
+    private $averagePrice;
+    
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="added_at", type="datetime")
@@ -187,6 +194,29 @@ class DailyStats
     public function getNbNewGames()
     {
         return $this->nbNewGames;
+    }
+    
+    /**
+     * Set averagePrice
+     *
+     * @param integer $averagePrice
+     * @return DailyStats
+     */
+    public function setAveragePrice($averagePrice)
+    {
+        $this->averagePrice = $averagePrice;
+    
+        return $this;
+    }
+
+    /**
+     * Get averagePrice
+     *
+     * @return float 
+     */
+    public function getAveragePrice()
+    {
+        return $this->averagePrice;
     }
     
     /**

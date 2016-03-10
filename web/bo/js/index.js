@@ -31,7 +31,7 @@ function createGamesByPlateformGraph(games)
         data: games,
         resize: true
     });
-}
+};
 
 function createPricesByPlateformGraph(prices)
 {
@@ -41,4 +41,19 @@ function createPricesByPlateformGraph(prices)
         formatter: function(y, data) { return y + " €"; },
         resize: true
     });
-}
+};
+
+function createPricesByDaysGraph(prices) 
+{    
+    Morris.Line({
+       element: "graph-avg-prices",
+       data:    prices,
+       xkey:    'day',
+       ykeys:   ['price'],
+       yLabelFormat: function(y) { if(y !== undefined ) return y.toString() + ' €'; },
+       labels:  ['Prix'],
+       smooth:  false,
+       resize:  true,
+       parseTime: false
+    });
+};

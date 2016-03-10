@@ -21,7 +21,9 @@ class DailyStatsController extends Controller
         
         $allNewGames = $this->get('doctrine')->getManager()->getRepository('FrontendFrontOfficeBundle:Game')->findTodayNewGames();
         $nbNewGames = count($allNewGames);
-                
+        
+        $averagePrice = $this->get('doctrine')->getManager()->getRepository('FrontendFrontOfficeBundle:Game')->findAveragePrice();
+        
         $date = date("d-m-Y");
         
         $data = $this->get('doctrine')->getManager()->getRepository('FrontendFrontOfficeBundle:DailyStats')->findBy(array("day" => $date));
@@ -38,6 +40,7 @@ class DailyStatsController extends Controller
         $stats->setNbRegistrations($nbRegistrations);
         $stats->setNewGames($nbNewGames);
         $stats->setAddedAt(new \DateTime());
+        $stats->setAveragePrice($averagePrice);
         
         $em = $this->get('doctrine')->getManager();
         $em->persist($stats);
@@ -51,7 +54,8 @@ class DailyStatsController extends Controller
             "users"         => $nbUsers,
             "games"         => $nbGames,
             "registrations" => $nbRegistrations,
-            "new_games"     => $nbNewGames
+            "new_games"     => $nbNewGames,
+            "average_price" => $averagePrice
         )));
         
         return $response;

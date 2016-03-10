@@ -122,7 +122,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i>Tendances</h3>
+                            <h3 class="panel-title"><i class="fa fa-line-chart fa-fw"></i>Tendances</h3>
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -140,7 +140,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i>Nouveautés</h3>
+                            <h3 class="panel-title"><i class="fa fa-line-chart fa-fw"></i>Nouveautés</h3>
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -169,6 +169,20 @@
                                 <div class="col-lg-6 col-md-6 align-center">
                                     <h4> Prix moyen par plateforme </h4>
                                     <div id="graph-distri-prices"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-line-chart fa-fw"></i>Prix moyen</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div id="graph-avg-prices"></div>
                                 </div>
                             </div>
                         </div>
@@ -222,6 +236,15 @@
                 });
             {% endfor %}
             createPricesByPlateformGraph(prices);
+            
+            var avgPrices = [];
+            {% for n in prices_by_days %}
+                avgPrices.push({
+                    day: '{{ n.day|date("d-m-Y") }}',
+                    price: {{ n.price }},
+                });
+            {% endfor %}
+            createPricesByDaysGraph(avgPrices);
         });
     </script>
 {% endblock %}
