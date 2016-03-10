@@ -32,10 +32,6 @@ doctrine:
         user:     %user%
         password: %password%
         charset:  %charset%
-        
-
-parameters:
-   super_admin_email: %super_admin_email% 
 
 fos_user:
     from_email:
