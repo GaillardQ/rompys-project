@@ -18,6 +18,9 @@ class DailyStatsController extends Controller
         
         $allRegistered = $this->get('doctrine')->getManager()->getRepository('FrontendFrontOfficeBundle:User')->findTodayRegistration();
         $nbRegistrations = count($allRegistered);
+        
+        $allNewGames = $this->get('doctrine')->getManager()->getRepository('FrontendFrontOfficeBundle:Game')->findTodayNewGames();
+        $nbNewGames = count($allNewGames);
                 
         $date = date("d-m-Y");
         
@@ -33,6 +36,7 @@ class DailyStatsController extends Controller
         $stats->setNbGames($nbGames);
         $stats->setNbUsers($nbUsers);
         $stats->setNbRegistrations($nbRegistrations);
+        $stats->setNewGames($nbNewGames);
         $stats->setAddedAt(new \DateTime());
         
         $em = $this->get('doctrine')->getManager();
@@ -46,7 +50,8 @@ class DailyStatsController extends Controller
         $response->setContent(json_encode(array(
             "users"         => $nbUsers,
             "games"         => $nbGames,
-            "registrations" => $nbRegistrations
+            "registrations" => $nbRegistrations,
+            "new_games"     => $nbNewGames
         )));
         
         return $response;

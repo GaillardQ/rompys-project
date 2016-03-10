@@ -302,4 +302,49 @@ class GameRepository extends EntityRepository
         
         return $res;
     }
+    
+    public function findTodayNewGames()
+    {
+        $d1 = new \DateTime();
+        $d1->setTime(0, 0, 0);
+        
+        $qb = $this->createQueryBuilder("g");
+
+        $query = $qb->select("g.id")
+                ->where("g.addedAt >= :date")
+                ->setParameter('date', $d1)
+                ->getQuery();
+
+        $games = $query->getResult();
+
+        return $games;
+    }
+    
+    public function findGamesByConsoleDistribution()
+    {
+        $qb = $this->createQueryBuilder("g");
+        
+        $query = $qb->select("COUNT(g.id) as nb, p.value as plateform")
+                    ->leftJoin('g.plateform', 'p')
+                    ->groupBy('plateform')
+                    ->getQuery();
+        
+        $games = $query->getResult();
+
+        return $games;
+    }
+    
+    public function findPricesByConsoleDistribution()
+    {
+        $qb = $this->createQueryBuilder("g");
+        
+        $query = $qb->select("avg(g.price) as price, p.value as plateform")
+                    ->leftJoin('g.plateform', 'p')
+                    ->groupBy('plateform')
+                    ->getQuery();
+        
+        $prices = $query->getResult();
+
+        return $prices;
+    }
 }

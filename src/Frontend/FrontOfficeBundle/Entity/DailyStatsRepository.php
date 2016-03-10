@@ -41,23 +41,28 @@ class DailyStatsRepository extends EntityRepository
         }
     }
     
-    public function findUsersByMonths()
+    public function findTrendsByDays()
     {
-        return $this->findDataByMonths("nbUsers");
+        return $this->findDataByDays(array("users" => "nbUsers", "games" => "nbGames"));
     }
     
-    public function findGamessByMonths()
+    public function findNewsByDays()
     {
-        $this->findDataByMonths("nbGames");
+        $this->findDataByDays(array("users" => "nbRegistrations", "games" => "nbNewGames"));
     }
     
-    public function findDataByMonths($col)
+    public function findDataByDays($ar_col)
     {
         $qb = $this->createQueryBuilder("d");
+        
+        $s = "";
+        foreach($ar_col as $k=>$v)
+        {
+            $s .= "d.$v as $k, ";
+        }
 
-        $query = $qb->select("SUM(d.$col) as nb, YEAR(d.addedAt) as year, MONTH(d.addedAt) as month")
-                ->groupBy('year, month')
-                ->orderBy('d.addedAt', 'ASC')
+        $query = $qb->select("$s d.addedAt as day")
+                ->orderBy("day")
                 ->getQuery();
         
         return $query->getResult();

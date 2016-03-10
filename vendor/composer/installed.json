@@ -272,12 +272,12 @@
         "version_normalized": "1.14.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/fabpot/Twig.git",
+            "url": "https://github.com/twigphp/Twig.git",
             "reference": "8873d7593ad7c120004f177c0fd01459b383c9cb"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/fabpot/Twig/zipball/8873d7593ad7c120004f177c0fd01459b383c9cb",
+            "url": "https://api.github.com/repos/twigphp/Twig/zipball/8873d7593ad7c120004f177c0fd01459b383c9cb",
             "reference": "8873d7593ad7c120004f177c0fd01459b383c9cb",
             "shasum": ""
         },
@@ -434,12 +434,12 @@
         "target-dir": "Symfony/Component/Icu",
         "source": {
             "type": "git",
-            "url": "https://github.com/symfony/Icu.git",
+            "url": "https://github.com/symfony/icu.git",
             "reference": "7299cd3d8d6602103d1ebff5d0a9917b7bc6de72"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/Icu/zipball/7299cd3d8d6602103d1ebff5d0a9917b7bc6de72",
+            "url": "https://api.github.com/repos/symfony/icu/zipball/7299cd3d8d6602103d1ebff5d0a9917b7bc6de72",
             "reference": "7299cd3d8d6602103d1ebff5d0a9917b7bc6de72",
             "shasum": ""
         },
@@ -483,12 +483,12 @@
         "version_normalized": "1.0.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/php-fig/log",
-            "reference": "1.0.0"
+            "url": "https://github.com/php-fig/log.git",
+            "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://github.com/php-fig/log/archive/1.0.0.zip",
+            "url": "https://api.github.com/repos/php-fig/log/zipball/fe0936ee26643249e916849d48e3a51d5f5e278b",
             "reference": "1.0.0",
             "shasum": ""
         },
@@ -669,7 +669,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/jdorn/sql-formatter/zipball/v1.2.9",
+            "url": "https://api.github.com/repos/jdorn/sql-formatter/zipball/bd1f09133f6dbbe0713856910e58ea9480c2be58",
             "reference": "v1.2.9",
             "shasum": ""
         },
@@ -721,7 +721,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/dbal/zipball/2.3.4",
+            "url": "https://api.github.com/repos/doctrine/dbal/zipball/2a37b007dda8e21bdbb8fa445be8fa0064199e13",
             "reference": "2.3.4",
             "shasum": ""
         },
@@ -787,7 +787,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/v1.2.0",
+            "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/765b0d87fcc3e839c74817b7211258cbef3a4fb9",
             "reference": "v1.2.0",
             "shasum": ""
         },
@@ -905,66 +905,6 @@
         ]
     },
     {
-        "name": "doctrine/doctrine-fixtures-bundle",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "target-dir": "Doctrine/Bundle/FixturesBundle",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/doctrine/DoctrineFixturesBundle.git",
-            "reference": "3caec4826e58fe47520b591f965b4adcdfc8a6c8"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/3caec4826e58fe47520b591f965b4adcdfc8a6c8",
-            "reference": "3caec4826e58fe47520b591f965b4adcdfc8a6c8",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/data-fixtures": "~1.0",
-            "doctrine/doctrine-bundle": "~1.0",
-            "php": ">=5.3.2",
-            "symfony/doctrine-bridge": "~2.1"
-        },
-        "time": "2013-09-16 10:15:05",
-        "type": "symfony-bundle",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.2.x-dev"
-            }
-        },
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "Doctrine\\Bundle\\FixturesBundle": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "http://symfony.com/contributors"
-            },
-            {
-                "name": "Doctrine Project",
-                "homepage": "http://www.doctrine-project.org"
-            }
-        ],
-        "description": "Symfony DoctrineFixturesBundle",
-        "homepage": "http://www.doctrine-project.org",
-        "keywords": [
-            "Fixture",
-            "persistence"
-        ]
-    },
-    {
         "name": "doctrine/orm",
         "version": "2.3.4",
         "version_normalized": "2.3.4.0",
@@ -975,7 +915,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/2.3.4",
+            "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/a41b02c080114c0de3da4ee9fba61f7d18fae7d0",
             "reference": "2.3.4",
             "shasum": ""
         },
@@ -1048,7 +988,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/f9ea1de0698e3055c9916e88c19f42e28844ef61",
+            "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/16b04c49af05dd3fb381e4abe04f0e5e231ac76d",
             "reference": "f9ea1de0698e3055c9916e88c19f42e28844ef61",
             "shasum": ""
         },
@@ -1119,7 +1059,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Incenteev/ParameterHandler/zipball/v2.0.0",
+            "url": "https://api.github.com/repos/Incenteev/ParameterHandler/zipball/2310d74a751025f02221e0faf69d31440df71b73",
             "reference": "v2.0.0",
             "shasum": ""
         },
@@ -1307,54 +1247,6 @@
         "description": "This bundle generates code for you"
     },
     {
-        "name": "sinner/phpseclib-bundle",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sinner/PhpseclibBundle.git",
-            "reference": "55e093e733de0ebf92e01084420ade9e4aa41407"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sinner/PhpseclibBundle/zipball/55e093e733de0ebf92e01084420ade9e4aa41407",
-            "reference": "55e093e733de0ebf92e01084420ade9e4aa41407",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "time": "2013-06-08 12:35:28",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "Sinner\\Phpseclib": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Jose Gabriel Gonzalez",
-                "email": "jgabrielsinner10@gmail.com",
-                "role": "Developer - Free Software Specialist"
-            }
-        ],
-        "description": "PHP Secure Communications Library - Pure-PHP implementations of RSA, AES, SSH2, SFTP, X.509 etc. Created By Jim Wigginton and Modified to be a Symfony2 Bundle.",
-        "homepage": "https://github.com/Sinner/PhpseclibBundle",
-        "keywords": [
-            "Jim Wigginton",
-            "Sinner",
-            "Symfony2",
-            "crypt",
-            "cryptography",
-            "phpseclib"
-        ]
-    },
-    {
         "name": "kriswallsmith/assetic",
         "version": "v1.1.2",
         "version_normalized": "1.1.2.0",
@@ -1365,7 +1257,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/v1.1.2",
+            "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/735cffd3982c6e8cdebe292d5db39d077f65890f",
             "reference": "v1.1.2",
             "shasum": ""
         },
@@ -1434,12 +1326,12 @@
         "target-dir": "Symfony/Bundle/AsseticBundle",
         "source": {
             "type": "git",
-            "url": "https://github.com/symfony/AsseticBundle.git",
-            "reference": "v2.3.0-beta1"
+            "url": "https://github.com/symfony/assetic-bundle.git",
+            "reference": "146dd3cb46b302bd471560471c6aaa930483dac1"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/AsseticBundle/zipball/v2.3.0-beta1",
+            "url": "https://api.github.com/repos/symfony/assetic-bundle/zipball/146dd3cb46b302bd471560471c6aaa930483dac1",
             "reference": "v2.3.0-beta1",
             "shasum": ""
         },
@@ -1563,12 +1455,12 @@
         "target-dir": "Symfony/Bundle/MonologBundle",
         "source": {
             "type": "git",
-            "url": "https://github.com/symfony/MonologBundle.git",
-            "reference": "v2.3.0"
+            "url": "https://github.com/symfony/monolog-bundle.git",
+            "reference": "03ed73bc11367b3156cc21f22ac37c7f70fcd10a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/v2.3.0",
+            "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/03ed73bc11367b3156cc21f22ac37c7f70fcd10a",
             "reference": "v2.3.0",
             "shasum": ""
         },
@@ -1674,12 +1566,12 @@
         "target-dir": "Symfony/Bundle/SwiftmailerBundle",
         "source": {
             "type": "git",
-            "url": "https://github.com/symfony/SwiftmailerBundle.git",
+            "url": "https://github.com/symfony/swiftmailer-bundle.git",
             "reference": "f5e5d12629c26a835c7aa1d74e2e041486b92d93"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/SwiftmailerBundle/zipball/f5e5d12629c26a835c7aa1d74e2e041486b92d93",
+            "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/f5e5d12629c26a835c7aa1d74e2e041486b92d93",
             "reference": "f5e5d12629c26a835c7aa1d74e2e041486b92d93",
             "shasum": ""
         },
@@ -1730,12 +1622,12 @@
         "version_normalized": "1.0.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/fabpot/Twig-extensions.git",
-            "reference": "v1.0.0"
+            "url": "https://github.com/twigphp/Twig-extensions.git",
+            "reference": "921799aaf05f88af749d72912d6b154dfeb9a03e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/fabpot/Twig-extensions/zipball/v1.0.0",
+            "url": "https://api.github.com/repos/twigphp/Twig-extensions/zipball/921799aaf05f88af749d72912d6b154dfeb9a03e",
             "reference": "v1.0.0",
             "shasum": ""
         },
@@ -1771,6 +1663,113 @@
             "debug",
             "i18n",
             "text"
+        ]
+    },
+    {
+        "name": "doctrine/doctrine-fixtures-bundle",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/DoctrineFixturesBundle.git",
+            "reference": "0f1a2f91b349e10f5c343f75ab71d23aace5b029"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/0f1a2f91b349e10f5c343f75ab71d23aace5b029",
+            "reference": "0f1a2f91b349e10f5c343f75ab71d23aace5b029",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/data-fixtures": "~1.0",
+            "doctrine/doctrine-bundle": "~1.0",
+            "php": ">=5.3.2",
+            "symfony/doctrine-bridge": "~2.3|~3.0"
+        },
+        "time": "2015-11-04 21:23:23",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.2.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Doctrine\\Bundle\\FixturesBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            },
+            {
+                "name": "Doctrine Project",
+                "homepage": "http://www.doctrine-project.org"
+            },
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "Symfony DoctrineFixturesBundle",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "Fixture",
+            "persistence"
+        ]
+    },
+    {
+        "name": "sinner/phpseclib-bundle",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sinner/PhpseclibBundle.git",
+            "reference": "3349fc2b0948cb294cbf8d630af247139a88dc47"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sinner/PhpseclibBundle/zipball/3349fc2b0948cb294cbf8d630af247139a88dc47",
+            "reference": "3349fc2b0948cb294cbf8d630af247139a88dc47",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2014-03-24 03:55:33",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Sinner\\Phpseclib": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jose Gabriel Gonzalez",
+                "email": "jgabrielsinner10@gmail.com",
+                "role": "Developer - Free Software Specialist"
+            }
+        ],
+        "description": "PHP Secure Communications Library - Pure-PHP implementations of RSA, AES, SSH2, SFTP, X.509 etc. Created By Jim Wigginton and Modified to be a Symfony2 Bundle.",
+        "homepage": "https://github.com/Sinner/PhpseclibBundle",
+        "keywords": [
+            "Jim Wigginton",
+            "Sinner",
+            "Symfony2",
+            "crypt",
+            "cryptography",
+            "phpseclib"
         ]
     }
 ]

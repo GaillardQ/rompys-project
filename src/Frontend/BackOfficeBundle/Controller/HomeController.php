@@ -21,18 +21,24 @@ class HomeController extends Controller
         $gamesByUsers = round($nbGames / $nbUsers, 2);
         
         // Graphes tendances
-        $usersByMonths = $this->get('doctrine')->getManager()->getRepository('FrontendFrontOfficeBundle:DailyStats')->findUsersByMonths();
-        $gamesByMonths = $this->get('doctrine')->getManager()->getRepository('FrontendFrontOfficeBundle:DailyStats')->findGamesByMonths();
-        var_dump($usersByMonths);
+        $trendsByDays = $this->get('doctrine')->getManager()->getRepository('FrontendFrontOfficeBundle:DailyStats')->findTrendsByDays();
+        
         // Graphes nouveautés
+        $newsByDays = $this->get('doctrine')->getManager()->getRepository('FrontendFrontOfficeBundle:DailyStats')->findNewsByDays();
         
         // Graphes consoles
+        $gamesByConsole = $this->get('doctrine')->getManager()->getRepository('FrontendFrontOfficeBundle:Game')->findGamesByConsoleDistribution();
+        $pricesByConsole = $this->get('doctrine')->getManager()->getRepository('FrontendFrontOfficeBundle:Game')->findPricesByConsoleDistribution();
         
         return $this->render('FrontendBackOfficeBundle:Home:index.html.twig', array(
             "nb_games"                  => $nbGames,
             "nb_users"                  => $nbUsers,
             "games_by_users"            => $gamesByUsers,
-            "yesterday_registration"    => $yesterdayRegistration
+            "yesterday_registration"    => $yesterdayRegistration,
+            "trends_by_days"            => $trendsByDays,
+            "news_by_days"              => $newsByDays,
+            "games_by_console"          => $gamesByConsole,
+            "prices_by_console"         => $pricesByConsole
         ));
     }
 }
