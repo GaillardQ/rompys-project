@@ -15,4 +15,4 @@ parameters:
     super_admin_email: mail@test.fr
     secret: keySecret
     current_revision: 0
-    contact_mail
+    contact_mail: mail@test.fr
