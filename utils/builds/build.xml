@@ -3,8 +3,8 @@
     <property name="source" value="jobs/RompysProject/workspace/src" />
 
     <target name="build"
-        description="Tâche principale d'intégration continue"
-        depends="clean,qa"
+            description="Tâche principale d'intégration continue"
+            depends="clean,qa"
     />
 
     <target name="clean" description="Vide les répertoires d'artefacts">
@@ -57,8 +57,11 @@
         </phpcodesniffer>
     </target>
     
-    <target name="phpunit">
-        <exec logoutput="true" dir="${project.basedir}/${source}/../tests" command="phpunit" escape="false" />
+    <target name="phpunit" description="Run unit tests with PHPUnit">
+        <exec executable="phpunit" failonerror="true">
+            <arg value="-c" />
+            <arg path="${basedir}/app/phpunit.xml" />
+        </exec>
     </target>
     
     <target name="phpcb">
