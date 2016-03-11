@@ -1,0 +1,19 @@
+table a,
+table a:focus, 
+table a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+.side-nav,
+.side-nav > li > a {
+    width: 160px;
+}
+
+#wrapper {
+    padding-left: 160px;
+}
+
+#table-all-games thead th {
+    text-align: center
+}
