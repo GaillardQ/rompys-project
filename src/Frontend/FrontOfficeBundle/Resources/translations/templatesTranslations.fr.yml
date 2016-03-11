@@ -25,6 +25,7 @@ home:
         title: Informations
         games: '{0, 1} %count% jeu en vente|]1,Inf] %count% jeux en vente'
         profile: Mon profil
+        admin: Back-office
         logout: Se déconnecter
     news:
         title: News
@@ -258,30 +259,13 @@ db:
         rpg: RPG
         simulation: Simulation
         strategy: Stratégie
-        
-contact:
-    game:
-        title: Contacter un vendeur
-        error: 
-            default: Une erreur est survenue lors de l'envoi de votre message.
-        seller:
-            label: "Vendeur :"
-        game:
-            label: "Jeu :"
-        message:
-            label: "Message :"
-            placeholder: Votre message...
-        btn: Envoyer le message
-        return: Accueil
-        subject: "%pseudo% vous contacte à propos de %game% (%plateform%)"
-        mail: "%message% \n\n\n-----------------\n\n Coordonées de l'utilisateur :\nNom : %pseudo%\nEmail : %email% \n\n Cet email vous a été envoyé automatiquement par le site Rompy's Project au nom du vendeur.\n Pour envoyer une réponse, vous pouvez répondre à ce mail.\n\nRompy"
-        sent:
-            message: Votre message a été envoyé.
+            
 footer:
     rights: Tous droits réservés
     faq: FAQ
     legals: Mentions légales
     contact: Nous contacter
+    
 faq:
     title: Foire aux questions
     close: Fermer
@@ -301,9 +285,49 @@ legals:
     title: Mentions légales
     close: Fermer
     content: Partie en construction...
+    
 contact:
     title: Nous contacter
     close: Fermer
     content: >
         Vous avez une question ? une remarque ?<br />
         Faites le nous savoir : <b>%contact_mail%</b>
+    game:
+        title: Contacter un vendeur
+        error: 
+            default: Une erreur est survenue lors de l'envoi de votre message.
+        seller:
+            label: "Vendeur :"
+        game:
+            label: "Jeu :"
+        message:
+            label: "Message :"
+            placeholder: Votre message...
+        btn: Envoyer le message
+        return: Accueil
+        subject: "%pseudo% vous contacte à propos de %game% (%plateform%)"
+        mail: "%message% \n\n\n-----------------\n\n Coordonées de l'utilisateur :\nNom : %pseudo%\nEmail : %email% \n\n Cet email vous a été envoyé automatiquement par le site Rompy's Project au nom du vendeur.\n Pour envoyer une réponse, vous pouvez répondre à ce mail.\n\nRompy"
+        sent:
+            message: Votre message a été envoyé.
+        
+bo:
+    games:
+        name: Nom
+        seller: Vendeur
+        price: Prix
+        plateform: Plateforme
+        photo: Photo
+        editor: Editeur
+        out-date: Année
+        serie: Série
+        gametype: Type
+        user-version: Version de l'utilisateur
+        package: Boitier
+        blister: Blister
+        notice: Notice
+        language-zone: Langue
+        comment: Commentaire
+        added-date: Ajouté le
+        update: Modifier
+        delete: Supprimer
+        

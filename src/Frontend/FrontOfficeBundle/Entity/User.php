@@ -163,6 +163,9 @@ class User extends BaseUser {
     
     public function addRole($role)
     {
-        array_push($this->roles, $role);
+        if($this->roles != null && $role != null)
+        {
+            array_push($this->roles, $role);
+        }
     }
 }

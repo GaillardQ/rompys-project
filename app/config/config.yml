@@ -48,7 +48,7 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     encryption: tls
-    # auth_mode: login
+    auth_mode: login
     # spool:     { type: memory }
 
 fos_user:

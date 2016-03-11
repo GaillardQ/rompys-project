@@ -12,8 +12,46 @@ use Doctrine\ORM\EntityRepository;
  */
 class GameRepository extends EntityRepository
 {
+    public function findAllArray()
+    {
+        $allGames = $this->createQueryBuilder('e')
+                         ->select('e')
+                         ->getQuery()
+                         ->getResult();
+        
+        $games = array();
+        foreach($allGames as $k=>$v)
+        {
+            $games[$k] = array();
+            $games[$k]["id"] = $v->getId();
+            $games[$k]["name"] = $v->getName();
+            $games[$k]["plateform"] = $v->getplateform()->getValue();
+            $games[$k]["released_year"] = $v->getReleasedyear();
+            $games[$k]["editor1"] = $v->getEditor1();
+            $games[$k]["editor2"] = $v->getEditor2();
+            $games[$k]["editor3"] = $v->getEditor3();
+            $games[$k]["serie"] = $v->getSerie();
+            $games[$k]["image"] = $v->getImage();
+            $games[$k]["game_type"] = $v->getGameType()->getValue();
+            $games[$k]["package"] = $v->getPackage();
+            $games[$k]["blister"] = $v->getBlister();
+            $games[$k]["notice"] = $v->getNotice();
+            $games[$k]["price"] = $v->getPrice();
+            $games[$k]["comment"] = $v->getComment();
+            $games[$k]["state"] = $v->getState()->getValue();
+            $games[$k]["state_id"] = $v->getState()->getId();
+            $games[$k]["seller"] = $v->getSeller()->getUser()->getUsername();
+            $games[$k]["language"] = $v->getLanguage();
+            $games[$k]["alternative_name"] = $v->getAlternativeName();
+            $games[$k]["zone"] = $v->getZone();
+            $games[$k]["added_at"] = $v->getAddedAt();
+        }
+        
+        return $games;
+    }
+    
     public function getLastAdds($_nb = 5)
-	{
+    {
         $qb = $this->createQueryBuilder("g");
         
         $query = $qb->select("g.id, g.name, p.value as plateform, g.addedAt as added_at, g.price, u.username, g.image, g.language, g.comment,st.id as state_id, st.value as state_value, u.id as seller_id")
