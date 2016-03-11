@@ -6,7 +6,7 @@
     <property name="builddir" value="${workspace}/app/build" />
 
     <target name="build"
-            depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcb"/>
+            depends="prepare,lint,phploc,pdepend,phpcpd,phpmd-ci,phpcs-ci,phpcb"/>
 
     <target name="build-parallel" depends="prepare,lint,tools-parallel,phpunit,phpcb"/>
 
@@ -73,7 +73,7 @@
         <exec executable="phpmd">
             <arg path="${basedir}/src" />
             <arg value="text" />
-            <arg value="${workspace}/app/phpmd.xml" />
+            <arg value="${workspace}/app/build/phpmd.xml" />
         </exec>
     </target>
 
@@ -95,10 +95,18 @@
     </target>
 
     <target name="phpcs-ci" description="Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server">
-        <exec executable="phpcs" output="/dev/null">
+        <exec executable="phpcs" output="${builddir}/logs/checkstyle.xml">
             <arg value="--report=checkstyle" />
             <arg value="--report-file=${builddir}/logs/checkstyle.xml" />
             <arg value="--standard=Symfony2" />
+            <arg path="${sourcedir}" />
+        </exec>
+    </target>
+    
+    <target name="phpcpd" description="Find duplicate code using PHPCPD">
+        <exec executable="phpcpd">
+            <arg value="--log-pmd" />
+            <arg value="${builddir}/logs/pmd-cpd.xml" />
             <arg path="${sourcedir}" />
         </exec>
     </target>
