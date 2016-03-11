@@ -95,7 +95,7 @@
     </target>
 
     <target name="phpcs-ci" description="Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server">
-        <exec executable="phpcs" output="${builddir}/logs/checkstyle.xml">
+        <exec executable="phpcs" output="/dev/null">
             <arg value="--report=checkstyle" />
             <arg value="--report-file=${builddir}/logs/checkstyle.xml" />
             <arg value="--standard=Symfony2" />
