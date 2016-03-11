@@ -1,4 +1,4 @@
-<phpunit bootstrap="src/autoload.php">
+<phpunit>
     <testsuites>
         <testsuite name="money">
             <file>../src/FrontEnd/FrontOffice/tests/UserControllerTest.php</file>
