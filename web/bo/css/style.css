@@ -17,3 +17,7 @@ table a:hover {
 #table-all-games thead th {
     text-align: center
 }
+
+#table-all-games .popover-content img { max-width: 100px; }
+
+#table-all-games .popover-content { text-align: center; }

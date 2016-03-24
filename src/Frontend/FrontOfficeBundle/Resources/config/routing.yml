@@ -89,3 +89,7 @@ frontend_frontoffice_common_get_last_add_games:
 frontend_frontoffice_common_get_best_sellers:
     pattern:  /ws/get_best_sellers
     defaults: { _controller: FrontendFrontOfficeBundle:Common:getBestSellers}
+    
+frontend_backoffice_common_enable_user:
+    pattern: /ws/user/{id}/enable/{enable}/{hash}
+    defaults: {_controller: FrontendBackOfficeBundle:Common:enableUser}

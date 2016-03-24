@@ -19,31 +19,43 @@
 
 namespace Doctrine\ORM\Query\Exec;
 
-use Doctrine\DBAL\Connection,
-    Doctrine\ORM\Query\AST;
+use Doctrine\DBAL\Connection;
+use Doctrine\ORM\Query\AST;
 
 /**
  * Executes the SQL statements for bulk DQL DELETE statements on classes in
  * Class Table Inheritance (JOINED).
  *
  * @author      Roman Borschel <roman@code-factory.org>
- * @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
+ * @license     http://www.opensource.org/licenses/mit-license.php MIT
  * @link        http://www.doctrine-project.org
  * @since       2.0
  */
 class MultiTableDeleteExecutor extends AbstractSqlExecutor
 {
+    /**
+     * @var string
+     */
     private $_createTempTableSql;
+
+    /**
+     * @var string
+     */
     private $_dropTempTableSql;
+
+    /**
+     * @var string
+     */
     private $_insertSql;
 
     /**
      * Initializes a new <tt>MultiTableDeleteExecutor</tt>.
      *
-     * @param Node $AST The root AST node of the DQL query.
-     * @param SqlWalker $sqlWalker The walker used for SQL generation from the AST.
-     * @internal Any SQL construction and preparation takes place in the constructor for
-     *           best performance. With a query cache the executor will be cached.
+     * Internal note: Any SQL construction and preparation takes place in the constructor for
+     *                best performance. With a query cache the executor will be cached.
+     *
+     * @param \Doctrine\ORM\Query\AST\Node  $AST       The root AST node of the DQL query.
+     * @param \Doctrine\ORM\Query\SqlWalker $sqlWalker The walker used for SQL generation from the AST.
      */
     public function __construct(AST\Node $AST, $sqlWalker)
     {

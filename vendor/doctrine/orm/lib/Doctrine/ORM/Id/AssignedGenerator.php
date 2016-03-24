@@ -23,7 +23,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\ORMException;
 
 /**
- * Special generator for application-assigned identifiers (doesnt really generate anything).
+ * Special generator for application-assigned identifiers (doesn't really generate anything).
  *
  * @since   2.0
  * @author  Benjamin Eberlei <kontakt@beberlei.de>
@@ -36,9 +36,9 @@ class AssignedGenerator extends AbstractIdGenerator
     /**
      * Returns the identifier assigned to the given entity.
      *
-     * @param object $entity
-     * @return mixed
-     * @override
+     * {@inheritDoc}
+     *
+     * @throws \Doctrine\ORM\ORMException
      */
     public function generate(EntityManager $em, $entity)
     {
@@ -47,19 +47,15 @@ class AssignedGenerator extends AbstractIdGenerator
         $identifier = array();
 
         foreach ($idFields as $idField) {
-            $value = $class->reflFields[$idField]->getValue($entity);
+            $value = $class->getFieldValue($entity, $idField);
 
             if ( ! isset($value)) {
                 throw ORMException::entityMissingAssignedIdForField($entity, $idField);
             }
 
             if (isset($class->associationMappings[$idField])) {
-                if ( ! $em->getUnitOfWork()->isInIdentityMap($value)) {
-                    throw ORMException::entityMissingForeignAssignedId($entity, $value);
-                }
-
                 // NOTE: Single Columns as associated identifiers only allowed - this constraint it is enforced.
-                $value = current($em->getUnitOfWork()->getEntityIdentifier($value));
+                $value = $em->getUnitOfWork()->getSingleIdentifierValue($value);
             }
 
             $identifier[$idField] = $value;

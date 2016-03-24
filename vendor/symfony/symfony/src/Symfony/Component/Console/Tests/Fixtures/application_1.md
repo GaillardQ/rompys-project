@@ -8,8 +8,9 @@ help
 ----
 
 * Description: Displays help for a command
-* Usage: `help [--xml] [--format="..."] [--raw] [command_name]`
-* Aliases: <none>
+* Usage:
+
+  * `help [--xml] [--format FORMAT] [--raw] [--] [<command_name>]`
 
 The <info>help</info> command displays help for a given command:
 
@@ -50,8 +51,8 @@ To display the list of available commands, please use the <info>list</info> comm
 * Accept value: yes
 * Is value required: yes
 * Is multiple: no
-* Description: To output help in other formats
-* Default: `NULL`
+* Description: The output format (txt, xml, json, or md)
+* Default: `'txt'`
 
 **raw:**
 
@@ -70,7 +71,7 @@ To display the list of available commands, please use the <info>list</info> comm
 * Accept value: no
 * Is value required: no
 * Is multiple: no
-* Description: Display this help message.
+* Description: Display this help message
 * Default: `false`
 
 **quiet:**
@@ -80,7 +81,7 @@ To display the list of available commands, please use the <info>list</info> comm
 * Accept value: no
 * Is value required: no
 * Is multiple: no
-* Description: Do not output any message.
+* Description: Do not output any message
 * Default: `false`
 
 **verbose:**
@@ -100,7 +101,7 @@ To display the list of available commands, please use the <info>list</info> comm
 * Accept value: no
 * Is value required: no
 * Is multiple: no
-* Description: Display this application version.
+* Description: Display this application version
 * Default: `false`
 
 **ansi:**
@@ -110,7 +111,7 @@ To display the list of available commands, please use the <info>list</info> comm
 * Accept value: no
 * Is value required: no
 * Is multiple: no
-* Description: Force ANSI output.
+* Description: Force ANSI output
 * Default: `false`
 
 **no-ansi:**
@@ -120,7 +121,7 @@ To display the list of available commands, please use the <info>list</info> comm
 * Accept value: no
 * Is value required: no
 * Is multiple: no
-* Description: Disable ANSI output.
+* Description: Disable ANSI output
 * Default: `false`
 
 **no-interaction:**
@@ -130,15 +131,16 @@ To display the list of available commands, please use the <info>list</info> comm
 * Accept value: no
 * Is value required: no
 * Is multiple: no
-* Description: Do not ask any interactive question.
+* Description: Do not ask any interactive question
 * Default: `false`
 
 list
 ----
 
 * Description: Lists commands
-* Usage: `list [--xml] [--raw] [--format="..."] [namespace]`
-* Aliases: <none>
+* Usage:
+
+  * `list [--xml] [--raw] [--format FORMAT] [--] [<namespace>]`
 
 The <info>list</info> command lists all commands:
 
@@ -195,5 +197,5 @@ It's also possible to get raw list of commands (useful for embedding command run
 * Accept value: yes
 * Is value required: yes
 * Is multiple: no
-* Description: To output list in other formats
-* Default: `NULL`
+* Description: The output format (txt, xml, json, or md)
+* Default: `'txt'`

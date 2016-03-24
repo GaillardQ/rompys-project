@@ -66,13 +66,13 @@ class RegistrationController extends BaseController
             }
         }
         
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:register.html.'.$this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:register.html.twig', array(
             'form' => $form->createView(),
             'response' => false
         ));
     }
     public function confirmedAction()
     {
-        return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Registration:confirmed.html.'.$this->getEngine());
+        return $this->container->get('templating')->renderResponse('FrontendFrontOfficeBundle:Registration:confirmed.html.twig');
     }
 }

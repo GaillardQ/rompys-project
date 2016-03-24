@@ -27,4 +27,29 @@ class UserRepository extends EntityRepository {
 
         return $lastRegistrations;
     }
+    
+    public function findAllArray()
+    {
+        $allUsers = $this->createQueryBuilder('e')
+                         ->select('e')
+                         ->getQuery()
+                         ->getResult();
+        
+        $users = array();
+        foreach($allUsers as $k=>$v)
+        {
+           $users[$k] = array();
+           $users[$k]["id"] = $v->getId();
+           $users[$k]["username"] = $v->getUsername();
+           $users[$k]["firstname"] = $v->getFirstname();
+           $users[$k]["lastname"] = $v->getLastname();
+           $users[$k]["email"] = $v->getEmail();
+           $users[$k]["phone"] = $v->getPhone();
+           $users[$k]["roles"] = $v->getRoles();
+           $users[$k]["games"] = 0;
+           $users[$k]["enabled"] = $v->isEnabled();
+        }
+        
+        return $users;
+    }
 }

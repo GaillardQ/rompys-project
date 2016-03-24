@@ -12,14 +12,16 @@
 namespace Symfony\Component\Intl\DateFormatter\DateFormat;
 
 /**
- * Parser and formatter for 24 hour format (0-23)
+ * Parser and formatter for 24 hour format (0-23).
  *
  * @author Igor Wiedler <igor@wiedler.ch>
+ *
+ * @internal
  */
 class Hour2400Transformer extends HourTransformer
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function format(\DateTime $dateTime, $length)
     {
@@ -27,7 +29,7 @@ class Hour2400Transformer extends HourTransformer
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function normalizeHour($hour, $marker = null)
     {
@@ -41,7 +43,7 @@ class Hour2400Transformer extends HourTransformer
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getReverseMatchingRegExp($length)
     {
@@ -49,13 +51,13 @@ class Hour2400Transformer extends HourTransformer
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function extractDateOptions($matched, $length)
     {
         return array(
             'hour' => (int) $matched,
-            'hourInstance' => $this
+            'hourInstance' => $this,
         );
     }
 }

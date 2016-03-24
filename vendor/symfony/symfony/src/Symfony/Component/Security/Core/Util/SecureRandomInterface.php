@@ -15,13 +15,15 @@ namespace Symfony\Component\Security\Core\Util;
  * Interface that needs to be implemented by all secure random number generators.
  *
  * @author Fabien Potencier <fabien@symfony.com>
+ *
+ * @deprecated since version 2.8, to be removed in 3.0. Use the random_bytes function instead
  */
 interface SecureRandomInterface
 {
     /**
      * Generates the specified number of secure random bytes.
      *
-     * @param integer $nbBytes
+     * @param int $nbBytes
      *
      * @return string
      */

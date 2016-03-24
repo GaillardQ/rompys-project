@@ -35,11 +35,12 @@ but without the associated complexity:
     {% block content %}{% endblock %}
 
 The ``use`` statement tells Twig to import the blocks defined in
-```blocks.html`` into the current template (it's like macros, but for blocks):
+``blocks.html`` into the current template (it's like macros, but for blocks):
 
 .. code-block:: jinja
 
-    # blocks.html
+    {# blocks.html #}
+    
     {% block sidebar %}{% endblock %}
 
 In this example, the ``use`` statement imports the ``sidebar`` block into the
@@ -73,7 +74,7 @@ is ignored. To avoid name conflicts, you can rename imported blocks:
 
     {% extends "base.html" %}
 
-    {% use "blocks.html" with sidebar as base_sidebar %}
+    {% use "blocks.html" with sidebar as base_sidebar, title as base_title %}
 
     {% block sidebar %}{% endblock %}
     {% block title %}{% endblock %}

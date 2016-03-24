@@ -17,6 +17,8 @@ use Monolog\Logger;
 /**
  * Handler sending logs to the ChromePHP extension (http://www.chromephp.com/)
  *
+ * This also works out of the box with Firefox 43+
+ *
  * @author Christophe Coevoet <stof@notk.org>
  */
 class ChromePHPHandler extends AbstractProcessingHandler
@@ -49,6 +51,18 @@ class ChromePHPHandler extends AbstractProcessingHandler
     );
 
     protected static $sendHeaders = true;
+
+    /**
+     * @param int     $level  The minimum logging level at which this handler will be triggered
+     * @param Boolean $bubble Whether the messages that are handled can bubble up the stack or not
+     */
+    public function __construct($level = Logger::DEBUG, $bubble = true)
+    {
+        parent::__construct($level, $bubble);
+        if (!function_exists('json_encode')) {
+            throw new \RuntimeException('PHP\'s json extension is required to use Monolog\'s ChromePHPHandler');
+        }
+    }
 
     /**
      * {@inheritdoc}
@@ -100,20 +114,24 @@ class ChromePHPHandler extends AbstractProcessingHandler
      */
     protected function send()
     {
-        if (self::$overflowed) {
+        if (self::$overflowed || !self::$sendHeaders) {
             return;
         }
 
         if (!self::$initialized) {
-            self::$sendHeaders = $this->headersAccepted();
-            self::$json['request_uri'] = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
-
             self::$initialized = true;
+
+            self::$sendHeaders = $this->headersAccepted();
+            if (!self::$sendHeaders) {
+                return;
+            }
+
+            self::$json['request_uri'] = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
         }
 
         $json = @json_encode(self::$json);
         $data = base64_encode(utf8_encode($json));
-        if (strlen($data) > 240*1024) {
+        if (strlen($data) > 240 * 1024) {
             self::$overflowed = true;
 
             $record = array(
@@ -130,7 +148,9 @@ class ChromePHPHandler extends AbstractProcessingHandler
             $data = base64_encode(utf8_encode($json));
         }
 
-        $this->sendHeader(self::HEADER_NAME, $data);
+        if (trim($data) !== '') {
+            $this->sendHeader(self::HEADER_NAME, $data);
+        }
     }
 
     /**
@@ -153,8 +173,12 @@ class ChromePHPHandler extends AbstractProcessingHandler
      */
     protected function headersAccepted()
     {
-        return !isset($_SERVER['HTTP_USER_AGENT'])
-               || preg_match('{\bChrome/\d+[\.\d+]*\b}', $_SERVER['HTTP_USER_AGENT']);
+        if (empty($_SERVER['HTTP_USER_AGENT'])) {
+            return false;
+        }
+
+        // matches any Chrome, or Firefox 43+
+        return preg_match('{\b(?:Chrome/\d+(?:\.\d+)*|Firefox/(?:4[3-9]|[5-9]\d|\d{3,})(?:\.\d)*)\b}', $_SERVER['HTTP_USER_AGENT']);
     }
 
     /**

@@ -12,9 +12,11 @@
 namespace Symfony\Component\Intl\DateFormatter\DateFormat;
 
 /**
- * Parser and formatter for month format
+ * Parser and formatter for month format.
  *
  * @author Igor Wiedler <igor@wiedler.ch>
+ *
+ * @internal
  */
 class MonthTransformer extends Transformer
 {
@@ -33,34 +35,37 @@ class MonthTransformer extends Transformer
         'September',
         'October',
         'November',
-        'December'
+        'December',
     );
 
     /**
-     * Short months names (first 3 letters)
+     * Short months names (first 3 letters).
+     *
      * @var array
      */
     protected static $shortMonths = array();
 
     /**
-     * Flipped $months array, $name => $index
+     * Flipped $months array, $name => $index.
+     *
      * @var array
      */
     protected static $flippedMonths = array();
 
     /**
-     * Flipped $shortMonths array, $name => $index
+     * Flipped $shortMonths array, $name => $index.
+     *
      * @var array
      */
     protected static $flippedShortMonths = array();
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
         if (0 === count(self::$shortMonths)) {
-            self::$shortMonths = array_map(function($month) {
+            self::$shortMonths = array_map(function ($month) {
                 return substr($month, 0, 3);
             }, self::$months);
 
@@ -70,7 +75,7 @@ class MonthTransformer extends Transformer
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function format(\DateTime $dateTime, $length)
     {
@@ -93,7 +98,7 @@ class MonthTransformer extends Transformer
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getReverseMatchingRegExp($length)
     {
@@ -119,7 +124,7 @@ class MonthTransformer extends Transformer
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function extractDateOptions($matched, $length)
     {

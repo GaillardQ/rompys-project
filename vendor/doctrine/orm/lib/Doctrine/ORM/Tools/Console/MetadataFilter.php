@@ -22,7 +22,7 @@ namespace Doctrine\ORM\Tools\Console;
 /**
  * Used by CLI Tools to restrict entity-based commands to given patterns.
  *
- * @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
+ * @license     http://www.opensource.org/licenses/mit-license.php MIT
  * @link        www.doctrine-project.com
  * @since       1.0
  * @author      Benjamin Eberlei <kontakt@beberlei.de>
@@ -33,43 +33,72 @@ namespace Doctrine\ORM\Tools\Console;
 class MetadataFilter extends \FilterIterator implements \Countable
 {
     /**
+     * @var array
+     */
+    private $filter = array();
+
+    /**
      * Filter Metadatas by one or more filter options.
      *
-     * @param array $metadatas
+     * @param array        $metadatas
      * @param array|string $filter
+     *
      * @return array
      */
     static public function filter(array $metadatas, $filter)
     {
         $metadatas = new MetadataFilter(new \ArrayIterator($metadatas), $filter);
+
         return iterator_to_array($metadatas);
     }
 
-    private $_filter = array();
-
+    /**
+     * @param \ArrayIterator $metadata
+     * @param array|string   $filter
+     */
     public function __construct(\ArrayIterator $metadata, $filter)
     {
-        $this->_filter = (array)$filter;
+        $this->filter = (array) $filter;
+
         parent::__construct($metadata);
     }
 
+    /**
+     * @return bool
+     */
     public function accept()
     {
-        if (count($this->_filter) == 0) {
+        if (count($this->filter) == 0) {
             return true;
         }
 
         $it = $this->getInnerIterator();
         $metadata = $it->current();
 
-        foreach ($this->_filter as $filter) {
-            if (strpos($metadata->name, $filter) !== false) {
+        foreach ($this->filter as $filter) {
+            $pregResult = preg_match("/$filter/", $metadata->name);
+
+            if ($pregResult === false) {
+                throw new \RuntimeException(
+                    sprintf("Error while evaluating regex '/%s/'.", $filter)
+                );
+            }
+
+            if ($pregResult === 0) {
+                return false;
+            }
+
+            if ($pregResult) {
                 return true;
             }
         }
+
         return false;
     }
 
+    /**
+     * @return int
+     */
     public function count()
     {
         return count($this->getInnerIterator());

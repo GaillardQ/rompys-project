@@ -17,6 +17,7 @@ class Plateform
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -26,6 +27,8 @@ class Plateform
      * @ORM\Column(name="value", type="string", length=100)
      */
     private $value;
+    
+    private $hash;
 
     /**
      * Set id
@@ -71,5 +74,15 @@ class Plateform
     public function getValue()
     {
         return $this->value;
+    }
+    
+    public function getHash()
+    {
+        return $this->hash;
+    }
+    
+    public function setHash($h)
+    {
+        $this->hash = $h;
     }
 }

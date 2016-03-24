@@ -23,9 +23,8 @@ use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Types\Type;
 
 /**
- * Provides an enclosed support for parameter infering.
+ * Provides an enclosed support for parameter inferring.
  *
- * 
  * @link    www.doctrine-project.org
  * @since   2.0
  * @author  Benjamin Eberlei <kontakt@beberlei.de>
@@ -36,13 +35,13 @@ use Doctrine\DBAL\Types\Type;
 class ParameterTypeInferer
 {
     /**
-     * Infer type of a given value, returning a compatible constant:
+     * Infers type of a given value, returning a compatible constant:
      * - Type (\Doctrine\DBAL\Types\Type::*)
      * - Connection (\Doctrine\DBAL\Connection::PARAM_*)
      *
-     * @param mixed $value Parameter value
+     * @param mixed $value Parameter value.
      *
-     * @return mixed Parameter type constant
+     * @return mixed Parameter type constant.
      */
     public static function inferType($value)
     {
@@ -50,7 +49,11 @@ class ParameterTypeInferer
             return Type::INTEGER;
         }
 
-        if ($value instanceof \DateTime) {
+        if (is_bool($value)) {
+            return Type::BOOLEAN;
+        }
+
+        if ($value instanceof \DateTime || $value instanceof \DateTimeInterface) {
             return Type::DATETIME;
         }
 

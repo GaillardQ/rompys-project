@@ -7,7 +7,7 @@ function getLastAddGames()
 {
     $.ajax({
         method: "POST",
-        url: "/ws/get_last_adds",
+        url: "ws/get_last_adds",
         data: { output: "home", limit: 10 }
     })
     .done( function( res ) {
@@ -23,7 +23,7 @@ function getLastAddGames()
 function getTopSellers() {
     $.ajax({
         method: "POST",
-        url: "/ws/get_best_sellers",
+        url: "ws/get_best_sellers",
         data: { output: "home", limit: 5 }
     })
     .done( function( res ) {

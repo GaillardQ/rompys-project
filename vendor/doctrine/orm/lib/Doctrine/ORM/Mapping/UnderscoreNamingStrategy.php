@@ -37,7 +37,7 @@ class UnderscoreNamingStrategy implements NamingStrategy
     private $case;
 
     /**
-     * Underscore naming strategy construct
+     * Underscore naming strategy construct.
      *
      * @param integer $case CASE_LOWER | CASE_UPPER
      */
@@ -47,7 +47,7 @@ class UnderscoreNamingStrategy implements NamingStrategy
     }
 
     /**
-     * @return integer
+     * @return integer CASE_LOWER | CASE_UPPER
      */
     public function getCase()
     {
@@ -55,10 +55,12 @@ class UnderscoreNamingStrategy implements NamingStrategy
     }
 
     /**
-     * Sets string case CASE_LOWER | CASE_UPPER
-     * Alphabetic characters converted to lowercase or uppercase
+     * Sets string case CASE_LOWER | CASE_UPPER.
+     * Alphabetic characters converted to lowercase or uppercase.
      * 
      * @param integer $case
+     *
+     * @return void
      */
     public function setCase($case)
     {
@@ -80,9 +82,17 @@ class UnderscoreNamingStrategy implements NamingStrategy
     /**
      * {@inheritdoc}
      */
-    public function propertyToColumnName($propertyName)
+    public function propertyToColumnName($propertyName, $className = null)
     {
         return $this->underscore($propertyName);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function embeddedFieldToColumnName($propertyName, $embeddedColumnName, $className = null, $embeddedClassName = null)
+    {
+        return $this->underscore($propertyName).'_'.$embeddedColumnName;
     }
 
     /**
@@ -96,7 +106,7 @@ class UnderscoreNamingStrategy implements NamingStrategy
     /**
      * {@inheritdoc}
      */
-    public function joinColumnName($propertyName)
+    public function joinColumnName($propertyName, $className = null)
     {
         return $this->underscore($propertyName) . '_' . $this->referenceColumnName();
     }
@@ -120,6 +130,7 @@ class UnderscoreNamingStrategy implements NamingStrategy
     
     /**
      * @param string $string
+     *
      * @return string
      */
     private function underscore($string)

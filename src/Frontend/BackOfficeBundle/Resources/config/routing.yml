@@ -21,3 +21,15 @@ frontend_back_office_gametypes:
 frontend_back_office_plateformes:
     pattern:  /plateforms
     defaults: { _controller: FrontendBackOfficeBundle:Plateforme:index }
+    
+frontend_back_office_profile_update_plateform:
+    pattern: /plateforms/update/{id}/{name}/{hash}
+    defaults: { _controller: FrontendBackOfficeBundle:Plateforme:update }
+    
+frontend_back_office_profile_create_plateform:
+    pattern: /plateforms/create
+    defaults: { _controller: FrontendBackOfficeBundle:Plateforme:create }
+    
+frontend_back_office_profile_delete_plateform:
+    pattern: /plateforms/delete/{id}/{name}/{hash}
+    defaults: { _controller: FrontendBackOfficeBundle:Plateforme:delete }

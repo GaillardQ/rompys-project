@@ -11,16 +11,16 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="/public/js/page/profile.js"></script>
+    <script type="text/javascript" src="public/js/page/profile.js"></script>
 {% endblock %}
 
 {% block body %}
     <div id="profile" class="page">
         <div class="row">
-            {% include 'FrontendFrontOfficeBundle:Profile:info.html.twig' with {'user': user} %}
+            {{ include ('FrontendFrontOfficeBundle:Profile:info.html.twig', {'user': user}) }}
         </div>
         <div id="page-catalog" class="row">
-            {% include 'FrontendFrontOfficeBundle:Profile:catalog.html.twig' with {'games': games} %}
+            {{ include ('FrontendFrontOfficeBundle:Profile:catalog.html.twig', {'games': games}) }}
         </div>
     </div>
 {% endblock %}

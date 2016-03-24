@@ -6,7 +6,7 @@
 			{% if games|length == 0 %}
 				<h1 class="align-center"><span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span><br />Pas de résultat</h1>
 			{% else %}
-				{% include 'FrontendFrontOfficeBundle:Catalog:catalog_data.html.twig' with {'games': games} %}
+				{{ include ('FrontendFrontOfficeBundle:Catalog:catalog_data.html.twig', {'games': games}) }}
 			{% endif %}
 		</div>
 	</div>

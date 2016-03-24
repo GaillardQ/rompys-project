@@ -11,13 +11,11 @@
 
 namespace Symfony\Component\Console\Input;
 
-if (!defined('JSON_UNESCAPED_UNICODE')) {
-    define('JSON_UNESCAPED_SLASHES', 64);
-    define('JSON_UNESCAPED_UNICODE', 256);
-}
-
 use Symfony\Component\Console\Descriptor\TextDescriptor;
 use Symfony\Component\Console\Descriptor\XmlDescriptor;
+use Symfony\Component\Console\Output\BufferedOutput;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
+use Symfony\Component\Console\Exception\LogicException;
 
 /**
  * A InputDefinition represents a set of valid command line arguments and options.
@@ -30,8 +28,6 @@ use Symfony\Component\Console\Descriptor\XmlDescriptor;
  *     ));
  *
  * @author Fabien Potencier <fabien@symfony.com>
- *
- * @api
  */
 class InputDefinition
 {
@@ -46,8 +42,6 @@ class InputDefinition
      * Constructor.
      *
      * @param array $definition An array of InputArgument and InputOption instance
-     *
-     * @api
      */
     public function __construct(array $definition = array())
     {
@@ -58,8 +52,6 @@ class InputDefinition
      * Sets the definition of the input.
      *
      * @param array $definition The definition array
-     *
-     * @api
      */
     public function setDefinition(array $definition)
     {
@@ -81,14 +73,12 @@ class InputDefinition
      * Sets the InputArgument objects.
      *
      * @param InputArgument[] $arguments An array of InputArgument objects
-     *
-     * @api
      */
     public function setArguments($arguments = array())
     {
-        $this->arguments          = array();
-        $this->requiredCount      = 0;
-        $this->hasOptional        = false;
+        $this->arguments = array();
+        $this->requiredCount = 0;
+        $this->hasOptional = false;
         $this->hasAnArrayArgument = false;
         $this->addArguments($arguments);
     }
@@ -97,8 +87,6 @@ class InputDefinition
      * Adds an array of InputArgument objects.
      *
      * @param InputArgument[] $arguments An array of InputArgument objects
-     *
-     * @api
      */
     public function addArguments($arguments = array())
     {
@@ -114,22 +102,20 @@ class InputDefinition
      *
      * @param InputArgument $argument An InputArgument object
      *
-     * @throws \LogicException When incorrect argument is given
-     *
-     * @api
+     * @throws LogicException When incorrect argument is given
      */
     public function addArgument(InputArgument $argument)
     {
         if (isset($this->arguments[$argument->getName()])) {
-            throw new \LogicException(sprintf('An argument with name "%s" already exists.', $argument->getName()));
+            throw new LogicException(sprintf('An argument with name "%s" already exists.', $argument->getName()));
         }
 
         if ($this->hasAnArrayArgument) {
-            throw new \LogicException('Cannot add an argument after an array argument.');
+            throw new LogicException('Cannot add an argument after an array argument.');
         }
 
         if ($argument->isRequired() && $this->hasOptional) {
-            throw new \LogicException('Cannot add a required argument after an optional one.');
+            throw new LogicException('Cannot add a required argument after an optional one.');
         }
 
         if ($argument->isArray()) {
@@ -148,18 +134,16 @@ class InputDefinition
     /**
      * Returns an InputArgument by name or by position.
      *
-     * @param string|integer $name The InputArgument name or position
+     * @param string|int $name The InputArgument name or position
      *
      * @return InputArgument An InputArgument object
      *
-     * @throws \InvalidArgumentException When argument given doesn't exist
-     *
-     * @api
+     * @throws InvalidArgumentException When argument given doesn't exist
      */
     public function getArgument($name)
     {
         if (!$this->hasArgument($name)) {
-            throw new \InvalidArgumentException(sprintf('The "%s" argument does not exist.', $name));
+            throw new InvalidArgumentException(sprintf('The "%s" argument does not exist.', $name));
         }
 
         $arguments = is_int($name) ? array_values($this->arguments) : $this->arguments;
@@ -170,11 +154,9 @@ class InputDefinition
     /**
      * Returns true if an InputArgument object exists by name or position.
      *
-     * @param string|integer $name The InputArgument name or position
+     * @param string|int $name The InputArgument name or position
      *
-     * @return Boolean true if the InputArgument object exists, false otherwise
-     *
-     * @api
+     * @return bool true if the InputArgument object exists, false otherwise
      */
     public function hasArgument($name)
     {
@@ -187,8 +169,6 @@ class InputDefinition
      * Gets the array of InputArgument objects.
      *
      * @return InputArgument[] An array of InputArgument objects
-     *
-     * @api
      */
     public function getArguments()
     {
@@ -198,7 +178,7 @@ class InputDefinition
     /**
      * Returns the number of InputArguments.
      *
-     * @return integer The number of InputArguments
+     * @return int The number of InputArguments
      */
     public function getArgumentCount()
     {
@@ -208,7 +188,7 @@ class InputDefinition
     /**
      * Returns the number of required InputArguments.
      *
-     * @return integer The number of required InputArguments
+     * @return int The number of required InputArguments
      */
     public function getArgumentRequiredCount()
     {
@@ -234,8 +214,6 @@ class InputDefinition
      * Sets the InputOption objects.
      *
      * @param InputOption[] $options An array of InputOption objects
-     *
-     * @api
      */
     public function setOptions($options = array())
     {
@@ -248,8 +226,6 @@ class InputDefinition
      * Adds an array of InputOption objects.
      *
      * @param InputOption[] $options An array of InputOption objects
-     *
-     * @api
      */
     public function addOptions($options = array())
     {
@@ -263,20 +239,18 @@ class InputDefinition
      *
      * @param InputOption $option An InputOption object
      *
-     * @throws \LogicException When option given already exist
-     *
-     * @api
+     * @throws LogicException When option given already exist
      */
     public function addOption(InputOption $option)
     {
         if (isset($this->options[$option->getName()]) && !$option->equals($this->options[$option->getName()])) {
-            throw new \LogicException(sprintf('An option named "%s" already exists.', $option->getName()));
+            throw new LogicException(sprintf('An option named "%s" already exists.', $option->getName()));
         }
 
         if ($option->getShortcut()) {
             foreach (explode('|', $option->getShortcut()) as $shortcut) {
                 if (isset($this->shortcuts[$shortcut]) && !$option->equals($this->options[$this->shortcuts[$shortcut]])) {
-                    throw new \LogicException(sprintf('An option with shortcut "%s" already exists.', $shortcut));
+                    throw new LogicException(sprintf('An option with shortcut "%s" already exists.', $shortcut));
                 }
             }
         }
@@ -296,14 +270,12 @@ class InputDefinition
      *
      * @return InputOption A InputOption object
      *
-     * @throws \InvalidArgumentException When option given doesn't exist
-     *
-     * @api
+     * @throws InvalidArgumentException When option given doesn't exist
      */
     public function getOption($name)
     {
         if (!$this->hasOption($name)) {
-            throw new \InvalidArgumentException(sprintf('The "--%s" option does not exist.', $name));
+            throw new InvalidArgumentException(sprintf('The "--%s" option does not exist.', $name));
         }
 
         return $this->options[$name];
@@ -314,9 +286,7 @@ class InputDefinition
      *
      * @param string $name The InputOption name
      *
-     * @return Boolean true if the InputOption object exists, false otherwise
-     *
-     * @api
+     * @return bool true if the InputOption object exists, false otherwise
      */
     public function hasOption($name)
     {
@@ -327,8 +297,6 @@ class InputDefinition
      * Gets the array of InputOption objects.
      *
      * @return InputOption[] An array of InputOption objects
-     *
-     * @api
      */
     public function getOptions()
     {
@@ -340,7 +308,7 @@ class InputDefinition
      *
      * @param string $name The InputOption shortcut
      *
-     * @return Boolean true if the InputOption object exists, false otherwise
+     * @return bool true if the InputOption object exists, false otherwise
      */
     public function hasShortcut($name)
     {
@@ -381,12 +349,12 @@ class InputDefinition
      *
      * @return string The InputOption name
      *
-     * @throws \InvalidArgumentException When option given does not exist
+     * @throws InvalidArgumentException When option given does not exist
      */
     private function shortcutToName($shortcut)
     {
         if (!isset($this->shortcuts[$shortcut])) {
-            throw new \InvalidArgumentException(sprintf('The "-%s" option does not exist.', $shortcut));
+            throw new InvalidArgumentException(sprintf('The "-%s" option does not exist.', $shortcut));
         }
 
         return $this->shortcuts[$shortcut];
@@ -395,22 +363,50 @@ class InputDefinition
     /**
      * Gets the synopsis.
      *
+     * @param bool $short Whether to return the short version (with options folded) or not
+     *
      * @return string The synopsis
      */
-    public function getSynopsis()
+    public function getSynopsis($short = false)
     {
         $elements = array();
-        foreach ($this->getOptions() as $option) {
-            $shortcut = $option->getShortcut() ? sprintf('-%s|', $option->getShortcut()) : '';
-            $elements[] = sprintf('['.($option->isValueRequired() ? '%s--%s="..."' : ($option->isValueOptional() ? '%s--%s[="..."]' : '%s--%s')).']', $shortcut, $option->getName());
+
+        if ($short && $this->getOptions()) {
+            $elements[] = '[options]';
+        } elseif (!$short) {
+            foreach ($this->getOptions() as $option) {
+                $value = '';
+                if ($option->acceptValue()) {
+                    $value = sprintf(
+                        ' %s%s%s',
+                        $option->isValueOptional() ? '[' : '',
+                        strtoupper($option->getName()),
+                        $option->isValueOptional() ? ']' : ''
+                    );
+                }
+
+                $shortcut = $option->getShortcut() ? sprintf('-%s|', $option->getShortcut()) : '';
+                $elements[] = sprintf('[%s--%s%s]', $shortcut, $option->getName(), $value);
+            }
+        }
+
+        if (count($elements) && $this->getArguments()) {
+            $elements[] = '[--]';
         }
 
         foreach ($this->getArguments() as $argument) {
-            $elements[] = sprintf($argument->isRequired() ? '%s' : '[%s]', $argument->getName().($argument->isArray() ? '1' : ''));
+            $element = '<'.$argument->getName().'>';
+            if (!$argument->isRequired()) {
+                $element = '['.$element.']';
+            } elseif ($argument->isArray()) {
+                $element = $element.' ('.$element.')';
+            }
 
             if ($argument->isArray()) {
-                $elements[] = sprintf('... [%sN]', $argument->getName());
+                $element .= '...';
             }
+
+            $elements[] = $element;
         }
 
         return implode(' ', $elements);
@@ -421,28 +417,41 @@ class InputDefinition
      *
      * @return string A string representing the InputDefinition
      *
-     * @deprecated Deprecated since version 2.3, to be removed in 3.0.
+     * @deprecated since version 2.3, to be removed in 3.0.
      */
     public function asText()
     {
-        $descriptor = new TextDescriptor();
+        @trigger_error('The '.__METHOD__.' method is deprecated since version 2.3 and will be removed in 3.0.', E_USER_DEPRECATED);
 
-        return $descriptor->describe($this);
+        $descriptor = new TextDescriptor();
+        $output = new BufferedOutput(BufferedOutput::VERBOSITY_NORMAL, true);
+        $descriptor->describe($output, $this, array('raw_output' => true));
+
+        return $output->fetch();
     }
 
     /**
      * Returns an XML representation of the InputDefinition.
      *
-     * @param Boolean $asDom Whether to return a DOM or an XML string
+     * @param bool $asDom Whether to return a DOM or an XML string
      *
      * @return string|\DOMDocument An XML string representing the InputDefinition
      *
-     * @deprecated Deprecated since version 2.3, to be removed in 3.0.
+     * @deprecated since version 2.3, to be removed in 3.0.
      */
     public function asXml($asDom = false)
     {
+        @trigger_error('The '.__METHOD__.' method is deprecated since version 2.3 and will be removed in 3.0.', E_USER_DEPRECATED);
+
         $descriptor = new XmlDescriptor();
 
-        return $descriptor->describe($this, array('as_dom' => $asDom));
+        if ($asDom) {
+            return $descriptor->getInputDefinitionDocument($this);
+        }
+
+        $output = new BufferedOutput();
+        $descriptor->describe($output, $this);
+
+        return $output->fetch();
     }
 }

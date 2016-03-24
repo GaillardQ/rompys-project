@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Project Test Suite" tests="69" assertions="163" failures="2" errors="5" time="3.235958">
+    <testsuite name="Backend\WsBundle\Tests\Controller\DefaultControllerTest" file="/home/ubuntu/Documents/Projects/rompy/src/Backend/WsBundle/Tests/Controller/DefaultControllerTest.php" tests="1" assertions="1" failures="1" errors="0" time="1.234397">
+      <testcase name="testIndex" class="Backend\WsBundle\Tests\Controller\DefaultControllerTest" file="/home/ubuntu/Documents/Projects/rompy/src/Backend/WsBundle/Tests/Controller/DefaultControllerTest.php" line="9" assertions="1" time="1.234397">
+        <failure type="PHPUnit_Framework_ExpectationFailedException">Backend\WsBundle\Tests\Controller\DefaultControllerTest::testIndex
+Failed asserting that false is true.
+
+/home/ubuntu/Documents/Projects/rompy/src/Backend/WsBundle/Tests/Controller/DefaultControllerTest.php:15
+</failure>
+      </testcase>
+    </testsuite>
+    <testsuite name="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" tests="27" assertions="87" failures="0" errors="0" time="0.822254">
+      <testcase name="testUserLoadThrowsExceptionUnlessDatabaseDriverSet" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="26" assertions="1" time="0.016032"/>
+      <testcase name="testUserLoadThrowsExceptionUnlessDatabaseDriverIsValid" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="37" assertions="1" time="0.002252"/>
+      <testcase name="testUserLoadThrowsExceptionUnlessFirewallNameSet" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="48" assertions="1" time="0.002089"/>
+      <testcase name="testUserLoadThrowsExceptionUnlessGroupModelClassSet" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="59" assertions="1" time="0.012556"/>
+      <testcase name="testUserLoadThrowsExceptionUnlessUserModelClassSet" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="70" assertions="1" time="0.003084"/>
+      <testcase name="testCustomDriverWithoutManager" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="81" assertions="1" time="0.002806"/>
+      <testcase name="testCustomDriver" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="89" assertions="3" time="0.027800"/>
+      <testcase name="testDisableRegistration" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="103" assertions="1" time="0.017876"/>
+      <testcase name="testDisableResetting" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="113" assertions="1" time="0.022931"/>
+      <testcase name="testDisableProfile" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="123" assertions="1" time="0.023566"/>
+      <testcase name="testDisableChangePassword" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="133" assertions="1" time="0.022716"/>
+      <testcase name="testUserLoadModelClassWithDefaults" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="143" assertions="2" time="0.018516"/>
+      <testcase name="testUserLoadModelClass" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="150" assertions="2" time="0.031594"/>
+      <testcase name="testUserLoadManagerClassWithDefaults" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="157" assertions="5" time="0.041189"/>
+      <testcase name="testUserLoadManagerClass" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="167" assertions="5" time="0.057611"/>
+      <testcase name="testUserLoadFormClassWithDefaults" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="177" assertions="5" time="0.038010"/>
+      <testcase name="testUserLoadFormClass" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="187" assertions="6" time="0.061923"/>
+      <testcase name="testUserLoadFormNameWithDefaults" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="198" assertions="5" time="0.054401"/>
+      <testcase name="testUserLoadFormName" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="208" assertions="6" time="0.058431"/>
+      <testcase name="testUserLoadFormServiceWithDefaults" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="219" assertions="6" time="0.044383"/>
+      <testcase name="testUserLoadFormService" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="230" assertions="6" time="0.058427"/>
+      <testcase name="testUserLoadConfirmationEmailWithDefaults" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="241" assertions="7" time="0.041258"/>
+      <testcase name="testUserLoadConfirmationEmail" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="253" assertions="7" time="0.034028"/>
+      <testcase name="testUserLoadTemplateConfigWithDefaults" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="265" assertions="2" time="0.021628"/>
+      <testcase name="testUserLoadTemplateConfig" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="272" assertions="2" time="0.033376"/>
+      <testcase name="testUserLoadUtilServiceWithDefaults" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="279" assertions="4" time="0.040533"/>
+      <testcase name="testUserLoadUtilService" class="FOS\UserBundle\Tests\DependencyInjection\FOSUserExtensionTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/DependencyInjection/FOSUserExtensionTest.php" line="288" assertions="4" time="0.033239"/>
+    </testsuite>
+    <testsuite name="FOS\UserBundle\Tests\Doctrine\UserManagerTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Doctrine/UserManagerTest.php" tests="5" assertions="5" failures="0" errors="0" time="0.019026">
+      <testcase name="testDeleteUser" class="FOS\UserBundle\Tests\Doctrine\UserManagerTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Doctrine/UserManagerTest.php" line="46" assertions="1" time="0.013535"/>
+      <testcase name="testGetClass" class="FOS\UserBundle\Tests\Doctrine\UserManagerTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Doctrine/UserManagerTest.php" line="55" assertions="1" time="0.002072"/>
+      <testcase name="testFindUserBy" class="FOS\UserBundle\Tests\Doctrine\UserManagerTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Doctrine/UserManagerTest.php" line="60" assertions="1" time="0.001130"/>
+      <testcase name="testFindUsers" class="FOS\UserBundle\Tests\Doctrine\UserManagerTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Doctrine/UserManagerTest.php" line="68" assertions="1" time="0.000703"/>
+      <testcase name="testUpdateUser" class="FOS\UserBundle\Tests\Doctrine\UserManagerTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Doctrine/UserManagerTest.php" line="75" assertions="1" time="0.001586"/>
+    </testsuite>
+    <testsuite name="FOS\UserBundle\Tests\Model\UserManagerTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Model/UserManagerTest.php" tests="8" assertions="20" failures="0" errors="0" time="0.006395">
+      <testcase name="testUpdateCanonicalFields" class="FOS\UserBundle\Tests\Model\UserManagerTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Model/UserManagerTest.php" line="34" assertions="4" time="0.002442"/>
+      <testcase name="testUpdatePassword" class="FOS\UserBundle\Tests\Model\UserManagerTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Model/UserManagerTest.php" line="55" assertions="4" time="0.001480"/>
+      <testcase name="testFindUserByUsername" class="FOS\UserBundle\Tests\Model\UserManagerTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Model/UserManagerTest.php" line="75" assertions="2" time="0.000464"/>
+      <testcase name="testFindUserByUsernameLowercasesTheUsername" class="FOS\UserBundle\Tests\Model\UserManagerTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Model/UserManagerTest.php" line="88" assertions="2" time="0.000363"/>
+      <testcase name="testFindUserByEmail" class="FOS\UserBundle\Tests\Model\UserManagerTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Model/UserManagerTest.php" line="101" assertions="2" time="0.000361"/>
+      <testcase name="testFindUserByEmailLowercasesTheEmail" class="FOS\UserBundle\Tests\Model\UserManagerTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Model/UserManagerTest.php" line="114" assertions="2" time="0.000383"/>
+      <testcase name="testFindUserByUsernameOrEmailWithUsername" class="FOS\UserBundle\Tests\Model\UserManagerTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Model/UserManagerTest.php" line="127" assertions="2" time="0.000476"/>
+      <testcase name="testFindUserByUsernameOrEmailWithEmail" class="FOS\UserBundle\Tests\Model\UserManagerTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Model/UserManagerTest.php" line="140" assertions="2" time="0.000426"/>
+    </testsuite>
+    <testsuite name="FOS\UserBundle\Tests\Model\UserTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Model/UserTest.php" tests="6" assertions="12" failures="0" errors="2" time="0.002660">
+      <testcase name="testUsername" class="FOS\UserBundle\Tests\Model\UserTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Model/UserTest.php" line="18" assertions="2" time="0.000309"/>
+      <testcase name="testEmail" class="FOS\UserBundle\Tests\Model\UserTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Model/UserTest.php" line="27" assertions="2" time="0.000218"/>
+      <testcase name="testIsPasswordRequestNonExpired" class="FOS\UserBundle\Tests\Model\UserTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Model/UserTest.php" line="36" assertions="3" time="0.000278"/>
+      <testcase name="testIsPasswordRequestAtCleared" class="FOS\UserBundle\Tests\Model\UserTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Model/UserTest.php" line="48" assertions="2" time="0.000213"/>
+      <testcase name="testTrueHasRole" class="FOS\UserBundle\Tests\Model\UserTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Model/UserTest.php" line="60" assertions="2" time="0.001286">
+        <error type="PHPUnit_Framework_Error_Warning">FOS\UserBundle\Tests\Model\UserTest::testTrueHasRole
+in_array() expects parameter 2 to be array, null given
+
+/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Model/User.php:145
+/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Model/UserTest.php:68
+</error>
+        <system-out>test 1&lt;br /&gt;test 2&lt;br /&gt;test 3&lt;br /&gt;test 1&lt;br /&gt;test 2&lt;br /&gt;test 4&lt;br /&gt;</system-out>
+      </testcase>
+      <testcase name="testFalseHasRole" class="FOS\UserBundle\Tests\Model\UserTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Model/UserTest.php" line="72" assertions="1" time="0.000356">
+        <error type="PHPUnit_Framework_Error_Warning">FOS\UserBundle\Tests\Model\UserTest::testFalseHasRole
+in_array() expects parameter 2 to be array, null given
+
+/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Model/User.php:145
+/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Model/UserTest.php:77
+</error>
+        <system-out>test 1&lt;br /&gt;test 2&lt;br /&gt;test 4&lt;br /&gt;</system-out>
+      </testcase>
+    </testsuite>
+    <testsuite name="FOS\UserBundle\Tests\Propel\PropelUserManagerTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Propel/PropelUserManagerTest.php" tests="0" assertions="0" failures="0" errors="0" time="0.000000"/>
+    <testsuite name="FOS\UserBundle\Tests\Propel\UserTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Propel/UserTest.php" tests="0" assertions="0" failures="0" errors="0" time="0.000000"/>
+    <testsuite name="FOS\UserBundle\Tests\Security\EmailUserProviderTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Security/EmailUserProviderTest.php" tests="4" assertions="8" failures="0" errors="0" time="0.010208">
+      <testcase name="testLoadUserByUsername" class="FOS\UserBundle\Tests\Security\EmailUserProviderTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Security/EmailUserProviderTest.php" line="25" assertions="2" time="0.007078"/>
+      <testcase name="testLoadUserByInvalidUsername" class="FOS\UserBundle\Tests\Security\EmailUserProviderTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Security/EmailUserProviderTest.php" line="39" assertions="2" time="0.000707"/>
+      <testcase name="testRefreshUserBy" class="FOS\UserBundle\Tests\Security\EmailUserProviderTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Security/EmailUserProviderTest.php" line="49" assertions="3" time="0.000917"/>
+      <testcase name="testRefreshInvalidUser" class="FOS\UserBundle\Tests\Security\EmailUserProviderTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Security/EmailUserProviderTest.php" line="71" assertions="1" time="0.001506"/>
+    </testsuite>
+    <testsuite name="FOS\UserBundle\Tests\Security\UserProviderTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Security/UserProviderTest.php" tests="5" assertions="10" failures="0" errors="0" time="0.001590">
+      <testcase name="testLoadUserByUsername" class="FOS\UserBundle\Tests\Security\UserProviderTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Security/UserProviderTest.php" line="25" assertions="2" time="0.000372"/>
+      <testcase name="testLoadUserByInvalidUsername" class="FOS\UserBundle\Tests\Security\UserProviderTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Security/UserProviderTest.php" line="39" assertions="2" time="0.000360"/>
+      <testcase name="testRefreshUserBy" class="FOS\UserBundle\Tests\Security\UserProviderTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Security/UserProviderTest.php" line="49" assertions="3" time="0.000326"/>
+      <testcase name="testRefreshDeleted" class="FOS\UserBundle\Tests\Security\UserProviderTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Security/UserProviderTest.php" line="71" assertions="2" time="0.000352"/>
+      <testcase name="testRefreshInvalidUser" class="FOS\UserBundle\Tests\Security\UserProviderTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Security/UserProviderTest.php" line="84" assertions="1" time="0.000180"/>
+    </testsuite>
+    <testsuite name="FOS\UserBundle\Tests\Util\UserManipulatorTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Util/UserManipulatorTest.php" tests="11" assertions="19" failures="0" errors="3" time="0.008160">
+      <testcase name="testCreate" class="FOS\UserBundle\Tests\Util\UserManipulatorTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Util/UserManipulatorTest.php" line="19" assertions="0" time="0.003079">
+        <error type="PHPUnit_Framework_Error_Warning">FOS\UserBundle\Tests\Util\UserManipulatorTest::testCreate
+array_search() expects parameter 2 to be array, null given
+
+/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Model/User.php:371
+/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Model/User.php:476
+/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Util/UserManipulator.php:54
+/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Util/UserManipulatorTest.php:40
+</error>
+      </testcase>
+      <testcase name="testActivateWithValidUsername" class="FOS\UserBundle\Tests\Util\UserManipulatorTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Util/UserManipulatorTest.php" line="49" assertions="3" time="0.001078"/>
+      <testcase name="testActivateWithInvalidUsername" class="FOS\UserBundle\Tests\Util\UserManipulatorTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Util/UserManipulatorTest.php" line="78" assertions="2" time="0.000571"/>
+      <testcase name="testDeactivateWithValidUsername" class="FOS\UserBundle\Tests\Util\UserManipulatorTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Util/UserManipulatorTest.php" line="95" assertions="3" time="0.000845"/>
+      <testcase name="testDeactivateWithInvalidUsername" class="FOS\UserBundle\Tests\Util\UserManipulatorTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Util/UserManipulatorTest.php" line="124" assertions="2" time="0.000397"/>
+      <testcase name="testPromoteWithValidUsername" class="FOS\UserBundle\Tests\Util\UserManipulatorTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Util/UserManipulatorTest.php" line="141" assertions="0" time="0.000269">
+        <error type="PHPUnit_Framework_Error_Warning">FOS\UserBundle\Tests\Util\UserManipulatorTest::testPromoteWithValidUsername
+array_search() expects parameter 2 to be array, null given
+
+/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Model/User.php:371
+/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Model/User.php:476
+/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Util/UserManipulatorTest.php:148
+</error>
+      </testcase>
+      <testcase name="testPromoteWithInvalidUsername" class="FOS\UserBundle\Tests\Util\UserManipulatorTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Util/UserManipulatorTest.php" line="170" assertions="2" time="0.000403"/>
+      <testcase name="testDemoteWithValidUsername" class="FOS\UserBundle\Tests\Util\UserManipulatorTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Util/UserManipulatorTest.php" line="187" assertions="0" time="0.000224">
+        <error type="PHPUnit_Framework_Error_Warning">FOS\UserBundle\Tests\Util\UserManipulatorTest::testDemoteWithValidUsername
+in_array() expects parameter 2 to be array, null given
+
+/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Model/User.php:145
+/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Model/User.php:474
+/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Util/UserManipulatorTest.php:194
+</error>
+        <system-out>test 1&lt;br /&gt;test 2&lt;br /&gt;test 4&lt;br /&gt;</system-out>
+      </testcase>
+      <testcase name="testDemoteWithInvalidUsername" class="FOS\UserBundle\Tests\Util\UserManipulatorTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Util/UserManipulatorTest.php" line="216" assertions="2" time="0.000351"/>
+      <testcase name="testChangePasswordWithValidUsername" class="FOS\UserBundle\Tests\Util\UserManipulatorTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Util/UserManipulatorTest.php" line="233" assertions="3" time="0.000622"/>
+      <testcase name="testChangePasswordWithInvalidUsername" class="FOS\UserBundle\Tests\Util\UserManipulatorTest" file="/home/ubuntu/Documents/Projects/rompy/src/FOS/UserBundle/Tests/Util/UserManipulatorTest.php" line="265" assertions="2" time="0.000321"/>
+    </testsuite>
+    <testsuite name="Frontend\BackOfficeBundle\Tests\Controller\DefaultControllerTest" file="/home/ubuntu/Documents/Projects/rompy/src/Frontend/BackOfficeBundle/Tests/Controller/DefaultControllerTest.php" tests="1" assertions="1" failures="1" errors="0" time="1.131157">
+      <testcase name="testIndex" class="Frontend\BackOfficeBundle\Tests\Controller\DefaultControllerTest" file="/home/ubuntu/Documents/Projects/rompy/src/Frontend/BackOfficeBundle/Tests/Controller/DefaultControllerTest.php" line="9" assertions="1" time="1.131157">
+        <failure type="PHPUnit_Framework_ExpectationFailedException">Frontend\BackOfficeBundle\Tests\Controller\DefaultControllerTest::testIndex
+Failed asserting that false is true.
+
+/home/ubuntu/Documents/Projects/rompy/src/Frontend/BackOfficeBundle/Tests/Controller/DefaultControllerTest.php:15
+</failure>
+      </testcase>
+    </testsuite>
+    <testsuite name="Frontend\FrontOfficeBundle\Tests\Controller\UserControllerTest" file="/home/ubuntu/Documents/Projects/rompy/src/Frontend/FrontOfficeBundle/Tests/Controller/UserControllerTest.php" tests="1" assertions="0" failures="0" errors="0" time="0.000110">
+      <testcase name="testIndex" class="Frontend\FrontOfficeBundle\Tests\Controller\UserControllerTest" file="/home/ubuntu/Documents/Projects/rompy/src/Frontend/FrontOfficeBundle/Tests/Controller/UserControllerTest.php" line="9" assertions="0" time="0.000110"/>
+    </testsuite>
+  </testsuite>
+</testsuites>

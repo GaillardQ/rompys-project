@@ -25,18 +25,21 @@ namespace Symfony\Component\Form\Extension\Core\ChoiceList;
  *              in the HTML "value" attribute.
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
+ *
+ * @deprecated since version 2.7, to be removed in 3.0.
+ *             Use {@link \Symfony\Component\Form\ChoiceList\ChoiceListInterface} instead.
  */
 interface ChoiceListInterface
 {
     /**
-     * Returns the list of choices
+     * Returns the list of choices.
      *
      * @return array The choices with their indices as keys
      */
     public function getChoices();
 
     /**
-     * Returns the values for the choices
+     * Returns the values for the choices.
      *
      * @return array The values with the corresponding choice indices as keys
      */
@@ -88,7 +91,7 @@ interface ChoiceListInterface
      *               choice indices as keys on the lowest levels and the choice
      *               group names in the keys of the higher levels
      *
-     * @see getPreferredValues
+     * @see getPreferredValues()
      */
     public function getRemainingViews();
 
@@ -127,7 +130,7 @@ interface ChoiceListInterface
      * Returns the indices corresponding to the given choices.
      *
      * The indices must be positive integers or strings accepted by
-     * {@link FormConfigBuilder::validateName()}.
+     * {@link \Symfony\Component\Form\FormConfigBuilder::validateName()}.
      *
      * The index "placeholder" is internally reserved.
      *
@@ -138,6 +141,8 @@ interface ChoiceListInterface
      *                       array are ignored
      *
      * @return array An array of indices with ascending, 0-based numeric keys
+     *
+     * @deprecated since version 2.4, to be removed in 3.0.
      */
     public function getIndicesForChoices(array $choices);
 
@@ -145,7 +150,7 @@ interface ChoiceListInterface
      * Returns the indices corresponding to the given values.
      *
      * The indices must be positive integers or strings accepted by
-     * {@link FormConfigBuilder::validateName()}.
+     * {@link \Symfony\Component\Form\FormConfigBuilder::validateName()}.
      *
      * The index "placeholder" is internally reserved.
      *
@@ -156,6 +161,8 @@ interface ChoiceListInterface
      *                      this array are ignored
      *
      * @return array An array of indices with ascending, 0-based numeric keys
+     *
+     * @deprecated since version 2.4, to be removed in 3.0.
      */
     public function getIndicesForValues(array $values);
 }

@@ -11,24 +11,27 @@
 
 namespace Symfony\Component\HttpKernel\Profiler;
 
-use Memcached;
+@trigger_error('The '.__NAMESPACE__.'\MemcachedProfilerStorage class is deprecated since Symfony 2.8 and will be removed in 3.0. Use FileProfilerStorage instead.', E_USER_DEPRECATED);
 
 /**
- * Memcached Profiler Storage
+ * Memcached Profiler Storage.
  *
  * @author Andrej Hudec <pulzarraider@gmail.com>
+ *
+ * @deprecated Deprecated since Symfony 2.8, to be removed in Symfony 3.0.
+ *             Use {@link FileProfilerStorage} instead.
  */
 class MemcachedProfilerStorage extends BaseMemcacheProfilerStorage
 {
     /**
-     * @var Memcached
+     * @var \Memcached
      */
     private $memcached;
 
     /**
-     * Internal convenience method that returns the instance of the Memcached
+     * Internal convenience method that returns the instance of the Memcached.
      *
-     * @return Memcached
+     * @return \Memcached
      *
      * @throws \RuntimeException
      */
@@ -42,10 +45,10 @@ class MemcachedProfilerStorage extends BaseMemcacheProfilerStorage
             $host = $matches[1] ?: $matches[2];
             $port = $matches[3];
 
-            $memcached = new Memcached;
+            $memcached = new \Memcached();
 
-            //disable compression to allow appending
-            $memcached->setOption(Memcached::OPT_COMPRESSION, false);
+            // disable compression to allow appending
+            $memcached->setOption(\Memcached::OPT_COMPRESSION, false);
 
             $memcached->addServer($host, $port);
 
@@ -56,9 +59,9 @@ class MemcachedProfilerStorage extends BaseMemcacheProfilerStorage
     }
 
     /**
-     * Set instance of the Memcached
+     * Set instance of the Memcached.
      *
-     * @param Memcached $memcached
+     * @param \Memcached $memcached
      */
     public function setMemcached($memcached)
     {

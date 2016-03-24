@@ -11,7 +11,7 @@
                 		<div id="home_content">
                 			<div class="row">
                 				{% block fos_user_content %}
-                                    {% include "FrontendFrontOfficeBundle:Registration:register_content.html.twig" %}
+                                    {{ include ("FrontendFrontOfficeBundle:Registration:register_content.html.twig") }}
                                 {% endblock fos_user_content %}
                 			</div>
                 		</div>

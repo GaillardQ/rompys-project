@@ -11,16 +11,18 @@
 
 namespace Symfony\Component\Finder\Expression;
 
+@trigger_error('The '.__NAMESPACE__.'\Regex class is deprecated since version 2.8 and will be removed in 3.0.', E_USER_DEPRECATED);
+
 /**
  * @author Jean-François Simon <contact@jfsimon.fr>
  */
 class Regex implements ValueInterface
 {
     const START_FLAG = '^';
-    const END_FLAG   = '$';
-    const BOUNDARY   = '~';
-    const JOKER      = '.*';
-    const ESCAPING   = '\\';
+    const END_FLAG = '$';
+    const BOUNDARY = '~';
+    const JOKER = '.*';
+    const ESCAPING = '\\';
 
     /**
      * @var string
@@ -63,9 +65,13 @@ class Regex implements ValueInterface
     {
         if (preg_match('/^(.{3,}?)([imsxuADU]*)$/', $expr, $m)) {
             $start = substr($m[1], 0, 1);
-            $end   = substr($m[1], -1);
+            $end = substr($m[1], -1);
 
-            if (($start === $end && !preg_match('/[*?[:alnum:] \\\\]/', $start)) || ($start === '{' && $end === '}')) {
+            if (
+                ($start === $end && !preg_match('/[*?[:alnum:] \\\\]/', $start))
+                || ($start === '{' && $end === '}')
+                || ($start === '(' && $end === ')')
+            ) {
                 return new self(substr($m[1], 1, -1), $m[2], $end);
             }
         }
@@ -174,7 +180,7 @@ class Regex implements ValueInterface
     public function addOption($option)
     {
         if (!$this->hasOption($option)) {
-            $this->options.= $option;
+            $this->options .= $option;
         }
 
         return $this;

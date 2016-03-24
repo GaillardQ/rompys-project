@@ -16,8 +16,6 @@ namespace Symfony\Component\Routing;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Tobias Schultze <http://tobion.de>
- *
- * @api
  */
 class Route implements \Serializable
 {
@@ -62,6 +60,11 @@ class Route implements \Serializable
     private $compiled;
 
     /**
+     * @var string
+     */
+    private $condition = '';
+
+    /**
      * Constructor.
      *
      * Available options:
@@ -75,10 +78,9 @@ class Route implements \Serializable
      * @param string       $host         The host pattern to match
      * @param string|array $schemes      A required URI scheme or an array of restricted schemes
      * @param string|array $methods      A required HTTP method or an array of restricted methods
-     *
-     * @api
+     * @param string       $condition    A condition that should evaluate to true for the route to match
      */
-    public function __construct($path, array $defaults = array(), array $requirements = array(), array $options = array(), $host = '', $schemes = array(), $methods = array())
+    public function __construct($path, array $defaults = array(), array $requirements = array(), array $options = array(), $host = '', $schemes = array(), $methods = array(), $condition = '')
     {
         $this->setPath($path);
         $this->setDefaults($defaults);
@@ -93,24 +95,33 @@ class Route implements \Serializable
         if ($methods) {
             $this->setMethods($methods);
         }
+        $this->setCondition($condition);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function serialize()
     {
         return serialize(array(
-            'path'         => $this->path,
-            'host'         => $this->host,
-            'defaults'     => $this->defaults,
+            'path' => $this->path,
+            'host' => $this->host,
+            'defaults' => $this->defaults,
             'requirements' => $this->requirements,
-            'options'      => $this->options,
-            'schemes'      => $this->schemes,
-            'methods'      => $this->methods,
+            'options' => $this->options,
+            'schemes' => $this->schemes,
+            'methods' => $this->methods,
+            'condition' => $this->condition,
+            'compiled' => $this->compiled,
         ));
     }
 
-    public function unserialize($data)
+    /**
+     * {@inheritdoc}
+     */
+    public function unserialize($serialized)
     {
-        $data = unserialize($data);
+        $data = unserialize($serialized);
         $this->path = $data['path'];
         $this->host = $data['host'];
         $this->defaults = $data['defaults'];
@@ -118,6 +129,13 @@ class Route implements \Serializable
         $this->options = $data['options'];
         $this->schemes = $data['schemes'];
         $this->methods = $data['methods'];
+
+        if (isset($data['condition'])) {
+            $this->condition = $data['condition'];
+        }
+        if (isset($data['compiled'])) {
+            $this->compiled = $data['compiled'];
+        }
     }
 
     /**
@@ -125,10 +143,12 @@ class Route implements \Serializable
      *
      * @return string The pattern
      *
-     * @deprecated Deprecated in 2.2, to be removed in 3.0. Use getPath instead.
+     * @deprecated since version 2.2, to be removed in 3.0. Use getPath instead.
      */
     public function getPattern()
     {
+        @trigger_error('The '.__METHOD__.' method is deprecated since version 2.2 and will be removed in 3.0. Use the getPath() method instead.', E_USER_DEPRECATED);
+
         return $this->path;
     }
 
@@ -141,10 +161,12 @@ class Route implements \Serializable
      *
      * @return Route The current Route instance
      *
-     * @deprecated Deprecated in 2.2, to be removed in 3.0. Use setPath instead.
+     * @deprecated since version 2.2, to be removed in 3.0. Use setPath instead.
      */
     public function setPattern($pattern)
     {
+        @trigger_error('The '.__METHOD__.' method is deprecated since version 2.2 and will be removed in 3.0. Use the setPath() method instead.', E_USER_DEPRECATED);
+
         return $this->setPath($pattern);
     }
 
@@ -242,10 +264,22 @@ class Route implements \Serializable
     }
 
     /**
+     * Checks if a scheme requirement has been set.
+     *
+     * @param string $scheme
+     *
+     * @return bool true if the scheme requirement exists, otherwise false
+     */
+    public function hasScheme($scheme)
+    {
+        return in_array(strtolower($scheme), $this->schemes, true);
+    }
+
+    /**
      * Returns the uppercased HTTP methods this route is restricted to.
      * So an empty array means that any method is allowed.
      *
-     * @return array The schemes
+     * @return array The methods
      */
     public function getMethods()
     {
@@ -334,8 +368,6 @@ class Route implements \Serializable
      * @param mixed  $value The option value
      *
      * @return Route The current Route instance
-     *
-     * @api
      */
     public function setOption($name, $value)
     {
@@ -358,11 +390,11 @@ class Route implements \Serializable
     }
 
     /**
-     * Checks if an option has been set
+     * Checks if an option has been set.
      *
      * @param string $name An option name
      *
-     * @return Boolean true if the option is set, false otherwise
+     * @return bool true if the option is set, false otherwise
      */
     public function hasOption($name)
     {
@@ -431,7 +463,7 @@ class Route implements \Serializable
      *
      * @param string $name A variable name
      *
-     * @return Boolean true if the default value is set, false otherwise
+     * @return bool true if the default value is set, false otherwise
      */
     public function hasDefault($name)
     {
@@ -445,8 +477,6 @@ class Route implements \Serializable
      * @param mixed  $default The default value
      *
      * @return Route The current Route instance
-     *
-     * @api
      */
     public function setDefault($name, $default)
     {
@@ -510,6 +540,12 @@ class Route implements \Serializable
      */
     public function getRequirement($key)
     {
+        if ('_scheme' === $key) {
+            @trigger_error('The "_scheme" requirement is deprecated since version 2.2 and will be removed in 3.0. Use getSchemes() instead.', E_USER_DEPRECATED);
+        } elseif ('_method' === $key) {
+            @trigger_error('The "_method" requirement is deprecated since version 2.2 and will be removed in 3.0. Use getMethods() instead.', E_USER_DEPRECATED);
+        }
+
         return isset($this->requirements[$key]) ? $this->requirements[$key] : null;
     }
 
@@ -518,7 +554,7 @@ class Route implements \Serializable
      *
      * @param string $key A variable name
      *
-     * @return Boolean true if a requirement is specified, false otherwise
+     * @return bool true if a requirement is specified, false otherwise
      */
     public function hasRequirement($key)
     {
@@ -532,12 +568,37 @@ class Route implements \Serializable
      * @param string $regex The regex
      *
      * @return Route The current Route instance
-     *
-     * @api
      */
     public function setRequirement($key, $regex)
     {
         $this->requirements[$key] = $this->sanitizeRequirement($key, $regex);
+        $this->compiled = null;
+
+        return $this;
+    }
+
+    /**
+     * Returns the condition.
+     *
+     * @return string The condition
+     */
+    public function getCondition()
+    {
+        return $this->condition;
+    }
+
+    /**
+     * Sets the condition.
+     *
+     * This method implements a fluent interface.
+     *
+     * @param string $condition The condition
+     *
+     * @return Route The current Route instance
+     */
+    public function setCondition($condition)
+    {
+        $this->condition = (string) $condition;
         $this->compiled = null;
 
         return $this;
@@ -584,8 +645,12 @@ class Route implements \Serializable
 
         // this is to keep BC and will be removed in a future version
         if ('_scheme' === $key) {
+            @trigger_error('The "_scheme" requirement is deprecated since version 2.2 and will be removed in 3.0. Use the setSchemes() method instead.', E_USER_DEPRECATED);
+
             $this->setSchemes(explode('|', $regex));
         } elseif ('_method' === $key) {
+            @trigger_error('The "_method" requirement is deprecated since version 2.2 and will be removed in 3.0. Use the setMethods() method instead.', E_USER_DEPRECATED);
+
             $this->setMethods(explode('|', $regex));
         }
 

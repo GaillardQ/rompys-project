@@ -11,10 +11,10 @@
 
 namespace Symfony\Bridge\Doctrine\Tests\Form\Type;
 
-use Symfony\Component\Form\Tests\FormPerformanceTestCase;
+use Symfony\Component\Form\Test\FormPerformanceTestCase;
 use Symfony\Bridge\Doctrine\Tests\Fixtures\SingleIntIdEntity;
 use Doctrine\ORM\Tools\SchemaTool;
-use Symfony\Bridge\Doctrine\Tests\DoctrineOrmTestCase;
+use Symfony\Bridge\Doctrine\Test\DoctrineTestHelper;
 use Symfony\Component\Form\Extension\Core\CoreExtension;
 use Symfony\Bridge\Doctrine\Form\DoctrineOrmExtension;
 
@@ -44,29 +44,13 @@ class EntityTypePerformanceTest extends FormPerformanceTestCase
 
         return array(
             new CoreExtension(),
-            new DoctrineOrmExtension($manager)
+            new DoctrineOrmExtension($manager),
         );
     }
 
     protected function setUp()
     {
-        if (!class_exists('Symfony\Component\Form\Form')) {
-            $this->markTestSkipped('The "Form" component is not available');
-        }
-
-        if (!class_exists('Doctrine\DBAL\Platforms\MySqlPlatform')) {
-            $this->markTestSkipped('Doctrine DBAL is not available.');
-        }
-
-        if (!class_exists('Doctrine\Common\Version')) {
-            $this->markTestSkipped('Doctrine Common is not available.');
-        }
-
-        if (!class_exists('Doctrine\ORM\EntityManager')) {
-            $this->markTestSkipped('Doctrine ORM is not available.');
-        }
-
-        $this->em = DoctrineOrmTestCase::createTestEntityManager();
+        $this->em = DoctrineTestHelper::createTestEntityManager();
 
         parent::setUp();
 
@@ -106,7 +90,7 @@ class EntityTypePerformanceTest extends FormPerformanceTestCase
         $this->setMaxRunningTime(1);
 
         for ($i = 0; $i < 40; ++$i) {
-            $form = $this->factory->create('entity', null, array(
+            $form = $this->factory->create('Symfony\Bridge\Doctrine\Form\Type\EntityType', null, array(
                 'class' => self::ENTITY_CLASS,
             ));
 
@@ -124,7 +108,7 @@ class EntityTypePerformanceTest extends FormPerformanceTestCase
         $this->setMaxRunningTime(1);
 
         for ($i = 0; $i < 40; ++$i) {
-            $form = $this->factory->create('entity', null, array(
+            $form = $this->factory->create('Symfony\Bridge\Doctrine\Form\Type\EntityType', null, array(
                 'class' => self::ENTITY_CLASS,
                 'choices' => $choices,
             ));
@@ -143,7 +127,7 @@ class EntityTypePerformanceTest extends FormPerformanceTestCase
         $this->setMaxRunningTime(1);
 
         for ($i = 0; $i < 40; ++$i) {
-            $form = $this->factory->create('entity', null, array(
+            $form = $this->factory->create('Symfony\Bridge\Doctrine\Form\Type\EntityType', null, array(
                     'class' => self::ENTITY_CLASS,
                     'preferred_choices' => $choices,
                 ));

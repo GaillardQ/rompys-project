@@ -17,13 +17,12 @@
  * <http://www.doctrine-project.org>.
  */
 
-
 namespace Doctrine\ORM\Mapping\Builder;
 
 /**
  * OneToMany Association Builder
  *
- * @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
+ * @license     http://www.opensource.org/licenses/mit-license.php MIT
  * @link        www.doctrine-project.com
  * @since       2.0
  * @author      Benjamin Eberlei <kontakt@beberlei.de>
@@ -32,6 +31,7 @@ class OneToManyAssociationBuilder extends AssociationBuilder
 {
     /**
      * @param array $fieldNames
+     *
      * @return OneToManyAssociationBuilder
      */
     public function setOrderBy(array $fieldNames)
@@ -40,6 +40,11 @@ class OneToManyAssociationBuilder extends AssociationBuilder
         return $this;
     }
 
+    /**
+     * @param string $fieldName
+     *
+     * @return OneToManyAssociationBuilder
+     */
     public function setIndexBy($fieldName)
     {
         $this->mapping['indexBy'] = $fieldName;

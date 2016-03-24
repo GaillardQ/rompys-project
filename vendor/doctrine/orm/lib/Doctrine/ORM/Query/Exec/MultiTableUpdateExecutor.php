@@ -34,19 +34,39 @@ use Doctrine\ORM\Query\AST;
  */
 class MultiTableUpdateExecutor extends AbstractSqlExecutor
 {
+    /**
+     * @var string
+     */
     private $_createTempTableSql;
+
+    /**
+     * @var string
+     */
     private $_dropTempTableSql;
+
+    /**
+     * @var string
+     */
     private $_insertSql;
+
+    /**
+     * @var array
+     */
     private $_sqlParameters = array();
+
+    /**
+     * @var int
+     */
     private $_numParametersInUpdateClause = 0;
 
     /**
      * Initializes a new <tt>MultiTableUpdateExecutor</tt>.
      *
-     * @param Node $AST The root AST node of the DQL query.
-     * @param SqlWalker $sqlWalker The walker used for SQL generation from the AST.
-     * @internal Any SQL construction and preparation takes place in the constructor for
-     *           best performance. With a query cache the executor will be cached.
+     * Internal note: Any SQL construction and preparation takes place in the constructor for
+     *                best performance. With a query cache the executor will be cached.
+     *
+     * @param \Doctrine\ORM\Query\AST\Node  $AST The root AST node of the DQL query.
+     * @param \Doctrine\ORM\Query\SqlWalker $sqlWalker The walker used for SQL generation from the AST.
      */
     public function __construct(AST\Node $AST, $sqlWalker)
     {

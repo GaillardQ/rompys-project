@@ -19,44 +19,53 @@
 
 namespace Doctrine\ORM\Tools\Event;
 
+use Doctrine\Common\EventArgs;
 use Doctrine\DBAL\Schema\Schema;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Event Args used for the Events::postGenerateSchema event.
  *
- * @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
+ * @license     http://www.opensource.org/licenses/mit-license.php MIT
  * @link        www.doctrine-project.com
  * @since       1.0
  * @author      Benjamin Eberlei <kontakt@beberlei.de>
  */
-class GenerateSchemaEventArgs extends \Doctrine\Common\EventArgs
+class GenerateSchemaEventArgs extends EventArgs
 {
-    private $_em = null;
-    private $_schema = null;
+    /**
+     * @var \Doctrine\ORM\EntityManagerInterface
+     */
+    private $em;
 
     /**
-     * @param ClassMetadata $classMetadata
-     * @param Schema $schema
-     * @param Table $classTable
+     * @var \Doctrine\DBAL\Schema\Schema
      */
-    public function __construct(EntityManager $em, Schema $schema)
+    private $schema;
+
+    /**
+     * @param EntityManagerInterface $em
+     * @param Schema                 $schema
+     */
+    public function __construct(EntityManagerInterface $em, Schema $schema)
     {
-        $this->_em = $em;
-        $this->_schema = $schema;
+        $this->em = $em;
+        $this->schema = $schema;
     }
 
     /**
-     * @return EntityManager
+     * @return EntityManagerInterface
      */
-    public function getEntityManager() {
-        return $this->_em;
+    public function getEntityManager()
+    {
+        return $this->em;
     }
 
     /**
      * @return Schema
      */
-    public function getSchema() {
-        return $this->_schema;
+    public function getSchema()
+    {
+        return $this->schema;
     }
 }

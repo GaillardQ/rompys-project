@@ -11,17 +11,22 @@
 
 namespace Symfony\Component\DependencyInjection;
 
+@trigger_error('The '.__NAMESPACE__.'\SimpleXMLElement class is deprecated since version 2.5 and will be removed in 3.0.', E_USER_DEPRECATED);
+
 use Symfony\Component\Config\Util\XmlUtils;
+use Symfony\Component\ExpressionLanguage\Expression;
 
 /**
  * SimpleXMLElement class.
  *
  * @author Fabien Potencier <fabien@symfony.com>
+ *
+ * @deprecated since version 2.5, to be removed in 3.0.
  */
 class SimpleXMLElement extends \SimpleXMLElement
 {
     /**
-     * Converts an attribute as a php type.
+     * Converts an attribute as a PHP type.
      *
      * @param string $name
      *
@@ -33,10 +38,10 @@ class SimpleXMLElement extends \SimpleXMLElement
     }
 
     /**
-     * Returns arguments as valid php types.
+     * Returns arguments as valid PHP types.
      *
-     * @param string  $name
-     * @param Boolean $lowercase
+     * @param string $name
+     * @param bool   $lowercase
      *
      * @return mixed
      */
@@ -77,6 +82,9 @@ class SimpleXMLElement extends \SimpleXMLElement
 
                     $arguments[$key] = new Reference((string) $arg['id'], $invalidBehavior, $strict);
                     break;
+                case 'expression':
+                    $arguments[$key] = new Expression((string) $arg);
+                    break;
                 case 'collection':
                     $arguments[$key] = $arg->getArgumentsAsPhp($name, false);
                     break;
@@ -95,7 +103,7 @@ class SimpleXMLElement extends \SimpleXMLElement
     }
 
     /**
-     * Converts an xml value to a php type.
+     * Converts an xml value to a PHP type.
      *
      * @param mixed $value
      *

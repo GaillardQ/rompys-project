@@ -15,9 +15,9 @@
                         {# Get the first image available #}
                         {% set img = null %}
                         {% if game.image is not null %}
-                            {% set img = '/public/pictures/' ~ game.image %}
+                            {% set img = 'public/pictures/' ~ game.image %}
                         {% else %}
-                            {% set img = '/public/img/game_default.png' %}
+                            {% set img = 'public/img/game_default.png' %}
                         {% endif %}
         	            <img src="{{ img }}" alt="{{ game.name }}" class="img-responsive margin-auto" />
         	        </div>

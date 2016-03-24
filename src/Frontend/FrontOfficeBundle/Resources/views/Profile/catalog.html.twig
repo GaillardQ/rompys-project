@@ -44,7 +44,7 @@
                     <td class="plateform hidden-xs">{{ g.plateform }}</td>
                     <td class="home-last-adds-photo align-center hidden-xs">
                         {% if g.image is defined and g.image != "" %}
-                            <a href="#" onclick="return false;" data-html="true" data-trigger="focus" data-placement="top" data-toggle="popover" title="{{ 'game_card.seller.photo'|trans }}" data-content="<img class='margin-auto' src='/public/pictures/{{ g.image }}' alt='Game picture' />">
+                            <a href="#" onclick="return false;" data-html="true" data-trigger="focus" data-placement="top" data-toggle="popover" title="{{ 'game_card.seller.photo'|trans }}" data-content="<img class='margin-auto' src='public/pictures/{{ g.image }}' alt='Game picture' />">
                                 <span class="glyphicon glyphicon-picture" ></span>
                             </a>
                         {% endif %}

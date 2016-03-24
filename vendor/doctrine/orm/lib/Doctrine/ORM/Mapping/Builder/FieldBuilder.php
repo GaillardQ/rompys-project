@@ -17,13 +17,12 @@
  * <http://www.doctrine-project.org>.
  */
 
-
 namespace Doctrine\ORM\Mapping\Builder;
 
 /**
  * Field Builder
  *
- * @license     http://www.opensource.org/licenses/lgpl-license.php LGPL
+ * @license     http://www.opensource.org/licenses/mit-license.php MIT
  * @link        www.doctrine-project.com
  * @since       2.2
  * @author      Benjamin Eberlei <kontakt@beberlei.de>
@@ -34,10 +33,12 @@ class FieldBuilder
      * @var ClassMetadataBuilder
      */
     private $builder;
+
     /**
      * @var array
      */
     private $mapping;
+
     /**
      * @var bool
      */
@@ -54,9 +55,8 @@ class FieldBuilder
     private $sequenceDef;
 
     /**
-     *
      * @param ClassMetadataBuilder $builder
-     * @param array $mapping
+     * @param array                $mapping
      */
     public function __construct(ClassMetadataBuilder $builder, array $mapping)
     {
@@ -65,9 +65,10 @@ class FieldBuilder
     }
 
     /**
-     * Set length.
+     * Sets length.
      *
      * @param int $length
+     *
      * @return FieldBuilder
      */
     public function length($length)
@@ -77,9 +78,10 @@ class FieldBuilder
     }
 
     /**
-     * Set nullable
+     * Sets nullable.
      *
-     * @param bool
+     * @param bool $flag
+     *
      * @return FieldBuilder
      */
     public function nullable($flag = true)
@@ -89,9 +91,10 @@ class FieldBuilder
     }
 
     /**
-     * Set Unique
+     * Sets Unique.
      *
-     * @param bool
+     * @param bool $flag
+     *
      * @return FieldBuilder
      */
     public function unique($flag = true)
@@ -101,9 +104,10 @@ class FieldBuilder
     }
 
     /**
-     * Set column name
+     * Sets column name.
      *
      * @param string $name
+     *
      * @return FieldBuilder
      */
     public function columnName($name)
@@ -113,9 +117,10 @@ class FieldBuilder
     }
 
     /**
-     * Set Precision
+     * Sets Precision.
      *
-     * @param  int $p
+     * @param int $p
+     *
      * @return FieldBuilder
      */
     public function precision($p)
@@ -125,9 +130,10 @@ class FieldBuilder
     }
 
     /**
-     * Set scale.
+     * Sets scale.
      *
      * @param int $s
+     *
      * @return FieldBuilder
      */
     public function scale($s)
@@ -137,18 +143,44 @@ class FieldBuilder
     }
 
     /**
-     * Set field as primary key.
+     * Sets field as primary key.
      *
+     * @deprecated Use makePrimaryKey() instead
      * @return FieldBuilder
      */
     public function isPrimaryKey()
+    {
+        return $this->makePrimaryKey();
+    }
+
+    /**
+     * Sets field as primary key.
+     *
+     * @return FieldBuilder
+     */
+    public function makePrimaryKey()
     {
         $this->mapping['id'] = true;
         return $this;
     }
 
     /**
-     * @param  int $strategy
+     * Sets an option.
+     *
+     * @param string $name
+     * @param mixed  $value
+     *
+     * @return FieldBuilder
+     */
+    public function option($name, $value)
+    {
+        $this->mapping['options'][$name] = $value;
+        return $this;
+    }
+
+    /**
+     * @param string $strategy
+     *
      * @return FieldBuilder
      */
     public function generatedValue($strategy = 'AUTO')
@@ -158,7 +190,7 @@ class FieldBuilder
     }
 
     /**
-     * Set field versioned
+     * Sets field versioned.
      *
      * @return FieldBuilder
      */
@@ -169,11 +201,12 @@ class FieldBuilder
     }
 
     /**
-     * Set Sequence Generator
+     * Sets Sequence Generator.
      *
      * @param string $sequenceName
-     * @param int $allocationSize
-     * @param int $initialValue
+     * @param int    $allocationSize
+     * @param int    $initialValue
+     *
      * @return FieldBuilder
      */
     public function setSequenceGenerator($sequenceName, $allocationSize = 1, $initialValue = 1)
@@ -187,9 +220,10 @@ class FieldBuilder
     }
 
     /**
-     * Set column definition.
+     * Sets column definition.
      *
      * @param string $def
+     *
      * @return FieldBuilder
      */
     public function columnDefinition($def)
@@ -199,7 +233,7 @@ class FieldBuilder
     }
 
     /**
-     * Finalize this field and attach it to the ClassMetadata.
+     * Finalizes this field and attach it to the ClassMetadata.
      *
      * Without this call a FieldBuilder has no effect on the ClassMetadata.
      *

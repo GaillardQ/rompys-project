@@ -13,6 +13,8 @@ namespace Symfony\Component\Form\Tests\Extension\Core\ChoiceList;
 
 /**
  * @author Bernhard Schussek <bschussek@gmail.com>
+ *
+ * @group legacy
  */
 abstract class AbstractChoiceListTest extends \PHPUnit_Framework_TestCase
 {
@@ -257,13 +259,11 @@ abstract class AbstractChoiceListTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(array($this->value1, $this->value2), $this->list->getValuesForChoices($choices));
     }
 
-
     public function testGetValuesForChoicesPreservesKeys()
     {
         $choices = array(5 => $this->choice1, 8 => $this->choice2);
         $this->assertSame(array(5 => $this->value1, 8 => $this->value2), $this->list->getValuesForChoices($choices));
     }
-
 
     public function testGetValuesForChoicesPreservesOrder()
     {

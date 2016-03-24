@@ -20,7 +20,10 @@
 namespace Doctrine\ORM\Tools;
 
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
+use Doctrine\ORM\Event\OnClassMetadataNotFoundEventArgs;
 use Doctrine\ORM\Mapping\ClassMetadata;
+use Doctrine\Common\EventSubscriber;
+use Doctrine\ORM\Events;
 
 /**
  * ResolveTargetEntityListener
@@ -31,43 +34,90 @@ use Doctrine\ORM\Mapping\ClassMetadata;
  * @author Benjamin Eberlei <kontakt@beberlei.de>
  * @since 2.2
  */
-class ResolveTargetEntityListener
+class ResolveTargetEntityListener implements EventSubscriber
 {
     /**
-     * @var array
+     * @var array[] indexed by original entity name
      */
     private $resolveTargetEntities = array();
 
     /**
-     * Add a target-entity class name to resolve to a new class name.
+     * {@inheritDoc}
+     */
+    public function getSubscribedEvents()
+    {
+        return array(
+            Events::loadClassMetadata,
+            Events::onClassMetadataNotFound
+        );
+    }
+
+    /**
+     * Adds a target-entity class name to resolve to a new class name.
      *
      * @param string $originalEntity
      * @param string $newEntity
-     * @param array $mapping
+     * @param array  $mapping
+     *
      * @return void
      */
     public function addResolveTargetEntity($originalEntity, $newEntity, array $mapping)
     {
-        $mapping['targetEntity'] = ltrim($newEntity, "\\");
+        $mapping['targetEntity']                                   = ltrim($newEntity, "\\");
         $this->resolveTargetEntities[ltrim($originalEntity, "\\")] = $mapping;
     }
 
     /**
-     * Process event and resolve new target entity names.
+     * @param OnClassMetadataNotFoundEventArgs $args
+     *
+     * @internal this is an event callback, and should not be called directly
+     *
+     * @return void
+     */
+    public function onClassMetadataNotFound(OnClassMetadataNotFoundEventArgs $args)
+    {
+        if (array_key_exists($args->getClassName(), $this->resolveTargetEntities)) {
+            $args->setFoundMetadata(
+                $args
+                    ->getObjectManager()
+                    ->getClassMetadata($this->resolveTargetEntities[$args->getClassname()]['targetEntity'])
+            );
+        }
+    }
+
+    /**
+     * Processes event and resolves new target entity names.
      *
      * @param LoadClassMetadataEventArgs $args
+     *
      * @return void
+     *
+     * @internal this is an event callback, and should not be called directly
      */
     public function loadClassMetadata(LoadClassMetadataEventArgs $args)
     {
+        /* @var $cm \Doctrine\ORM\Mapping\ClassMetadata */
         $cm = $args->getClassMetadata();
+
         foreach ($cm->associationMappings as $mapping) {
             if (isset($this->resolveTargetEntities[$mapping['targetEntity']])) {
                 $this->remapAssociation($cm, $mapping);
             }
         }
+
+        foreach ($this->resolveTargetEntities as $interface => $data) {
+            if ($data['targetEntity'] == $cm->getName()) {
+                $args->getEntityManager()->getMetadataFactory()->setMetadataFor($interface, $cm);
+            }
+        }
     }
 
+    /**
+     * @param \Doctrine\ORM\Mapping\ClassMetadataInfo $classMetadata
+     * @param array                                   $mapping
+     *
+     * @return void
+     */
     private function remapAssociation($classMetadata, $mapping)
     {
         $newMapping = $this->resolveTargetEntities[$mapping['targetEntity']];
@@ -92,4 +142,3 @@ class ResolveTargetEntityListener
         }
     }
 }
-

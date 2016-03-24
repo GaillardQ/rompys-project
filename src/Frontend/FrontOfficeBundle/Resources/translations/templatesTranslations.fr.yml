@@ -1,4 +1,5 @@
 "Bad credentials": Pseudo ou mot de passe incorrect
+"User account is disabled.": Votre compte a été suspendu.
 
 common:
     head_title: Rompy's project
@@ -281,6 +282,12 @@ faq:
             Avez vous vérifier que l'élément que vous cherchez n'est pas orthographié autrement ? <br />
             Sinon c'est qu'il ne fait pas partie de notre base de données. <br />
             Envoyez nous un mail, et nous corrigerons ce manquement !
+    how_answer:
+        question: J'ai reçu un e-mail me disant que quelqu'un me contact à prpos de l'un de mes jeux. Comment puis-je lui envoyer une réponse ?
+        response: >
+            Dans votre boite mail, si vous mettez "Répondre" à l'e-mail, vous pouvez voir que l'adresse à laquelle sera envoyé le message est indépendante du site. <br />
+            C'est parce que la réponse sera envoyée directement à l'utilisateur qui cherche à vous contacter.
+        
 legals:
     title: Mentions légales
     close: Fermer
@@ -330,4 +337,22 @@ bo:
         added-date: Ajouté le
         update: Modifier
         delete: Supprimer
-        
+    user:
+        username: Pseudo
+        firstname: Prénom
+        lastname: Nom
+        disabled: Suspendu
+        is_disabled: Ce compte a été suspendu
+        roles: Roles
+        email: Email
+        phone: Téléphone
+        disable: Suspendre
+        enable: Mettre fin à la suspension
+        mail: "Bonjour, \nvotre compte a été suspendu pour la raison suivante: \n\n%message%.\n\nRompy."
+    plateforms:
+        name: Nom
+        update: Modifier
+        delete: Supprimer
+        add:
+            name: "Nom : "
+            save: Enregistrer

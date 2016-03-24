@@ -76,9 +76,15 @@ ul { padding-left: 10px; }
     white-space: nowrap;
 }
 
-.home-last-adds-photo .popover-content { text-align: center; }
+.home-last-adds-photo .popover-content,
+#table-sellers-games .popover-content { 
+    text-align: center; 
+}
 
-.home-last-adds-photo .popover-content img { max-width: 100px; }
+.home-last-adds-photo .popover-content img,
+#table-sellers-games .popover-content img { 
+    max-width: 100px; 
+}
 
 .page {
 	margin-top: 65px !important;

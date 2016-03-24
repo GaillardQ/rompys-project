@@ -108,11 +108,12 @@ class Lexer extends \Doctrine\Common\Lexer
     const T_WHERE               = 154;
     const T_WITH                = 155;
     const T_PARTIAL             = 156;
+    const T_NEW                 = 157;
 
     /**
      * Creates a new query scanner object.
      *
-     * @param string $input a query string
+     * @param string $input A query string.
      */
     public function __construct($input)
     {
@@ -128,7 +129,7 @@ class Lexer extends \Doctrine\Common\Lexer
             '[a-z_\\\][a-z0-9_\:\\\]*[a-z0-9_]{1}',
             '(?:[0-9]+(?:[\.][0-9]+)*)(?:e[+-]?[0-9]+)?',
             "'(?:[^']|'')*'",
-            '\?[0-9]*|:[a-z]{1}[a-z0-9_]{0,}'
+            '\?[0-9]*|:[a-z_][a-z0-9_]*'
         );
     }
 

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="`user`")
  * @ORM\Entity(repositoryClass="Frontend\FrontOfficeBundle\Entity\UserRepository")
  * @ORM\AttributeOverrides({
  *              @ORM\AttributeOverride(name="username", column=@ORM\Column(nullable=false, unique=false)),
@@ -163,9 +163,6 @@ class User extends BaseUser {
     
     public function addRole($role)
     {
-        if($this->roles != null && $role != null)
-        {
-            array_push($this->roles, $role);
-        }
+        array_push($this->roles, $role);
     }
 }

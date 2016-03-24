@@ -23,31 +23,96 @@ use Symfony\Component\Form\Exception\TransformationFailedException;
  */
 class NumberToLocalizedStringTransformer implements DataTransformerInterface
 {
-    const ROUND_FLOOR    = \NumberFormatter::ROUND_FLOOR;
-    const ROUND_DOWN     = \NumberFormatter::ROUND_DOWN;
-    const ROUND_HALFDOWN = \NumberFormatter::ROUND_HALFDOWN;
-    const ROUND_HALFEVEN = \NumberFormatter::ROUND_HALFEVEN;
-    const ROUND_HALFUP   = \NumberFormatter::ROUND_HALFUP;
-    const ROUND_UP       = \NumberFormatter::ROUND_UP;
-    const ROUND_CEILING  = \NumberFormatter::ROUND_CEILING;
+    /**
+     * Rounds a number towards positive infinity.
+     *
+     * Rounds 1.4 to 2 and -1.4 to -1.
+     */
+    const ROUND_CEILING = \NumberFormatter::ROUND_CEILING;
 
+    /**
+     * Rounds a number towards negative infinity.
+     *
+     * Rounds 1.4 to 1 and -1.4 to -2.
+     */
+    const ROUND_FLOOR = \NumberFormatter::ROUND_FLOOR;
+
+    /**
+     * Rounds a number away from zero.
+     *
+     * Rounds 1.4 to 2 and -1.4 to -2.
+     */
+    const ROUND_UP = \NumberFormatter::ROUND_UP;
+
+    /**
+     * Rounds a number towards zero.
+     *
+     * Rounds 1.4 to 1 and -1.4 to -1.
+     */
+    const ROUND_DOWN = \NumberFormatter::ROUND_DOWN;
+
+    /**
+     * Rounds to the nearest number and halves to the next even number.
+     *
+     * Rounds 2.5, 1.6 and 1.5 to 2 and 1.4 to 1.
+     */
+    const ROUND_HALF_EVEN = \NumberFormatter::ROUND_HALFEVEN;
+
+    /**
+     * Rounds to the nearest number and halves away from zero.
+     *
+     * Rounds 2.5 to 3, 1.6 and 1.5 to 2 and 1.4 to 1.
+     */
+    const ROUND_HALF_UP = \NumberFormatter::ROUND_HALFUP;
+
+    /**
+     * Rounds to the nearest number and halves towards zero.
+     *
+     * Rounds 2.5 and 1.6 to 2, 1.5 and 1.4 to 1.
+     */
+    const ROUND_HALF_DOWN = \NumberFormatter::ROUND_HALFDOWN;
+
+    /**
+     * Alias for {@link self::ROUND_HALF_EVEN}.
+     *
+     * @deprecated since version 2.4, to be removed in 3.0.
+     */
+    const ROUND_HALFEVEN = \NumberFormatter::ROUND_HALFEVEN;
+
+    /**
+     * Alias for {@link self::ROUND_HALF_UP}.
+     *
+     * @deprecated since version 2.4, to be removed in 3.0.
+     */
+    const ROUND_HALFUP = \NumberFormatter::ROUND_HALFUP;
+
+    /**
+     * Alias for {@link self::ROUND_HALF_DOWN}.
+     *
+     * @deprecated since version 2.4, to be removed in 3.0.
+     */
+    const ROUND_HALFDOWN = \NumberFormatter::ROUND_HALFDOWN;
+
+    /**
+     * @deprecated since version 2.7, will be replaced by a $scale private property in 3.0.
+     */
     protected $precision;
 
     protected $grouping;
 
     protected $roundingMode;
 
-    public function __construct($precision = null, $grouping = null, $roundingMode = null)
+    public function __construct($scale = null, $grouping = false, $roundingMode = self::ROUND_HALF_UP)
     {
         if (null === $grouping) {
             $grouping = false;
         }
 
         if (null === $roundingMode) {
-            $roundingMode = self::ROUND_HALFUP;
+            $roundingMode = self::ROUND_HALF_UP;
         }
 
-        $this->precision = $precision;
+        $this->precision = $scale;
         $this->grouping = $grouping;
         $this->roundingMode = $roundingMode;
     }
@@ -55,7 +120,7 @@ class NumberToLocalizedStringTransformer implements DataTransformerInterface
     /**
      * Transforms a number type into localized number.
      *
-     * @param integer|float $value Number value.
+     * @param int|float $value Number value.
      *
      * @return string Localized value.
      *
@@ -86,11 +151,11 @@ class NumberToLocalizedStringTransformer implements DataTransformerInterface
     }
 
     /**
-     * Transforms a localized number into an integer or float
+     * Transforms a localized number into an integer or float.
      *
      * @param string $value The localized value
      *
-     * @return integer|float The numeric value
+     * @return int|float The numeric value
      *
      * @throws TransformationFailedException If the given value is not a string
      *                                       or if the value can not be transformed.
@@ -102,7 +167,7 @@ class NumberToLocalizedStringTransformer implements DataTransformerInterface
         }
 
         if ('' === $value) {
-            return null;
+            return;
         }
 
         if ('NaN' === $value) {
@@ -132,26 +197,20 @@ class NumberToLocalizedStringTransformer implements DataTransformerInterface
             throw new TransformationFailedException('I don\'t have a clear idea what infinity looks like');
         }
 
-        if (function_exists('mb_detect_encoding') && false !== $encoding = mb_detect_encoding($value)) {
-            $strlen = function ($string) use ($encoding) {
-                return mb_strlen($string, $encoding);
-            };
-            $substr = function ($string, $offset, $length) use ($encoding) {
-                return mb_substr($string, $offset, $length, $encoding);
-            };
+        if (false !== $encoding = mb_detect_encoding($value, null, true)) {
+            $length = mb_strlen($value, $encoding);
+            $remainder = mb_substr($value, $position, $length, $encoding);
         } else {
-            $strlen = 'strlen';
-            $substr = 'substr';
+            $length = strlen($value);
+            $remainder = substr($value, $position, $length);
         }
-
-        $length = $strlen($value);
 
         // After parsing, position holds the index of the character where the
         // parsing stopped
         if ($position < $length) {
             // Check if there are unrecognized characters at the end of the
             // number (excluding whitespace characters)
-            $remainder = trim($substr($value, $position, $length), " \t\n\r\0\x0b\xc2\xa0");
+            $remainder = trim($remainder, " \t\n\r\0\x0b\xc2\xa0");
 
             if ('' !== $remainder) {
                 throw new TransformationFailedException(
@@ -160,11 +219,12 @@ class NumberToLocalizedStringTransformer implements DataTransformerInterface
             }
         }
 
-        return $result;
+        // NumberFormatter::parse() does not round
+        return $this->round($result);
     }
 
     /**
-     * Returns a preconfigured \NumberFormatter instance
+     * Returns a preconfigured \NumberFormatter instance.
      *
      * @return \NumberFormatter
      */
@@ -180,5 +240,49 @@ class NumberToLocalizedStringTransformer implements DataTransformerInterface
         $formatter->setAttribute(\NumberFormatter::GROUPING_USED, $this->grouping);
 
         return $formatter;
+    }
+
+    /**
+     * Rounds a number according to the configured scale and rounding mode.
+     *
+     * @param int|float $number A number.
+     *
+     * @return int|float The rounded number.
+     */
+    private function round($number)
+    {
+        if (null !== $this->precision && null !== $this->roundingMode) {
+            // shift number to maintain the correct scale during rounding
+            $roundingCoef = pow(10, $this->precision);
+            $number *= $roundingCoef;
+
+            switch ($this->roundingMode) {
+                case self::ROUND_CEILING:
+                    $number = ceil($number);
+                    break;
+                case self::ROUND_FLOOR:
+                    $number = floor($number);
+                    break;
+                case self::ROUND_UP:
+                    $number = $number > 0 ? ceil($number) : floor($number);
+                    break;
+                case self::ROUND_DOWN:
+                    $number = $number > 0 ? floor($number) : ceil($number);
+                    break;
+                case self::ROUND_HALF_EVEN:
+                    $number = round($number, 0, PHP_ROUND_HALF_EVEN);
+                    break;
+                case self::ROUND_HALF_UP:
+                    $number = round($number, 0, PHP_ROUND_HALF_UP);
+                    break;
+                case self::ROUND_HALF_DOWN:
+                    $number = round($number, 0, PHP_ROUND_HALF_DOWN);
+                    break;
+            }
+
+            $number /= $roundingCoef;
+        }
+
+        return $number;
     }
 }
