@@ -356,3 +356,10 @@ bo:
         add:
             name: "Nom : "
             save: Enregistrer
+    gametype:
+        name: Nom
+        update: Modifier
+        delete: Supprimer
+        add:
+            name: "Nom : "
+            save: Enregistrer

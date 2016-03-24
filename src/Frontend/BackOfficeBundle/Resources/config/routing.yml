@@ -17,19 +17,31 @@ frontend_back_office_news:
 frontend_back_office_gametypes:
     pattern:  /game-types
     defaults: { _controller: FrontendBackOfficeBundle:Gametype:index }
+
+frontend_back_office_gametypes_create:
+    pattern:  /game-types/create
+    defaults: { _controller: FrontendBackOfficeBundle:Gametype:create }
+    
+frontend_back_office_gametypes_update:
+    pattern:  /game-types/update/{id}/{name}/{hash}
+    defaults: { _controller: FrontendBackOfficeBundle:Gametype:update }
+    
+frontend_back_office_gametypes_delete:
+    pattern:  /game-types/delete/{id}/{name}/{hash}
+    defaults: { _controller: FrontendBackOfficeBundle:Gametype:delete }
     
 frontend_back_office_plateformes:
     pattern:  /plateforms
     defaults: { _controller: FrontendBackOfficeBundle:Plateforme:index }
     
-frontend_back_office_profile_update_plateform:
+frontend_back_office_plateformes_update:
     pattern: /plateforms/update/{id}/{name}/{hash}
     defaults: { _controller: FrontendBackOfficeBundle:Plateforme:update }
     
-frontend_back_office_profile_create_plateform:
+frontend_back_office_plateformes_create:
     pattern: /plateforms/create
     defaults: { _controller: FrontendBackOfficeBundle:Plateforme:create }
     
-frontend_back_office_profile_delete_plateform:
+frontend_back_office_plateformes_delete:
     pattern: /plateforms/delete/{id}/{name}/{hash}
     defaults: { _controller: FrontendBackOfficeBundle:Plateforme:delete }

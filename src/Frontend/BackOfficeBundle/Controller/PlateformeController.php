@@ -20,7 +20,7 @@ class PlateformeController extends Controller
         foreach($allPlateforms as $k=>$v)
         {
             $hash = md5($allPlateforms[$k]->getId()."_".$salt);
-            $allPlateforms[$k]->sethash($hash);
+            $allPlateforms[$k]->setHash($hash);
         }
         
         return $this->render('FrontendBackOfficeBundle:Plateforme:index.html.twig', array(

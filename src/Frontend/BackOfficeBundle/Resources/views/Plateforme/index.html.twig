@@ -19,7 +19,7 @@
                     </h1>
                     <ol class="breadcrumb">
                         <li class="active">
-                            <i class="fa fa-dashboard"></i> Plateformes
+                            <i class="fa fa-gamepad"></i> Plateformes
                         </li>
                     </ol>
                 </div>
@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
                     <div class="row margin-bottom-20 align-center">
-                        <a class="btn btn-primary" href="{{ path('frontend_back_office_profile_create_plateform') }}">
+                        <a class="btn btn-primary" href="{{ path('frontend_back_office_plateformes_create') }}">
                             <i class="fa fa-plus"></i> Ajouter une plateforme
                         </a>
                     </div>
@@ -39,8 +39,8 @@
                             <thead>
                                 <tr>
                                     <th class="name">{{ 'bo.plateforms.name'|trans }}</th>
-                                    <th class="update" data-toggle="tooltip" title="{{ 'bo.plateforms.update'|trans }}"><span class="glyphicon glyphicon-pencil"></span></th>
-                                    <th class="delete" data-toggle="tooltip" title="{{ 'bo.plateforms.delete'|trans }}"><span class="glyphicon glyphicon-trash"></span></th>
+                                    <th class="update align-center" data-toggle="tooltip" title="{{ 'bo.plateforms.update'|trans }}"><span class="glyphicon glyphicon-pencil"></span></th>
+                                    <th class="delete align-center" data-toggle="tooltip" title="{{ 'bo.plateforms.delete'|trans }}"><span class="glyphicon glyphicon-trash"></span></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -48,12 +48,12 @@
                                     <tr>
                                         <td class="name">{{ p.value }}</td>
                                         <td class="update align-center" data-toggle="tooltip" title="{{ 'bo.plateforms.update'|trans }}">
-                                            <a href="{{ path('frontend_back_office_profile_update_plateform', {'id': p.id, 'name':p.value|url_encode, 'hash':p.hash}) }}">
+                                            <a href="{{ path('frontend_back_office_plateformes_update', {'id': p.id, 'name':p.value|url_encode, 'hash':p.hash}) }}">
                                                 <span class="glyphicon glyphicon-pencil"></span>
                                             </a>
                                         </td>
                                         <td class="delete align-center" data-toggle="tooltip" title="{{ 'bo.plateforms.delete'|trans }}">
-                                            <a href="{{ path('frontend_back_office_profile_delete_plateform', {'id': p.id, 'name':p.value|url_encode, 'hash':p.hash}) }}">
+                                            <a href="{{ path('frontend_back_office_plateformes_delete', {'id': p.id, 'name':p.value|url_encode, 'hash':p.hash}) }}">
                                                 <span class="glyphicon glyphicon-trash"></span>
                                             </a>
                                         </td>
