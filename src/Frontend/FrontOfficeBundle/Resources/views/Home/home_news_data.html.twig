@@ -2,14 +2,12 @@
 	<div id="home-news-img-div">
 		<img src="public/img/avatar_default.png" alt="news picture" class="img-responsive" />
 	</div>
-	<div id="home-news-title-div" data-toggle="tooltip" title="Lorem ipsum dolor sit amet">
-	    Lorem ipsum dolor sit amet
+	<div id="home-news-title-div" data-toggle="tooltip" title="{{ news.title }}">
+	    {{ news.title }}
 	</div>
 	<div id="home-news-content-div">
 		<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce magna lectus, ullamcorper in libero at, cursus ultrices arcu. Donec vel suscipit lectus. In fermentum lorem mi, ac cursus odio venenatis imperdiet. Morbi vel sapien euismod, consectetur metus quis, fermentum sem. Suspendisse bibendum ligula nibh, vitae congue dolor vulputate sed. Ut ac tempus eros. Curabitur commodo est at massa commodo suscipit.
-
-Donec a risus eu lacus commodo faucibus vel ut sapien. Aliquam quis consequat nisi, in consectetur orci. Nulla sollicitudin odio in lacus finibus imperdiet. Quisque eleifend nulla at nibh ullamcorper suscipit. In semper odio quis ex commodo lacinia. Proin viverra tempus venenatis. Quisque eget lobortis nisl, sed porttitor tellus. Morbi dolor nunc, tempor eu ullamcorper eget, tempor nec dui. Sed mattis neque odio. Maecenas elit dui, auctor sed augue non, euismod rutrum augue. Ut facilisis lacinia dolor, malesuada finibus sem tincidunt nec. Sed luctus felis ullamcorper sem vestibulum, eu dictum odio scelerisque. Pellentesque pharetra sem at euismod blandit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi nec velit mi.
+                    {{ news.content|raw }}
 		</p>
 	</div>
 </div>

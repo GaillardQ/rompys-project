@@ -13,6 +13,18 @@ frontend_back_office_users:
 frontend_back_office_news:
     pattern:  /news
     defaults: { _controller: FrontendBackOfficeBundle:News:index }    
+
+frontend_back_office_news_create:
+    pattern:  /news/create
+    defaults: { _controller: FrontendBackOfficeBundle:News:create }
+    
+frontend_back_office_news_update:
+    pattern:  /news/update/{id}/{hash}
+    defaults: { _controller: FrontendBackOfficeBundle:News:update }
+    
+frontend_back_office_news_delete:
+    pattern:  /news/delete/{id}/{hash}
+    defaults: { _controller: FrontendBackOfficeBundle:News:delete }
     
 frontend_back_office_gametypes:
     pattern:  /game-types

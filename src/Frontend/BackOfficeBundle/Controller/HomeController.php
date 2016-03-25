@@ -16,7 +16,15 @@ class HomeController extends Controller
         $allUsers = $this->get('doctrine')->getManager()->getRepository('FrontendFrontOfficeBundle:User')->findAll();
         $nbUsers = count($allUsers);
         
-        $yesterdayRegistration = $this->get('doctrine')->getManager()->getRepository('FrontendFrontOfficeBundle:DailyStats')->findYesterday();
+        $yesterdayData = $this->get('doctrine')->getManager()->getRepository('FrontendFrontOfficeBundle:DailyStats')->findYesterday();
+        if(count($yesterdayData) > 0)
+        {
+            $yesterdayRegistration = $yesterdayData[0]->getNbRegistrations();
+        }
+        else
+        {
+            $yesterdayRegistration = 0;
+        }
         
         $gamesByUsers = round($nbGames / $nbUsers, 2);
         

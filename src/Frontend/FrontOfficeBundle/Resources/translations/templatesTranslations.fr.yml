@@ -30,6 +30,13 @@ home:
         logout: Se déconnecter
     news:
         title: News
+        default: 
+            title: Pas de news
+            content: Nous n'avons pas de news pour le moment.<br /><br />Rompy.
+        data: 
+            title: Des infos en vrac
+            content_games: "{1} Nous avons <b>%nb_games% jeu</b> en vente.|]1,Inf[ Nous avons <b>%nb_games% jeux</b> en vente."
+            content_users: "{1} Nous avons <b>%nb_users% utilisateur</b> enregistré.|]1,Inf[ Nous avons <b>%nb_users% utilisateurs</b> enregistrés."
     last_adds:
         title: Derniers ajouts
         error: Une erreur est survenue.
@@ -362,4 +369,19 @@ bo:
         delete: Supprimer
         add:
             name: "Nom : "
+            save: Enregistrer
+    news:
+        title: Titre
+        content: Contenu
+        start: Début
+        end: Fin
+        displayed: En ligne
+        update: Modifier
+        delete: Supprimer
+        add:
+            title: "Titre : "
+            content: "Contenu: "
+            dateStart: "Début : "
+            dateEnd: "Fin : "
+            displayed: "En ligne :"
             save: Enregistrer

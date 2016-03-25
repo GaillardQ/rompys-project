@@ -22,23 +22,15 @@ class DailyStatsRepository extends EntityRepository
         
         $qb = $this->createQueryBuilder("d");
 
-        $query = $qb->select("d.nbRegistrations")
-                ->where('d.addedAt >= :date1')
+        $query = $qb->where('d.addedAt >= :date1')
                 ->setParameter('date1', $d1)
                 ->andWhere('d.addedAt < :date2')
                 ->setParameter('date2', $d2)
                 ->getQuery();
 
-        $lastRegistrations = $query->getResult();
+        $data = $query->getResult();
         
-        if(count($lastRegistrations) > 0)
-        {
-            return $lastRegistrations[0]["nbRegistrations"];
-        }
-        else
-        {
-            return 0;
-        }
+        return $data;
     }
     
     public function findTrendsByDays()
