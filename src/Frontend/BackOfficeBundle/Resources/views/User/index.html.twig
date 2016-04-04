@@ -1,0 +1,89 @@
+{% extends 'FrontendBackOfficeBundle::baseMenu.html.twig' %}
+{% trans_default_domain 'templatesTranslations' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="/bo/js/user.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        Utilisateur <small>Administration</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li class="active">
+                            <i class="fa fa-dashboard"></i> Utilisateur
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Table -->
+                    <table id="table-all-users" class="table tablesorter">
+                        <thead>
+                            <tr>
+                                <th class="username">{{ 'bo.user.username'|trans }}</th>
+                                <th class="firstname">{{ 'bo.user.firstname'|trans }}</th>
+                                <th class="lastname">{{ 'bo.user.lastname'|trans }}</th>
+                                <th class="disabled align-center" data-toggle="tooltip" title="{{ 'bo.user.disabled'|trans }}">
+                                    <span class="glyphicon glyphicon-exclamation-sign"></span>
+                                </th>
+                                <th class="roles">{{ 'bo.user.roles'|trans }}</th>
+                                <th class="email">{{ 'bo.user.email'|trans }}</th>
+                                <th class="phone">{{ 'bo.user.phone'|trans }}</th>
+                                <th class="disable align-center" data-toggle="tooltip" title="{{ 'bo.user.disable'|trans }}"><span class="glyphicon glyphicon-ban-circle"></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for u in users %}
+                                <tr>
+                                    <td class="username" data-toggle="tooltip" title="{{ u.username }}">
+                                        <a href="{{ path('frontend_frontoffice_best_sellers', {'id': u.id, 'name':u.username|url_encode}) }}">
+                                            {{u.username }}
+                                        </a>
+                                    </td>
+                                    <td>{{ u.firstname }}</td>
+                                    <td>{{ u.lastname }}</td>
+                                    <td class="align-center" data-toggle="tooltip" title="{{ 'bo.user.is_disabled'|trans }}">
+                                        {% if not u.enabled %}
+                                            <span class="glyphicon glyphicon-exclamation-sign"></span>
+                                        {% endif %}
+                                    </td>
+                                    <td class="">
+                                        {% for r in u.roles %}
+                                            {{ r }}<br />
+                                        {% endfor %}
+                                    </td>
+                                    <td class="">{{ u.email }}</td>
+                                    <td class="align-center">{{ u.phone }}</td>
+                                    <td class="align-center">
+                                        {% if u.enabled %}
+                                            <a href="#" onclick="enableUser(false, {{ u.id }}, '{{ u.hash }}');" data-toggle="tooltip" title="{{ 'bo.user.disable'|trans }}">
+                                                <span class="glyphicon glyphicon-ban-circle"></span>
+                                            </a>
+                                        {% else %}
+                                            <a href="#" onclick="enableUser(true, {{ u.id }}, '{{ u.hash }}');" data-toggle="tooltip" title="{{ 'bo.user.enable'|trans }}">
+                                                <span class="glyphicon glyphicon-ok-circle"></span>
+                                            </a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+{% endblock %}

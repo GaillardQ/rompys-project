@@ -26,7 +26,7 @@
                 			        <fieldset>
                                         <legend class="align-center"><h3>{{ 'profile.update.title'|trans|upper }}</h3></legend>
                                         {% block fos_user_content %}
-                                            {% include "FrontendFrontOfficeBundle:Profile:edit_content.html.twig" %}
+                                            {{ include ("FrontendFrontOfficeBundle:Profile:edit_content.html.twig") }}
                                         {% endblock fos_user_content %}  
                                     </fieldset>
                 			</div>

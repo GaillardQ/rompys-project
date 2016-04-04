@@ -56,7 +56,10 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ app.user.username }} <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="{{ path('frontend_frontoffice_profile_home') }}"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        <a href="{{ path('frontend_frontoffice_profile_home') }}"><i class="fa fa-fw fa-user"></i> Mon profil</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('frontend_frontoffice_homepage') }}"><i class="fa fa-fw fa-desktop"></i> Retour au site</a>
                     </li>
                     {#<li>
                         <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
@@ -66,51 +69,56 @@
                     </li>#}
                     <li class="divider"></li>
                     <li>
-                        <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-fw fa-power-off"></i> Déconnexion</a>
                     </li>
                 </ul>
             </li>
         </ul>
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav side-nav">
+            <ul class="nav navbar-nav side-nav" id="navbar">
                 <li class="active">
-                    <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    <a href="{{ path('frontend_back_office_homepage') }}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                    <a href="{{ path('frontend_back_office_games') }}"><i class="fa fa-fw fa-laptop"></i> Jeux</a>
                 </li>
                 <li>
-                    <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                    <a href="{{ path('frontend_back_office_users') }}"><i class="fa fa-fw fa-group"></i> Utilisateurs</a>
                 </li>
                 <li>
-                    <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                    <a href="{{ path('frontend_back_office_news') }}"><i class="fa fa-fw fa-newspaper-o"></i> News</a>
                 </li>
-                <li>
-                    <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-                </li>
-                <li>
-                    <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                </li>
-                <li>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="demo" class="collapse">
+                <li id="li-const">
+                    <a href="javascript:;" data-toggle="collapse" data-target="#const">
+                        <i class="fa fa-fw fa-cogs"></i> Constantes <i class="fa fa-fw fa-caret-down"></i>
+                    </a>
+                    <ul id="const" class="collapse dropmenu">
                         <li>
-                            <a href="#">Dropdown Item</a>
+                            <a href="{{ path('frontend_back_office_gametypes') }}"><i class="fa fa-fw fa-file"></i> Types de jeu</a>
                         </li>
                         <li>
-                            <a href="#">Dropdown Item</a>
+                            <a href="{{ path('frontend_back_office_plateformes') }}"><i class="fa fa-fw fa-gamepad"></i> Plateformes</a>
                         </li>
                     </ul>
-                </li>
-                <li>
-                    <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                </li>
-                <li>
-                    <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
                 </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </nav>
+
+    <script>
+        $(document).ready(function () {
+            $.each($('#navbar').find('li'), function () {
+                $(this).toggleClass('active',
+                        $(this).find('a').attr('href') === window.location.pathname);
+                if($(this).find('a').attr('href') === window.location.pathname && $(this).parent().attr('id') === 'const')
+                {
+                    $('#const').removeClass('collapse');
+                    $('#li-const').toggleClass('active', true);
+                }
+            });
+        });
+    </script>
 {% endblock %}
+

@@ -23,6 +23,7 @@ Debug::enable();
 require_once __DIR__.'/../app/AppKernel.php';
 
 $kernel = new AppKernel('dev', true);
+//$kernel = new AppKernel('prod', false);
 $kernel->loadClassCache();
 Request::enableHttpMethodParameterOverride();
 $request = Request::createFromGlobals();

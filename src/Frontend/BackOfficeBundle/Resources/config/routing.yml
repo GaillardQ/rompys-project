@@ -1,3 +1,59 @@
 frontend_back_office_homepage:
     pattern:  /
     defaults: { _controller: FrontendBackOfficeBundle:Home:index }
+
+frontend_back_office_games:
+    pattern:  /games
+    defaults: { _controller: FrontendBackOfficeBundle:Game:index }
+    
+frontend_back_office_users:
+    pattern:  /users
+    defaults: { _controller: FrontendBackOfficeBundle:User:index }
+    
+frontend_back_office_news:
+    pattern:  /news
+    defaults: { _controller: FrontendBackOfficeBundle:News:index }    
+
+frontend_back_office_news_create:
+    pattern:  /news/create
+    defaults: { _controller: FrontendBackOfficeBundle:News:create }
+    
+frontend_back_office_news_update:
+    pattern:  /news/update/{id}/{hash}
+    defaults: { _controller: FrontendBackOfficeBundle:News:update }
+    
+frontend_back_office_news_delete:
+    pattern:  /news/delete/{id}/{hash}
+    defaults: { _controller: FrontendBackOfficeBundle:News:delete }
+    
+frontend_back_office_gametypes:
+    pattern:  /game-types
+    defaults: { _controller: FrontendBackOfficeBundle:Gametype:index }
+
+frontend_back_office_gametypes_create:
+    pattern:  /game-types/create
+    defaults: { _controller: FrontendBackOfficeBundle:Gametype:create }
+    
+frontend_back_office_gametypes_update:
+    pattern:  /game-types/update/{id}/{name}/{hash}
+    defaults: { _controller: FrontendBackOfficeBundle:Gametype:update }
+    
+frontend_back_office_gametypes_delete:
+    pattern:  /game-types/delete/{id}/{name}/{hash}
+    defaults: { _controller: FrontendBackOfficeBundle:Gametype:delete }
+    
+frontend_back_office_plateformes:
+    pattern:  /plateforms
+    defaults: { _controller: FrontendBackOfficeBundle:Plateforme:index }
+    
+frontend_back_office_plateformes_update:
+    pattern: /plateforms/update/{id}/{name}/{hash}
+    defaults: { _controller: FrontendBackOfficeBundle:Plateforme:update }
+    
+frontend_back_office_plateformes_create:
+    pattern: /plateforms/create
+    defaults: { _controller: FrontendBackOfficeBundle:Plateforme:create }
+    
+frontend_back_office_plateformes_delete:
+    pattern: /plateforms/delete/{id}/{name}/{hash}
+    defaults: { _controller: FrontendBackOfficeBundle:Plateforme:delete }

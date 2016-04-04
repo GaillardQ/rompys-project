@@ -13,7 +13,7 @@
                 			        <fieldset>
                                             <legend class="align-center"><h3>{{ 'reset_password.title'|trans|upper }}</h3></legend>
                                             {% block fos_user_content %}
-                                                {% include "FOSUserBundle:Resetting:reset_content.html.twig" %}
+                                                {{ include ("FOSUserBundle:Resetting:reset_content.html.twig") }}
                                             {% endblock fos_user_content %}  
                                     </fieldset>
                 			</div>

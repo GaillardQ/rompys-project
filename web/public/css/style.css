@@ -76,9 +76,15 @@ ul { padding-left: 10px; }
     white-space: nowrap;
 }
 
-.home-last-adds-photo .popover-content { text-align: center; }
+.home-last-adds-photo .popover-content,
+#table-sellers-games .popover-content { 
+    text-align: center; 
+}
 
-.home-last-adds-photo .popover-content img { max-width: 100px; }
+.home-last-adds-photo .popover-content img,
+#table-sellers-games .popover-content img { 
+    max-width: 100px; 
+}
 
 .page {
 	margin-top: 65px !important;
@@ -541,21 +547,21 @@ ul { padding-left: 10px; }
 }
 
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
-	line-height: 1;
+    line-height: 1;
 }
 
 .tablesorter thead .disabled {display: none}
 
 #div_game_fields .thumbnail {
-	max-width: 50px;
-	margin-bottom: 0px;
-	position: relative;
+    max-width: 50px;
+    margin-bottom: 0px;
+    position: relative;
     vertical-align: middle;
     display: inline-block;
 }
 
 #div_contact_seller {
-	color: #2196f3;
+    color: #2196f3;
 }
 
 #footer {
@@ -565,17 +571,30 @@ ul { padding-left: 10px; }
 }
 
 #footer a {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 #legalsModal,
 #contactModal,
 #faqModal {
-	color: #2196f3 !important;
+    color: #2196f3 !important;
 }
 
 #legalsModal h4,
 #contactModal h4,
-#faqModal h4 {
-	color: #2196f3 !important;
+#faqModal h4,
+#cguModal h4 {
+    color: #2196f3 !important;
+}
+
+#cguModal h5{
+    color: #2196f3 !important;
+}
+
+#cguModal h6 {
+    color: #2196f3 !important;
+}
+
+#cguModal h7 {
+    color: #2196f3 !important;
 }

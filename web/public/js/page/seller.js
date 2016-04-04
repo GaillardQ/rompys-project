@@ -58,8 +58,7 @@ $(document).ready(function() {
             filter_cssFilter: "form-control",
 
             filter_functions : {
-            },
-
+            }
         }
     });/*
     .tablesorterPager({

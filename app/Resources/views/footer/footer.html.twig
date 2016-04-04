@@ -1,0 +1,20 @@
+{% trans_default_domain 'templatesTranslations' %}
+
+<div id="footer">
+    <span>
+        <i class="fa fa-copyright"></i>
+        Copyright 2016 - Quentin Gaillard -- {{ 'footer.rights'|trans }}
+    </span>
+    <div class="pull-right"> 
+        <a data-toggle="modal" data-target="#faqModal">{{ 'footer.faq'|trans }}</a> - 
+        <a data-toggle="modal" data-target="#legalsModal">{{ 'footer.legals'|trans }}</a> -
+        <a data-toggle="modal" data-target="#cguModal">{{ 'footer.cgu'|trans }}</a> -
+        <a data-toggle="modal" data-target="#contactModal">{{ 'footer.contact'|trans }}</a>
+    </div>
+</div>
+
+
+{{ include(':footer:faq.html.twig') }}
+{{ include(':footer:legals.html.twig') }}
+{{ include(':footer:cgu.html.twig') }}
+{{ include(':footer:contact.html.twig') }}

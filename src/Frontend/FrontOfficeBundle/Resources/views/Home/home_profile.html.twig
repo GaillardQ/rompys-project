@@ -1,18 +1,23 @@
 {% trans_default_domain 'templatesTranslations' %}
 
 <div class="row">
-	<div class="pull-left" id="home-profile-avatar">
-		<img src="/public/img/avatar_default.png" alt="profile picture" class="img-responsive" />
-	</div>
-	<div class="pull-left" id="home-profile-infos">
-		<div class="row margin-top-10">{{ user.username }}</div>
-		<div class="row margin-top-10">{{ 'home.profile.games'|transchoice(games|length) }}</div>
-	</div>
-	
-	<div>
-		<a class="btn btn-default width-parent margin-top-20" href="{{ path('frontend_frontoffice_profile_home') }}">{{ 'home.profile.profile'|trans }}</a>
-	</div>
-	<div>
-		<a class="btn btn-primary width-parent margin-top-10" href="{{ path('fos_user_security_logout') }}">{{ 'home.profile.logout'|trans }}</a>
-	</div>
+    <div class="pull-left" id="home-profile-avatar">
+        <img src="public/img/avatar_default.png" alt="profile picture" class="img-responsive" />
+    </div>
+    <div class="pull-left" id="home-profile-infos">
+        <div class="row margin-top-10">{{ user.username }}</div>
+        <div class="row margin-top-10">{{ 'home.profile.games'|transchoice(games|length) }}</div>
+    </div>
+
+    <div>
+        <a class="btn btn-default width-parent margin-top-20" href="{{ path('frontend_frontoffice_profile_home') }}">{{ 'home.profile.profile'|trans }}</a>
+    </div>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div>
+            <a class="btn btn-warning width-parent margin-top-10" href="{{ path('frontend_back_office_homepage') }}">{{ 'home.profile.admin'|trans }}</a>
+        </div>
+    {% endif %}
+    <div>
+        <a class="btn btn-primary width-parent margin-top-10" href="{{ path('fos_user_security_logout') }}">{{ 'home.profile.logout'|trans }}</a>
+    </div>
 </div>

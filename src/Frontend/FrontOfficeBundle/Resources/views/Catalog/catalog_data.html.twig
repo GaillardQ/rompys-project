@@ -5,9 +5,9 @@
         {# Get the first image available #}
         {% set img = null %}
         {% if g.image is not null %}
-            {% set img = '/public/pictures/' ~ g.image %}
+            {% set img = 'public/pictures/' ~ g.image %}
         {% else %}
-            {% set img = '/public/img/game_default.png' %}
+            {% set img = 'public/img/game_default.png' %}
         {% endif %}
         
     	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">

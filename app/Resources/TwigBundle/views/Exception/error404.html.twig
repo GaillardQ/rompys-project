@@ -1,0 +1,98 @@
+{% extends 'baseRompy.html.twig' %}
+
+{% trans_default_domain 'templatesTranslations' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets
+            'public/css/bootstrap.min.css'
+	    'public/css/bootstrap-datetimepicker.min.css'
+	    'public/css/bootswatch.min.css'
+	    'public/css/filter.formatter.css'
+	    'public/css/jquery.fileupload-ui.css'
+	    'public/css/style.css'
+	    'public/css/tablesorter.pager.css'
+	    'public/css/theme.bootstrap.css'
+	    'public/css/utils.css'
+	    filter='cssrewrite' output='public/css/compiled/app.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+	    'public/js/globals/10_jquery-1.9.1.js'
+	    'public/js/globals/20_jquery-ui-1.10.2.js'
+	    'public/js/globals/21_jquery.ui.widget.js'
+	    'public/js/globals/22_jquery-migrate-1.2.1.min.js'
+	    'public/js/globals/30_bootstrap.min.js'
+	    'public/js/globals/40_bootstrap-datetimepicker.min.js'
+	    'public/js/globals/44_jquery.localscroll.js'
+	    'public/js/globals/45_jquery.scrollTo.js'
+	    'public/js/globals/60_hinclude.js'
+	    'public/js/globals/70_jquery.tablesorter.combined.js'
+	    'public/js/globals/71_jquery.tablesorter.js'
+	    'public/js/globals/72_jquery.tablesorter.widgets.js'
+	    'public/js/globals/73_widget-filter-formatter-html5.js'
+	    'public/js/globals/74_widget-filter-formatter-jui.js'
+	    'public/js/globals/75_widget-filter-formatter-select2.js'
+	    'public/js/globals/76_widget-filter-type-insideRange.js'
+	    'public/js/globals/77_widget-filter.js'
+	    'public/js/globals/78_widget-pager.js'
+	    'public/js/globals/79_widget-uitheme.js'
+	    output='public/js/compiled/app.js' %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block body %}
+    <div id="home" class="row home">
+        <div class="col-md-6 col-md-push-3 col-lg-8 col-lg-push-2">
+            <div id="home-center" class="row home-block home-center-div">
+                <div class="panel panel-primary home-panel-center">
+                    <div class="panel-body">
+                        <div id="home_content">
+                            <div class="row">
+                                <div id="page-home-logo" class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+                                    <img class="img-responsive margin-auto" src="public/img/error/error404.png" alt="ERREUR !"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="align-center">
+                                    <h2>Page inconnue...</h2>
+                                    <h4>N'hésitez pas à contacter un administrateur si cela se reproduit.</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="align-center">
+                                    <a href="{{ path('frontend_frontoffice_homepage') }}">
+                                        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                                        &nbspRetourner à l'accueil
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-md-pull-6 col-lg-2 col-lg-pull-8">
+            <div id="home-left-top" class="row home-block home-side-div">
+
+            </div>
+
+            <div id="home-left-bottom" class="row home-block home-side-div">
+
+            </div>
+        </div>
+        <div class="col-md-3 col-lg-2">
+            <div id="home-right-top" class="row home-block home-side-div">
+
+            </div>
+            <div id="home-right-bottom" class="row home-block home-side-div">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

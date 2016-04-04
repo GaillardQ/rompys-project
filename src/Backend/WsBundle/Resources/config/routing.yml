@@ -5,3 +5,7 @@ backend_ws_get_infos_add_game:
 backend_ws_delete_game_catalog:
     pattern: /ws/game_catalog/{id}/delete/{hash}
     defaults: { _controller: BackendWsBundle:GameCatalog:deleteGameCatalog }
+    
+backend_ws_cron_daily_stats:
+    pattern: /ws/stats/daily
+    defaults: { _controller: BackendWsBundle:DailyStats:save }

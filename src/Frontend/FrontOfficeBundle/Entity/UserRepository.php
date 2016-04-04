@@ -12,5 +12,44 @@ use Doctrine\ORM\Query\ResultSetMapping;
  * repository methods below.
  */
 class UserRepository extends EntityRepository {
+    public function findTodayRegistration() {
+        $d1 = new \DateTime();
+        $d1->setTime(0, 0, 0);
+        
+        $qb = $this->createQueryBuilder("u");
 
+        $query = $qb->select("u.id")
+                ->where("u.registered_at >= :date")
+                ->setParameter('date', $d1)
+                ->getQuery();
+
+        $lastRegistrations = $query->getResult();
+
+        return $lastRegistrations;
+    }
+    
+    public function findAllArray()
+    {
+        $allUsers = $this->createQueryBuilder('e')
+                         ->select('e')
+                         ->getQuery()
+                         ->getResult();
+        
+        $users = array();
+        foreach($allUsers as $k=>$v)
+        {
+           $users[$k] = array();
+           $users[$k]["id"] = $v->getId();
+           $users[$k]["username"] = $v->getUsername();
+           $users[$k]["firstname"] = $v->getFirstname();
+           $users[$k]["lastname"] = $v->getLastname();
+           $users[$k]["email"] = $v->getEmail();
+           $users[$k]["phone"] = $v->getPhone();
+           $users[$k]["roles"] = $v->getRoles();
+           $users[$k]["games"] = 0;
+           $users[$k]["enabled"] = $v->isEnabled();
+        }
+        
+        return $users;
+    }
 }

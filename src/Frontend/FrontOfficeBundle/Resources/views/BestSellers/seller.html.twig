@@ -11,16 +11,16 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script type="text/javascript" src="/public/js/page/seller.js"></script>
+    <script type="text/javascript" src="public/js/page/seller.js"></script>
 {% endblock %}
 
 {% block body %}
     <div id="catalog" class="page">
         <div id="seller-infos" class="row">
-            {% include 'FrontendFrontOfficeBundle:BestSellers:seller_infos.html.twig' with {'infos': infos} %}
+            {{ include ('FrontendFrontOfficeBundle:BestSellers:seller_infos.html.twig', {'infos': infos}) }}
         </div>
         <div id="seller-games" class="row">
-            {% include 'FrontendFrontOfficeBundle:BestSellers:seller_games.html.twig' with {'games': games} %}
+            {{ include ('FrontendFrontOfficeBundle:BestSellers:seller_games.html.twig', {'games': games}) }}
         </div>
     </div>
 

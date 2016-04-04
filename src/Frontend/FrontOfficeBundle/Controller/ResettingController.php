@@ -31,7 +31,7 @@ class ResettingController extends BaseController
         //$invalid_username = $request->query->get('invalid_username'); // get a $_GET parameter
         
         //echo "Username : $invalid_username";
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:request.html.'.$this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:request.html.twig', array(
             'invalid_username' => $invalid_username
         ));
     }
@@ -51,7 +51,7 @@ class ResettingController extends BaseController
         }
 
         if ($user->isPasswordRequestNonExpired($this->container->getParameter('fos_user.resetting.token_ttl'))) {
-            return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:passwordAlreadyRequested.html.'.$this->getEngine());
+            return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:passwordAlreadyRequested.html.twig');
         }
 
         if (null === $user->getConfirmationToken()) {
@@ -116,7 +116,7 @@ class ResettingController extends BaseController
             }
         }
 
-        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:reset.html.'.$this->getEngine(), array(
+        return $this->container->get('templating')->renderResponse('FOSUserBundle:Resetting:reset.html.twig', array(
             'token' => $token,
             'form' => $form->createView(),
         ));

@@ -9,6 +9,12 @@
 	    'bo/css/sb-admin.css'
             'bo/css/plugins/morris.css'
             'bo/font-awesome/css/font-awesome.min.css'
+	    'public/css/filter.formatter.css'
+	    'public/css/jquery.fileupload-ui.css'
+	    'public/css/tablesorter.pager.css'
+            'public/css/theme.bootstrap.css'
+            'public/css/utils.css'
+            'bo/css/style.css'
 	    filter='cssrewrite' output='bo/css/compiled/app.css' %}
 	    <link rel="stylesheet" href="{{ asset_url }}" />
 	{% endstylesheets %}
@@ -19,14 +25,27 @@
 	{% javascripts
 	    'bo/js/jquery.js'
 	    'bo/js/bootstrap.min.js'
+            'bo/js/global.js'
             'bo/js/plugins/flot/excanvas.min.js'
             'bo/js/plugins/flot/jquery.flot.js'
             'bo/js/plugins/flot/jquery.flot.pie.js'
             'bo/js/plugins/flot/jquery.flot.resize.js'
             'bo/js/plugins/flot/jquery.flot.tooltip.min.js'
             'bo/js/plugins/morris/morris.min.js'
-            'bo/js/plugins/morris/morris-data.js'
             'bo/js/plugins/morris/raphael.min.js'
+            'public/js/globals/20_jquery-ui-1.10.2.js'
+	    'public/js/globals/21_jquery.ui.widget.js'
+	    'public/js/globals/22_jquery-migrate-1.2.1.min.js'
+            'public/js/globals/70_jquery.tablesorter.combined.js'
+	    'public/js/globals/71_jquery.tablesorter.js'
+	    'public/js/globals/72_jquery.tablesorter.widgets.js'
+	    'public/js/globals/73_widget-filter-formatter-html5.js'
+	    'public/js/globals/74_widget-filter-formatter-jui.js'
+	    'public/js/globals/75_widget-filter-formatter-select2.js'
+	    'public/js/globals/76_widget-filter-type-insideRange.js'
+	    'public/js/globals/77_widget-filter.js'
+	    'public/js/globals/78_widget-pager.js'
+	    'public/js/globals/79_widget-uitheme.js'
 	    output='bo/js/compiled/app.js' %}
 	    <script src="{{ asset_url }}"></script>
 	{% endjavascripts %}

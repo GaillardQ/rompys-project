@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="`user`")
  * @ORM\Entity(repositoryClass="Frontend\FrontOfficeBundle\Entity\UserRepository")
  * @ORM\AttributeOverrides({
  *              @ORM\AttributeOverride(name="username", column=@ORM\Column(nullable=false, unique=false)),

@@ -1,0 +1,84 @@
+{% extends 'FrontendBackOfficeBundle::baseMenu.html.twig' %}
+{% trans_default_domain 'templatesTranslations' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="/bo/js/news.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        News <small>Administration</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li class="active">
+                            <i class="fa fa-newspaper-o"></i> News
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="row margin-bottom-20 align-center">
+                        <a class="btn btn-primary" href="{{ path('frontend_back_office_news_create') }}">
+                            <i class="fa fa-plus"></i> Ajouter une news
+                        </a>
+                    </div>
+                    <div class="row">
+                        <!-- Table -->
+                        <table id="table-all-news" class="table tablesorter">
+                            <thead>
+                                <tr>
+                                    <th class="title">{{ 'bo.news.title'|trans }}</th>
+                                    <th class="content">{{ 'bo.news.content'|trans }}</th>
+                                    <th class="start">{{ 'bo.news.start'|trans }}</th>
+                                    <th class="end">{{ 'bo.news.end'|trans }}</th>
+                                    <th class="displayed align-center" data-toggle="tooltip" title="{{ 'bo.news.displayed'|trans }}">
+                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                    </th>
+                                    <th class="update align-center" data-toggle="tooltip" title="{{ 'bo.news.update'|trans }}"><span class="glyphicon glyphicon-pencil"></span></th>
+                                    <th class="delete align-center" data-toggle="tooltip" title="{{ 'bo.news.delete'|trans }}"><span class="glyphicon glyphicon-trash"></span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for p in news %}
+                                    <tr>
+                                        <td class="title">{{ p.title }}</td>
+                                        <td class="content">{{ p.content }}</td>
+                                        <td class="start align-center">{{ p.dateStart|date("d-m-Y H:i:s") }}</td>
+                                        <td class="end align-center">{{ p.dateEnd|date("d-m-Y H:i:s") }}</td>
+                                        <td class="displayed align-center" data-toggle="tooltip" title="{{ 'bo.news.displayed'|trans }}">
+                                            {% if p.displayed == 1 %}
+                                                <span class="glyphicon glyphicon-eye-open"></span>
+                                            {% endif %}
+                                        </td>
+                                        <td class="update align-center" data-toggle="tooltip" title="{{ 'bo.news.update'|trans }}">
+                                            <a href="{{ path('frontend_back_office_news_update', {'id': p.id, 'hash':p.hash}) }}">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                            </a>
+                                        </td>
+                                        <td class="delete align-center" data-toggle="tooltip" title="{{ 'bo.news.delete'|trans }}">
+                                            <a href="{{ path('frontend_back_office_news_delete', {'id': p.id, 'hash':p.hash}) }}">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+{% endblock %}

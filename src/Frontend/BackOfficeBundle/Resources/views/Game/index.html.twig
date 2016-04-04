@@ -1,0 +1,140 @@
+{% extends 'FrontendBackOfficeBundle::baseMenu.html.twig' %}
+{% trans_default_domain 'templatesTranslations' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="/bo/js/game.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        Jeux <small>Administration</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li class="active">
+                            <i class="fa fa-dashboard"></i> Jeux
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Table -->
+                    <table id="table-all-games" class="table tablesorter">
+                        <thead>
+                            <tr>
+                                <th class="name">{{ 'bo.games.name'|trans }}</th>
+                                <th class="seller">{{ 'bo.games.seller'|trans }}</th>
+                                <th class="price">{{ 'bo.games.price'|trans }}</th>
+                                <th class="plateform">{{ 'bo.games.plateform'|trans }}</th>
+                                <th class="photo" data-toggle="tooltip" title="{{ 'bo.games.photo'|trans }}"><span class="glyphicon glyphicon-picture"></span></th>
+                                <th class="editor">{{ 'bo.games.editor'|trans }}</th>
+                                <th class="out-date">{{ 'bo.games.out-date'|trans }}</th>
+                                <th class="serie">{{ 'bo.games.serie'|trans }}</th>
+                                <th class="gametype">{{ 'bo.games.gametype'|trans }}</th>
+                                <th class="user-version" data-toggle="tooltip" title="{{ 'bo.games.user-version'|trans }}"><i class="fa fa-file-archive-o"></i></th>
+                                <th class="language-zone">{{ 'bo.games.language-zone'|trans }}</th>
+                                <th class="comment">{{ 'bo.games.comment'|trans }}</th>
+                                <th class="added-date">{{ 'bo.games.added-date'|trans }}</th>
+                                <th class="update" data-toggle="tooltip" title="{{ 'bo.games.update'|trans }}"><span class="glyphicon glyphicon-pencil"></span></th>
+                                <th class="delete" data-toggle="tooltip" title="{{ 'bo.games.delete'|trans }}"><span class="glyphicon glyphicon-trash"></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for g in games %}
+                                <tr>
+                                    <td class="name" data-toggle="tooltip" title="{{ g.name }}">
+                                        <a href="{{ path('frontend_frontoffice_game_page', {'id': g.id, 'name':g.name|url_encode}) }}">
+                                            {{ g.name }}
+                                            {% if g.alternative_name is not null %}
+                                                <br />{{ g.alternative_name }}
+                                            {% endif %}
+                                        </a>
+                                    </td>
+                                    <td>{{ g.seller }}</td>
+                                    <td class="align-right">{{ g.price }} €</td>
+                                    <td class="plateform">{{ g.plateform }}</td>
+                                    <td class="home-last-adds-photo align-center">
+                                        {% if g.image is defined and g.image != "" %}
+                                            <a href="#" onclick="return false;" data-html="true" data-trigger="focus" data-placement="top" data-toggle="popover" title="{{ 'game_card.seller.photo'|trans }}" data-content="<img class='margin-auto' src='public/pictures/{{ g.image }}' alt='Game picture' />">
+                                                <span class="glyphicon glyphicon-picture" ></span>
+                                            </a>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if g.editor1 is not null %}
+                                            {{ g.editor1 }}
+                                        {% endif %}
+                                        {% if g.editor2 is not null %}
+                                            <br />
+                                            {{ g.editor2 }}
+                                        {% endif %}
+                                        {% if g.editor3 is not null %}
+                                            <br />
+                                            {{ g.editor3 }}
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ g.released_year }}</td>
+                                    <td>{{ g.serie }}</td>
+                                    <td>{{ g.game_type }}</td>
+                                    <td class="align-center">
+                                        {% set version %}
+                                            {% if g.state_id == 1 %}
+                                                <span class="glyphicon glyphicon-thumbs-up" ></span>
+                                                <span class="glyphicon glyphicon-thumbs-up" ></span>
+                                            {% elseif g.state_id == 2 %}
+                                                <span class="glyphicon glyphicon-thumbs-up" ></span>
+                                            {% elseif g.state_id == 3 %}
+                                                <span class="glyphicon glyphicon-thumbs-down" ></span>
+                                            {% else %}
+                                                <span class="glyphicon glyphicon-thumbs-down" ></span>
+                                                <span class="glyphicon glyphicon-thumbs-down" ></span>
+                                            {% endif %}
+                                            {% if g.package is defined and g.package==1 %}
+                                                <span class="glyphicon glyphicon-inbox" data-toggle="tooltip" title="{{ 'bo.games.package'|trans }}"></span>
+                                            {% endif %}
+                                            {% if g.blister is defined and g.blister==1 %}
+                                                <span class="glyphicon glyphicon-gift" data-toggle="tooltip" title="{{ 'bo.games.blister'|trans }}"></span>
+                                            {% endif %}
+                                            {% if g.notice is defined and g.notice==1 %}
+                                                <span class="glyphicon glyphicon-book" data-toggle="tooltip" title="{{ 'bo.games.notice'|trans }}"></span>
+                                            {% endif %}
+                                        {% endset %}
+                                        <a href="#" onclick="return false;" data-html="true" data-trigger="focus" data-placement="top" data-toggle="popover" 
+                                           title="{{ 'bo.games.user-version'|trans }}" data-content='<div class="align-center">{{ version }}</div>'>
+                                            <i class="fa fa-file-archive-o"></i>
+                                        </a>
+                                        
+                                    </td>
+                                    <td class="align-center">{{ g.language }} ({{ g.zone }})</td>
+                                    <td class="comment" data-toggle="tooltip" title="{{ g.comment }}">{{ g.comment }}</td>
+                                    <td class="add-date">{{ g.added_at|date('d-m-Y') }}</td>
+                                    <td class="update align-center" data-toggle="tooltip" title="{{ 'bo.games.update'|trans }}">
+                                        <a href="{{ path('frontend_frontoffice_profile_update_game', {'id': g.id, 'hash':g.hash}) }}">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+                                    </td>
+                                    <td class="delete align-center" data-toggle="tooltip" title="{{ 'bo.games.delete'|trans }}">
+                                        <a href="#" onclick="deleteGameCatalog({{ g.id }}, '{{ g.hash }}');">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
