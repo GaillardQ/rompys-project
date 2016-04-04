@@ -395,7 +395,7 @@ class GameRepository extends EntityRepository
         
         $price = $query->getResult();
         
-        if(count($price) > 0)
+        if(count($price) > 0 && $price[0]['price'] != null)
         {
             return $price[0]['price'];
         }
